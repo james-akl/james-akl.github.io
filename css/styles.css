@@ -237,7 +237,7 @@ label {
   display: inline-block;
   font-weight: bold;
   font-size: small;
-  font-family: mono;
+  font-family: monospace;
 }
 [for="themer"] {
   background: #111;
