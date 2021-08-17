@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Welcome to my site. on James Akl</title>
+    <link>james-akl.github.io/</link>
+    <description>Recent content in Welcome to my site. on James Akl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 14 Aug 2021 18:27:58 +0100</lastBuildDate><atom:link href="james-akl.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>james-akl.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>james-akl.github.io/about/</guid>
+      <description>Hello, reader!
+I am a roboticist with a background in engineering, mathematics, and science.
+Aside from robotics, I am also invested in mathematics and music on the private side; and in business and finance on the social side.
+I study people as much as I study robots, so I like working, learning, and sharing with ambitious teams and decent individuals.
+I often think about the socioeconomic and humanities aspects of robots.</description>
+    </item>
+    
+  </channel>
+</rss>
