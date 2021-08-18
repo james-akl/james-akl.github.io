@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Welcome to my site. on James Akl</title>
-    <link>https://james-akl.github.io/</link>
+    <link>https://jamesakl.com/</link>
     <description>Recent content in Welcome to my site. on James Akl</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Aug 2021 18:27:58 +0100</lastBuildDate><atom:link href="https://james-akl.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Aug 2021 18:27:58 +0100</lastBuildDate><atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://james-akl.github.io/about/</link>
+      <link>https://jamesakl.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://james-akl.github.io/about/</guid>
+      <guid>https://jamesakl.com/about/</guid>
       <description>Hello, reader!
 I am a roboticist with a background in engineering, mathematics, and science.
 Aside from robotics, I am also invested in mathematics and music on the private side; and in business and finance on the social side.
