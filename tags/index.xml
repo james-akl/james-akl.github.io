@@ -5,6 +5,16 @@
     <link>https://jamesakl.com/tags/</link>
     <description>Recent content in Tags on James Akl</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://jamesakl.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>robotics</title>
+      <link>https://jamesakl.com/tags/robotics/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/tags/robotics/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
