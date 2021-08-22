@@ -7,13 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jamesakl.com/articles/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>A Tour of Robot Mechanics</title>
+      <link>https://jamesakl.com/mechanics-tour/</link>
+      <pubDate>Fri, 20 Aug 2021 22:50:41 -0400</pubDate>
+      
+      <guid>https://jamesakl.com/mechanics-tour/</guid>
+      <description>INCOMPLETE DRAFT : WORK IN PROGRESS    ABSTRACT ~ This article aims to provide an understanding of common robot mechanics with formal rigor and conceptual glue wherever possible. The goal is a high-level but generous grasp of robot kinematics and dynamics, presented in a forward and inverse problems setting. After thorough reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, thus the appropriate &amp;lsquo;hows&amp;rsquo; can subsequently be studied deeper.</description>
+    </item>
+    
+    <item>
       <title>Defining a Robot</title>
       <link>https://jamesakl.com/robot-definition/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/robot-definition/</guid>
-      <description>In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
-History The word robot has literary origins (specifically, Czech) meaning forced labor. In our context, this essentially implies that a robot is a machine-slave.</description>
+      <description>ABSTRACT ~ In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
+ History The word robot has literary origins (specifically, Czech) meaning forced labor. In our context, this essentially implies that a robot is a machine-slave.</description>
     </item>
     
   </channel>

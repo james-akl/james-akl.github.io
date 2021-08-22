@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mechanics on James Akl</title>
+    <link>https://jamesakl.com/tags/mechanics/</link>
+    <description>Recent content in mechanics on James Akl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Aug 2021 22:50:41 -0400</lastBuildDate><atom:link href="https://jamesakl.com/tags/mechanics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Tour of Robot Mechanics</title>
+      <link>https://jamesakl.com/mechanics-tour/</link>
+      <pubDate>Fri, 20 Aug 2021 22:50:41 -0400</pubDate>
+      
+      <guid>https://jamesakl.com/mechanics-tour/</guid>
+      <description>INCOMPLETE DRAFT : WORK IN PROGRESS    ABSTRACT ~ This article aims to provide an understanding of common robot mechanics with formal rigor and conceptual glue wherever possible. The goal is a high-level but generous grasp of robot kinematics and dynamics, presented in a forward and inverse problems setting. After thorough reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, thus the appropriate &amp;lsquo;hows&amp;rsquo; can subsequently be studied deeper.</description>
+    </item>
+    
+  </channel>
+</rss>

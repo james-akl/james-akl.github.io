@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.87.0" />
-  <link rel="canonical" href="/robot-definition/">
+  <link rel="canonical" href="/mechanics-tour/">
 
   
     
-    <meta name="description" content="ABSTRACT ~ In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
- History The word robot has literary origins (specifically, Czech) meaning forced labor. In our context, this essentially implies that a robot is a machine-slave.">
+    <meta name="description" content="INCOMPLETE DRAFT : WORK IN PROGRESS    ABSTRACT ~ This article aims to provide an understanding of common robot mechanics with formal rigor and conceptual glue wherever possible. The goal is a high-level but generous grasp of robot kinematics and dynamics, presented in a forward and inverse problems setting. After thorough reading, the ‘whys’ should become apparent, thus the appropriate ‘hows’ can subsequently be studied deeper.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -43,7 +42,7 @@
 
   
   
-  <title>Defining a Robot | James Akl</title>
+  <title>A Tour of Robot Mechanics | James Akl</title>
 </head>
 
   <body>
@@ -228,7 +227,7 @@
       <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
         <use xlink:href="#bookmark"></use>
       </svg>
-      Defining a Robot
+      A Tour of Robot Mechanics
     </h1>
 
     <div class="date">
@@ -256,6 +255,22 @@
               <a href="/tags/robotics/">robotics</a>
             </li>
           
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/mechanics/">mechanics</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/mathematics/">mathematics</a>
+            </li>
+          
         </ul>
       </div>
     
@@ -272,8 +287,8 @@
           
           
           
-          <a href="#history">
-            History
+          <a href="#motivation--context">
+            Motivation &amp; Context
           </a>
         </li>
       
@@ -282,8 +297,8 @@
           
           
           
-          <a href="#present-day-opinions">
-            Present-day Opinions
+          <a href="#forward--inverse-problems">
+            Forward &amp; Inverse problems
           </a>
         </li>
       
@@ -292,8 +307,8 @@
           
           
           
-          <a href="#long-form-definition">
-            Long-form Definition
+          <a href="#pose-kinematics">
+            Pose kinematics
           </a>
         </li>
       
@@ -302,8 +317,8 @@
           
           
           
-          <a href="#short-form-definition">
-            Short-form Definition
+          <a href="#velocity-kinematics">
+            Velocity kinematics
           </a>
         </li>
       
@@ -312,8 +327,8 @@
           
           
           
-          <a href="#discussion--implications">
-            Discussion &amp; Implications
+          <a href="#rigid-body-dynamics">
+            Rigid-body Dynamics
           </a>
         </li>
       
@@ -322,8 +337,8 @@
           
           
           
-          <a href="#examples">
-            Examples
+          <a href="#summary-table">
+            Summary table
           </a>
         </li>
       
@@ -332,18 +347,8 @@
           
           
           
-          <a href="#conclusion">
-            Conclusion
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#references">
-            References
+          <a href="#whats-next">
+            What’s next?
           </a>
         </li>
       
@@ -353,207 +358,206 @@
 
     
 
-    <blockquote>
-<p><big><strong><code>ABSTRACT</code></strong></big> ~ <i><small>In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.</small></i></p>
-</blockquote>
-<h2 id="history">History</h2>
-<p>The word <em><strong>robot</strong></em> has literary <a href="https://en.wikipedia.org/wiki/Rossum%27s_Universal_Robots">origins</a> (specifically, Czech)  meaning <em>forced labor</em>. In our context, this essentially implies that a robot is a <em>machine-slave</em>. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (<em>e.g.</em>, automaton, device, machine).</p>
-<p>The definition of a robot changes across cultures and has changed throughout time. Some machines considered robots by Japanese standards are not by American standards <a href="#references">[1]</a>. But we can try to find overlap and force a consensus.</p>
-<h2 id="present-day-opinions">Present-day Opinions</h2>
-<p>Nowadays, we can agree that a robot is a system, comprised of various components and subsystems, that has some objective, some awareness of itself or surroundings, some ability to physically interact with its environment (move, touch, grab, drill, shoot, …), and potentially some level of autonomy (in the engineering sense; automatic, not driven; no detailed direct human operation). It is difficult to reach an agreeable and precise definition as opinions often quickly disperse.</p>
-<p>Consider the example of <a href="https://en.wikipedia.org/wiki/Teleoperation">teleoperated systems</a>, still considered by some to be robots, but also excluded by others. Nevertheless, many roboticists actively working on teleoperation have made it <a href="https://en.wikipedia.org/wiki/Telerobotics">more intelligent</a>.</p>
-<p>Another example is in wearable systems (<em>e.g.</em>, exoskeletons, exosuits, prosthetics). Again, whether a particular system should be called a wearable robot, or rather, simply a wearable system, is up to subjective interpretation.</p>
-<p>There is no satisfying definition for robotics as the field is too vast, somewhat fragmented, and not mature enough. The need for a clearcut and comprehensive definition is certainly appealing. But, to settle on one today would be premature and reductive.</p>
-<p>Still, it doesn&rsquo;t hurt to try, while striving to be less incorrect. Here is a proposed definition, in both long- then short-form.</p>
-<h2 id="long-form-definition">Long-form Definition</h2>
+    <aside aria-label="warning" class="note warning">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 48.430474 41.646302" focusable="false">
+      <use xlink:href="#warning"></use>
+    </svg>
+    
+
+<span style="color:blacl; font-family:monospace; font-weight:bold; background-color:yellow">INCOMPLETE DRAFT : WORK IN PROGRESS</span>
+
+
+  </div>
+</aside>
+
 <blockquote>
-<p>A robot is any goal-oriented and human-assembled system, typically a machine but not necessarily, endowed with some capabilities for sensing, perception, cognition, planning, control, and acting in the physical world; while subject to human authority, in the form of high-level command or low-level control.</p>
+<p><big><strong><code>ABSTRACT</code></strong></big> ~ <small><i>This article aims to provide an understanding of common robot mechanics with formal rigor and conceptual glue wherever possible. The goal is a high-level but generous grasp of robot kinematics and dynamics, presented in a forward and inverse problems setting. After thorough reading, the &lsquo;whys&rsquo; should become apparent, thus the appropriate &lsquo;hows&rsquo; can subsequently be studied deeper.</i></small></p>
 </blockquote>
-<h2 id="short-form-definition">Short-form Definition</h2>
+<h2 id="motivation--context">Motivation &amp; Context</h2>
 <blockquote>
-<p>A robot is any <u>goal-oriented</u> and <u>human-assembled</u> <u>system</u> under <u>human authority</u> that can <u>sense</u>, <u>plan</u>, and <u>act</u> in the <u>physical world</u>.</p>
+<p>Find reasons to invest before committing.</p>
 </blockquote>
-<h2 id="discussion--implications">Discussion &amp; Implications</h2>
-<p>The above definitions may be dissected and discussed for depth and clarity.</p>
-<h3 id="a-robot-is-a-system">A robot is a system.</h3>
-<p>We may emphasize the word <em><strong>system</strong></em> rather than machine <a href="#references">[2]</a>. There is no reason why a robot cannot be grown as an organism, rather than built as a machine. If it can be designed for a goal, commanded or controlled, with some level of autonomy, then the choice of the corpus, body, or mechanism is, in principle, arbitrary. Machines are much better understood, and can be designed to be more predictable, and thus today are almost always preferred to organisms.</p>
-<p>This systems-view also alludes to <a href="http://www.scholarpedia.org/article/Swarm_robotics">robotic swarms</a>. In some swarms, each individual machine can be complex enough to be a robot in its own right. But, in principle, individual machines that are too simple to be considered robots, can be collectively considered a robotic system, <em>provided that</em> the swarm can collectively meet the definition.</p>
-<h3 id="a-robot-directly-interacts-with-the-physical-world">A robot directly interacts with the physical world.</h3>
-<p>In other words, if it cannot mechanically interact with the physical world, it is less robot and more device, or sometimes even a computer. If it cannot sense nor plan, then it lacks the ability to adapt, which is closer to traditional machines than to &lsquo;intelligent&rsquo; robots. Many consumer &ldquo;robot assistants&rdquo; or &ldquo;robot companions&rdquo; get branded as robots, and those that interact physically indeed are; but those who cannot are closer to computers than to robots, even if they have speech features and sophisticated natural language processing.</p>
-<h3 id="a-robot-is-assembled-by-humans-for-humans">A robot is assembled by humans, for humans.</h3>
-<p>Despite the musings of popular culture and the entertainment industry, robots are a human invention: designed by people, built by people, and ruled by people. Bluntly put, a robot is an artificial creation indentured to serve a specific goal or purpose defined by its <em>human</em> creators, owners, or programmers.</p>
-<p>One implication here is that a living system found in nature cannot be converted into a robot. A machine modeled after a horse can be a robot, but a live horse controlled using implants is closer to a rigidly-controlled animal. A robot, in this regard, may be thought of as &ldquo;artificial life&rdquo; with &ldquo;human masters&rdquo;. One curious scenario is: would a dead horse, <em>i.e.</em>, a cadaver, taxidermied and repurposed into an obedient &lsquo;biomachine&rsquo; (cyborg?) be considered a robot? Potentially yes, it is somewhat artificial life, that is used to serve humans.</p>
-<p>Another implication is about authority. Since robots are built by people to serve people, then it must remain under human authority to be considered a robot. If that subordination is breached, then the system is no longer a robot, but a rogue or independent machine. My interpretation of this is as follows:</p>
+<p>The basic functionality we&rsquo;d like robots to have, is to move. However, describing <em>precisely</em> a motion from point $\mathsf{A}$ to point $\mathsf{B}$ is not simple.</p>
+<p>Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</p>
+<div style="text-align:center">
+    <img src="path.svg" alt="This is " style="zoom:150%;" />
+</div>
+<p>There are infinite paths from $\mathsf{A}$ to $\mathsf{B}$. Same start and end positions, but different intermediate states. The gray paths are two alternatives to our desired one.</p>
+<aside aria-label="note" class="note">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
+      <use xlink:href="#info"></use>
+    </svg>
+    
+
+Before we can communicate the desired path <i>precisely</i> to a robot, we must first be able to precisely encode the differences between point $\mathsf{A}$ and <i>any</i> point $\mathbf{x}(t)$ along that path; noting that $\mathbf{x}(\mathsf{start}) = \mathsf{A}$ and $\mathbf{x}(\mathsf{end}) = \mathsf{B}$. In fact, we would like to encode the differences between <u>any two frames</u> in a space. A frame at a point informs about both position and orientation, called <i>pose</i>.
+
+
+  </div>
+</aside>
+
+<p>The activity of generating and deciding on the desired path from $\mathsf{A}$ to $\mathsf{B}$ is called motion planning (specifically, path planning). But given a path, it is not straightforward to encode for to a robot. To people, a Cartesian description is intuitive. But with a common robot, it is more natural to describe its joint configuration. That is, if a robotic serial arm has $n$ joints, the state of each joint $i$ can be described by a quantity $q_i$. Considering all these quantities together in $\mathbf{q}$, the configuration of the entire robot (position and orientation of each joint) becomes known.</p>
+<div style="text-align:center; background-color:yellow; font-family:monospace">[INSERT DIAGRAM OF ROBOT]</div>
+<p>The apparent notion here is that there is a <strong>joint space</strong> for a robot, and a Cartesian <strong>world space</strong> for its environment. The ability to readily convert from either space to the other is fundamental for robot design, control, planning, and usage. Robot kinematics deals with transforming between joint and world spaces the robot&rsquo;s pose (zero-order or positional state) and its velocity (first-order or differential state). This is done in a purely geometric sense, with complete disregard to physical information such as mass or force.</p>
+<div style="text-align:center; background-color:yellow; font-family:monospace">[INSERT DIAGRAM OF MAPPING]</div>
+<p>However, a robot is a system designed to operate in physical world. This means, we cannot get far with only geometric encoding. We must at some point encode the physical properties of the robot, more specifically, the dynamic effects, such as inertial, centrifugal, gravitational, and even further dissipative effects if the application requires it. This is <strong>robot dynamics</strong>. The most common form of robot dynamics takes from rigid-body dynamics. Note however, that robotics is a vast research community, and there are many projects which require far beyond rigid-body dynamics, or even entirely different physics (such as continuum mechanics for soft robots).</p>
+<div style="text-align:center; background-color:yellow; font-family:monospace">[INSERT DIAGRAM OF PHYSICS]</div>
+<p><strong>Robot mechanics</strong>, thus, in its most common form, borrows from and builds on Euclidean geometry, linear algebra, and rigid-body kinematics and dynamics. Its purpose is to accurately and precisely describe the kinematic and dynamic states of robots given their geometric and physical parameters.</p>
+<h3 id="the-takeaway">The takeaway:</h3>
 <blockquote>
-<p>Robots may be given some forms of intelligence, but by design, they must lack free will. Otherwise, we create, at best, independent machines, at worst, rogue machines.</p>
+<p>We need robot mechanics to describe a robot&rsquo;s geometric and dynamic states—prerequisites to plan and control motions.</p>
 </blockquote>
-<p>Many fictional movie characters we call &lsquo;robots&rsquo;, especially &lsquo;killer robots&rsquo;, such as the famous Terminator, are not under any human&rsquo;s authority and thus are not robots. There are also tricky scenarios in which it is unclear when a system ceases to be a robot. Consider a robot, once working for people, now fallen under the control of a hypothetical non-human entity. It is a &lsquo;robot&rsquo; vis-à-vis the entity, but perhaps just a killer machine to people. What about robots commanded by one group of people, instructed against another group of people? It gets tricky, both nominally and ethically.</p>
-<p>It is in this context that many <a href="https://en.wikipedia.org/wiki/Laws_of_robotics">laws of robotics</a> have been proposed or imagined, the most famous of which are Asimov&rsquo;s in literary contexts.</p>
-<p>When a robot exhibits behavior that may be perceived as supposed free-willed, then it should, in principle, cease being considered a robot, that is, a slave system, but rather a free system; free as in freedom. But such scenarios are, for now, only in the realms of imagination.</p>
-<h2 id="examples">Examples</h2>
-<p>Consider these systems, and guess whether each is closer to a robot, or not.</p>
-<div class="expandable-section">
-  
-    <h4>
-  
+<hr>
+<h2 id="forward--inverse-problems">Forward &amp; Inverse problems</h2>
+<p>There are three common robot mechanics formulations that interest us: pose kinematics, velocity kinematics, and rigid-body dynamics. Each of these has a forward problem, and inverse one. This forward/inverse pattern is discussed at an abstract level to familiarize with the structure and shared features.</p>
+<p>Informally, a problem in this context involves relating inputs to outputs via some model. When mapping from inputs to outputs, that is the forward direction. When going from outputs to inputs, that is the inverse one.</p>
+<p>Now, more formally, let $X$ be the input space, $Y$ the output space, and $\mathrm{G}$ the forward map such that $\mathrm{G}: X \to Y$. When the inverse map $\mathrm{G^{inv}}$ of $\mathrm{G}$ exists, establish that $\mathrm{G^{inv}}: Y \to X$. Also, let $(x,y) \in X \times Y$.</p>
+<p><strong>Forward model:</strong> An input $x$ is mapped to its output $y$ via $\mathrm{G}$,</p>
+<p>$$
+x \overset{{}_\mathrm{G}}{\mapsto} y \overset{{}_\mathsf{def}}{=} \mathrm{G}(x).
+$$
+<strong>Inverse model:</strong> An output $y$ is mapped to its input $x$ via some inversion of $\mathrm{G}$.</p>
+<p>When a direct inverse $\mathrm{G^{inv}}$ can be derived from $\mathrm{G}$, then the inverse model is,</p>
+<p>$$
+y \overset{{}_\mathrm{G^{inv}}}{\mapsto} x \overset{{}_\mathsf{def}}{=} \mathrm{G^{inv}}(y).
+$$</p>
+<aside aria-label="warning" class="note warning">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 48.430474 41.646302" focusable="false">
+      <use xlink:href="#warning"></use>
+    </svg>
     
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-fb6570af4f3dc482d125a1b90d6073e3">
-      <span class="expandable-label">Handshake machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-fb6570af4f3dc482d125a1b90d6073e3" hidden>
-    Likely <strong>yes</strong>. It can sense a user&rsquo;s hand, plan the shake, and execute it in the physical world. Characteristics of a robot.
-  </div>
-</div>
 
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-8c065f842b3ce2e9483b188881e80e88">
-      <span class="expandable-label">Washing machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-8c065f842b3ce2e9483b188881e80e88" hidden>
-    It <strong>depends</strong>. A rather primitive washing machine is closer to an electromechanical appliance than a robot. But consider a fancy washer that scans its contents and determines the best washing program for them, all autonomously. That would be closer to a robot.
-  </div>
-</div>
+When $\mathrm{G^{inv}}$ does not exist, is intractable or too expensive to obtain exactly, or is ill-conditioned (behaves badly), it is often substituted or estimated with special methods (<i>e.g.</i>, pseudoinverses, numerical optimization, …).
 
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-dc8b71425e6f0e787b6ca209d812dae0">
-      <span class="expandable-label">ATM machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-dc8b71425e6f0e787b6ca209d812dae0" hidden>
-    Ambivalent <strong>yes</strong>, could easily be a <strong>no</strong>. An ATM can be considered a weak robot. It responds to input, reads cards, shuffles banknotes, and so on, all in the physical world. It can fulfill its task without any human operator. It could be called a robot, though not a very fancy one.
-  </div>
-</div>
 
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-e23d1c9fa3e0884131ec1de035416eca">
-      <span class="expandable-label">Speaker home assistant?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-e23d1c9fa3e0884131ec1de035416eca" hidden>
-    Most likely <strong>no</strong>. It can sense and hear voice commands. It can process and respond. But it cannot move nor interact physically with the environment. If it&rsquo;s a mobile home assistant, then it&rsquo;s a resounding yes.
   </div>
-</div>
+</aside>
 
-<div class="expandable-section">
-  
-    <h4>
-  
+<h3 id="three-questions">Three questions:</h3>
+<p>Now that the basic constructs are defined, there are three pertinent problems that can be asked, depending on which two out of $\{x, y, \mathrm{G}\}$ are known.</p>
+<div style="text-align:center">—</div>
+<p><strong>Forward problem:</strong> What <span style="color:red">unknown output $y$</span>, would <span style="color:green">known input $x$</span> map to, via <span style="color:green">known forward model $\mathrm{G}$</span>? Or, equivalently,</p>
+<blockquote>
+<p>Find <span style="color:red">$y$</span> given <span style="color:green">$x$</span> and <span style="color:green">$\mathrm{G}$</span>.</p>
+</blockquote>
+<p>Although this problem seems straightforward and often is, there are no guarantees. In effect, there are scenarios that make it can be very challenging.</p>
+<div style="text-align:center">—</div>
+<p><strong>Inverse problem:</strong> What <span style="color:red">unknown input $x$</span>, would map to <span style="color:green">known output $y$</span>, via <span style="color:green">known forward model $\mathrm{G}$</span>? Or, equivalently,</p>
+<blockquote>
+<p>Find <span style="color:red">$x$</span> given <span style="color:green">$y$</span> and <span style="color:green">$\mathrm{G}$</span>.</p>
+</blockquote>
+<p>When a direct inverse $\mathrm{G^{inv}}$ is feasible and well-conditioned, an inverse model is used to solve this problem. In some cases, an substitute inverse is constructed. Otherwise, the forward problem is &lsquo;solved backwards&rsquo; with adequate techniques.</p>
+<div style="text-align:center">—</div>
+<p><strong>Model identification:</strong> Under what <span style="color:red">unknown forward model $\mathrm{G}$</span> would <span style="color:green">known input $x$</span> map to <span style="color:green">known output $y$</span>? Or, equivalently,</p>
+<blockquote>
+<p>Find <span style="color:red">$\mathrm{G}$</span> given <span style="color:green">$(x,y)$</span>.</p>
+</blockquote>
+<p>In our scenarios, that is, common robotics geometries, we would not need model identification. We would know the robot&rsquo;s parameters, which we would use with known mechanics algorithms to obtain the forward model $\mathrm{G}$.</p>
+<p>With a known $\mathrm{G}$, we can attack both the forward and inverse problems.</p>
+<aside aria-label="note" class="note">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
+      <use xlink:href="#info"></use>
+    </svg>
     
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-618f92a96fa0d095658319557dc7dc18">
-      <span class="expandable-label">Remote-controlled drone?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-618f92a96fa0d095658319557dc7dc18" hidden>
-    Most would say <strong>no</strong> as it cannot function without a pilot. Perhaps if the drone has some built-in autonomy to assist, correct, or otherwise smoothen the flight as its driven by the remote pilot, then maybe it is closer to a robot.
+
+A popular scenario that may loosely be considered "model identification" is in machine learning using neural networks. In problems where obtaining a model $\mathrm{G}$ is infeasible, but input-output data is abundant, an unknown real process $\mathrm{G_{real}}$ can approximated with an inferred estimate $\mathrm{\hat{G}_{real}}$. Ambitious data scientists also have been known to use this approach on problems where an explicit model $\mathrm{G}$ is already available; either in hopes of outperforming $\mathrm{G}$ (<i>i.e.</i>, $\mathrm{\hat{G}_{real}}$ is closer to $\mathrm{G_{real}}$ than $\mathrm{G}$ is), or to show comparable performance and thus a display of sophistication.
+
+
   </div>
-</div>
+</aside>
 
-<div class="expandable-section">
-  
-    <h4>
-  
+<hr>
+<h2 id="pose-kinematics">Pose kinematics</h2>
+<h3 id="forward-pose-kinematics">Forward pose kinematics</h3>
+<p><em><strong>Forward pose kinematics</strong></em> (also called forward kinematics, direct kinematics, and forward position kinematics) answers the following question:</p>
+<blockquote>
+<p>What Cartesian pose $\mathbf{x}$ would this known joint configuration $\mathbf{q}$ cause?</p>
+</blockquote>
+<p>$$
+\mathbf{q} \overset{{}_\mathsf{FPK}}{\longmapsto} \mathbf{x}
+$$
+The joint configuration $\mathbf{q} = \begin{bmatrix}q_1 &amp; \cdots  &amp; q_n\end{bmatrix}^\top$ is often represented as a vector of all joint states $q_i$ for an $n$-joint open kinematic chain (<em>e.g.</em>, robotic serial arm).</p>
+<p>The Cartesian pose in 2D space is expressed as $\mathbf{x} = \begin{bmatrix}p_x &amp; p_y &amp; \alpha_{xy}\end{bmatrix}^\top$.</p>
+<p>Or in 3D, $\mathbf{x} = \begin{bmatrix}p_x &amp; p_y &amp; p_z &amp; \alpha_{yz} &amp; \alpha_{zx} &amp; \alpha_{xy}\end{bmatrix}^\top$.</p>
+<p>Here $p_{\{x, y, z\}}$ are the Cartesian positions with respect to each axis. For example, $p_x$ means, distance from the $x$-axis.</p>
+<p>$\alpha_{\{yz, zx, xy\}}$ are the Cartesian orientations about each axis. For example, $\alpha_{xy}$ means, angle about the $z$-axis measured in the $xy$-plane from the $x$-axis to the $y$-axis. It is important to know how the angle is measured since $\alpha_{xy} = -\alpha_{yx}$.</p>
+<p>FPK is a mapping to be derived from the geometrical properties of the open kinematic chain of interest.</p>
+<h3 id="inverse-pose-kinematics">Inverse pose kinematics</h3>
+<p>Inverse pose kinematics (also called inverse kinematics) answers the question:</p>
+<blockquote>
+<p>What joint configuration $\mathbf{q}$ would cause this desired Cartesian pose $\mathbf{x}$?</p>
+</blockquote>
+<aside aria-label="note" class="note">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
+      <use xlink:href="#info"></use>
+    </svg>
     
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-dbc49dcde4c8d6a0be5d9274a3a6411e">
-      <span class="expandable-label">Driverless airport terminal shuttle?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-dbc49dcde4c8d6a0be5d9274a3a6411e" hidden>
-    A weak <strong>yes</strong>. This system technically operates without any human intervention. Just set and forget, with occasional maintenance. This shuttle goes round and round around the airport terminals. It just runs &ldquo;one program&rdquo;, lacks adaptability, and is thus a rather &lsquo;unintelligent&rsquo; robot.
+For closed kinematic chains or parallel mechanisms, inverse kinematics is typically the easier problem while forward kinematics is typically more difficult.
+
   </div>
-</div>
+</aside>
 
-<h2 id="conclusion">Conclusion</h2>
-<p>In every day practice, it is perfectly fine to call robot-esque machines robots, for concision. This article was merely a pedantic attempt to feed thought and debate. Though eventually, legislation should take the nomenclature and classification of automation more seriously (in Japan, there is a subjective albeit interesting classification of robots into six levels of &ldquo;generality&rdquo; or autonomy.). Clarity would help to design sensible laws and stimulate less fuzzy discussions surrounding automation regarding moral agency, economic policy, and so on.</p>
-<p>Certainly, the definition remains fuzzy. But in many ways, the failure to cement the meaning of &ldquo;robot&rdquo; nor reach a singular interpretation of it, is that which brings much richness and diversity to the field.</p>
-<h2 id="references">References</h2>
-<p><a href="#history">[1]</a> Saeed B. Niku, §1.3, <a href="https://www.wiley.com/en-us/Introduction+to+Robotics%3A+Analysis%2C+Control%2C+Applications%2C+3rd+Edition-p-9781119527602"><em>Introduction to Robotics: Analysis, Control, Applications</em></a>, 2019, Wiley.</p>
-<p><a href="#discussion--implications">[2]</a> Kris Hauser, Preface §1, <a href="https://motion.cs.illinois.edu/RoboticSystems/Preface.html"><em>Robotic Systems</em></a> , 2020.</p>
+<hr>
+<h2 id="velocity-kinematics">Velocity kinematics</h2>
+<h3 id="forward-velocity-kinematics">Forward velocity kinematics</h3>
+<h3 id="inverse-velocity-kinematics">Inverse velocity kinematics</h3>
+<hr>
+<h2 id="rigid-body-dynamics">Rigid-body Dynamics</h2>
+<h3 id="inverse-rigid-body-dynamics">Inverse rigid-body dynamics</h3>
+<p>What torque would cause this desired motion?</p>
+<h3 id="forward-rigid-body-dynamics">Forward rigid-body dynamics</h3>
+<p>What resultant motion would this torque cause?</p>
+<hr>
+<h2 id="summary-table">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">PROBLEM</th>
+<th style="text-align:center">MAPPING</th>
+<th style="text-align:center">METHODS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FPK</td>
+<td style="text-align:center">$\mathbf{q} \mapsto \mathbf{x}$</td>
+<td style="text-align:center">Homogeneous transforms;</td>
+</tr>
+<tr>
+<td style="text-align:center">IPK</td>
+<td style="text-align:center">$\mathbf{x} \mapsto \mathbf{q}$</td>
+<td style="text-align:center">Geometric derivation;<br />Analytical inversion;<br />Numerical optimization;</td>
+</tr>
+<tr>
+<td style="text-align:center">FVK</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Robot geometric Jacobian;</td>
+</tr>
+<tr>
+<td style="text-align:center">IVK</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Jacobian direct inverse;<br />Jacobian pseudoinverse;</td>
+</tr>
+<tr>
+<td style="text-align:center">IRD</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FRD</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="whats-next">What&rsquo;s next?</h2>
+<p>With all the kinematic and dynamic information of a robot available, this unlocks additional problems to increase the capabilities of a robotics system.</p>
+<p>Using dynamic information, we can design controllers. Kinematic</p>
+<p>Using kinematic information, we can design motion planners. When dynamic effects cannot be ignored, kinodynamic planning</p>
 
   </main>
   
