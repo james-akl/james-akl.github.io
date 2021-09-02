@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags:  on James Akl</title>
+    <link>https://jamesakl.com/ptags/</link>
+    <description>Recent content in Tags:  on James Akl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://jamesakl.com/ptags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Control</title>
+      <link>https://jamesakl.com/ptags/control/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/ptags/control/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mathematics</title>
+      <link>https://jamesakl.com/ptags/mathematics/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/ptags/mathematics/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
