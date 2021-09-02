@@ -8,10 +8,10 @@
     <language>en-us</language><atom:link href="https://jamesakl.com/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Inverse Problems for DOBC</title>
-      <link>https://jamesakl.com/projects/noise-dobc/</link>
+      <link>https://jamesakl.com/noise-dobc/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://jamesakl.com/projects/noise-dobc/</guid>
+      <guid>https://jamesakl.com/noise-dobc/</guid>
       <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
 Project Details The project&amp;rsquo;s full title is:
  Noise Extraction in Disturbance Observer-Based Control

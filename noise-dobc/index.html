@@ -6,12 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.87.0" />
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/noise-dobc/">
 
   
     
-      <meta name="description" content="Personal site of James Akl, Robotics Researcher.">
-    
+    <meta name="description" content="PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
+Project Details The project’s full title is:
+ Noise Extraction in Disturbance Observer-Based Control
+A Computational Inverse Problems Approach
+ In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -43,9 +46,7 @@
 
   
   
-    
-  
-  <title>James Akl</title>
+  <title>Inverse Problems for DOBC | James Akl</title>
 </head>
 
   <body>
@@ -239,23 +240,183 @@
         <div>
           
   <main id="main">
-    <h1>Welcome to my site.</h1>
-    <p>Currently, I am a Doctoral Researcher at <a href="https://www.wpi.edu/" target="_blank">Worcester Polytechnic Institute</a> working in the <a href="https://wp.wpi.edu/merlab/" target="_blank">Manipulation &amp; Environmental Robotics Lab</a>.</p>
-<p>On this site, you can find some of my projects and writings, with emphasis on:</p>
+    <h1>
+      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      Inverse Problems for DOBC
+    </h1>
+
+    <div class="date">
+      
+      
+      <strong>Date published: </strong>Sep 1, 2021
+      
+        
+          <br>
+          <strong>Last updated: </strong>Sep 1, 2021
+        
+      
+    </div>
+
+    
+      <div class="tags">
+        <strong>Tags: </strong>
+        <ul aria-label="tags">
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/mathematics/">Mathematics</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/control/">Control</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+    
+    
+      
+
+  <nav class="toc" aria-labelledby="toc-heading">
+    <h2 id="toc-heading">Sections</h2>
+    <ol>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#project-details">
+            Project Details
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#nuances">
+            Nuances
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#methods">
+            Methods
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#figures">
+            Figures
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#references">
+            References
+          </a>
+        </li>
+      
+    </ol>
+  </nav>
+
+
+    
+
+    <p><a href="/noise-dobc.pdf">PDF</a> | <a href="https://github.com/james-akl/noise-dobc">GitHub</a>
+<br><small>Full treatment is in the linked PDF and GitHub repo. This page  summarizes the main ideas.</small></p>
+<h2 id="project-details">Project Details</h2>
+<p>The project&rsquo;s full title is:</p>
+<blockquote>
+<p><strong>Noise Extraction in Disturbance Observer-Based Control</strong><br><em>A Computational Inverse Problems Approach</em></p>
+</blockquote>
+<p>In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</p>
+<div style="text-align:center">
+    <img src="dobc.png" alt="DOBC" style="zoom:70%;" />
+</div>
+<p>A <strong>disturbance observer</strong> is a dynamical system, or filter, patched onto an existing controlled system, that estimates these disturbances in order to reject them.</p>
+<p>This projects reformulates a <em>linear disturbance observer</em> as a <em>Fredholm integral equation of the first kind</em> (continuous linear system) of the form:</p>
+<p>$$
+y(s) = \int_{t_1}^{t_n} g(s,t) u(t) \; \mathrm{d}t
+$$</p>
+<p>This is discretized into a discrete linear system, which is ill-posed, of the form:
+$$
+\mathbf{y_{u+d}} = \mathrm{G}(\mathbf{u+d})
+$$</p>
+<p>The Inverse Problem consists of extracting the unknown true disturbance $\mathbf{d}$ (at the input) with an estimate $\mathbf{\hat{d}}$, given the input $\mathbf{u}$, output $\mathbf{y_{u+d}}$, and forward model $\mathrm{G}$ of the ill-posed system.</p>
+<h2 id="nuances">Nuances</h2>
+<p>There are two kinds of &ldquo;noise&rdquo; in this problem, and they are distinct.</p>
+<ul>
+<li><strong>Input</strong> noise, or <em>disturbance</em> $\mathbf{d}$, which we estimate with $\mathbf{\hat{d}}$. This noise $\mathbf{d}$ is added to the input $\mathbf{u}$</li>
+<li><strong>Output</strong> noise, often interpreted as <em>sensor noise</em> or <em>measurement noise</em>, which we estimate as $\varepsilon$. This noise $\varepsilon$ is added to the true output $\mathbf{y}_\mathrm{true} +\varepsilon = \mathbf{y}_\mathrm{noisy}$ producing a noisy output.</li>
+</ul>
+<p>Our goal is to estimate $\mathbf{d}$ so we can reject it from the system&rsquo;s input. The measurement noise $\varepsilon$ is worked around.</p>
+<h2 id="methods">Methods</h2>
+<p>Three methods are implemented, employed, and compared to solve the system:
 <div class="ticks">
   <ul>
-<li><u>Mathematical formalisms</u> for Robotics</li>
-<li><u>Technological applications</u> of Robotics</li>
-<li><u>Socioeconomic challenges</u> from Robotics</li>
+<li>Tikhonov regulization</li>
+<li>Conjugate gradient least-squares (CGLS)</li>
+<li>Stochastic gradient descent (SGD)</li>
+</ul>
+<p>Similar iterative methods are easily attempted:
+<br><em>Landweber</em>, <em>Gradient descent</em>, <em>Exact line search</em>, among others.
+</div>
+</p>
+<h2 id="figures">Figures</h2>
+<p>These examples illustrate some aspects of the problem.</p>
+<p>In this first figure, the solutions $\mathbf{x}_\alpha$ obtained using Tikhonov regularization approximate the true solution $\mathbf{x}_\mathrm{true} = \mathbf{u} + \mathbf{d}$.</p>
+<div style="text-align:center">
+    <img src="tikh_1.png" alt="Tikhonov regularization" style="zoom:120%;" />
+</div>
+<p>In this second figure, that solution $\mathbf{x}_\alpha$ is then used to approximate, here a sinusoidal disturbance $\mathbf{d}$, with an estimate $\mathbf{\hat{d}}$.</p>
+<div style="text-align:center">
+    <img src="tikh_2.png" alt="Tikhonov regularization" style="zoom:120%;" />
+</div>
+In this third figure, the regularization parameter $\alpha$ can be studied on an *L-curve* to select a "good" value for it.
+<div style="text-align:center">
+<img src="tikh_3.png" alt="Tikhonov regularization" style="zoom:120%;" />
+</div>
+We can show similar plots while using CGLS as a solver. This fourth figure shows similar results, but with a constant disturbance.
+<div style="text-align:center">
+<img src="cgls_4.png" alt="Tikhonov regularization" style="zoom:120%;" />
+</div>
+<p>As a final note, to illustrate what is meant by &ldquo;output noise&rdquo; versus &ldquo;input noise&rdquo;, observe this last figure. The green noise is output noise, or measurement noise. The orange noise, instead, is a constant disturbance at the input. This figure runs the same simulation as the prior figure, adding only output noise.</p>
+<div style="text-align:center">
+<img src="cgls_5.png" alt="Tikhonov regularization" style="zoom:120%;" />
+</div>
+<h2 id="references">References</h2>
+<ul>
+<li>Li et al., <a href="https://www.routledge.com/Disturbance-Observer-Based-Control-Methods-and-Applications/Li-Yang-Chen-Chen/p/book/9781138199989">Disturbance Observer-Based Control: Methods and Applications</a>, 2014.</li>
+<li>Dennis &amp; Schnabel, <a href="https://epubs.siam.org/doi/book/10.1137/1.9781611971200?mobileUi=0">Numerical Methods for Unconstrained Optimization and Nonlinear Equations</a>, 1996.</li>
 </ul>
 
-</div>
-
-<blockquote>
-<p><small><strong>Disclaimer:</strong> Opinions expressed throughout this site are <u>my own</u> and do not reflect those of my institution nor of any past employer.</small></p>
-</blockquote>
-
   </main>
+  
 
           
             <footer role="contentinfo">
