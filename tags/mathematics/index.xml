@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mathematics on James Akl</title>
+    <title>Mathematics on James Akl</title>
     <link>https://jamesakl.com/tags/mathematics/</link>
-    <description>Recent content in mathematics on James Akl</description>
+    <description>Recent content in Mathematics on James Akl</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Aug 2021 22:50:41 -0400</lastBuildDate><atom:link href="https://jamesakl.com/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A Tour of Robot Mechanics</title>
-      <link>https://jamesakl.com/mechanics-tour/</link>
-      <pubDate>Fri, 20 Aug 2021 22:50:41 -0400</pubDate>
+      <title>Inverse Problems for DOBC</title>
+      <link>https://jamesakl.com/projects/noise-dobc/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://jamesakl.com/mechanics-tour/</guid>
-      <description>INCOMPLETE DRAFT : WORK IN PROGRESS    ABSTRACT ~ This article aims to provide an understanding of common robot mechanics with formal rigor and conceptual glue wherever possible. The goal is a high-level but generous grasp of robot kinematics and dynamics, presented in a forward and inverse problems setting. After thorough reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, thus the appropriate &amp;lsquo;hows&amp;rsquo; can subsequently be studied deeper.</description>
+      <guid>https://jamesakl.com/projects/noise-dobc/</guid>
+      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
+Project Details The project&amp;rsquo;s full title is:
+ Noise Extraction in Disturbance Observer-Based Control
+A Computational Inverse Problems Approach
+ In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
     </item>
     
   </channel>
