@@ -6,18 +6,16 @@
     <description>Recent content in Mathematics on James Akl</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Aug 2021 22:50:41 -0400</lastBuildDate><atom:link href="https://jamesakl.com/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Inverse Problems for DOBC</title>
-      <link>https://jamesakl.com/noise-dobc/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      <title>A Tour of Robot Mechanics</title>
+      <link>https://jamesakl.com/robot-mechanics/</link>
+      <pubDate>Fri, 20 Aug 2021 22:50:41 -0400</pubDate>
       
-      <guid>https://jamesakl.com/noise-dobc/</guid>
-      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
-Project Details The project&amp;rsquo;s full title is:
- Noise Extraction in Disturbance Observer-Based Control
-A Computational Inverse Problems Approach
- In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
+      <guid>https://jamesakl.com/robot-mechanics/</guid>
+      <description>INCOMPLETE DRAFT : WORK IN PROGRESS    ABSTRACT ~ This article aims to provide a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
+ Motivation  Find reasons to invest before committing.
+ The basic functionality we&amp;rsquo;d like robots to have, is to move.</description>
     </item>
     
   </channel>

@@ -21,6 +21,17 @@ A Computational Inverse Problems Approach
     </item>
     
     <item>
+      <title>A Tour of Robot Mechanics</title>
+      <link>https://jamesakl.com/robot-mechanics/</link>
+      <pubDate>Fri, 20 Aug 2021 22:50:41 -0400</pubDate>
+      
+      <guid>https://jamesakl.com/robot-mechanics/</guid>
+      <description>INCOMPLETE DRAFT : WORK IN PROGRESS    ABSTRACT ~ This article aims to provide a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
+ Motivation  Find reasons to invest before committing.
+ The basic functionality we&amp;rsquo;d like robots to have, is to move.</description>
+    </item>
+    
+    <item>
       <title>Defining a Robot</title>
       <link>https://jamesakl.com/robot-definition/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
