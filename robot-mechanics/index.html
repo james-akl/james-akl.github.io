@@ -411,7 +411,7 @@ Before we can communicate the desired path <i>precisely</i> to a robot, we must 
   </div>
 </aside>
 
-<p>The activity of generating and deciding on the desired path from $\mathsf{A}$ to $\mathsf{B}$ is called path planning. But even with a given and known path, there are many ways to describe it. To people, a Cartesian description with coordinates $(x, y, z)$ and angles $(\alpha, \beta, \gamma)$ is intuitive. However, for robots, it is often the case that a different system is more natural to its shape, mechanics, or application.</p>
+<p>The activity of generating and deciding on the desired path from $\mathsf{A}$ to $\mathsf{B}$ is called path planning. But even with a given and known path, there are many ways to describe it. To people, a Cartesian description with coordinates $(x, y, z)$ and angles $(\alpha, \beta, \gamma)$ is intuitive. However, for robots, it is often the case that a different description is more natural to its shape, mechanics, or application.</p>
 <p>For example, common serial robotic arms have (mostly) <em>rigid links</em> connected with <em>moving joints</em>.</p>
 <div style="text-align:center">
     <img src="chain.svg" alt="Serial robot kinematic chain" style="zoom:150%;" />
@@ -436,7 +436,8 @@ The position and orientation of a single rigid-body are collectively called <b><
     <img src="mapping.svg" alt="Serial robot kinematic chain" style="zoom:150%;" />
 </div>
 <p>To convert between these spaces is often fundamental for robot design, control, planning, and usage. Robot kinematics formulates transformations between joint and world spaces the robot&rsquo;s posture (zero-order or positional state) and its velocity (first-order or differential state). This is done in a purely geometric sense, with complete disregard to physical information such as mass or force.</p>
-<p>However, a robot is a system designed to operate in the physical world. This means, we cannot get far with only geometric encoding. We must at some point encode the physical properties of the robot, more specifically, the dynamic effects, such as inertial, centrifugal, gravitational, and sometimes further dissipative effects when the application demands it. This is <strong>robot dynamics</strong>. The most common &lsquo;format&rsquo; of robot dynamics inherits from rigid-body dynamics. Note however, that robotics is a vast research community, and there are many projects requiring far beyond rigid-body dynamics, or entirely different physics (such as continuum mechanics for soft robots).</p>
+<p>However, a robot is a system designed to operate in the physical world. This means, we cannot get far with only geometric encoding. We must at some point encode the physical properties of the robot, more specifically, the dynamic effects, such as inertial, centrifugal, gravitational, and sometimes further dissipative effects when the application demands it.</p>
+<p>This is <strong>robot dynamics</strong>. The most common &lsquo;format&rsquo; of robot dynamics inherits from rigid-body dynamics. Note however, that robotics is a vast research community, and there are many projects requiring far beyond rigid-body dynamics, or entirely different physics (such as continuum mechanics for soft robots).</p>
 <p><strong>Robot mechanics</strong>, thus, in its most common form, builds on Euclidean geometry, linear algebra, and rigid-body kinematics and dynamics. Its purpose is to accurately and precisely describe the kinematic and dynamic states of robots given their geometric and physical parameters.</p>
 <h3 id="the-takeaway">The takeaway:</h3>
 <blockquote>
@@ -476,13 +477,13 @@ When $\mathrm{G^{inv}}$ does not exist, is intractable or too expensive to obtai
 <blockquote>
 <p>Find <span style="color:red">$y$</span> given <span style="color:green">$x$</span> and <span style="color:green">$\mathrm{G}$</span>.</p>
 </blockquote>
-<p>Although this problem seems straightforward and often is, there are no guarantees. In effect, there are scenarios that make it can be very challenging.</p>
+<p>Although this problem seems straightforward and often is, there are no guarantees. In effect, there are scenarios that can make it very challenging.</p>
 <div style="text-align:center">—</div>
 <p><strong>Inverse problem:</strong> What <span style="color:red">unknown input $x$</span>, would map to <span style="color:green">known output $y$</span>, via <span style="color:green">known forward model $\mathrm{G}$</span>? Or, equivalently,</p>
 <blockquote>
 <p>Find <span style="color:red">$x$</span> given <span style="color:green">$y$</span> and <span style="color:green">$\mathrm{G}$</span>.</p>
 </blockquote>
-<p>When a direct inverse $\mathrm{G^{inv}}$ is feasible and well-conditioned, an inverse model is used to solve this problem. In some cases, an substitute inverse is constructed. Otherwise, the forward problem is &lsquo;solved backwards&rsquo; with adequate techniques.</p>
+<p>When a direct inverse $\mathrm{G^{inv}}$ is feasible and well-conditioned, an inverse model is used to solve this problem. In some cases, a substitute inverse is constructed. Otherwise, the forward problem is &lsquo;solved backwards&rsquo; with adequate techniques.</p>
 <div style="text-align:center">—</div>
 <p><strong>Model identification:</strong> Under what <span style="color:red">unknown forward model $\mathrm{G}$</span> would <span style="color:green">known input $x$</span> map to <span style="color:green">known output $y$</span>? Or, equivalently,</p>
 <blockquote>
@@ -563,7 +564,7 @@ For closed kinematic chains or parallel mechanisms, inverse kinematics is typica
 <tr>
 <td style="text-align:center">FPK</td>
 <td style="text-align:center">$\mathbf{q} \mapsto \mathbf{x}$</td>
-<td style="text-align:center">Homogeneous transforms;</td>
+<td style="text-align:center">Homogeneous transforms;<br />DH parameters;</td>
 </tr>
 <tr>
 <td style="text-align:center">IPK</td>
@@ -573,7 +574,7 @@ For closed kinematic chains or parallel mechanisms, inverse kinematics is typica
 <tr>
 <td style="text-align:center">FVK</td>
 <td style="text-align:center"></td>
-<td style="text-align:center">Robot geometric Jacobian;</td>
+<td style="text-align:center">Robot geometric Jacobian;<br />Robot analytical Jacobian;</td>
 </tr>
 <tr>
 <td style="text-align:center">IVK</td>
