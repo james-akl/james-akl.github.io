@@ -464,7 +464,7 @@ $$</p>
     </svg>
     
 
-When $\mathrm{G^{inv}}$ does not exist, is intractable or too expensive to obtain exactly, or is ill-conditioned (behaves badly), it is often substituted or estimated with special methods (<i>e.g.</i>, pseudoinverses, numerical optimization, …).
+When $\mathrm{G^{inv}}$ does not exist, is intractable or too expensive to obtain exactly, or is ill-conditioned (behaves badly), it is often substituted (<i>e.g.</i>, pseudoinverses) or estimated with special methods (<i>e.g.</i>, numerical optimization).
 
 
   </div>
@@ -506,7 +506,6 @@ A popular scenario that may loosely be considered "model identification" is in m
 
 <hr>
 <h2 id="pose-kinematics">Pose Kinematics</h2>
-<p><span style="color:blacl; font-family:monospace; font-weight:bold; background-color:yellow">IN PROGRESS</span></p>
 <h3 id="forward-pose-kinematics">Forward pose kinematics</h3>
 <p><em><strong>Forward pose kinematics</strong></em> (also called forward kinematics, direct kinematics, and forward position kinematics) answers the following question:</p>
 <blockquote>
@@ -514,13 +513,58 @@ A popular scenario that may loosely be considered "model identification" is in m
 </blockquote>
 <p>$$
 \mathbf{q} \overset{{}_\mathsf{FPK}}{\longmapsto} \mathbf{x}
-$$
-The joint configuration $\mathbf{q} = \begin{bmatrix}q_1 &amp; \cdots  &amp; q_n\end{bmatrix}^\top$ is often represented as a vector of all joint states $q_i$ for an $n$-joint open kinematic chain (<em>e.g.</em>, robotic serial arm).</p>
+$$</p>
+<p>The joint configuration $\mathbf{q} = \begin{bmatrix}q_1 &amp; \cdots  &amp; q_n\end{bmatrix}^\top$ is often represented as a vector of all joint states $q_i$ for an $n$-joint open kinematic chain (<em>e.g.</em>, robotic serial arm).</p>
 <p>The Cartesian pose in 2D space is expressed as $\mathbf{x} = \begin{bmatrix}p_x &amp; p_y &amp; \alpha_{xy}\end{bmatrix}^\top$.</p>
 <p>Or in 3D, $\mathbf{x} = \begin{bmatrix}p_x &amp; p_y &amp; p_z &amp; \alpha_{yz} &amp; \alpha_{zx} &amp; \alpha_{xy}\end{bmatrix}^\top$.</p>
 <p>Here $p_{\{x, y, z\}}$ are the Cartesian positions with respect to each axis. For example, $p_x$ means, distance from the $x$-axis.</p>
 <p>$\alpha_{\{yz, zx, xy\}}$ are the Cartesian orientations about each axis. For example, $\alpha_{xy}$ means, angle about the $z$-axis measured in the $xy$-plane from the $x$-axis to the $y$-axis. It is important to know how the angle is measured since $\alpha_{xy} = -\alpha_{yx}$.</p>
-<p>FPK is a mapping to be derived from the geometrical properties of the open kinematic chain of interest.</p>
+<p>$\mathsf{FPK}$ is a mapping to be derived from the geometrical properties of the open kinematic chain of interest.</p>
+<p>One common approach to deriving the forward kinematics is by using homogeneous transforms (also called rigid-body transforms). These can be represented with the following matrix.</p>
+<p>$$
+\mathrm{T} = \begin{bmatrix} \mathrm{R} &amp; \mathbf{d} \\ \mathbf{0}&amp; 1 \end{bmatrix}
+$$
+Here, $\mathrm{R}$ is a rotation matrix and $\mathbf{d}$ is a translation vector.</p>
+<p>In 3D, $\mathrm{T}$ evaluates to,
+$$
+\mathrm{T} = \begin{bmatrix} r_{xx'} &amp; r_{xy'} &amp; r_{xz'} &amp; d_x \\ r_{yx'} &amp; r_{yy'} &amp; r_{yz'} &amp; d_y \\ r_{zx'} &amp; r_{zy'} &amp; r_{zz'} &amp; d_z  \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}
+$$
+While in 2D, it evaluates to,
+$$
+\mathrm{T} = \begin{bmatrix} r_{xx'} &amp; r_{xy'} &amp; d_x \\ r_{yx'} &amp; r_{yy'} &amp; d_y \\ 0 &amp; 0 &amp; 1 \end{bmatrix}
+$$
+Without going into too much detail, the rotation terms $r_{uv'}$ capture the angular difference of each source basis vector $\{\hat{\mathbf{i}}', \hat{\mathbf{j}}', \hat{\mathbf{k}}'\}$ relative to each each target basis vector $\{\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}}\}$. For example, $r_{xx'}$ would provide information about about the oriented angle $\measuredangle(\hat{\mathbf{i}}, \hat{\mathbf{i}}')$.</p>
+<p>In brief, $\mathbf{R}$ encodes the orientation changes between two frames by comparing the directions of their unit vectors.</p>
+<p>In similar fashion, the translation terms $d_u$  capture the positional difference of source frame origin $O'$ relative to the target frame origin $O$ using the source basis vectors $\{\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}}\}$. For example, $d_x$ would measure the $x$-component of the vector $\overrightarrow{OO'}$.</p>
+<p>In brief, $\mathbf{d}$ encodes the position changes between two frames by comparing the locations of their origins.</p>
+<p>As a summary, the homogeneous matrix $\mathrm{T}$ encodes the pose differences between the source frame $(O', \hat{\mathbf{i}}', \hat{\mathbf{j}}', \hat{\mathbf{k}}')$ to the target frame $(O, \hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}})$ by comparing the directions of their unit vectors and the locations of their origins.</p>
+<aside aria-label="note" class="note">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
+      <use xlink:href="#info"></use>
+    </svg>
+    
+
+There are different ways to interpret the same homogeneous transform, which are mathematically equivalent, just conceptually different. These nuances are explored in my <a href="/homogeneous-transforms">other article</a>. 
+
+
+  </div>
+</aside>
+
+<p>In practice, the frames on a robot&rsquo;s joints are assigned using one of many conventional methods. The most famous one is the Denavit–Hartenberg convention with their <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters">DH parameters</a>. This standardizes frame assignment and simplifies kinematic calculations. There are, of course, many other conventions used, some having better suited for specific scenarios.</p>
+<p>After the convention is followed, it becomes convenient to compute the homogeneous transform from frame $k+1$ to frame $k$, denoted with ${}^{k}\mathrm{T}_{k+1}(q_{k+1})$, as its value depends on the joint $k+1$&rsquo;s state $q_{k+1}$. By composing these transforms, as in,
+$$
+\begin{aligned}
+{}^0\mathrm{T}_n (q_1,\ldots, q_n) &amp;= \prod_{k=0}^{n-1}{}^{k}\mathrm{T}_{k+1}(q_{k+1}) \\ &amp;= {}^\mathrm{0}\mathrm{T}_1(q_1) \cdots {}^{n-1}\mathrm{T}_n (q_n)
+\end{aligned}
+$$
+we obtain the forward kinematic mapping ${}^0\mathrm{T}_n(\mathbf{q})$. This mapping $\mathrm{x} = {}^0\mathrm{T}_n(\mathbf{q})$ maps the joint states $\mathbf{q}$ to the end-effector Cartesian pose $\mathbf{x}$ relative to the world frame. Effectively, the transform ${}^0\mathrm{T}_n(\mathbf{q})$ contains this pose information in its $4 \times 4$ matrix representation.</p>
+<p>You might think the equation $\mathrm{x} = {}^0\mathrm{T}_n(\mathbf{q})$ is a mistake, since $\mathbf{x}$ above was a 6D vector and $\mathrm{T}$ is a $4 \times 4$ matrix. Indeed it is an abuse of notation to simplify the discussion, but is not conceptually incorrect. $\mathrm{T}$ is only one kind of representation for the pose, but there are others. To convert from $\mathrm{T}$ to $\mathbf{x}$, the position is copied from the translation vector $\mathbf{d}$ and the angles are obtained by converting the rotation matrix into a three-angle representation using <a href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a> (or their alternatives, Tait-Bryan angles). Thus, the 6D end-effector pose $\mathbf{x}$ is obtained from the $n$-dimensional joint configuration $\mathbf{q}$.</p>
+<p>The forward kinematic mapping also allows us to do the following,
+$$
+{}^{0}\mathbf{p} = {}^0\mathrm{T}_{n}(\mathbf{q}) \; {}^{n}\mathbf{p}
+$$
+that is, mapping the pose $\mathbf{p}$ of an object, from the end-effector frame ${}^{n}\Box$, to the world frame ${}^{0}\Box$; which is highly desirable.</p>
 <h3 id="inverse-pose-kinematics">Inverse pose kinematics</h3>
 <p>Inverse pose kinematics (also called inverse kinematics) answers the question:</p>
 <blockquote>
