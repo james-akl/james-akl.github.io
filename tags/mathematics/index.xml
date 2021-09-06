@@ -14,8 +14,7 @@
       
       <guid>https://jamesakl.com/robot-mechanics/</guid>
       <description>INCOMPLETE DRAFT : WORK IN PROGRESS    ABSTRACT ~ This article aims to provide a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
- Motivation  Find reasons to invest before committing.
- The basic functionality we&amp;rsquo;d like robots to have, is to move.</description>
+ Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.</description>
     </item>
     
   </channel>
