@@ -551,7 +551,7 @@ There are different ways to interpret the same homogeneous transform, which are 
 </aside>
 
 <p>In practice, the frames on a robot&rsquo;s joints are assigned using one of many conventional methods. The most famous one is the Denavit–Hartenberg convention with their <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters">DH parameters</a>. This standardizes frame assignment and simplifies kinematic calculations. There are, of course, many other conventions used, some having better suited for specific scenarios.</p>
-<p>After the convention is followed, it becomes convenient to compute the homogeneous transform from frame $k+1$ to frame $k$, denoted with ${}^{k}\mathrm{T}_{k+1}(q_{k+1})$, as its value depends on the joint $k+1$&rsquo;s state $q_{k+1}$. By composing these transforms, as in,
+<p>After the convention is followed, it becomes convenient to compute the homogeneous transform that maps frame $k+1$ to frame $k$, denoted with ${}^{k}\mathrm{T}_{k+1}(q_{k+1})$, as its value depends on the joint $k+1$&rsquo;s state $q_{k+1}$. By composing these transforms, as in,
 $$
 \begin{aligned}
 {}^0\mathrm{T}_n (q_1,\ldots, q_n) &amp;= \prod_{k=0}^{n-1}{}^{k}\mathrm{T}_{k+1}(q_{k+1}) \\ &amp;= {}^\mathrm{0}\mathrm{T}_1(q_1) \cdots {}^{n-1}\mathrm{T}_n (q_n)
