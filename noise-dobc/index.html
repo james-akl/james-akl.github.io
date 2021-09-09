@@ -356,7 +356,7 @@ A Computational Inverse Problems Approach
 </blockquote>
 <p>In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</p>
 <div style="text-align:center">
-    <img src="dobc.png" alt="DOBC" style="zoom:70%;" />
+    <img src="dobc.svg" alt="DOBC" style="zoom:70%;" />
 </div>
 <p>A <strong>disturbance observer</strong> is a dynamical system, or filter, patched onto an existing controlled system, that estimates these disturbances in order to reject them.</p>
 <p>This projects reformulates a <em>linear disturbance observer</em> as a <em>Fredholm integral equation of the first kind</em> (continuous linear system) of the form:</p>
@@ -391,23 +391,23 @@ $$</p>
 <p>These examples illustrate some aspects of the problem.</p>
 <p>In this first figure, the solutions $\mathbf{x}_\alpha$ obtained using Tikhonov regularization approximate the true solution $\mathbf{x}_\mathrm{true} = \mathbf{u} + \mathbf{d}$.</p>
 <div style="text-align:center">
-    <img src="tikh_1.png" alt="Tikhonov regularization" style="zoom:120%;" />
+    <img src="tikh_1.svg" alt="Tikhonov regularization" style="zoom:130%;" />
 </div>
 <p>In this second figure, that solution $\mathbf{x}_\alpha$ is then used to approximate, here a sinusoidal disturbance $\mathbf{d}$, with an estimate $\mathbf{\hat{d}}$.</p>
 <div style="text-align:center">
-    <img src="tikh_2.png" alt="Tikhonov regularization" style="zoom:120%;" />
+    <img src="tikh_2.svg" alt="Tikhonov regularization" style="zoom:130%;" />
 </div>
-In this third figure, the regularization parameter $\alpha$ can be studied on an <em>L-curve</em> to select a "good" value for it.
+<p>In this third figure, the regularization parameter $\alpha$ can be studied on an <em>L-curve</em> to select a &ldquo;good&rdquo; value for it.</p>
 <div style="text-align:center">
-<img src="tikh_3.png" alt="Tikhonov regularization" style="zoom:120%;" />
+<img src="tikh_3.svg" alt="Tikhonov regularization" style="zoom:130%;" />
 </div>
-We can show similar plots while using CGLS as a solver. This fourth figure shows similar results, but with a constant disturbance.
+<p>We can show similar plots while using CGLS as a solver. This fourth figure shows similar results, but with a constant disturbance.</p>
 <div style="text-align:center">
-<img src="cgls_4.png" alt="Tikhonov regularization" style="zoom:120%;" />
+<img src="cgls_4.svg" alt="Tikhonov regularization" style="zoom:130%;" />
 </div>
-<p>As a final note, to illustrate what is meant by &ldquo;output noise&rdquo; versus &ldquo;input noise&rdquo;, observe this last figure. The green noise is output noise, or measurement noise. The orange noise, instead, is a constant disturbance at the input. This figure runs the same simulation as the prior figure, adding only output noise.</p>
+<p>As a final note, to illustrate what is meant by &ldquo;output noise&rdquo; versus &ldquo;input noise&rdquo;, observe this last figure. The noise at $\mathbf{y}_\mathrm{noisy}$ is output noise, or measurement noise. The noise $\mathbf{d}$, instead, is a constant disturbance at the input. This figure runs the same simulation as the prior figure, adding only output noise.</p>
 <div style="text-align:center">
-<img src="cgls_5.png" alt="Tikhonov regularization" style="zoom:120%;" />
+<img src="cgls_5.svg" alt="Tikhonov regularization" style="zoom:130%;" />
 </div>
 <h2 id="references">References</h2>
 <ul>
