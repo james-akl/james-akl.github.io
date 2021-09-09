@@ -253,6 +253,9 @@ Formulation, Implementation, and Optimization
       <strong>Date published: </strong>Sep 8, 2021
       
         
+          <br>
+          <strong>Last updated: </strong>Sep 9, 2021
+        
       
     </div>
 
@@ -364,13 +367,13 @@ Assume $L = 1 \; \mathrm{m}$, $D = 2 \; \mathrm{m^2 \cdot s^{-1}}$, and $u  = 10
 <p>A weak-form <strong>Galerkin formulation</strong> is used for the finite element analysis of this PDE. In the numerical implementation, the total number of elements $N$ is inputted by the user. The mesh size is deduced from the number $N$ of elements. The interpolation order is quadratic. Numerical integration is performed using the <strong>Gauss–Legendre Quadrature</strong> method. A <strong>sparse matrix structure</strong> is implemented. The assembly procedure is carried out using an optimized connectivity matrix. The system is solved with a direct sparse linear solver. A <strong>convergence analysis</strong> with respect to the mesh size is performed. The same model is built using <em>COMSOL</em>, while the exact solution is obtained using <em>Mathematica</em>. The three solutions are compared.</p>
 <h2 id="figures">Figures</h2>
 <p>These two figures summarize the project results.</p>
-<p>In this first figure, the FEM solution is shown to converge.</p>
+<p>In this first figure, the FEM solution is shown to converge as the number $N$ of elements grows; notice that for larger values of $N$, the solution values vary little.</p>
 <div style="text-align:center">
-    <img src="conv.png" alt="FEM solution convergence analysis." style="zoom:120%;" />
+    <img src="conv.png" alt="FEM solution convergence analysis." style="zoom:140%;" />
 </div>
 <p>In this second figure, the implemented FEM solution, comparative COMSOL solution, and exact PDE solution are compared. As shown, with the optimizations, a quick solution can be obtained for relatively small $N$ that approximates the exact solution very well.</p>
 <div style="text-align:center">
-    <img src="sols.png" alt="The three solutions compared." style="zoom:120%;" />
+    <img src="sols.png" alt="The three solutions compared." style="zoom:140%;" />
 </div>
 <h2 id="references">References</h2>
 <ul>
