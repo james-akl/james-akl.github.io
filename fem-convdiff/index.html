@@ -6,15 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.87.0" />
-  <link rel="canonical" href="/noise-dobc/">
+  <link rel="canonical" href="/fem-convdiff/">
 
   
     
     <meta name="description" content="PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
 Description The project’s full title is:
- Noise Extraction in Disturbance Observer-Based Control
-A Computational Inverse Problems Approach
- In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).">
+ Finite Element Analysis of a 1D Convection–Diffusion Problem
+Formulation, Implementation, and Optimization
+ Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -46,7 +46,7 @@ A Computational Inverse Problems Approach
 
   
   
-  <title>Inverse Problems for DOBC | James Akl</title>
+  <title>FEM Optimization for 1D PDE | James Akl</title>
 </head>
 
   <body>
@@ -244,17 +244,14 @@ A Computational Inverse Problems Approach
       <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
         <use xlink:href="#bookmark"></use>
       </svg>
-      Inverse Problems for DOBC
+      FEM Optimization for 1D PDE
     </h1>
 
     <div class="date">
       
       
-      <strong>Date published: </strong>Sep 1, 2021
+      <strong>Date published: </strong>Sep 8, 2021
       
-        
-          <br>
-          <strong>Last updated: </strong>Sep 2, 2021
         
       
     </div>
@@ -270,14 +267,6 @@ A Computational Inverse Problems Approach
               </svg>
               
               <a href="/ptags/mathematics/">Mathematics</a>
-            </li>
-          
-            <li>
-              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-                <use xlink:href="#tag"></use>
-              </svg>
-              
-              <a href="/ptags/control/">Control</a>
             </li>
           
         </ul>
@@ -306,8 +295,8 @@ A Computational Inverse Problems Approach
           
           
           
-          <a href="#nuances">
-            Nuances
+          <a href="#problem-statement">
+            Problem Statement
           </a>
         </li>
       
@@ -316,8 +305,8 @@ A Computational Inverse Problems Approach
           
           
           
-          <a href="#methods">
-            Methods
+          <a href="#project-summary">
+            Project Summary
           </a>
         </li>
       
@@ -347,72 +336,45 @@ A Computational Inverse Problems Approach
 
     
 
-    <p><a href="/noise-dobc.pdf">PDF</a> | <a href="https://github.com/james-akl/noise-dobc">GitHub</a>
+    <p><a href="/fem-convdiff.pdf">PDF</a> | <a href="https://github.com/james-akl/fem-convdiff">GitHub</a>
 <br><small>Full treatment is in the linked PDF and GitHub repo. This page  summarizes the main ideas.</small></p>
 <h2 id="description">Description</h2>
 <p>The project&rsquo;s full title is:</p>
 <blockquote>
-<p><strong>Noise Extraction in Disturbance Observer-Based Control</strong><br><em>A Computational Inverse Problems Approach</em></p>
+<p><strong>Finite Element Analysis of a 1D Convection–Diffusion Problem</strong><br><em>Formulation, Implementation, and Optimization</em></p>
 </blockquote>
-<p>In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</p>
-<div style="text-align:center">
-    <img src="dobc.png" alt="DOBC" style="zoom:70%;" />
-</div>
-<p>A <strong>disturbance observer</strong> is a dynamical system, or filter, patched onto an existing controlled system, that estimates these disturbances in order to reject them.</p>
-<p>This projects reformulates a <em>linear disturbance observer</em> as a <em>Fredholm integral equation of the first kind</em> (continuous linear system) of the form:</p>
-<p>$$
-y(s) = \int_{t_1}^{t_n} g(s,t) u(t) \; \mathrm{d}t
-$$</p>
-<p>This is discretized into a discrete linear system, which is ill-posed, of the form:
+<h2 id="problem-statement">Problem Statement</h2>
+<p>Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</p>
+<p>The cation flow is assumed one-dimensional and perpendicular to the plates. The cation concentration $C$ at any point $x$ between the plates is governed by <strong>Diffusion</strong> and <strong>Convection</strong>. Diffusion depends on the fluid diffusivity $D$ whereas convection depends on the flow velocity $u$.</p>
+<p>The governing PDE commonly used to model the cation concentration between the plates is the <a href="https://en.wikipedia.org/wiki/Convection%E2%80%93diffusion_equation">Convection–Diffusion equation</a>:
 $$
-\mathbf{y_{u+d}} = \mathrm{G}(\mathbf{u+d})
-$$</p>
-<p>The Inverse Problem consists of extracting the unknown true disturbance $\mathbf{d}$ (at the input) with an estimate $\mathbf{\hat{d}}$, given the input $\mathbf{u}$, output $\mathbf{y_{u+d}}$, and forward model $\mathrm{G}$ of the ill-posed system.</p>
-<h2 id="nuances">Nuances</h2>
-<p>There are two kinds of &ldquo;noise&rdquo; in this problem, and they are distinct.</p>
-<ul>
-<li><strong>Input</strong> noise, or <em>disturbance</em> $\mathbf{d}$, which we estimate with $\mathbf{\hat{d}}$. This noise $\mathbf{d}$ is added to the input $\mathbf{u}$</li>
-<li><strong>Output</strong> noise, often interpreted as <em>sensor noise</em> or <em>measurement noise</em>, which we estimate as $\varepsilon$. This noise $\varepsilon$ is added to the true output $\mathbf{y}_\mathrm{true} +\varepsilon = \mathbf{y}_\mathrm{noisy}$ producing a noisy output.</li>
-</ul>
-<p>Our goal is to estimate $\mathbf{d}$ so we can reject it from the system&rsquo;s input. The measurement noise $\varepsilon$ is worked around.</p>
-<h2 id="methods">Methods</h2>
-<p>Three methods are implemented, employed, and compared to solve the system:
-<div class="ticks">
-  <ul>
-<li>Tikhonov regularization</li>
-<li>Conjugate gradient least-squares (CGLS)</li>
-<li>Stochastic gradient descent (SGD)</li>
-</ul>
-<p>Similar iterative methods are easily attempted:
-<br><em>Landweber</em>, <em>Gradient descent</em>, <em>Exact line search</em>, among others.
-</div>
-</p>
+\frac{\partial C}{\partial t} = \nabla \cdot (D \nabla C) -  \nabla \cdot (C\mathbf{u} ) + R
+$$
+Our setting is steady-state $(\frac{\partial}{\partial t}C = 0)$, one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$, without sources nor sinks $(R = 0)$. Thus, this PDE is equivalent to,
+$$
+-\frac{\partial}{\partial x}\left(D \frac{\partial C}{\partial x}\right) + u \frac{\partial C}{\partial x} = 0 \qquad \textrm{for }  x \in (0, L)
+$$
+where $D$, $u$, and $L \in \R$ are given constants.</p>
+<p>The boundary conditions are,
+$$
+C(x=0) = 0 \; \mathrm{mol \cdot m^{-3}} \qquad C(x=L) = 1 \; \mathrm{mol \cdot m^{-3}}
+$$
+Assume $L = 1 \; \mathrm{m}$, $D = 2 \; \mathrm{m^2 \cdot s^{-1}}$, and $u  = 10 \; \mathrm{m \cdot s^{-1}}$.</p>
+<h2 id="project-summary">Project Summary</h2>
+<p>A weak-form <strong>Galerkin formulation</strong> is used for the finite element analysis of this PDE. In the numerical implementation, the total number of elements $N$ is inputted by the user. The mesh size is deduced from the number $N$ of elements. The interpolation order is quadratic. Numerical integration is performed using the <strong>Gauss–Legendre Quadrature</strong> method. A <strong>sparse matrix structure</strong> is implemented. The assembly procedure is carried out using an optimized connectivity matrix. The system is solved with a direct sparse linear solver. A <strong>convergence analysis</strong> with respect to the mesh size is performed. The same model is built using <em>COMSOL</em>, while the exact solution is obtained using <em>Mathematica</em>. The three solutions are compared.</p>
 <h2 id="figures">Figures</h2>
-<p>These examples illustrate some aspects of the problem.</p>
-<p>In this first figure, the solutions $\mathbf{x}_\alpha$ obtained using Tikhonov regularization approximate the true solution $\mathbf{x}_\mathrm{true} = \mathbf{u} + \mathbf{d}$.</p>
+<p>These two figures summarize the project results.</p>
+<p>In this first figure, the FEM solution is shown to converge.</p>
 <div style="text-align:center">
-    <img src="tikh_1.png" alt="Tikhonov regularization" style="zoom:120%;" />
+    <img src="conv.png" alt="FEM solution convergence analysis." style="zoom:120%;" />
 </div>
-<p>In this second figure, that solution $\mathbf{x}_\alpha$ is then used to approximate, here a sinusoidal disturbance $\mathbf{d}$, with an estimate $\mathbf{\hat{d}}$.</p>
+<p>In this second figure, the implemented FEM solution, comparative COMSOL solution, and exact PDE solution are compared. As shown, with the optimizations, a quick solution can be obtained for relatively small $N$ that approximates the exact solution very well.</p>
 <div style="text-align:center">
-    <img src="tikh_2.png" alt="Tikhonov regularization" style="zoom:120%;" />
-</div>
-In this third figure, the regularization parameter $\alpha$ can be studied on an <em>L-curve</em> to select a "good" value for it.
-<div style="text-align:center">
-<img src="tikh_3.png" alt="Tikhonov regularization" style="zoom:120%;" />
-</div>
-We can show similar plots while using CGLS as a solver. This fourth figure shows similar results, but with a constant disturbance.
-<div style="text-align:center">
-<img src="cgls_4.png" alt="Tikhonov regularization" style="zoom:120%;" />
-</div>
-<p>As a final note, to illustrate what is meant by &ldquo;output noise&rdquo; versus &ldquo;input noise&rdquo;, observe this last figure. The green noise is output noise, or measurement noise. The orange noise, instead, is a constant disturbance at the input. This figure runs the same simulation as the prior figure, adding only output noise.</p>
-<div style="text-align:center">
-<img src="cgls_5.png" alt="Tikhonov regularization" style="zoom:120%;" />
+    <img src="sols.png" alt="The three solutions compared." style="zoom:120%;" />
 </div>
 <h2 id="references">References</h2>
 <ul>
-<li>Li et al., <a href="https://www.routledge.com/Disturbance-Observer-Based-Control-Methods-and-Applications/Li-Yang-Chen-Chen/p/book/9781138199989"><em>Disturbance Observer-Based Control: Methods and Applications</em></a>, 2014.</li>
-<li>Dennis &amp; Schnabel, <a href="https://epubs.siam.org/doi/book/10.1137/1.9781611971200?mobileUi=0"><em>Numerical Methods for Unconstrained Optimization and Nonlinear Equations</em></a>, 1996.</li>
+<li>Koutromanos, <a href="https://www.wiley.com/en-us/Fundamentals+of+Finite+Element+Analysis%3A+Linear+Finite+Element+Analysis-p-9781119260080"><em>Fundamentals of Finite Element Analysis</em></a>, 2018.</li>
 </ul>
 
   </main>

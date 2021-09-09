@@ -8,13 +8,26 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 14 Aug 2021 18:27:58 +0100</lastBuildDate><atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>FEM Optimization for 1D PDE</title>
+      <link>https://jamesakl.com/fem-convdiff/</link>
+      <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/fem-convdiff/</guid>
+      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
+Description The project&amp;rsquo;s full title is:
+ Finite Element Analysis of a 1D Convection–Diffusion Problem
+Formulation, Implementation, and Optimization
+ Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</description>
+    </item>
+    
+    <item>
       <title>Inverse Problems for DOBC</title>
       <link>https://jamesakl.com/noise-dobc/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/noise-dobc/</guid>
       <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
-Project Details The project&amp;rsquo;s full title is:
+Description The project&amp;rsquo;s full title is:
  Noise Extraction in Disturbance Observer-Based Control
 A Computational Inverse Problems Approach
  In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
