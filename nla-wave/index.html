@@ -14,7 +14,7 @@
 Description The project’s full title is:
  Solving a Time–Dependent 1D Wave PDE
 A Numerical Linear Algebraic Approach
- Problem Statement The governing PDE commonly used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,">
+ Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -397,7 +397,7 @@ A Numerical Linear Algebraic Approach
 <p><strong>Solving a Time–Dependent 1D Wave PDE</strong><br><em>A Numerical Linear Algebraic Approach</em></p>
 </blockquote>
 <h2 id="problem-statement">Problem Statement</h2>
-<p>The governing PDE commonly used to model wave phenomena is the <a href="https://en.wikipedia.org/wiki/Wave_equation">Wave equation</a>:
+<p>The governing PDE often used to model wave phenomena is the <a href="https://en.wikipedia.org/wiki/Wave_equation">Wave equation</a>:
 $$
 \ddot{u} = c^2 \nabla^2 u
 $$
@@ -422,7 +422,7 @@ $$
 u(x,0) = v(x) \textrm{ and } \frac{\partial u}{\partial t}(x, 0) = w(x) \, \bigg|_{x \in (0, 1)}
 $$
 Here the function $v, w: [0,1] \to \R$ are known.</p>
-<p>This PDE could model, for instance, the states of an oscillating string of length 1.</p>
+<p>This PDE could model, for instance, vertical oscillations over a length $1$.</p>
 <p>Here $u(x, t)$ is thus the vertical position at point $x$ and time $t$. Likewise, $v$ and $w$ are the initial positions and initial velocities. $c \in \R^+$ is a  coefficient (<em>e.g.</em>, depends on the specific properties of the string).</p>
 <p>For sufficiently regular functions $v$ and $w$, this PDE admits a unique solution exists of the form,</p>
 <p>$$

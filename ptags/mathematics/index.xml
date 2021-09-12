@@ -17,7 +17,7 @@
 Description The project&amp;rsquo;s full title is:
  Solving a Time–Dependent 1D Wave PDE
 A Numerical Linear Algebraic Approach
- Problem Statement The governing PDE commonly used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,</description>
+ Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,</description>
     </item>
     
     <item>
