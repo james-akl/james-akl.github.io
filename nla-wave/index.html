@@ -6,12 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.87.0" />
-  <link rel="canonical" href="/robot-definition/">
+  <link rel="canonical" href="/nla-wave/">
 
   
     
-    <meta name="description" content="ABSTRACT ~ In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
- History The word robot has literary origins (specifically, Czech) meaning forced labor. In our context, this essentially implies that a robot is a machine-slave.">
+    <meta name="description" content="GitHub Source code is available in the GitHub repository.
+Description The project’s full title is:
+ Solving a Time–Dependent 1D Wave PDE
+A Numerical Linear Algebraic Approach
+ Problem Statement The governing PDE commonly used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -43,7 +46,7 @@
 
   
   
-  <title>Defining a Robot | James Akl</title>
+  <title>Numerical Analysis: Wave PDE | James Akl</title>
 </head>
 
   <body>
@@ -241,17 +244,17 @@
       <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
         <use xlink:href="#bookmark"></use>
       </svg>
-      Defining a Robot
+      Numerical Analysis: Wave PDE
     </h1>
 
     <div class="date">
       
       
-      <strong>Date published: </strong>Aug 20, 2021
+      <strong>Date published: </strong>Sep 9, 2021
       
         
           <br>
-          <strong>Last updated: </strong>Sep 1, 2021
+          <strong>Last updated: </strong>Sep 12, 2021
         
       
     </div>
@@ -266,7 +269,7 @@
                 <use xlink:href="#tag"></use>
               </svg>
               
-              <a href="/tags/robotics/">Robotics</a>
+              <a href="/ptags/mathematics/">Mathematics</a>
             </li>
           
         </ul>
@@ -285,8 +288,8 @@
           
           
           
-          <a href="#history">
-            History
+          <a href="#description">
+            Description
           </a>
         </li>
       
@@ -295,8 +298,8 @@
           
           
           
-          <a href="#present-day-opinions">
-            Present-day Opinions
+          <a href="#problem-statement">
+            Problem Statement
           </a>
         </li>
       
@@ -305,8 +308,8 @@
           
           
           
-          <a href="#long-form-definition">
-            Long-form Definition
+          <a href="#project-objectives">
+            Project Objectives
           </a>
         </li>
       
@@ -315,8 +318,8 @@
           
           
           
-          <a href="#short-form-definition">
-            Short-form Definition
+          <a href="#space-discretization">
+            Space Discretization
           </a>
         </li>
       
@@ -325,8 +328,8 @@
           
           
           
-          <a href="#discussion--implications">
-            Discussion &amp; Implications
+          <a href="#time-discretization">
+            Time Discretization
           </a>
         </li>
       
@@ -335,8 +338,8 @@
           
           
           
-          <a href="#examples">
-            Examples
+          <a href="#initialization">
+            Initialization
           </a>
         </li>
       
@@ -345,8 +348,28 @@
           
           
           
-          <a href="#conclusion">
-            Conclusion
+          <a href="#convergence">
+            Convergence
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#matlab-implementation">
+            MATLAB Implementation
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#solution">
+            Solution
           </a>
         </li>
       
@@ -366,207 +389,276 @@
 
     
 
-    <blockquote>
-<p><big><strong><code>ABSTRACT</code></strong></big> ~ <i><small>In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.</small></i></p>
-</blockquote>
-<h2 id="history">History</h2>
-<p>The word <em><strong>robot</strong></em> has literary <a href="https://en.wikipedia.org/wiki/Rossum%27s_Universal_Robots">origins</a> (specifically, Czech)  meaning <em>forced labor</em>. In our context, this essentially implies that a robot is a <em>machine-slave</em>. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (<em>e.g.</em>, automaton, device, machine).</p>
-<p>The definition of a robot changes across cultures and has changed throughout time. Some machines considered robots by Japanese standards are not by American standards <a href="#references">[1]</a>. But we can try to find overlap and force a consensus.</p>
-<h2 id="present-day-opinions">Present-day Opinions</h2>
-<p>Nowadays, we can agree that a robot is a system, comprised of various components and subsystems, that has some objective, some awareness of itself or surroundings, some ability to physically interact with its environment (move, touch, grab, drill, shoot, …), and potentially some level of autonomy (in the engineering sense; automatic, not driven; no detailed direct human operation). It is difficult to reach an agreeable and precise definition as opinions often quickly disperse.</p>
-<p>Consider the example of <a href="https://en.wikipedia.org/wiki/Teleoperation">teleoperated systems</a>, still considered by some to be robots, but also excluded by others. Nevertheless, many roboticists actively working on teleoperation have made it <a href="https://en.wikipedia.org/wiki/Telerobotics">more intelligent</a>.</p>
-<p>Another example is in wearable systems (<em>e.g.</em>, exoskeletons, exosuits, prosthetics). Again, whether a particular system should be called a wearable robot, or rather, simply a wearable system, is up to subjective interpretation.</p>
-<p>There is no satisfying definition for robotics as the field is too vast, somewhat fragmented, and not mature enough. The need for a clearcut and comprehensive definition is certainly appealing. But, to settle on one today would be premature and reductive.</p>
-<p>Still, it doesn&rsquo;t hurt to try, while striving to be less incorrect. Here is a proposed definition, in both long- then short-form.</p>
-<h2 id="long-form-definition">Long-form Definition</h2>
+    <p><a href="https://github.com/james-akl/nla-wave">GitHub</a>
+<br><small>Source code is available in the GitHub repository.</small></p>
+<h2 id="description">Description</h2>
+<p>The project&rsquo;s full title is:</p>
 <blockquote>
-<p>A robot is any goal-oriented and human-assembled system, typically a machine but not necessarily, endowed with some capabilities for sensing, perception, cognition, planning, control, and acting in the physical world; while subject to human authority, in the form of high-level command or low-level control.</p>
+<p><strong>Solving a Time–Dependent 1D Wave PDE</strong><br><em>A Numerical Linear Algebraic Approach</em></p>
 </blockquote>
-<h2 id="short-form-definition">Short-form Definition</h2>
+<h2 id="problem-statement">Problem Statement</h2>
+<p>The governing PDE commonly used to model wave phenomena is the <a href="https://en.wikipedia.org/wiki/Wave_equation">Wave equation</a>:
+$$
+\ddot{u} = c^2 \nabla^2 u
+$$
+Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,</p>
+<p>$$
+\frac{\partial^2}{\partial t^2}u(x,t) - c^2 \frac{\partial^2}{\partial x^2}u(x,t) = 0 \, \bigg|_{x \in (0, 1) \textrm{ and } t&gt;0}
+$$
+Here the function $u(x,t)$ is defined as,
+$$
+\begin{matrix}
+u: &amp; [0,1] \times \R_{\geq 0} &amp; \to   &amp; \R
+\\
+&amp; (x,t) &amp; \mapsto &amp; u(x,t)
+\end{matrix}
+$$
+The PDE boundary conditions are,
+$$
+u(0,t) = u(1,t) = 0
+$$
+And its initial conditions are,
+$$
+u(x,0) = v(x) \textrm{ and } \frac{\partial u}{\partial t}(x, 0) = w(x) \, \bigg|_{x \in (0, 1)}
+$$
+Here the function $v, w: [0,1] \to \R$ are known.</p>
+<p>This PDE could model, for instance, the states of an oscillating string of length 1.</p>
+<p>Here $u(x, t)$ is thus the vertical position at point $x$ and time $t$. Likewise, $v$ and $w$ are the initial positions and initial velocities. $c \in \R^+$ is a  coefficient (<em>e.g.</em>, depends on the specific properties of the string).</p>
+<p>For sufficiently regular functions $v$ and $w$, this PDE admits a unique solution exists of the form,</p>
+<p>$$
+u(x,t) = \sum_{k=1}^{\infty} \alpha_k \cos(k \pi c t + \phi_k) \sin (k \pi x)
+$$
+Here $\alpha_k, \phi_k \in \R$ depend only on $v$ and $w$.</p>
+<h2 id="project-objectives">Project Objectives</h2>
+<p>The goal is to <strong>numerically solve</strong> this PDE, and thus find the numerical approximations to the exact solution $u(x, t)$ for any $x \in (0,1)$ and $t$.</p>
+<p>This problem is <strong>discretized twice</strong>:</p>
+<ol>
+<li><strong>Spatial discretization</strong> in $x$ to construct a system of second-order time-dependent differential equations with appropriate conditions.</li>
+<li><strong>Temporal discretization</strong> in $t$ to construct an iterative solution scheme and its initial values.</li>
+</ol>
+<p>Furthermore, a <strong>convergence analysis</strong> and <strong>MATLAB implementation</strong> are completed.</p>
+<h2 id="space-discretization">Space Discretization</h2>
+<p>Let the spatial step size be $h = \frac{1}{n + 1}$. Thus, the points $x_j = jh$ for $j \in \{1, \ldots , n\}$ define a uniform mesh on $[0, 1]$.</p>
+<p>For a fixed $t$, $\frac{\partial^2}{\partial x^2}u(x_j, t)$ is approximated by the second-order finite difference,
+$$
+\frac{u(x_{j-1}, t) - 2u(x_j, t) + u(x_{j+1}, t)}{h^2}
+$$</p>
+<p>For $j \in \{0, \ldots, n\}$, we introduce the approximations $u_j(t)$ of the exact values $u(x_j, t)$. Thus, from the original
+continuous system construct a discrete approximate system $(P_h)$.</p>
+<p>This is expressed as the following system of time-dependent second-order differential equations with boundary and initial conditions:
+$$
+(P_h)
+\begin{dcases}
+u''_j(t)+ c^2 \frac{u(x_{j-1}, t) - 2u(x_j, t) + u(x_{j+1}, t)}{h^2} = 0 &amp; \textrm{for } j \in \{1, \ldots, n\}
+\\ u_0(t) = u_{n+1}(t) = 0
+\\ u_j(0) = v(x_j) \textrm{ and } u'_j(0) = w(x_j) &amp; \textrm{for } j \in \{1, \ldots, n\}
+\end{dcases}
+$$
+This can be rewritten in matrix form. Proceed by defining the second-order finite difference matrix operator,
+$$
+\mathrm{A} = \begin{bmatrix}
+2 &amp; -1 &amp; &amp;
+\\ -1 &amp; \ddots &amp; \ddots
+\\ &amp; \ddots &amp; \ddots &amp; -1
+\\ &amp; &amp; -1 &amp; 2
+\end{bmatrix}
+$$
+and the vectors,
+$$
+\mathbf{v} = \begin{bmatrix}
+v(x_1)
+\\ \vdots
+\\ v(x_n)
+\end{bmatrix},
+\quad
+\mathbf{w} = \begin{bmatrix}
+w(x_1)
+\\ \vdots
+\\ w(x_n)
+\end{bmatrix},
+\quad
+\mathbf{u} = \begin{bmatrix}
+u_1(t)
+\\ \vdots
+\\ u_n(t)
+\end{bmatrix}.
+$$
+The problem is thus rewritten to its matrix form,
+$$
+(P_h)
+\begin{dcases}
+\mathbf{u}''(t) + \frac{c^2}{h^2}\mathrm{A}\mathbf{u}(t), &amp; \textrm{for } t&gt;0
+\\ \mathbf{u}(0) = \mathbf{v}, \;\; \mathbf{u}'(0) = \mathbf{w}.
+\end{dcases}
+$$</p>
+<h2 id="time-discretization">Time Discretization</h2>
+<p>Introduce the time step size $\Delta t$, thus the time-steps are $t_k = k \Delta t$ for $k \in \N$.</p>
+<p>$u''_j(t_k)$ is approximated by the finite difference,
+$$
+\frac{-2 u_{j}\left(t_{k}\right)+u_{j}\left(t_{k+1}\right)+u_{j}\left(t_{k-1}\right)}{\Delta t^{2}}
+$$
+Using $u^k_j$ as an approximation of $u_j(t_k)$, deduce from $(P_h)$ for $j \in \{1, \ldots, n\}$ the equalities,
+$$
+\frac{-2 u_{j}^{k}+u_{j}^{k+1}+u_{j}^{k-1}}{\Delta t^{2}}+c^{2} \frac{2 u_{j}^{k}-u_{j+1}^{k}-u_{j-1}^{k}}{h^{2}}=0
+$$
+Rewrite into matrix form using the notation $\mathbf{u}^k = \begin{bmatrix}
+u^k_1 &amp; \cdots &amp; u^k_n
+\end{bmatrix}^\mathsf{T}$,
+$$
+\frac{-2 \mathbf{u}^{k}+\mathbf{u}^{k+1}+\mathbf{u}^{k-1}}{\Delta t^{2}}+\frac{c^{2}}{h^{2}} \mathrm{A} \mathbf{u}^{k}=0
+$$
+Deduce an explicit expression for $\mathbf{u}^{k+1}$,
+$$
+\mathbf{u}^{k+1} = (2\mathrm{I} - \lambda \mathrm{A})\mathbf{u}^{k} - \mathbf{u}^{k-1},
+$$
+with $\lambda=\left(\frac{c \Delta t}{h}\right)^{2}$.</p>
+<h2 id="initialization">Initialization</h2>
+<p>Initialize the iterations by choosing values for $\mathbf{u}^{0}$ and $\mathbf{u}^{1}$, the approximations of $\mathbf{u}$ at $t = 0$ and $t = \Delta t$.</p>
+<p>Choose $\mathbf{u}^{0} = \mathbf{v}$ since $\mathbf{u}(0) = \mathbf{v}$.</p>
+<p>To choose a good value for $\mathbf{u}^{1}$, exploit Taylor&rsquo;s theorem,</p>
+<p>$$
+u_j (\Delta t) = u_j (0) + \Delta t \, u'_j (0) + R_1(\Delta t)
+$$
+Express the remainder $R_1$ explicitly in <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem#Explicit_formulas_for_the_remainder">Lagrange mean-value form</a>.  $\exists \xi \in (0, \Delta t) :$
+$$
+R_{k}(\Delta t)=\frac{u_j^{(k+1)}\left(\xi \right)}{(k+1) !}(\Delta t - 0)^{k+1}
+$$
+For $k = 1$, obtain, $\exists \xi \in (0, \Delta t) :$
+$$
+u_j (\Delta t) = u_j (0) + \Delta u'_j (0) + \frac{\Delta t^2}{2}u''_j(\xi)
+$$
+Approximate $u''_j(\xi)$ with $u''_j(0)$, which is evaluated as in $(P_h)$, thus obtain,
+$$
+u_{j}(\Delta t) \approx u_{j}(0)+\Delta t u_{j}^{\prime}(0)+\frac{c^{2} \Delta t^{2}}{2h^{2}}\big[u_{j-1}(0)-2 u_{j}(0)+u_{j+1}(0)\big]
+$$
+Using this approximation, choose $\mathbf{u}^1$ to be,
+$$
+\mathbf{u}^1 = \mathbf{v} + \Delta t \, \mathbf{w} - \frac{\lambda}{2}\mathrm{A}\mathbf{v} = (\mathrm{I}-\tfrac{1}{2}\lambda \mathrm{A})\mathbf{v} + \Delta t \, \mathbf{w}
+$$
+The iterative scheme is thus, for $k \geq 1$,
+$$
+\begin{dcases}
+\mathbf{u}^{0} &amp;= \mathbf{v},
+\\ \mathbf{u}^{1} &amp;= \big(\mathrm{I}-\tfrac{1}{2}\lambda \mathrm{A}\big)\mathbf{v} + \Delta t \, \mathbf{w},
+\\ \mathbf{u}^{k+1} &amp;= (2\mathrm{I} - \lambda \mathrm{A})\mathbf{u}^{k} - \mathbf{u}^{k-1}, \end{dcases}
+$$
+with $\lambda=\left(\frac{c \Delta t}{h}\right)^{2}$.</p>
+<h2 id="convergence">Convergence</h2>
+<p>The sequence $(\mathbf{u}^k)$ must not diverge as $k$ increases. The iterative solution above is said to be stable if the sequence $(\mathbf{u}^k)$ verifies:
+$$
+\exists C&gt;0 : \left\Vert\mathbf{u}^k\right\Vert_\infty \leq C \quad \forall k \in \N
+$$
+To assure stability, we verify on the time and space steps ($\Delta t$ and $h$) the <a href="https://encyclopediaofmath.org/wiki/Courant-Friedrichs-Lewy_condition">Courant–Friedrichs–Lewy (CFL) convergence condition</a>,
+$$
+\frac{\Delta t}{h} \leq \frac{1}{c}
+$$
+When the CFL condition is satisfied, the iterative scheme is proven to converge quadratically.</p>
+<p>This means that, for a fixed time $T &gt; 0$, by approaching $u(x, T)$ over $[0, 1]$ using time step $ \Delta t=\frac{T}{M} \leq \frac{h}{c} $ then the error is bound as follows,
+$$
+\max_{1 \leq j \leq n}\left|u_{j}^{M}-u\left(x_{j}, T\right)\right| \leq K h^{2}
+$$
+Here $K$ is a constant independent from $M$ and $n$.</p>
+<h2 id="matlab-implementation">MATLAB Implementation</h2>
+<p>We numerically check the CFL condition and the convergence order in the particular case $c = 10$ with the initial conditions,
+$$
+v_\mathrm{ex}(x)=\sin (4 \pi x), \qquad w_\mathrm{ex}(x)=-40 \pi \sin (4 \pi x)
+$$
+Here, the exact solution $u_\mathrm{ex}$ is thus,
+$$
+u_\mathrm{ex}(x,t) = \sqrt{2} \cos \left(40 \pi t+\frac{\pi}{4}\right) \sin (4 \pi x)
+$$
+This is periodic in time $(\frac{1}{20})$ and in space $(\frac{1}{2})$.</p>
+<h3 id="implemented-functions">Implemented functions</h3>
+<p>The following functions have been implemented in MATLAB.</p>
 <blockquote>
-<p>A robot is any <u>goal-oriented</u> and <u>human-assembled</u> <u>system</u> under <u>human authority</u> that can <u>sense</u>, <u>plan</u>, and <u>act</u> in the <u>physical world</u>.</p>
+<p>$\mathtt{prodmatvec(x,n)}$</p>
 </blockquote>
-<h2 id="discussion--implications">Discussion &amp; Implications</h2>
-<p>The above definitions may be dissected and discussed for depth and clarity.</p>
-<h3 id="a-robot-is-a-system">A robot is a system.</h3>
-<p>We may emphasize the word <em><strong>system</strong></em> rather than machine <a href="#references">[2]</a>. There is no reason why a robot cannot be grown as an organism, rather than built as a machine. If it can be designed for a goal, commanded or controlled, with some level of autonomy, then the choice of the corpus, body, or mechanism is, in principle, arbitrary. Machines are much better understood, and can be designed to be more predictable, and thus today are almost always preferred to organisms.</p>
-<p>This systems-view also alludes to <a href="http://www.scholarpedia.org/article/Swarm_robotics">robotic swarms</a>. In some swarms, each individual machine can be complex enough to be a robot in its own right. But, in principle, individual machines that are too simple to be considered robots, can be collectively considered a robotic system, <em>provided that</em> the swarm can collectively meet the definition.</p>
-<h3 id="a-robot-directly-interacts-with-the-physical-world">A robot directly interacts with the physical world.</h3>
-<p>In other words, if it cannot mechanically interact with the physical world, it is less robot and more device, or sometimes even a computer. If it cannot sense nor plan, then it lacks the ability to adapt, which is closer to traditional machines than to &lsquo;intelligent&rsquo; robots. Many consumer &ldquo;robot assistants&rdquo; or &ldquo;robot companions&rdquo; get branded as robots, and those that interact physically indeed are; but those who cannot are closer to computers than to robots, even if they have speech features and sophisticated natural language processing.</p>
-<h3 id="a-robot-is-assembled-by-humans-for-humans">A robot is assembled by humans, for humans.</h3>
-<p>Despite the musings of popular culture and the entertainment industry, robots are a human invention: designed by people, built by people, and ruled by people. Bluntly put, a robot is an artificial creation indentured to serve a specific goal or purpose defined by its <em>human</em> creators, owners, or programmers.</p>
-<p>One implication here is that a living system found in nature cannot be converted into a robot. A machine modeled after a horse can be a robot, but a live horse controlled using implants is closer to a rigidly-controlled animal. A robot, in this regard, may be thought of as &ldquo;artificial life&rdquo; with &ldquo;human masters&rdquo;. One curious scenario is: would a dead horse, <em>i.e.</em>, a cadaver, taxidermied and repurposed into an obedient &lsquo;biomachine&rsquo; (cyborg?) be considered a robot? Potentially yes, it is somewhat artificial life, that is used to serve humans.</p>
-<p>Another implication is about authority. Since robots are built by people to serve people, then it must remain under human authority to be considered a robot. If that subordination is breached, then the system is no longer a robot, but a rogue or independent machine. My interpretation of this is as follows:</p>
+<div class="ticks">
+  <ul>
+<li>
+<p>returns the product $\mathrm{A}x$ where $x$ is a vector of dimension $\mathtt{n}$</p>
+</li>
+<li>
+<p>structures $\mathrm{A}$ as a sparse matrix (does not  construct it) to reduce computational cost and memory allocations</p>
+</li>
+</ul>
+
+</div>
+
 <blockquote>
-<p>Robots may be given some forms of intelligence, but by design, they must lack free will. Otherwise, we create, at best, independent machines, at worst, rogue machines.</p>
+<p>$\mathtt{exinitpos(y)}$</p>
 </blockquote>
-<p>Many fictional movie characters we call &lsquo;robots&rsquo;, especially &lsquo;killer robots&rsquo;, such as the famous Terminator, are not under any human&rsquo;s authority and thus are not robots. There are also tricky scenarios in which it is unclear when a system ceases to be a robot. Consider a robot, once working for people, now fallen under the control of a hypothetical non-human entity. It is a &lsquo;robot&rsquo; vis-à-vis the entity, but perhaps just a killer machine to people. What about robots commanded by one group of people, instructed against another group of people? It gets tricky, both nominally and ethically.</p>
-<p>It is in this context that many <a href="https://en.wikipedia.org/wiki/Laws_of_robotics">laws of robotics</a> have been proposed or imagined, the most famous of which are Asimov&rsquo;s in literary contexts.</p>
-<p>When a robot exhibits behavior that may be perceived as supposed free-willed, then it should, in principle, cease being considered a robot, that is, a slave system, but rather a free system; free as in freedom. But such scenarios are, for now, only in the realms of imagination.</p>
-<h2 id="examples">Examples</h2>
-<p>Consider these systems, and guess whether each is closer to a robot, or not.</p>
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-0352b2d3af049877b16ca1e4f5d06fd3">
-      <span class="expandable-label">Handshake machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-0352b2d3af049877b16ca1e4f5d06fd3" hidden>
-    Likely <strong>yes</strong>. It can sense a user&rsquo;s hand, plan the shake, and execute it in the physical world. Characteristics of a robot.
-  </div>
+<div class="ticks">
+  <ul>
+<li>returns a vector of values $v_\mathrm{ex}(y_i)$</li>
+</ul>
+<div class="ticks">
+  <blockquote>
+<p>$\mathtt{exinitvel(y)}$</p>
+</blockquote>
+<div class="ticks">
+  <ul>
+<li>returns a vector of values $w_\mathrm{ex}(y_i)$</li>
+</ul>
 </div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-828e881f0e5e89382c88b64e430bc881">
-      <span class="expandable-label">Washing machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-828e881f0e5e89382c88b64e430bc881" hidden>
-    It <strong>depends</strong>. A rather primitive washing machine is closer to an electromechanical appliance than a robot. But consider a fancy washer that scans its contents and determines the best washing program for them, all autonomously. That would be closer to a robot.
-  </div>
+<blockquote>
+<p>$\mathtt{solex(y,t)}$</p>
+</blockquote>
+<div class="ticks">
+  <ul>
+<li>returns a vector of values $u_\mathrm{ex}(y_i,t)$</li>
+</ul>
 </div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-c880e60d7eea1c6547a91b8222fddb07">
-      <span class="expandable-label">ATM machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-c880e60d7eea1c6547a91b8222fddb07" hidden>
-    Ambivalent <strong>yes</strong>, could easily be a <strong>no</strong>. An ATM can be considered a weak robot. It responds to input, reads cards, shuffles banknotes, and so on, all in the physical world. It can fulfill its task without any human operator. It could be called a robot, though not a very fancy one.
-  </div>
+<blockquote>
+<p>$\mathtt{sketchsolex(np,t)}$</p>
+</blockquote>
+<div class="ticks">
+  <ul>
+<li>plots for a fixed $t=\mathtt{t}$, the function $x \mapsto u_\mathrm{ex}(x,t)$ for $x \in [0,1]$</li>
+<li>$\mathtt{np}$ is the number of points that uniformly subdivide $[0,1]$ for plotting</li>
+</ul>
 </div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-1e1ede1e51c8a69323f3e8da004cc134">
-      <span class="expandable-label">Speaker home assistant?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-1e1ede1e51c8a69323f3e8da004cc134" hidden>
-    Most likely <strong>no</strong>. It can sense and hear voice commands. It can process and respond. But it cannot move nor interact physically with the environment. If it&rsquo;s a mobile home assistant, then it&rsquo;s a resounding yes.
-  </div>
+<blockquote>
+<p>$\mathtt{solverope(c, n, initpos,initvel,M,T)}$</p>
+</blockquote>
+<div class="ticks">
+  <ul>
+<li>returns the vector $\mathbf{u}^M$ using time step size $\frac{T}{M}$ and a space step size $\frac{1}{n+1}$</li>
+<li>plots the approximate solution at time $T$</li>
+<li>is memory-efficient during computation by storing only $3$ iterates corresponding to steps $j-1$, and $j$, and $j+1$</li>
+<li>$\mathtt{initpos}$ and $\mathtt{initvel}$ are functions defining initial position and initial velocity</li>
+</ul>
 </div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-9d716d9139682d15c8a765f908c055fa">
-      <span class="expandable-label">Remote-controlled drone?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-9d716d9139682d15c8a765f908c055fa" hidden>
-    Most would say <strong>no</strong> as it cannot function without a pilot. Perhaps if the drone has some built-in autonomy to assist, correct, or otherwise smoothen the flight as its driven by the remote pilot, then maybe it is closer to a robot.
-  </div>
+<p><strong>Example usage:</strong></p>
+<pre><code class="language-js">solverope(10, 4, @exinitpos, @exinitvel, 5, 0.02)
+&gt;&gt; ans = 
+    [-0.9427  1.5253  -1.5253  0.9427]
+</code></pre>
+<blockquote>
+<p>$\mathtt{study(T)}$</p>
+</blockquote>
+<div class="ticks">
+  <ul>
+<li>checks the CFL condition by varying $n$ and $M$ for a fixed $T$</li>
+<li>plots the curve $\ln(n) \mapsto -\ln(\mathrm{err}(n))$ where $\mathrm{err}(n) = \displaystyle\max_{1\leq j \leq n} \left| \mathbf{u}_j^M - u_\mathrm{ex}(jh, T) \right|$</li>
+<li>$\mathbf{u}^M$ is the numerical solution via time step size $\frac{T}{M}$ and space step size $\frac{1}{n+1}$</li>
+<li>calculates the slope of the least squares fit of the plotted curve</li>
+</ul>
 </div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-d16d370e41bb6ae4c2cdaa49d8cd95e4">
-      <span class="expandable-label">Driverless airport terminal shuttle?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-d16d370e41bb6ae4c2cdaa49d8cd95e4" hidden>
-    A weak <strong>yes</strong>. This system technically operates without any human intervention. Just set and forget, with occasional maintenance. This shuttle goes round and round around the airport terminals. It just runs &ldquo;one program&rdquo;, lacks adaptability, and is thus a rather &lsquo;unintelligent&rsquo; robot.
-  </div>
+<h2 id="solution">Solution</h2>
+<p>The obtained solution is animated below by varying the parameter $t$ and observing changes across $x$.</p>
+<div style="text-align:center">
+    <img src="sol.gif" alt="Animated PDE numerical solution." style="zoom:140%;" />
 </div>
-
-<h2 id="conclusion">Conclusion</h2>
-<p>In everyday practice, it is perfectly fine to call robot-esque machines robots, for concision. This article was merely a pedantic attempt to feed thought and debate. Though eventually, legislation should take the nomenclature and classification of automation more seriously (in Japan, there is a subjective albeit interesting classification of robots into six levels of &ldquo;generality&rdquo; or autonomy.). Clarity would help to design sensible laws and stimulate less fuzzy discussions surrounding automation regarding moral agency, economic policy, and so on.</p>
-<p>Certainly, the definition remains fuzzy. But in many ways, the failure to cement the meaning of &ldquo;robot&rdquo; nor reach a singular interpretation of it, is that which brings much richness and diversity to the field.</p>
 <h2 id="references">References</h2>
-<p><a href="#history">[1]</a> Saeed B. Niku, §1.3, <a href="https://www.wiley.com/en-us/Introduction+to+Robotics%3A+Analysis%2C+Control%2C+Applications%2C+3rd+Edition-p-9781119527602"><em>Introduction to Robotics: Analysis, Control, Applications</em></a>, 2019, Wiley.</p>
-<p><a href="#discussion--implications">[2]</a> Kris Hauser, Preface §1, <a href="https://motion.cs.illinois.edu/RoboticSystems/Preface.html"><em>Robotic Systems</em></a> , 2020.</p>
+<ul>
+<li>Trefethen &amp; Bau, <a href="https://www.abebooks.com/Numerical-Linear-Algebra-Trefethen-Lloyd-Bau/30998120287/"><em>Numerical Linear Algebra</em></a>, 1997.</li>
+<li>Strang, <a href="https://my.siam.org/Store/Product/viewproduct/?ProductId=1217"><em>Computational Science &amp; Engineering</em></a>, 2007.</li>
+</ul>
+</div>
+
+</div>
+
 
   </main>
   
