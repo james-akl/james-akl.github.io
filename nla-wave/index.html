@@ -445,13 +445,13 @@ $$
 $$</p>
 <p>For $j \in \{0, \ldots, n\}$, we introduce the approximations $u_j(t)$ of the exact values $u(x_j, t)$. Thus, from the original
 continuous system construct a discrete approximate system $(P_h)$.</p>
-<p>This is expressed as the following system of time-dependent second-order differential equations with boundary and initial conditions:
+<p>This is expressed as the following system of time-dependent second-order differential equations with boundary and initial conditions: for $j \in \{1, \ldots, n\}$
 $$
 (P_h)
 \begin{dcases}
-u''_j(t)+ c^2 \frac{u(x_{j-1}, t) - 2u(x_j, t) + u(x_{j+1}, t)}{h^2} = 0 &amp; \textrm{for } j \in \{1, \ldots, n\}
+u''_j(t)+ c^2 \frac{u(x_{j-1}, t) - 2u(x_j, t) + u(x_{j+1}, t)}{h^2} = 0
 \\ u_0(t) = u_{n+1}(t) = 0
-\\ u_j(0) = v(x_j) \textrm{ and } u'_j(0) = w(x_j) &amp; \textrm{for } j \in \{1, \ldots, n\}
+\\ u_j(0) = v(x_j) \textrm{ and } u'_j(0) = w(x_j)
 \end{dcases}
 $$
 This can be rewritten in matrix form. Proceed by defining the second-order finite difference matrix operator,
@@ -640,7 +640,7 @@ This is periodic in time $(\frac{1}{20})$ and in space $(\frac{1}{2})$.</p>
 <div class="ticks">
   <ul>
 <li>checks the CFL condition by varying $n$ and $M$ for a fixed $T$</li>
-<li>plots the curve $\ln(n) \mapsto -\ln(\mathrm{err}(n))$ where $\mathrm{err}(n) = \displaystyle\max_{1\leq j \leq n} \left| \mathbf{u}_j^M - u_\mathrm{ex}(jh, T) \right|$</li>
+<li>plots the curve $\ln(n) \mapsto -\ln(\mathrm{err}(n))$<br>where $\mathrm{err}(n) = \displaystyle\max_{1\leq j \leq n} \left| \mathbf{u}_j^M - u_\mathrm{ex}(jh, T) \right|$</li>
 <li>$\mathbf{u}^M$ is the numerical solution via time step size $\frac{T}{M}$ and space step size $\frac{1}{n+1}$</li>
 <li>calculates the slope of the least squares fit of the plotted curve</li>
 </ul>
