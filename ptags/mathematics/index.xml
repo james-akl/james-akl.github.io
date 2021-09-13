@@ -6,7 +6,17 @@
     <description>Recent content in Mathematics on James Akl</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/ptags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/ptags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Convex Analysis: Select Works</title>
+      <link>https://jamesakl.com/convex-analysis/</link>
+      <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/convex-analysis/</guid>
+      <description>These interesting problems are handpicked from several of my old projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.
+Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
+    </item>
+    
     <item>
       <title>Numerical Analysis: Wave PDE</title>
       <link>https://jamesakl.com/nla-wave/</link>

@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.87.0" />
-  <link rel="canonical" href="/robot-definition/">
+  <link rel="canonical" href="/convex-analysis/">
 
   
     
-    <meta name="description" content="ABSTRACT ~ In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
- History The word robot has literary origins (specifically, Czech) meaning forced labor. In our context, this essentially implies that a robot is a machine-slave.">
+    <meta name="description" content="These interesting problems are handpicked from several of my old projects in Convex Analysis &amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.
+Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -43,7 +43,7 @@
 
   
   
-  <title>Defining a Robot | James Akl</title>
+  <title>Convex Analysis: Select Works | James Akl</title>
 </head>
 
   <body>
@@ -241,17 +241,17 @@
       <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
         <use xlink:href="#bookmark"></use>
       </svg>
-      Defining a Robot
+      Convex Analysis: Select Works
     </h1>
 
     <div class="date">
       
       
-      <strong>Date published: </strong>Aug 20, 2021
+      <strong>Date published: </strong>Sep 13, 2021
       
         
           <br>
-          <strong>Last updated: </strong>Sep 1, 2021
+          <strong>Last updated: </strong>Sep 13, 2021
         
       
     </div>
@@ -266,7 +266,7 @@
                 <use xlink:href="#tag"></use>
               </svg>
               
-              <a href="/tags/robotics/">Robotics</a>
+              <a href="/ptags/mathematics/">Mathematics</a>
             </li>
           
         </ul>
@@ -285,8 +285,8 @@
           
           
           
-          <a href="#history">
-            History
+          <a href="#semicontinuity">
+            Semicontinuity
           </a>
         </li>
       
@@ -295,8 +295,8 @@
           
           
           
-          <a href="#present-day-opinions">
-            Present-day Opinions
+          <a href="#metric-topology">
+            Metric Topology
           </a>
         </li>
       
@@ -305,8 +305,8 @@
           
           
           
-          <a href="#long-form-definition">
-            Long-form Definition
+          <a href="#sequential-compactness">
+            Sequential Compactness
           </a>
         </li>
       
@@ -315,8 +315,8 @@
           
           
           
-          <a href="#short-form-definition">
-            Short-form Definition
+          <a href="#quadratic-programming">
+            Quadratic Programming
           </a>
         </li>
       
@@ -325,8 +325,8 @@
           
           
           
-          <a href="#discussion--implications">
-            Discussion &amp; Implications
+          <a href="#convexity--optimality">
+            Convexity &amp; Optimality
           </a>
         </li>
       
@@ -335,8 +335,8 @@
           
           
           
-          <a href="#examples">
-            Examples
+          <a href="#qp-optimality-condition">
+            QP Optimality Condition
           </a>
         </li>
       
@@ -345,8 +345,58 @@
           
           
           
-          <a href="#conclusion">
-            Conclusion
+          <a href="#computing-subdifferentials">
+            Computing Subdifferentials
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#subdifferential-of-distance-function">
+            Subdifferential of Distance Function
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#normal-and-tangent-cones">
+            Normal and Tangent Cones
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#convexity-of-minimization-problem">
+            Convexity of Minimization Problem
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#conjugate-functions-and-subdifferentials">
+            Conjugate Functions and Subdifferentials
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#duality--infimalconvolution">
+            Duality &amp; Infimal–Convolution
           </a>
         </li>
       
@@ -366,207 +416,146 @@
 
     
 
-    <blockquote>
-<p><big><strong><code>ABSTRACT</code></strong></big> ~ <i><small>In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.</small></i></p>
-</blockquote>
-<h2 id="history">History</h2>
-<p>The word <em><strong>robot</strong></em> has literary <a href="https://en.wikipedia.org/wiki/Rossum%27s_Universal_Robots">origins</a> (specifically, Czech)  meaning <em>forced labor</em>. In our context, this essentially implies that a robot is a <em>machine-slave</em>. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (<em>e.g.</em>, automaton, device, machine).</p>
-<p>The definition of a robot changes across cultures and has changed throughout time. Some machines considered robots by Japanese standards are not by American standards <a href="#references">[1]</a>. But we can try to find overlap and force a consensus.</p>
-<h2 id="present-day-opinions">Present-day Opinions</h2>
-<p>Nowadays, we can agree that a robot is a system, comprised of various components and subsystems, that has some objective, some awareness of itself or surroundings, some ability to physically interact with its environment (move, touch, grab, drill, shoot, …), and potentially some level of autonomy (in the engineering sense; automatic, not driven; no detailed direct human operation). It is difficult to reach an agreeable and precise definition as opinions often quickly disperse.</p>
-<p>Consider the example of <a href="https://en.wikipedia.org/wiki/Teleoperation">teleoperated systems</a>, still considered by some to be robots, but also excluded by others. Nevertheless, many roboticists actively working on teleoperation have made it <a href="https://en.wikipedia.org/wiki/Telerobotics">more intelligent</a>.</p>
-<p>Another example is in wearable systems (<em>e.g.</em>, exoskeletons, exosuits, prosthetics). Again, whether a particular system should be called a wearable robot, or rather, simply a wearable system, is up to subjective interpretation.</p>
-<p>There is no satisfying definition for robotics as the field is too vast, somewhat fragmented, and not mature enough. The need for a clearcut and comprehensive definition is certainly appealing. But, to settle on one today would be premature and reductive.</p>
-<p>Still, it doesn&rsquo;t hurt to try, while striving to be less incorrect. Here is a proposed definition, in both long- then short-form.</p>
-<h2 id="long-form-definition">Long-form Definition</h2>
-<blockquote>
-<p>A robot is any goal-oriented and human-assembled system, typically a machine but not necessarily, endowed with some capabilities for sensing, perception, cognition, planning, control, and acting in the physical world; while subject to human authority, in the form of high-level command or low-level control.</p>
-</blockquote>
-<h2 id="short-form-definition">Short-form Definition</h2>
-<blockquote>
-<p>A robot is any <u>goal-oriented</u> and <u>human-assembled</u> <u>system</u> under <u>human authority</u> that can <u>sense</u>, <u>plan</u>, and <u>act</u> in the <u>physical world</u>.</p>
-</blockquote>
-<h2 id="discussion--implications">Discussion &amp; Implications</h2>
-<p>The above definitions may be dissected and discussed for depth and clarity.</p>
-<h3 id="a-robot-is-a-system">A robot is a system.</h3>
-<p>We may emphasize the word <em><strong>system</strong></em> rather than machine <a href="#references">[2]</a>. There is no reason why a robot cannot be grown as an organism, rather than built as a machine. If it can be designed for a goal, commanded or controlled, with some level of autonomy, then the choice of the corpus, body, or mechanism is, in principle, arbitrary. Machines are much better understood, and can be designed to be more predictable, and thus today are almost always preferred to organisms.</p>
-<p>This systems-view also alludes to <a href="http://www.scholarpedia.org/article/Swarm_robotics">robotic swarms</a>. In some swarms, each individual machine can be complex enough to be a robot in its own right. But, in principle, individual machines that are too simple to be considered robots, can be collectively considered a robotic system, <em>provided that</em> the swarm can collectively meet the definition.</p>
-<h3 id="a-robot-directly-interacts-with-the-physical-world">A robot directly interacts with the physical world.</h3>
-<p>In other words, if it cannot mechanically interact with the physical world, it is less robot and more device, or sometimes even a computer. If it cannot sense nor plan, then it lacks the ability to adapt, which is closer to traditional machines than to &lsquo;intelligent&rsquo; robots. Many consumer &ldquo;robot assistants&rdquo; or &ldquo;robot companions&rdquo; get branded as robots, and those that interact physically indeed are; but those who cannot are closer to computers than to robots, even if they have speech features and sophisticated natural language processing.</p>
-<h3 id="a-robot-is-assembled-by-humans-for-humans">A robot is assembled by humans, for humans.</h3>
-<p>Despite the musings of popular culture and the entertainment industry, robots are a human invention: designed by people, built by people, and ruled by people. Bluntly put, a robot is an artificial creation indentured to serve a specific goal or purpose defined by its <em>human</em> creators, owners, or programmers.</p>
-<p>One implication here is that a living system found in nature cannot be converted into a robot. A machine modeled after a horse can be a robot, but a live horse controlled using implants is closer to a rigidly-controlled animal. A robot, in this regard, may be thought of as &ldquo;artificial life&rdquo; with &ldquo;human masters&rdquo;. One curious scenario is: would a dead horse, <em>i.e.</em>, a cadaver, taxidermied and repurposed into an obedient &lsquo;biomachine&rsquo; (cyborg?) be considered a robot? Potentially yes, it is somewhat artificial life, that is used to serve humans.</p>
-<p>Another implication is about authority. Since robots are built by people to serve people, then it must remain under human authority to be considered a robot. If that subordination is breached, then the system is no longer a robot, but a rogue or independent machine. My interpretation of this is as follows:</p>
-<blockquote>
-<p>Robots may be given some forms of intelligence, but by design, they must lack free will. Otherwise, we create, at best, independent machines, at worst, rogue machines.</p>
-</blockquote>
-<p>Many fictional movie characters we call &lsquo;robots&rsquo;, especially &lsquo;killer robots&rsquo;, such as the famous Terminator, are not under any human&rsquo;s authority and thus are not robots. There are also tricky scenarios in which it is unclear when a system ceases to be a robot. Consider a robot, once working for people, now fallen under the control of a hypothetical non-human entity. It is a &lsquo;robot&rsquo; vis-à-vis the entity, but perhaps just a killer machine to people. What about robots commanded by one group of people, instructed against another group of people? It gets tricky, both nominally and ethically.</p>
-<p>It is in this context that many <a href="https://en.wikipedia.org/wiki/Laws_of_robotics">laws of robotics</a> have been proposed or imagined, the most famous of which are Asimov&rsquo;s in literary contexts.</p>
-<p>When a robot exhibits behavior that may be perceived as supposed free-willed, then it should, in principle, cease being considered a robot, that is, a slave system, but rather a free system; free as in freedom. But such scenarios are, for now, only in the realms of imagination.</p>
-<h2 id="examples">Examples</h2>
-<p>Consider these systems, and guess whether each is closer to a robot, or not.</p>
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-fd42c7b42b0ad50f639f0e561d13a738">
-      <span class="expandable-label">Handshake machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-fd42c7b42b0ad50f639f0e561d13a738" hidden>
-    Likely <strong>yes</strong>. It can sense a user&rsquo;s hand, plan the shake, and execute it in the physical world. Characteristics of a robot.
-  </div>
-</div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-8e3bec05f843894c1ee80888822618b8">
-      <span class="expandable-label">Washing machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-8e3bec05f843894c1ee80888822618b8" hidden>
-    It <strong>depends</strong>. A rather primitive washing machine is closer to an electromechanical appliance than a robot. But consider a fancy washer that scans its contents and determines the best washing program for them, all autonomously. That would be closer to a robot.
-  </div>
-</div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-46a28578ee80b6dd2ecd7ba70f9c0121">
-      <span class="expandable-label">ATM machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-46a28578ee80b6dd2ecd7ba70f9c0121" hidden>
-    Ambivalent <strong>yes</strong>, could easily be a <strong>no</strong>. An ATM can be considered a weak robot. It responds to input, reads cards, shuffles banknotes, and so on, all in the physical world. It can fulfill its task without any human operator. It could be called a robot, though not a very fancy one.
-  </div>
-</div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-ca8e0eea3336fe1d932cd041c14518e1">
-      <span class="expandable-label">Speaker home assistant?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-ca8e0eea3336fe1d932cd041c14518e1" hidden>
-    Most likely <strong>no</strong>. It can sense and hear voice commands. It can process and respond. But it cannot move nor interact physically with the environment. If it&rsquo;s a mobile home assistant, then it&rsquo;s a resounding yes.
-  </div>
-</div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-501f5298d591ca738adc066998571fd6">
-      <span class="expandable-label">Remote-controlled drone?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-501f5298d591ca738adc066998571fd6" hidden>
-    Most would say <strong>no</strong> as it cannot function without a pilot. Perhaps if the drone has some built-in autonomy to assist, correct, or otherwise smoothen the flight as its driven by the remote pilot, then maybe it is closer to a robot.
-  </div>
-</div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-c9ebe26ba03dd476aa4841ded154cc9d">
-      <span class="expandable-label">Driverless airport terminal shuttle?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-c9ebe26ba03dd476aa4841ded154cc9d" hidden>
-    A weak <strong>yes</strong>. This system technically operates without any human intervention. Just set and forget, with occasional maintenance. This shuttle goes round and round around the airport terminals. It just runs &ldquo;one program&rdquo;, lacks adaptability, and is thus a rather &lsquo;unintelligent&rsquo; robot.
-  </div>
-</div>
-
-<h2 id="conclusion">Conclusion</h2>
-<p>In everyday practice, it is perfectly fine to call robot-esque machines robots, for concision. This article was merely a pedantic attempt to feed thought and debate. Though eventually, legislation should take the nomenclature and classification of automation more seriously (in Japan, there is a subjective albeit interesting classification of robots into six levels of &ldquo;generality&rdquo; or autonomy.). Clarity would help to design sensible laws and stimulate less fuzzy discussions surrounding automation regarding moral agency, economic policy, and so on.</p>
-<p>Certainly, the definition remains fuzzy. But in many ways, the failure to cement the meaning of &ldquo;robot&rdquo; nor reach a singular interpretation of it, is that which brings much richness and diversity to the field.</p>
+    <p>These interesting problems are handpicked from several of my old projects in <em>Convex Analysis &amp; Optimization</em> and <em>Real Analysis</em>. The solutions and proofs are my own and are linked as PDFs under the section titles.</p>
+<h2 id="semicontinuity">Semicontinuity</h2>
+<h3 id="pdf1pdf"><a href="./1.pdf">PDF</a></h3>
+<p>Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a
+lower semicontinuous and nondecreasing function. Show that the function $h$
+defined by $h(x) = g \circ f(x)$ is lower semicontinuous. Give an example showing that the nondecrease assumption is essential.</p>
+<h2 id="metric-topology">Metric Topology</h2>
+<h3 id="pdf2pdf"><a href="./2.pdf">PDF</a></h3>
+<p>Find in $(\R, |x-y|)$, the closure, the interior, the accumulation points, and the isolated points of,
+$$
+A=\left\{(-1)^{n}+\frac{1}{n}, \quad n \in \mathbb{N}^{*}\right\}.
+$$</p>
+<h2 id="sequential-compactness">Sequential Compactness</h2>
+<h3 id="pdf3pdf"><a href="./3.pdf">PDF</a></h3>
+<p>Let $(E,d)$ be a metric space and let $\left(x_{n}\right)_{n \in \mathbb{N}}$ be a sequence in $E$ that converges to $a \in E$. Prove that the set $\left\{x_{n} \mid n \in \mathbb{N}\right\} \cup{a}$ is compact.</p>
+<h2 id="quadratic-programming">Quadratic Programming</h2>
+<h3 id="pdf4pdf"><a href="./4.pdf">PDF</a></h3>
+<p>Consider the quadratic optimization problem:
+$$
+(P) \begin{cases}\min &amp; f(x)=\left(x_{1}-x_{2}\right)^{2}+\left(x_{2}+x_{3}\right)^{2}+\left(x_{3}-x_{1}\right)^{2} \\ \text { s.t. } &amp; x_{1}+2 x_{2}+3 x_{3}=10 \; \text { and }\; 3 x_{1}+2 x_{2}+x_{3}=14\end{cases}
+$$
+<b>Part (a)</b><br>Find a vector $b \in \R^2$, a symmetric matrix $W$ of size $3 \times 3$ and a matrix $A$ of size $2 \times 3$ such that,
+$$
+f(x)=\frac{1}{2}\langle W x, x\rangle \text { and the constraint is } A x=b
+$$
+<b>Part (b)</b><br>Verify that $W$ is positive definite and that the rank of $A$ is $2$.</p>
+<p><b>Part (c)</b><br>Diagonalize the matrix $W$ and deduce its square root $W^\frac{1}{2}$.</p>
+<p><b>Part (d)</b><br>Let $\bar{x}$ be a particular solution of the system $Ax = b$. Prove using the transformation $y = W^\frac{1}{2} (x - \bar{x})$, that $(P)$ is equivalent to the following:
+$$
+\text { (Q) } \begin{cases}\min &amp; \frac{1}{2}\Vert y\Vert^{2}+\left\langle W^\frac{1}{2} \bar{x}, y\right\rangle \\ \text { s.t. } &amp; A W^{-\frac{1}{2}} y=0\end{cases}
+$$
+<b>Part (e)</b><br>Prove that $(Q)$ has a unique solution that you compute.</p>
+<p><b>Part (f)</b><br>Deduce that $(P)$ has a unique solution that you compute.</p>
+<h2 id="convexity--optimality">Convexity &amp; Optimality</h2>
+<h3 id="pdf5pdf"><a href="./5.pdf">PDF</a></h3>
+<p>Let $S \subset \R^2$ be the set defined by,
+$$
+S:=\{(x, y): x \geq 0, y \geq 0,-x+y \leq 2 \text { and } 2 x+3 y \leq 11\}
+$$
+We define the function $f:\R^2\to\R$ by,
+$$
+f(x, y):=x^{2}+y^{2}-8 x-20 y+89
+$$
+<strong>Part (a)</strong><br>Prove that $S$ and $f$ are convex.</p>
+<p><strong>Part (b)</strong><br>Prove that $(1,3)$ is an optimal solution for minimizing $f$ over $S$.</p>
+<p><strong>Part (c)</strong><br>Prove that $(1,3)$ is the only optimal solution.</p>
+<h2 id="qp-optimality-condition">QP Optimality Condition</h2>
+<h3 id="pdf6pdf"><a href="./6.pdf">PDF</a></h3>
+<p>We consider the following quadratic programming problem:
+$$
+(Q)\begin{cases}\min &amp; f(x)=\left(x_{1}-x_{2}\right)^{2}+\left(x_{2}-x_{3}\right)^{2}+\left(x_{3}-x_{1}\right)^{2}+\alpha x_{1}+\beta x_{2}+\gamma x_{3} \\ \text { s.t. } &amp; x_{1}+2 x_{2}+3 x_{3} \leq 10 \;\text { and }\; 3 x_{1}+2 x_{2}+x_{3} \leq 14\end{cases}
+$$
+Prove that $(Q)$ has a minimal solution if and only if $\alpha + \beta + \gamma \leq 0$.</p>
+<h2 id="computing-subdifferentials">Computing Subdifferentials</h2>
+<h3 id="pdf7pdf"><a href="./7.pdf">PDF</a></h3>
+<p>Calculate the subdifferential of the following functions:</p>
+<p><strong>Part (a)</strong><br>$f(x)=\max \{1,|x-1|\}$ on $\mathbb{R}$.</p>
+<p><strong>Part (b)</strong><br>$f(x)=1-\sqrt{1-x^{2}}$ if $x\in[-1,1]$ and $\infty$ otherwise.</p>
+<p><strong>Part (c)</strong><br>$f(x)= \begin{cases}0 &amp; x \in[-1,1] \\ |x|-1 &amp; x \in[-2,-1)\cup(1,2] \\ \infty &amp; x \in(-\infty,-2)\cup( 2, \infty)\end{cases}$</p>
+<h2 id="subdifferential-of-distance-function">Subdifferential of Distance Function</h2>
+<h3 id="pdf8pdf"><a href="./8.pdf">PDF</a></h3>
+<p>Let $C \subset \R^n$ be a nonempty, closed and convex set. We denote by $d_C(\cdot)$ the distance function associated to $C$. Find the subdifferential $\partial d_C(x)$ for all $x \in C$.</p>
+<h2 id="normal-and-tangent-cones">Normal and Tangent Cones</h2>
+<h3 id="pdf9pdf"><a href="./9.pdf">PDF</a></h3>
+<p>In $\R^n$, we consider the set:
+$$
+\Lambda_{n}=\left\{\left(x_{1}, \ldots, x_{n}\right) \in \mathbb{R}^{n}: x_{i} \geq 0 \; \forall i \text { and } \sum_{i=1}^{n} x_{i}=1\right\}
+$$
+<b>Part (a)</b><br>Verify that $\Lambda_n$ is closed and convex.</p>
+<p><strong>Part (b)</strong><br>Sketch $\Lambda_3$ and then find geometrically the normal and tangent cones $N_{\Lambda_3}(x)$ and $T_{\Lambda_3}(x)$ at the points: $(\frac{1}{3}, \frac{1}{3}, \frac{1}{3})$, $(0, \frac{1}{2}, \frac{1}{2})$, $(0, 0, 1)$</p>
+<p><strong>Part (c)</strong><br>For $\bar{x} \in \Lambda_n$, we denote by $I(\bar{x})$ the set of $i$ such that $\bar{x}_i=0$. Note that $I(\bar{x})$ can be an empty set. Prove that,</p>
+<ol>
+<li>
+<p>The tangent cone $T_{\Lambda_{n}}(\bar{x})=$</p>
+<p>$\left\{\left(\alpha_{1}, \ldots, \alpha_{n}\right) \in \mathbb{R}^{n}: \alpha_{i} \geq 0 \; \forall i \in I(\bar{x}) \text { and } \sum_{i=1}^{n} \alpha_{i}=0\right\}$</p>
+</li>
+<li>
+<p>The normal cone $N_{\Lambda_{n}}(\bar{x})=$</p>
+<p>$\left\{\left(\beta_{0}, \ldots, \beta_{0}\right): \beta_{0} \in \mathbb{R}\right\}+\left\{\left(\beta_{1}, \ldots, \beta_{n}\right): \beta_{i} \leq 0 \text { for } i \in I(\bar{x}) \text { and } 0 \text { otherwise}\right\}$</p>
+</li>
+</ol>
+<p><strong>Part (d)</strong><br>Now let $f: \R^n \to \R$ be convex and differentiable. Prove that $\bar{x} \in \Lambda_n$ is a global minimum of $f$ over $\Lambda_n$ if and only if there is a constant $\bar{c}$ such that,
+$$
+\begin{cases}f_{x_{i}}(\bar{x})=\bar{c} &amp; \forall i \notin I(\bar{x}) \\ f_{x_{i}}(\bar{x}) \geq \bar{c} &amp; \forall i \in I(\bar{x})\end{cases}
+$$
+<b>Part (e)</b><br><i>Application</i>: Minimize two functions $f(x,y,z) = x^2 + 2y^2 + z^2$ and $g(x) = x + 2y + z$ over $\Lambda_3$.</p>
+<h2 id="convexity-of-minimization-problem">Convexity of Minimization Problem</h2>
+<h3 id="pdf10pdf"><a href="./10.pdf">PDF</a></h3>
+<p>For $x_{1}, x_{2}, a \in \R$, we consider the following minimization problem,
+$$
+\left(P_{a}\right)\begin{dcases}
+\min_{x_{1}, x_{2}} &amp;x_{1}^{2}+a x_{2}^{2}+x_{1} x_{2}+x_{1},
+\\ \text{ s.t. } &amp;x_{1}+x_{2}-1 \leq 0
+\end{dcases}
+$$
+<b>Part (a)</b><br>Prove that $(P_a)$ is a convex problem if and only if $a \geq \frac{1}{4}$.</p>
+<p><b>Part (b)</b><br>Find the optimal solution and the optimal value of $(P_a)$ when $a \geq \frac{1}{4}$.</p>
+<h2 id="conjugate-functions-and-subdifferentials">Conjugate Functions and Subdifferentials</h2>
+<h3 id="pdf11pdf"><a href="./11.pdf">PDF</a></h3>
+<p>Let $f: \R \to \R \cup \{\infty\}$ be a proper, closed and convex function such that its subdifferential,
+$$
+\partial f(x)= \begin{cases}\frac{1}{2}(x-1) &amp; x&lt;0, \\ {\left[-\frac{1}{2}, \frac{1}{2}\right]} &amp; x=0, \\ \frac{1}{2}(x+1) &amp; x&gt;0.\end{cases}
+$$
+Find $f$, the conjugate&rsquo;s subdifferential $\partial f^*$, and the conjugate function $f^*$.</p>
+<h2 id="duality--infimalconvolution">Duality &amp; Infimal–Convolution</h2>
+<h3 id="pdf12pdf"><a href="./12.pdf">PDF</a></h3>
+<p>For $f_1$ and $f_2$ two proper functions from $\R^n \to \R\cup\{\infty\}$, we define the <em>infimal–convolution</em> of $f_1$ and $f_2$, denoted by $f_1 \square f_2$, is the function defined on $\R^n$ by:
+$$
+\left(f_{1} \square f_{2}\right)(x):=\inf _{z}\left\{f_{1}(z)+f_{2}(x-z)\right\}
+$$
+<b>Part (a)</b><br>Prove, using the definitions, that $(f_1 \square f_2)^* = f_1^* + f_2^*$.</p>
+<p><b>Part (b)</b><br>Now let $C$ be a nonempty closed and convex set and let $d_C(\cdot)$ be the distance function to the set $C$, and $\delta_C(\cdot)$ be its indicator function.</p>
+<ol>
+<li>
+<p>Verify that $d_C = \delta_C\square\Vert \cdot \Vert$.</p>
+</li>
+<li>
+<p>Deduce that $(d_C)^*(\cdot) = \sigma_C(\cdot) + \delta_{B_*}(\cdot)$, where  $\sigma_C(\cdot)$ is the support of $C$ and $\bar{B}_*$ is the unit closed ball for the dual norm.</p>
+</li>
+<li>
+<p>Deduce that,<br>$\partial\left(d_{C}\right)^{*}(y)=\partial \sigma_{C}(y)+\partial \delta_{B_{*}}(y)$.</p>
+</li>
+<li>
+<p>Prove that $y \in \partial d_C(x)$ if and only if there exist $x_1 \in C$ and $x_2 \in \R^n$ such that, $x = x_1 + x_2$ and, $y \in \partial \delta_C(x_1)$ and $y \in \partial \Vert \cdot \Vert (x_2)$.</p>
+</li>
+<li>
+<p>Deduce that,
+$$
+\partial d_{C}(x)= \begin{cases}N_{C}(x) \cap \bar{B} &amp; \text {if } x \in C, \\ \dfrac{x-c_{x}}{\left\Vert x-c_{x}\right\Vert} &amp; \text {if } x \notin C,\end{cases}
+$$
+where $\bar{B}$ is the unit closed ball and $c_x$ is the unique projection of $x$ to the set $C$.</p>
+</li>
+<li>
+<p>Deduce that $d_C(\cdot)$ is differentiable at any $x \notin C$.</p>
+</li>
+</ol>
 <h2 id="references">References</h2>
-<p><a href="#history">[1]</a> Saeed B. Niku, §1.3, <a href="https://www.wiley.com/en-us/Introduction+to+Robotics%3A+Analysis%2C+Control%2C+Applications%2C+3rd+Edition-p-9781119527602"><em>Introduction to Robotics: Analysis, Control, Applications</em></a>, 2019, Wiley.</p>
-<p><a href="#discussion--implications">[2]</a> Kris Hauser, Preface §1, <a href="https://motion.cs.illinois.edu/RoboticSystems/Preface.html"><em>Robotic Systems</em></a> , 2020.</p>
+<p>Bertsekas, <a href="http://www.athenasc.com/convexity.html"><em>Convex Analysis &amp; Optimization</em></a>, 2003.</p>
+<p>Boyd, <a href="https://web.stanford.edu/~boyd/cvxbook/"><em>Convex Optimization</em></a>, 2004.</p>
+<p>Pugh, <a href="https://www.springer.com/gp/book/9783319177700"><em>Real Mathematical Analysis</em></a>, 2015.</p>
 
   </main>
   
