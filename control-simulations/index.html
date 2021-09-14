@@ -6,11 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.87.0" />
-  <link rel="canonical" href="/ptags/control/">
+  <link rel="canonical" href="/control-simulations/">
 
   
     
-    <meta name="description" content="Control">
+    <meta name="description" content="GitHub Source files are available in the GitHub repository.
+This page summarizes the main ideas, detailed treatments are in the PDF linked under the section titles.
+Three different control methods have been formulated and simulated.
+State Observer &amp; Feedback Control PDF A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}&#43;\mathrm{B} \mathbf{u}&#43;\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -42,7 +45,7 @@
 
   
   
-  <title>Control | James Akl</title>
+  <title>Robot Control Simulations | James Akl</title>
 </head>
 
   <body>
@@ -235,45 +238,159 @@
       <div class="main-and-footer">
         <div>
           
-<main id="main">
-  <h1>Control Projects</h1>
+  <main id="main">
+    <h1>
+      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      Robot Control Simulations
+    </h1>
+
+    <div class="date">
+      
+      
+      <strong>Date published: </strong>Sep 14, 2021
+      
+        
+          <br>
+          <strong>Last updated: </strong>Sep 14, 2021
+        
+      
+    </div>
+
+    
+      <div class="tags">
+        <strong>Tags: </strong>
+        <ul aria-label="tags">
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/ptags/robotics/">Robotics</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/ptags/control/">Control</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+    
+    
+      
+
+  <nav class="toc" aria-labelledby="toc-heading">
+    <h2 id="toc-heading">Sections</h2>
+    <ol>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#state-observer--feedback-control">
+            State Observer &amp; Feedback Control
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#pd--computed-torque-control">
+            PD &amp; Computed Torque Control
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#modelreference-adaptive-control">
+            Model–Reference Adaptive Control
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#references">
+            References
+          </a>
+        </li>
+      
+    </ol>
+  </nav>
+
+
+    
+
+    <p><a href="https://github.com/james-akl/control-simulations">GitHub</a>
+<br><small>Source files are available in the GitHub repository.</small></p>
+<p>This page summarizes the main ideas, detailed treatments are in the PDF linked under the section titles.</p>
+<p>Three different control methods have been formulated and simulated.</p>
+<h2 id="state-observer--feedback-control">State Observer &amp; Feedback Control</h2>
+<h3 id="pdfluenbergerpdf"><a href="./luenberger.pdf">PDF</a></h3>
+<p>A linear state observer is designed, specifically a <em>Luenberger</em> observer of the form:
+$$
+\begin{dcases}
+\dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}+\mathrm{B} \mathbf{u}+\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx}
+\end{dcases}
+$$
+The observer gain matrix $\mathrm{L}$ is to be designed. The state matrix $\mathrm{A}$, input matrix $\mathrm{B}$, and output matrix $\mathrm{C}$ come from the LTI system,
+$$
+\begin{dcases}
+\dot{\mathbf{x}}=\mathrm{A} \mathbf{x}+\mathrm{B} \mathbf{u} \\ \mathbf{y}=\mathrm{Cx}
+\end{dcases}
+$$
+The feedforward matrix $\mathrm{D}$ is assumed null.</p>
+<p>A feedback controller is designed to stabilize the system, while the Luenberger observer provides state estimates. The project is simulated and the controlled system is successfully stabilized.</p>
+<h2 id="pd--computed-torque-control">PD &amp; Computed Torque Control</h2>
+<h3 id="pdfrobot-pd-ctcpdf"><a href="./robot-pd-ctc.pdf">PDF</a></h3>
+<p>A robotic manipulator dynamical system is designed of the form,
+$$
+\tau = \mathrm{M}(q)\ddot{q} + \mathrm{C}(q, \dot{q})\dot{q} + \mathrm{N}(q,\dot{q})
+$$
+This is the typical robot dynamics model with a symmetric inertia matrix, Coriolis and centrifugal matrix, and gravity vector.</p>
+<p>A PD controller is designed with the following control input,
+$$
+u(t)=\mathrm{M}(q) \ddot{q}_{d}+\mathrm{C}(q, \dot{q}) \dot{q}_{d}+ \mathrm{N}(q, \dot{q})-\mathrm{K}_{\mathrm{v}} \dot{e}-\mathrm{K}_{\mathrm{p}} e
+$$
+In addition, a Computed–Torque Controller extends this with feedback linearization, by reducing or removing the nonlinear effects of the known robot dynamics. The control input is then,
+$$
+u(t)=\mathrm{M}(q) \ddot{q}_{d}+\mathrm{C}(q, \dot{q}) \dot{q}+\mathrm{N}(q, \dot{q})-\mathrm{M}(q)\left(\mathrm{K}_{\mathrm{v}} \dot{e}+\mathrm{K}_{\mathrm{p}} e\right)
+$$
+Both controlled systems are simulated and successfully stabilized.</p>
+<h2 id="modelreference-adaptive-control">Model–Reference Adaptive Control</h2>
+<h3 id="pdfmracpdf"><a href="./mrac.pdf">PDF</a></h3>
+<p>A system $\dot{x} = a x + b u + c$ with desired reference $r(t) = 0$ is used to design its model reference for the MRAC scheme.</p>
+<p>The adaptive control law is: $u=\hat{k}_{x} x+\hat{k}_{r} x+\hat{\theta}^{\top} \phi(x)$</p>
+<p>These parameter estimates have the following adjustment mechanism,
+$$
+\begin{dcases}
+\dot{\hat{k}}_{x}=-\gamma_{x} x e \operatorname{sgn}(b) \\ \dot{\hat{k}}_{r}=-\gamma_{r} x r \operatorname{sgn}(b) \\ \dot{\hat{\theta}}=-\gamma_{x} \phi(x) e \operatorname{sgn}(b)
+\end{dcases}
+$$
+Noting that $e$ is the error signal.</p>
+<p>The closed system is further formulated, implemented, and then simulated, and is successfully regulated at the desired reference.</p>
+<h2 id="references">References</h2>
+<p>Ellis, <a href="https://www.elsevier.com/books/observers-in-control-systems/ellis/978-0-12-237472-2"><em>Observers in Control Systems</em></a>, 2002.</p>
+<p>Sciavicco et al., <a href="https://link.springer.com/book/10.1007/978-1-4471-0449-0"><em>Modelling and Control of Robot Manipulators</em></a>, 2000.</p>
+<p>Nguyen, <a href="https://www.springer.com/gp/book/9783319563923"><em>Model-Reference Adaptive Control</em></a>, 2018.</p>
+
+  </main>
   
-  <ul class="patterns-list" id="list">
-    
-    <li>
-      <h2>
-        <a href="/control-simulations/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          Robot Control Simulations
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h2>
-        <a href="/noise-dobc/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          Inverse Problems for DOBC
-        </a>
-      </h2>
-    </li>
-    
-  </ul>
-</main>
 
           
             <footer role="contentinfo">

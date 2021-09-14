@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jamesakl.com/ptags/control/</loc>
+    <lastmod>2021-09-14T01:03:52-04:00</lastmod>
+  </url><url>
+    <loc>https://jamesakl.com/control-simulations/</loc>
+    <lastmod>2021-09-14T01:03:52-04:00</lastmod>
+  </url><url>
+    <loc>https://jamesakl.com/ptags/robotics/</loc>
+    <lastmod>2021-09-14T01:03:52-04:00</lastmod>
+  </url><url>
     <loc>https://jamesakl.com/convex-analysis/</loc>
     <lastmod>2021-09-13T03:42:50-04:00</lastmod>
   </url><url>
@@ -16,9 +25,6 @@
   </url><url>
     <loc>https://jamesakl.com/cad-microguard/</loc>
     <lastmod>2021-09-13T03:42:50-04:00</lastmod>
-  </url><url>
-    <loc>https://jamesakl.com/ptags/control/</loc>
-    <lastmod>2021-09-09T07:13:29-04:00</lastmod>
   </url><url>
     <loc>https://jamesakl.com/ptags/design/</loc>
     <lastmod>2021-09-13T03:42:50-04:00</lastmod>
