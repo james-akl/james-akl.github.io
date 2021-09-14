@@ -13,7 +13,7 @@
       
       <guid>https://jamesakl.com/control-simulations/</guid>
       <description>GitHub Source files are available in the GitHub repository.
-This page summarizes the main ideas, detailed treatments are in the PDF linked under the section titles.
+This page summarizes the main ideas, detailed treatments are in the PDFs linked under the section titles.
 Three different control methods have been formulated and simulated.
 State Observer &amp;amp; Feedback Control PDF A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}+\mathrm{B} \mathbf{u}+\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed.</description>
     </item>
