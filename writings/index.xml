@@ -5,16 +5,16 @@
     <link>https://jamesakl.com/writings/</link>
     <description>Recent content in Writings on James Akl</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/writings/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://jamesakl.com/writings/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Tour of Robot Mechanics</title>
       <link>https://jamesakl.com/writings/robot-mechanics/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/writings/robot-mechanics/</guid>
-      <description>INCOMPLETE DRAFT : WORK IN PROGRESS    ABSTRACT ~ This article aims to provide a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
- Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.</description>
+      <description>ABSTRACT ~ This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
+ Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
     </item>
     
     <item>
