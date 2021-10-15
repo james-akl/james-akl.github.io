@@ -10,8 +10,9 @@
 
   
     
-    <meta name="description" content="INCOMPLETE DRAFT : WORK IN PROGRESS    ABSTRACT ~ This article aims to provide a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the ‘whys’ should become apparent, allowing the ‘hows’ to be better appreciated.
- Motivation The basic functionality we’d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.">
+    <meta name="description" content="ABSTRACT ~ This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the ‘whys’ should become apparent, allowing the ‘hows’ to be better appreciated.
+ Motivation The basic functionality we’d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+Consider these two points $\mathsf{A}$ and $\mathsf{B}$.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -205,6 +206,19 @@
       
       
       
+      <a href="/writings/" >
+        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#bookmark"></use>
+        </svg>
+        <span class="text">Writings</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
       <a href="/about/" >
         <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
           <use xlink:href="#bookmark"></use>
@@ -238,7 +252,7 @@
       
         
           <br>
-          <strong>Last updated: </strong>Sep 9, 2021
+          <strong>Last updated: </strong>Oct 15, 2021
         
       
     </div>
@@ -310,18 +324,8 @@
           
           
           
-          <a href="#velocity-kinematics">
-            Velocity Kinematics
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#rigid-body-dynamics">
-            Rigid-body Dynamics
+          <a href="#higher-order-models">
+            Higher-Order Models
           </a>
         </li>
       
@@ -332,16 +336,6 @@
           
           <a href="#summary-table">
             Summary Table
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#whats-next">
-            What’s Next?
           </a>
         </li>
       
@@ -361,21 +355,8 @@
 
     
 
-    <aside aria-label="warning" class="note warning">
-  <div>
-    <svg class="sign" aria-hidden="true" viewBox="0 0 48.430474 41.646302" focusable="false">
-      <use xlink:href="#warning"></use>
-    </svg>
-    
-
-<span style="color:blacl; font-family:monospace; font-weight:bold; background-color:yellow">INCOMPLETE DRAFT : WORK IN PROGRESS</span>
-
-
-  </div>
-</aside>
-
-<blockquote>
-<p><big><strong><code>ABSTRACT</code></strong></big> ~ <small><i>This article aims to provide a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &lsquo;whys&rsquo; should become apparent, allowing the &lsquo;hows&rsquo; to be better appreciated.</i></small></p>
+    <blockquote>
+<p><big><strong><code>ABSTRACT</code></strong></big> ~ <small><i>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &lsquo;whys&rsquo; should become apparent, allowing the &lsquo;hows&rsquo; to be better appreciated.</i></small></p>
 </blockquote>
 <h2 id="motivation">Motivation</h2>
 <p>The basic functionality we&rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ <em>precisely</em> is not straightforward.</p>
@@ -411,7 +392,7 @@ Before we can communicate the desired path <i>precisely</i> to a robot, we must 
     </svg>
     
 
-The position and orientation of a single rigid-body are collectively called <b><i>pose</i></b>. For a system of rigid-bodies (<i>e.g.</i>, a robot with multiple links), the poses of all the elements collectively are called <b><i>posture</i></b>. Thus, a robot's posture is its positional state in the world frame.  
+The position and orientation of a single rigid-body are collectively called <b><i>pose</i></b>. For a system of rigid-bodies (<i>e.g.</i>, a robot with multiple links), the poses of all the elements collectively are called <b><i>posture</i></b>.
 
 
   </div>
@@ -537,26 +518,33 @@ There are different ways to interpret the same homogeneous transform, which are 
   </div>
 </aside>
 
-<p>In practice, the frames on a robot&rsquo;s joints are assigned using one of many conventional methods. The most famous one is the Denavit–Hartenberg convention with their <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters">DH parameters</a>. This standardizes frame assignment and simplifies kinematic calculations. There are, of course, many other conventions used, some having better suited for specific scenarios.</p>
+<p>In practice, the frames on a robot&rsquo;s joints are assigned using one of many conventional methods. The most famous one is the Denavit–Hartenberg convention with their <a href="https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters">DH parameters</a>. This standardizes frame assignment and simplifies kinematic calculations. There are other conventions, of which some are preferred in specific scenarios.</p>
 <p>After the convention is followed, it becomes convenient to compute the homogeneous transform that maps frame $k+1$ to frame $k$, denoted with ${}^{k}\mathrm{T}_{k+1}(q_{k+1})$, as its value depends on the joint $k+1$&rsquo;s state $q_{k+1}$. By composing these transforms, as in,
 $$
 \begin{aligned}
 {}^0\mathrm{T}_n (q_1,\ldots, q_n) &amp;= \prod_{k=0}^{n-1}{}^{k}\mathrm{T}_{k+1}(q_{k+1}) \\ &amp;= {}^\mathrm{0}\mathrm{T}_1(q_1) \cdots {}^{n-1}\mathrm{T}_n (q_n)
 \end{aligned}
 $$
-we obtain the forward kinematic mapping ${}^0\mathrm{T}_n(\mathbf{q})$. This mapping $\mathrm{x} = {}^0\mathrm{T}_n(\mathbf{q})$ maps the joint states $\mathbf{q}$ to the end-effector Cartesian pose $\mathbf{x}$ relative to the world frame. Effectively, the transform ${}^0\mathrm{T}_n(\mathbf{q})$ contains this pose information in its $4 \times 4$ matrix representation.</p>
-<p>You might think the equation $\mathrm{x} = {}^0\mathrm{T}_n(\mathbf{q})$ is a mistake, since $\mathbf{x}$ above was a 6D vector and $\mathrm{T}$ is a $4 \times 4$ matrix. Indeed it is an abuse of notation to simplify the discussion, but is not conceptually incorrect. $\mathrm{T}$ is only one kind of representation for the pose, but there are others. To convert from $\mathrm{T}$ to $\mathbf{x}$, the position is copied from the translation vector $\mathbf{d}$ and the angles are obtained by converting the rotation matrix into a three-angle representation using <a href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a> (or their alternatives, Tait-Bryan angles). Thus, the 6D end-effector pose $\mathbf{x}$ is obtained from the $n$-dimensional joint configuration $\mathbf{q}$.</p>
+we obtain the forward kinematic mapping ${}^0\mathrm{T}_n(\mathbf{q})$. This mapping $\mathbf{x} = {}^0\mathrm{T}_n(\mathbf{q})$ maps the joint states $\mathbf{q}$ to the end-effector Cartesian pose $\mathbf{x}$ relative to the world frame. Effectively, the transform ${}^0\mathrm{T}_n(\mathbf{q})$ contains this pose information in its $4 \times 4$ matrix representation.</p>
+<p>You might think the equation $\mathbf{x} = {}^0\mathrm{T}_n(\mathbf{q})$ is a mistake, since $\mathbf{x}$ above was a 6D vector and $\mathrm{T}$ is a $4 \times 4$ matrix. Indeed it is an abuse of notation to simplify the discussion, but is not conceptually incorrect. $\mathrm{T}$ is only one kind of representation for the pose, but there are others. To convert from $\mathrm{T}$ to $\mathbf{x}$, the position is copied from the translation vector $\mathbf{d}$ and the angles are obtained by converting the rotation matrix into a three-angle representation using <a href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</a> (or their alternatives, Tait-Bryan angles). Thus, the 6D end-effector pose $\mathbf{x}$ is obtained from the $n$-dimensional joint configuration $\mathbf{q}$. For more sound notation, consider $\mathbf{x} = \mathtt{PoseMat2Vec}[{}^0\mathrm{T}_n(\mathbf{q})]$, where the procedure $\mathtt{PoseMat2Vec}$ does the necessary conversions.</p>
 <p>The forward kinematic mapping also allows us to do the following,
 $$
 {}^{0}\mathbf{p} = {}^0\mathrm{T}_{n}(\mathbf{q}) \; {}^{n}\mathbf{p}
 $$
-that is, mapping the pose $\mathbf{p}$ of an object, from the end-effector frame ${}^{n}\Box$, to the world frame ${}^{0}\Box$; which is highly desirable.</p>
+that is, mapping the pose $\mathbf{p}$ of a rigid-body object, from the end-effector frame ${}^{n}\Box$, to the world frame ${}^{0}\Box$; which is highly desirable.</p>
+<p>Note that $\mathbf{p}$ here is another homogeneous matrix representing the pose of the object. If the object is modeled as a point instead, then $\mathbf{p}$ can be reduced to a column vector (last row of its homogeneous matrix).</p>
 <h3 id="inverse-pose-kinematics">Inverse pose kinematics</h3>
-<p><span style="color:blacl; font-family:monospace; font-weight:bold; background-color:yellow">IN PROGRESS</span></p>
 <p>Inverse pose kinematics (also called inverse kinematics) answers the question:</p>
 <blockquote>
 <p>What joint configuration $\mathbf{q}$ would cause this desired Cartesian pose $\mathbf{x}$?</p>
 </blockquote>
+<p>$$
+\mathbf{x} \overset{{}_\mathsf{IPK}}{\longmapsto} \mathbf{q}
+$$</p>
+<p>For serial robots, their inverse kinematics are often more challenging to obtain. In fact, an analytical solution is not always possible, in which case numerical techniques (optimization, iterative schemes, …) are used instead. Many robots exploit specific design techniques so that analytical inverse kinematic solutions become possible. For example, 6-DOF robotic arms often use <em>spherical wrists</em> to decouple their position and orientation problems, which simplifies the inverse kinematics and yields an analytical solution.</p>
+<p>In contrast, consider robots with redundant kinematics; for example, robots whose DOF exceed the DOF of the end-effector. This is the case with 7-DOF robotic arms, which admit no analytical solution. Here, numerical techniques are the preferred option.</p>
+<p>Analytical solutions are often obtained from the geometric parameters of the robot, and so the geometric derivation is often involved and highly particular to one type of kinematic chain. Sometimes, it might be possible to invert the forward kinematics directly and solve, but it is rarely the case as the forward kinematic equations are often highly nonlinear.</p>
+<p>Numerical solvers have become highly-efficient and are fast enough for most applications. Analytical approaches were historically preferred, but nowadays numerical ones are widespread. Downsides can arise with some numerical solvers can arise with smoothness and stability between consecutive robot configurations. However, there are employable sophisticated techniques when the application requires it.</p>
 <aside aria-label="note" class="note">
   <div>
     <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
@@ -569,20 +557,41 @@ For closed kinematic chains or parallel mechanisms, inverse kinematics is typica
 </aside>
 
 <hr>
-<h2 id="velocity-kinematics">Velocity Kinematics</h2>
-<p><span style="color:blacl; font-family:monospace; font-weight:bold; background-color:yellow">IN PROGRESS</span></p>
+<h2 id="higher-order-models">Higher-Order Models</h2>
+<p>Without going into excessive detail, there are additional higher-order mechanics for a robot. Pose kinematics addresses only the position and orientation configurations of a robot. However, we can also consider the differential effects, that is, the velocities (both linear and angular). We may also consider the dynamic effects on a robot such as torques, and other nonlinear effects such as inertial, rotational, and gravitational.</p>
+<p>These considerations become necessary to extend the robot&rsquo;s capabilities in planning and controlling its motions.</p>
+<p>Here are four additional higher-order problems and their conceptual aims.</p>
 <h3 id="forward-velocity-kinematics">Forward velocity kinematics</h3>
+<blockquote>
+<p>What Cartesian velocity $\mathbf{\dot{x}}$ would these known joint velocities $\mathbf{\dot{q}}$ cause?</p>
+</blockquote>
+<p>$$
+\mathbf{\dot{q}} \overset{{}_\mathsf{FVK}}{\longmapsto} \mathbf{\dot{x}}
+$$</p>
 <h3 id="inverse-velocity-kinematics">Inverse velocity kinematics</h3>
-<hr>
-<h2 id="rigid-body-dynamics">Rigid-body Dynamics</h2>
-<p><span style="color:blacl; font-family:monospace; font-weight:bold; background-color:yellow">IN PROGRESS</span></p>
+<blockquote>
+<p>What joint velocities $\mathbf{\dot{q}}$ would cause this desired Cartesian velocity $\mathbf{\dot{x}}$?</p>
+</blockquote>
+<p>$$
+\mathbf{\dot{x}} \overset{{}_\mathsf{IVK}}{\longmapsto} \mathbf{\dot{q}}
+$$</p>
 <h3 id="inverse-rigid-body-dynamics">Inverse rigid-body dynamics</h3>
-<p>What torque would cause this desired motion?</p>
+<blockquote>
+<p>What joint torques $\tau$ would cause this desired motion $(\mathbf{q}, \mathbf{\dot{q}}, \mathbf{\ddot{q}})$?</p>
+</blockquote>
+<p>$$
+(\mathbf{q}, \mathbf{\dot{q}}, \mathbf{\ddot{q}}) \overset{{}_\mathsf{IRD}}{\longmapsto} \tau
+$$</p>
 <h3 id="forward-rigid-body-dynamics">Forward rigid-body dynamics</h3>
-<p>What resultant motion would this torque cause?</p>
+<blockquote>
+<p>What resultant motion $(\mathbf{q}, \mathbf{\dot{q}}, \mathbf{\ddot{q}})$ would these known joint torques $\mathbf{\tau}$ cause?</p>
+</blockquote>
+<p>$$
+\tau \overset{{}_\mathsf{FRD}}{\longmapsto} (\mathbf{q}, \mathbf{\dot{q}}, \mathbf{\ddot{q}})
+$$</p>
 <hr>
 <h2 id="summary-table">Summary Table</h2>
-<p><span style="color:blacl; font-family:monospace; font-weight:bold; background-color:yellow">IN PROGRESS</span></p>
+<p>This table summarizes each problem with its conceptual mapping and lists common implementation methods.</p>
 <table>
 <thead>
 <tr>
@@ -593,44 +602,40 @@ For closed kinematic chains or parallel mechanisms, inverse kinematics is typica
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">FPK</td>
+<td style="text-align:center">$\mathtt{FPK}$</td>
 <td style="text-align:center">$\mathbf{q} \mapsto \mathbf{x}$</td>
-<td style="text-align:center">Homogeneous transforms;<br />DH parameters;</td>
+<td style="text-align:center"><small>Homogeneous transforms;<br />DH parameters</small></td>
 </tr>
 <tr>
-<td style="text-align:center">IPK</td>
+<td style="text-align:center">$\mathtt{IPK}$</td>
 <td style="text-align:center">$\mathbf{x} \mapsto \mathbf{q}$</td>
-<td style="text-align:center">Geometric derivation;<br />Analytical inversion;<br />Numerical optimization;</td>
+<td style="text-align:center"><small>Geometric derivation;<br />Analytical inversion;<br />Numerical optimization</small></td>
 </tr>
 <tr>
-<td style="text-align:center">FVK</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">Robot geometric Jacobian;<br />Robot analytical Jacobian;</td>
+<td style="text-align:center">$\mathtt{FVK}$</td>
+<td style="text-align:center">$\mathbf{\dot{q}} \mapsto \mathbf{\dot{x}}$</td>
+<td style="text-align:center"><small>Robot geometric Jacobian;<br />Robot analytical Jacobian</small></td>
 </tr>
 <tr>
-<td style="text-align:center">IVK</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">Jacobian direct inverse;<br />Jacobian pseudoinverse;</td>
+<td style="text-align:center">$\mathtt{IVK}$</td>
+<td style="text-align:center">$\mathbf{\dot{x}} \mapsto \mathbf{\dot{q}}$</td>
+<td style="text-align:center"><small>Jacobian direct inverse;<br />Jacobian pseudoinverse</small></td>
 </tr>
 <tr>
-<td style="text-align:center">IRD</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">$\mathtt{IRD}$</td>
+<td style="text-align:center">$(\mathbf{q}, \mathbf{\dot{q}}, \mathbf{\ddot{q}}) \mapsto \tau$</td>
+<td style="text-align:center"><small>Recursive Newton–Euler algorithm;<br>Euler–Lagrange method<br></small></td>
 </tr>
 <tr>
-<td style="text-align:center">FRD</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">$\mathtt{FRD}$</td>
+<td style="text-align:center">$\tau \mapsto (\mathbf{q}, \mathbf{\dot{q}}, \mathbf{\ddot{q}})$</td>
+<td style="text-align:center"><small>Composite rigid-body algorithm;<br/>Articulated-body algorithm</small></td>
 </tr>
 </tbody>
 </table>
-<h2 id="whats-next">What&rsquo;s Next?</h2>
-<p><span style="color:blacl; font-family:monospace; font-weight:bold; background-color:yellow">IN PROGRESS</span></p>
-<p>With some of the robot&rsquo;s kinematic and dynamic information available, we can extend its capabilities.</p>
-<p>Using dynamic information, we can design controllers. Kinematic […]</p>
-<p>Using kinematic information, we can design motion planners. When dynamic effects cannot be ignored, kinodynamic planning […]</p>
 <h2 id="references">References</h2>
-<p><span style="color:blacl; font-family:monospace; font-weight:bold; background-color:yellow">IN PROGRESS</span></p>
+<p>[1] Siciliano et al., <em><a href="https://www.springer.com/gp/book/9781846286414">Robotics: Modeling, Planning, and Control</a></em>, 2009.</p>
+<p>[2] Featherstone, <em><a href="https://www.springer.com/gp/book/9780387743141">Rigid Body Dynamics Algorithms</a></em>, 2008.</p>
 
   </main>
   
