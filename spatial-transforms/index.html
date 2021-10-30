@@ -10,7 +10,7 @@
 
   
     
-    <meta name="description" content="ABSTRACT ~ This article covers different ways to interpret the homogeneous spatial transforms and provides appropriate notational practices for each.
+    <meta name="description" content="ABSTRACT ~ This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
  Homogeneous Matrices In the context of robot kinematics, a common modeling choice for forward kinematics is the use of homogeneous matrices.
 Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics, $$ \mathrm{T} = \begin{bmatrix} \mathrm{R} &amp; \mathbf{d} \\ \mathbf{0}&amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx&#39;} &amp; r_{xy&#39;} &amp; r_{xz&#39;} &amp; d_x \\ r_{yx&#39;} &amp; r_{yy&#39;} &amp; r_{yz&#39;} &amp; d_y \\ r_{zx&#39;} &amp; r_{zy&#39;} &amp; r_{zz&#39;} &amp; d_z \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} $$">
   
@@ -356,7 +356,7 @@ Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in fo
     
 
     <blockquote>
-<p><big><strong><code>ABSTRACT</code></strong></big> ~ <small><i>This article covers different ways to interpret the homogeneous spatial transforms and provides appropriate notational practices for each.</i></small></p>
+<p><big><strong><code>ABSTRACT</code></strong></big> ~ <small><i>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.</i></small></p>
 </blockquote>
 <h2 id="homogeneous-matrices">Homogeneous Matrices</h2>
 <p>In the context of robot kinematics, a common modeling choice for <a href="/robot-mechanics">forward kinematics</a> is the use of homogeneous matrices.</p>
@@ -487,7 +487,7 @@ $$</p>
 {}^0\mathrm{F}_1 = {}^\mathrm{0}\mathrm{T}_1 {}^\mathrm{0}\mathrm{T}_2 \cdots {}^{0}\mathrm{T}_{n-1} {}^0\mathrm{F}_0
 $$</p>
 <p>Here there is one reference frame (numbered $0$) and the frame $F_0$ is moved $n-1$ times into its final pose $F_1$.</p>
-<p>Both these equations are perfectly equivalent, only the notation changed. It is important to remember that the interpretations are just conceptually useful, but mathematically equivalent</p>
+<p>Both these equations are perfectly equivalent, only the notation is changed. It is important to remember that the interpretations are conceptually useful, but mathematically equivalent</p>
 <h2 id="references">References</h2>
 <p>[1] Mortenson, <em><a href="https://books.industrialpress.com/9780831133382/geometric-transformations-for-3d-modeling/">Geometric Transformations for 3D Modeling</a></em>, 2007.</p>
 <p>[2] Spong, <em><a href="https://www.wiley.com/en-us/Robot+Modeling+and+Control%2C+2nd+Edition-p-9781119524045">Robot Modeling and Control</a></em>, 2020.</p>
