@@ -6,11 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.87.0" />
-  <link rel="canonical" href="/tags/robotics/">
+  <link rel="canonical" href="/spatial-transforms/">
 
   
     
-    <meta name="description" content="Robotics">
+    <meta name="description" content="ABSTRACT ~ This article covers different ways to interpret the homogeneous spatial transforms and provides appropriate notational practices for each.
+ Homogeneous Matrices In the context of robot kinematics, a common modeling choice for forward kinematics is the use of homogeneous matrices.
+Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics, $$ \mathrm{T} = \begin{bmatrix} \mathrm{R} &amp; \mathbf{d} \\ \mathbf{0}&amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx&#39;} &amp; r_{xy&#39;} &amp; r_{xz&#39;} &amp; d_x \\ r_{yx&#39;} &amp; r_{yy&#39;} &amp; r_{yz&#39;} &amp; d_y \\ r_{zx&#39;} &amp; r_{zy&#39;} &amp; r_{zz&#39;} &amp; d_z \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} $$">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -42,7 +44,7 @@
 
   
   
-  <title>Robotics | James Akl</title>
+  <title>Reading Spatial Transforms | James Akl</title>
 </head>
 
   <body>
@@ -235,61 +237,263 @@
       <div class="main-and-footer">
         <div>
           
-<main id="main">
-  <h1>Robotics Writings</h1>
+  <main id="main">
+    <h1>
+      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      Reading Spatial Transforms
+    </h1>
+
+    <div class="date">
+      
+      
+      <strong>Date published: </strong>Sep 6, 2021
+      
+        
+          <br>
+          <strong>Last updated: </strong>Oct 30, 2021
+        
+      
+    </div>
+
+    
+      <div class="tags">
+        <strong>Tags: </strong>
+        <ul aria-label="tags">
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/robotics/">Robotics</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/mathematics/">Mathematics</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+    
+    
+      
+
+  <nav class="toc" aria-labelledby="toc-heading">
+    <h2 id="toc-heading">Sections</h2>
+    <ol>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#homogeneous-matrices">
+            Homogeneous Matrices
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#interpretations">
+            Interpretations
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#coordinate-transformation">
+            Coordinate Transformation
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#state-operator">
+            State Operator
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#tasteful-notation">
+            Tasteful Notation
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#references">
+            References
+          </a>
+        </li>
+      
+    </ol>
+  </nav>
+
+
+    
+
+    <blockquote>
+<p><big><strong><code>ABSTRACT</code></strong></big> ~ <small><i>This article covers different ways to interpret the homogeneous spatial transforms and provides appropriate notational practices for each.</i></small></p>
+</blockquote>
+<h2 id="homogeneous-matrices">Homogeneous Matrices</h2>
+<p>In the context of robot kinematics, a common modeling choice for <a href="/robot-mechanics">forward kinematics</a> is the use of homogeneous matrices.</p>
+<p>Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics,
+$$
+\mathrm{T} = \begin{bmatrix} \mathrm{R} &amp; \mathbf{d} \\ \mathbf{0}&amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx'} &amp; r_{xy'} &amp; r_{xz'} &amp; d_x \\ r_{yx'} &amp; r_{yy'} &amp; r_{yz'} &amp; d_y \\ r_{zx'} &amp; r_{zy'} &amp; r_{zz'} &amp; d_z  \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}
+$$</p>
+<ul>
+<li>
+<p>$\mathrm{R}$ and $\mathrm{d}$ are the rotation and translation components respectively.</p>
+</li>
+<li>
+<p>Recall that $\mathrm{T} \in \mathsf{SE}(3)$ and $\mathrm{R} \in \mathsf{SO}(3)$, denoting the special Euclidean and special orthogonal groups respectively.</p>
+</li>
+<li>
+<p>$r_{uv} = \hat{\mathbf{u}} \cdot \hat{\mathbf{v}} = \cos(\hat{\mathbf{u}}, \hat{\mathbf{v}})$ quantifies the angle between the basis unit vectors.</p>
+</li>
+<li>
+<p>$d_u = oo' \cdot \hat{\mathbf{u}}$ is the translation distance between both origins, in the direction of $\hat{\mathbf{u}}$.</p>
+</li>
+</ul>
+<aside aria-label="note" class="note">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
+      <use xlink:href="#info"></use>
+    </svg>
+    
+
+A homogeneous matrix does not describe the transience of a rigid-body motion. It captures only 2 states: initial, final; nothing in between. It does not describe the rotation and translation <i>motions</i>; <b>it describes their result</b>.
+
+
+  </div>
+</aside>
+
+<h2 id="interpretations">Interpretations</h2>
+<p>A general way to express the transform is $T: x \mapsto y$ or $y = \mathrm{T} x$. The object $x$ is typically can be a point $p$, a vector $v$, or a frame $\mathrm{F}$.</p>
+<p>There are two obvious ways to interpret the transformation $T: x \mapsto y$.</p>
+<ol>
+<li>
+<p>The scene is <u>unchanged</u>, but the object is <u>measured</u> from a different reference.</p>
+</li>
+<li>
+<p>The scene has <u>changed</u>, the object has been <u>moved</u> in the same reference.</p>
+</li>
+</ol>
+<p>This above notation hides this nuance, and the transformation is rewritten for each case.</p>
+<h3 id="case-1-change-of-basis">Case 1: Change of Basis</h3>
+<p>$${}^\mathsf{target}x_0 = {}^\mathsf{target}\mathrm{T}_\mathsf{source} \; {}^\mathsf{source}x_0$$</p>
+<p>The object $x_0$ is unchanged. It was measured in the frame $\mathsf{source}$ and now it is measured in the frame $\mathsf{target}$ by using $\mathrm{T}$.</p>
+<h3 id="case-2-state-operator">Case 2: State Operator</h3>
+<p>$${}^\mathsf{reference}x_1 = {}^\mathsf{reference}\mathrm{T}_{\mathrm{R}, \mathbf{d}} \; {}^\mathsf{reference}x_0$$</p>
+<p>The object $x_0$ has been changed into the object $x_1$ using $\mathrm{T}$ by being rotated by $\mathrm{R}$ and translated by $\mathrm{d}$, all in the same frame $\mathsf{reference}$.</p>
+<p>Therefore, $\mathrm{T}$ either converts an object&rsquo;s representation $({}^{\mathsf{S}}\Box_0 \to {}^{\mathsf{T}}\Box_0)$ or modifies its state $({}^{\mathsf{R}}\Box_0 \to {}^{\mathsf{R}}\Box_1)$.</p>
+<aside aria-label="warning" class="note warning">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 48.430474 41.646302" focusable="false">
+      <use xlink:href="#warning"></use>
+    </svg>
+    
+
+There is nothing mathematically distinct about these interpretations. They are <b>mathematically equivalent</b>. The only difference between them is in conceptual interpretation ("how you read them"). In other words, it' a glass half-full or half-empty scenario.
+
+
+  </div>
+</aside>
+
+<p>These two interpretations are further discussed in the next sections.</p>
+<h2 id="coordinate-transformation">Coordinate Transformation</h2>
+<blockquote>
+<p>Transform the coordinates of the <u>same</u> object $x_0$ from a $\mathsf{source}$ frame to a $\mathsf{target}$ frame.</p>
+</blockquote>
+<ul>
+<li>This measures the same object $x$ from a different location ($\mathsf{target}$), using a known location ($\mathsf{source}$).</li>
+<li>This is a change of basis re-expressing the coordinates of $x$ in a new frame, no objects were moved, no new objects were created.</li>
+<li>In other words, the state of the workspace has not been modified. It is just expressed differently.</li>
+</ul>
+<h3 id="example-mathsfap--mathsfa-mathrmt_mathsfb-mathsfbp">Example: $^{\mathsf{A}}p = {}^{\mathsf{A}} \mathrm{T}_\mathsf{B} {}^{\mathsf{B}}p$</h3>
+<ul>
+<li>The object $x$ here is a point $p$.</li>
+<li>There is one point $p$ and two frames $\mathsf{A}$ and $\mathsf{B}$.</li>
+<li>Transforms the coordinates of the <strong>unchanged</strong> point $p$ from frame $\mathsf{B}$ to frame $\mathsf{A}$.</li>
+</ul>
+<h2 id="state-operator">State Operator</h2>
+<blockquote>
+<p>Create a <em>new</em> state $\Box_1$ from an input state $\Box_0$ both measured in the <em>same</em> frame $\mathsf{reference}$.</p>
+</blockquote>
+<ul>
+<li>This means either modifying the state of an existing object, or creating a new object using an old one.</li>
+<li>This is an operator, which is actively changing the scene, by moving or creating objects.</li>
+<li>The state of the workspace has been modified, by mutating existing objects or introducing new ones.</li>
+</ul>
+<p>For a more programmatic illustration of an active transformation, see this pseudocode,</p>
+
+
+
+
+<div class="code-annotated numbered"><code>
+# Create new object
+<span class='highlight'>object2</span>  ←  <span class='highlight'>transform</span>(object1);
+
+# Modify an existing object
+<span class='highlight'>object1</span> ← transform(object1);
+</code></div>
+
+<ol>
+<li>Here <code>object2</code> is assigned to a state representing a transformed <code>object1</code>.</li>
+<li>The  function <code>transform</code> is assumed to read <code>object1</code>&rsquo;s state by copy, modify it, and then return it;  it does <strong>not</strong>  modify it in-place, nor delete it.</li>
+<li>Here <code>object1</code>&rsquo;s state is updated <em>i.e.</em>, it is translated and/or rotated.</li>
+</ol>
+<h3 id="example-mathsfavmathrmt_mathrmr-mathbfd--mathsfav">Example: ${}^{\mathsf{A}}v'=\mathrm{T}_{\mathrm{R}, \mathbf{d}} \; {}^{\mathsf{A}}v$</h3>
+<ul>
+<li>There is one frame $\mathsf{A}$ and two vectors $v$ and $v'$.</li>
+<li>This changes the vector using rotation $\mathrm{R}$ and translation $\mathbf{d}$ into a <em>new vector</em> in the <strong>same</strong> frame $\mathsf{A}$.</li>
+</ul>
+<h3 id="example-mathsfa-mathrmt_mathsfb--mathrmt_mathrmr-mathbfd--mathsfa-mathrmt_mathsfb">Example: ${}^{\mathsf{A}} \mathrm{T}_\mathsf{B'} = \mathrm{T}_{\mathrm{R}, \mathbf{d}} \; {}^{\mathsf{A}} \mathrm{T}_\mathsf{B}$</h3>
+<ul>
+<li>There are three frames $\mathsf{A}$,  $\mathsf{B}$ and $\mathsf{B'}$.</li>
+<li>This encodes the pose of a transformed output frame $\mathsf{B'}$ measured from same frame $\mathsf{A}$.</li>
+</ul>
+<h2 id="tasteful-notation">Tasteful Notation</h2>
+<p>Notation often implies the preferred interpretation. Consider this example,</p>
+<p>$$
+{}^0\mathrm{T}_n = \prod_{k=0}^{n-1}{}^{k}\mathrm{T}_{k+1} = {}^\mathrm{0}\mathrm{T}_1 {}^\mathrm{1}\mathrm{T}_2 \cdots {}^{n-1}\mathrm{T}_n
+$$</p>
+<p>There are $n$ different frames (numbered $0$ to $n-1$) and the same $\mathrm{T}_n$ is just read from one to the next.</p>
+<p>Equivalently, rewrite this with the following notation,</p>
+<p>$$
+{}^0\mathrm{F}_1 = {}^\mathrm{0}\mathrm{T}_1 {}^\mathrm{0}\mathrm{T}_2 \cdots {}^{0}\mathrm{T}_{n-1} {}^0\mathrm{F}_0
+$$</p>
+<p>Here there is one reference frame (numbered $0$) and the frame $F_0$ is moved $n-1$ times into its final pose $F_1$.</p>
+<p>Both these equations are perfectly equivalent, only the notation changed. It is important to remember that the interpretations are just conceptually useful, but mathematically equivalent</p>
+<h2 id="references">References</h2>
+<p>[1] Mortenson, <em><a href="https://books.industrialpress.com/9780831133382/geometric-transformations-for-3d-modeling/">Geometric Transformations for 3D Modeling</a></em>, 2007.</p>
+<p>[2] Spong, <em><a href="https://www.wiley.com/en-us/Robot+Modeling+and+Control%2C+2nd+Edition-p-9781119524045">Robot Modeling and Control</a></em>, 2020.</p>
+
+  </main>
   
-  <ul class="patterns-list" id="list">
-    
-    <li>
-      <h2>
-        <a href="/spatial-transforms/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          Reading Spatial Transforms
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h2>
-        <a href="/robot-definition/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          Defining a Robot
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h2>
-        <a href="/robot-mechanics/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          A Tour of Robot Mechanics
-        </a>
-      </h2>
-    </li>
-    
-  </ul>
-</main>
 
           
             <footer role="contentinfo">

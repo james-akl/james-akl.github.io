@@ -6,7 +6,18 @@
     <description>Recent content in Mathematics on James Akl</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reading Spatial Transforms</title>
+      <link>https://jamesakl.com/spatial-transforms/</link>
+      <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/spatial-transforms/</guid>
+      <description>ABSTRACT ~ This article covers different ways to interpret the homogeneous spatial transforms and provides appropriate notational practices for each.
+ Homogeneous Matrices In the context of robot kinematics, a common modeling choice for forward kinematics is the use of homogeneous matrices.
+Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics, $$ \mathrm{T} = \begin{bmatrix} \mathrm{R} &amp;amp; \mathbf{d} \\ \mathbf{0}&amp;amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx&#39;} &amp;amp; r_{xy&#39;} &amp;amp; r_{xz&#39;} &amp;amp; d_x \\ r_{yx&#39;} &amp;amp; r_{yy&#39;} &amp;amp; r_{yz&#39;} &amp;amp; d_y \\ r_{zx&#39;} &amp;amp; r_{zy&#39;} &amp;amp; r_{zz&#39;} &amp;amp; d_z \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix} $$</description>
+    </item>
+    
     <item>
       <title>A Tour of Robot Mechanics</title>
       <link>https://jamesakl.com/robot-mechanics/</link>
