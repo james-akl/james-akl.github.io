@@ -448,7 +448,7 @@ There is nothing mathematically distinct about these interpretations. They are <
 <li>This is an operator, which is actively changing the scene, by moving or creating objects.</li>
 <li>The state of the workspace has been modified, by mutating existing objects or introducing new ones.</li>
 </ul>
-<p>For a more programmatic illustration of an active transformation, see this pseudocode,</p>
+<p>For a more programmatic illustration, see this pseudocode,</p>
 
 
 
@@ -479,7 +479,7 @@ There is nothing mathematically distinct about these interpretations. They are <
 <h2 id="tasteful-notation">Tasteful Notation</h2>
 <p>Notation often implies the preferred interpretation. Consider this example,</p>
 <p>$$
-{}^0\mathrm{T}_n = \prod_{k=0}^{n-1}{}^{k}\mathrm{T}_{k+1} = {}^\mathrm{0}\mathrm{T}_1 {}^\mathrm{1}\mathrm{T}_2 \cdots {}^{n-1}\mathrm{T}_n
+{}^0\mathrm{T}_n = \prod_{k=0}^{n-1}{}^{k}\mathrm{T}_{k+1} = {}^\mathrm{0}\mathrm{T}_1 {}^\mathrm{1}\mathrm{T}_2 \cdots {}^{n-2}\mathrm{T}_{n-1} {}^{n-1}\mathrm{T}_n
 $$</p>
 <p>There are $n$ different frames (numbered $0$ to $n-1$) and the same $\mathrm{T}_n$ is just read from one to the next.</p>
 <p>Equivalently, rewrite this with the following notation,</p>
