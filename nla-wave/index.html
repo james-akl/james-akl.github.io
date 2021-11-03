@@ -592,15 +592,19 @@ This is periodic in time $(\frac{1}{20})$ and in space $(\frac{1}{2})$.</p>
   <ul>
 <li>returns a vector of values $v_\mathrm{ex}(y_i)$</li>
 </ul>
-<div class="ticks">
-  <blockquote>
+
+</div>
+
+<blockquote>
 <p>$\mathtt{exinitvel(y)}$</p>
 </blockquote>
 <div class="ticks">
   <ul>
 <li>returns a vector of values $w_\mathrm{ex}(y_i)$</li>
 </ul>
+
 </div>
+
 <blockquote>
 <p>$\mathtt{solex(y,t)}$</p>
 </blockquote>
@@ -608,7 +612,9 @@ This is periodic in time $(\frac{1}{20})$ and in space $(\frac{1}{2})$.</p>
   <ul>
 <li>returns a vector of values $u_\mathrm{ex}(y_i,t)$</li>
 </ul>
+
 </div>
+
 <blockquote>
 <p>$\mathtt{sketchsolex(np,t)}$</p>
 </blockquote>
@@ -617,7 +623,9 @@ This is periodic in time $(\frac{1}{20})$ and in space $(\frac{1}{2})$.</p>
 <li>plots for a fixed $t=\mathtt{t}$, the function $x \mapsto u_\mathrm{ex}(x,t)$ for $x \in [0,1]$</li>
 <li>$\mathtt{np}$ is the number of points that uniformly subdivide $[0,1]$ for plotting</li>
 </ul>
+
 </div>
+
 <blockquote>
 <p>$\mathtt{solverope(c, n, initpos,initvel,M,T)}$</p>
 </blockquote>
@@ -628,7 +636,9 @@ This is periodic in time $(\frac{1}{20})$ and in space $(\frac{1}{2})$.</p>
 <li>is memory-efficient during computation by storing only $3$ iterates corresponding to steps $j-1$, and $j$, and $j+1$</li>
 <li>$\mathtt{initpos}$ and $\mathtt{initvel}$ are functions defining initial position and initial velocity</li>
 </ul>
+
 </div>
+
 <p><strong>Example usage:</strong></p>
 <pre><code class="language-js">solverope(10, 4, @exinitpos, @exinitvel, 5, 0.02)
 &gt;&gt; ans = 
@@ -644,7 +654,9 @@ This is periodic in time $(\frac{1}{20})$ and in space $(\frac{1}{2})$.</p>
 <li>$\mathbf{u}^M$ is the numerical solution via time step size $\frac{T}{M}$ and space step size $\frac{1}{n+1}$</li>
 <li>calculates the slope of the least squares fit of the plotted curve</li>
 </ul>
+
 </div>
+
 <h2 id="solution">Solution</h2>
 <p>The obtained solution is animated below by varying the parameter $t$ and observing changes across $x$.</p>
 <div style="text-align:center">
@@ -653,10 +665,6 @@ This is periodic in time $(\frac{1}{20})$ and in space $(\frac{1}{2})$.</p>
 <h2 id="references">References</h2>
 <p>Trefethen &amp; Bau, <a href="https://my.siam.org/Store/Product/viewproduct/?ProductId=950"><em>Numerical Linear Algebra</em></a>, 1997.</p>
 <p>Strang, <a href="https://my.siam.org/Store/Product/viewproduct/?ProductId=1217"><em>Computational Science &amp; Engineering</em></a>, 2007.</p>
-</div>
-
-</div>
-
 
   </main>
   
