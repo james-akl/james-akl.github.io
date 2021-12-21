@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.91.0" />
   <link rel="canonical" href="/writings/robot-mechanics/">
 
   
@@ -27,6 +27,24 @@ Consider these two points $\mathsf{A}$ and $\mathsf{B}$.">
     body {
       visibility: hidden;
       opacity: 0;
+    }
+  </style>
+
+  <style id="darkTheme">
+    .intro-and-nav,
+    .main-and-footer {
+      filter: invert(100%);
+    }
+
+    * {
+      background-color: inherit
+    }
+
+    img:not([src*=".svg"]),
+    .colors,
+    iframe,
+    .demo-container {
+      filter: invert(100%);
     }
   </style>
 
@@ -252,7 +270,7 @@ Consider these two points $\mathsf{A}$ and $\mathsf{B}$.">
       
         
           <br>
-          <strong>Last updated: </strong>Oct 15, 2021
+          <strong>Last updated: </strong>Dec 21, 2021
         
       
     </div>
@@ -439,19 +457,16 @@ When $\mathrm{G^{inv}}$ does not exist, is intractable or too expensive to obtai
 
 <h3 id="three-questions">Three questions:</h3>
 <p>Now that the basic constructs are defined, there are three pertinent problems that can be asked, depending on which two out of $\{x, y, \mathrm{G}\}$ are known.</p>
-<div style="text-align:center">—</div>
 <p><strong>Forward problem:</strong> What <span style="color:red">unknown output $y$</span>, would <span style="color:green">known input $x$</span> map to, via <span style="color:green">known forward model $\mathrm{G}$</span>? Or, equivalently,</p>
 <blockquote>
 <p>Find <span style="color:red">$y$</span> given <span style="color:green">$x$</span> and <span style="color:green">$\mathrm{G}$</span>.</p>
 </blockquote>
 <p>Although this problem seems straightforward and often is, there are no guarantees. In effect, there are scenarios that can make it very challenging.</p>
-<div style="text-align:center">—</div>
 <p><strong>Inverse problem:</strong> What <span style="color:red">unknown input $x$</span>, would map to <span style="color:green">known output $y$</span>, via <span style="color:green">known forward model $\mathrm{G}$</span>? Or, equivalently,</p>
 <blockquote>
 <p>Find <span style="color:red">$x$</span> given <span style="color:green">$y$</span> and <span style="color:green">$\mathrm{G}$</span>.</p>
 </blockquote>
 <p>When a direct inverse $\mathrm{G^{inv}}$ is feasible and well-conditioned, an inverse model is used to solve this problem. In some cases, a substitute inverse is constructed. Otherwise, the forward problem is &lsquo;solved backwards&rsquo; with adequate techniques.</p>
-<div style="text-align:center">—</div>
 <p><strong>Model identification:</strong> Under what <span style="color:red">unknown forward model $\mathrm{G}$</span> would <span style="color:green">known input $x$</span> map to <span style="color:green">known output $y$</span>? Or, equivalently,</p>
 <blockquote>
 <p>Find <span style="color:red">$\mathrm{G}$</span> given <span style="color:green">$(x,y)$</span>.</p>
@@ -652,7 +667,7 @@ $$</p>
     </label>
   </div>
   
-    <small>Copyright © 2021</small>
+    <small>Copyright © 2021–2022</small>
   
 </footer>
 

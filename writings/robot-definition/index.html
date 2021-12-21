@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="generator" content="Hugo 0.87.0" />
+  <meta name="generator" content="Hugo 0.91.0" />
   <link rel="canonical" href="/writings/robot-definition/">
 
   
     
     <meta name="description" content="ABSTRACT ~ In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
- History The word robot has literary origins (specifically, Czech) meaning forced labor. In our context, this essentially implies that a robot is a machine-slave.">
+ History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-slave.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -26,6 +26,24 @@
     body {
       visibility: hidden;
       opacity: 0;
+    }
+  </style>
+
+  <style id="darkTheme">
+    .intro-and-nav,
+    .main-and-footer {
+      filter: invert(100%);
+    }
+
+    * {
+      background-color: inherit
+    }
+
+    img:not([src*=".svg"]),
+    .colors,
+    iframe,
+    .demo-container {
+      filter: invert(100%);
     }
   </style>
 
@@ -251,7 +269,7 @@
       
         
           <br>
-          <strong>Last updated: </strong>Oct 14, 2021
+          <strong>Last updated: </strong>Dec 21, 2021
         
       
     </div>
@@ -370,7 +388,7 @@
 <p><big><strong><code>ABSTRACT</code></strong></big> ~ <i><small>In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.</small></i></p>
 </blockquote>
 <h2 id="history">History</h2>
-<p>The word <em><strong>robot</strong></em> has literary <a href="https://en.wikipedia.org/wiki/Rossum%27s_Universal_Robots">origins</a> (specifically, Czech)  meaning <em>forced labor</em>. In our context, this essentially implies that a robot is a <em>machine-slave</em>. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (<em>e.g.</em>, automaton, device, machine).</p>
+<p>The word <em><strong>robot</strong></em> has literary <a href="https://en.wikipedia.org/wiki/Rossum's_Universal_Robots">origins</a> (specifically, Czech) meaning <em>forced labor</em>, vaguely implying that a robot is a <em>machine-slave</em>. However, a more suitable metaphor for our modern times is that of a “helper”; specifically, that a robot is a <em>machine-helper</em>. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (<em>e.g.</em>, automaton, device, machine).</p>
 <p>The definition of a robot changes across cultures and has changed throughout time. Some machines considered robots by Japanese standards are not by American standards <a href="#references">[1]</a>. But we can try to find overlap and force a consensus.</p>
 <h2 id="present-day-opinions">Present-day Opinions</h2>
 <p>Nowadays, we can agree that a robot is a system, comprised of various components and subsystems, that has some objective, some awareness of itself or surroundings, some ability to physically interact with its environment (move, touch, grab, drill, shoot, …), and potentially some level of autonomy (in the engineering sense; automatic, not driven; no detailed direct human operation). It is difficult to reach an agreeable and precise definition as opinions often quickly disperse.</p>
@@ -402,7 +420,7 @@
 </blockquote>
 <p>Many fictional movie characters we call &lsquo;robots&rsquo;, especially &lsquo;killer robots&rsquo;, such as the famous Terminator, are not under any human&rsquo;s authority and thus are not robots. There are also tricky scenarios in which it is unclear when a system ceases to be a robot. Consider a robot, once working for people, now fallen under the control of a hypothetical non-human entity. It is a &lsquo;robot&rsquo; vis-à-vis the entity, but perhaps just a killer machine to people. What about robots commanded by one group of people, instructed against another group of people? It gets tricky, both nominally and ethically.</p>
 <p>It is in this context that many <a href="https://en.wikipedia.org/wiki/Laws_of_robotics">laws of robotics</a> have been proposed or imagined, the most famous of which are Asimov&rsquo;s in literary contexts.</p>
-<p>When a robot exhibits behavior that may be perceived as supposed free-willed, then it should, in principle, cease being considered a robot, that is, a slave system, but rather a free system; free as in freedom. But such scenarios are, for now, only in the realms of imagination.</p>
+<p>When a robot exhibits behavior that may be perceived as supposed free-willed, then it should, in principle, cease being considered a robot, that is, a bound system, but rather a free system; free as in freedom. But such scenarios are, for now, only in the realms of imagination.</p>
 <h2 id="examples">Examples</h2>
 <p>Consider these systems, and guess whether each is closer to a robot, or not.</p>
 <div class="expandable-section">
@@ -414,7 +432,7 @@
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-b1b3716964dad02233f578f4ae5df00c">
+    <button aria-expanded="false" data-expands="js-expandable-df9536b2a8010d42601d43f7e75fab3c">
       <span class="expandable-label">Handshake machine?</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -426,7 +444,7 @@
   
     </h4>
   
-  <div id="js-expandable-b1b3716964dad02233f578f4ae5df00c" hidden>
+  <div id="js-expandable-df9536b2a8010d42601d43f7e75fab3c" hidden>
     Likely <strong>yes</strong>. It can sense a user&rsquo;s hand, plan the shake, and execute it in the physical world. Characteristics of a robot.
   </div>
 </div>
@@ -440,7 +458,7 @@
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-888868b5ecfe84b188e31042380289ec">
+    <button aria-expanded="false" data-expands="js-expandable-08eb413e2c89861b888f8482c8035e8e">
       <span class="expandable-label">Washing machine?</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -452,7 +470,7 @@
   
     </h4>
   
-  <div id="js-expandable-888868b5ecfe84b188e31042380289ec" hidden>
+  <div id="js-expandable-08eb413e2c89861b888f8482c8035e8e" hidden>
     It <strong>depends</strong>. A rather primitive washing machine is closer to an electromechanical appliance than a robot. But consider a fancy washer that scans its contents and determines the best washing program for them, all autonomously. That would be closer to a robot.
   </div>
 </div>
@@ -466,7 +484,7 @@
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-ddbfa214d608506bc8c7e0a7e827921e">
+    <button aria-expanded="false" data-expands="js-expandable-a86ed7d0005f17e472bcd8b286a12ec9">
       <span class="expandable-label">ATM machine?</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -478,7 +496,7 @@
   
     </h4>
   
-  <div id="js-expandable-ddbfa214d608506bc8c7e0a7e827921e" hidden>
+  <div id="js-expandable-a86ed7d0005f17e472bcd8b286a12ec9" hidden>
     Ambivalent <strong>yes</strong>, could easily be a <strong>no</strong>. An ATM can be considered a weak robot. It responds to input, reads cards, shuffles banknotes, and so on, all in the physical world. It can fulfill its task without any human operator. It could be called a robot, though not a very fancy one.
   </div>
 </div>
@@ -492,7 +510,7 @@
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-8a11dedc6a3311ee01cf9043c283ee45">
+    <button aria-expanded="false" data-expands="js-expandable-1ef4e02ca36e35de8814ed3c3a1191c0">
       <span class="expandable-label">Speaker home assistant?</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -504,7 +522,7 @@
   
     </h4>
   
-  <div id="js-expandable-8a11dedc6a3311ee01cf9043c283ee45" hidden>
+  <div id="js-expandable-1ef4e02ca36e35de8814ed3c3a1191c0" hidden>
     Most likely <strong>no</strong>. It can sense and hear voice commands. It can process and respond. But it cannot move nor interact physically with the environment. If it&rsquo;s a mobile home assistant, then it&rsquo;s a resounding yes.
   </div>
 </div>
@@ -518,7 +536,7 @@
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-50d958d7a9d83c5121a968971cf60f65">
+    <button aria-expanded="false" data-expands="js-expandable-5192fda750d3985695fda667988cc101">
       <span class="expandable-label">Remote-controlled drone?</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -530,7 +548,7 @@
   
     </h4>
   
-  <div id="js-expandable-50d958d7a9d83c5121a968971cf60f65" hidden>
+  <div id="js-expandable-5192fda750d3985695fda667988cc101" hidden>
     Most would say <strong>no</strong> as it cannot function without a pilot. Perhaps if the drone has some built-in autonomy to assist, correct, or otherwise smoothen the flight as its driven by the remote pilot, then maybe it is closer to a robot.
   </div>
 </div>
@@ -544,7 +562,7 @@
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-ab89a4dd65bc4617ed0e2194ddcce4a3">
+    <button aria-expanded="false" data-expands="js-expandable-60dcc9e3bed6aea1941bd4d2c4547ad8">
       <span class="expandable-label">Driverless airport terminal shuttle?</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -556,7 +574,7 @@
   
     </h4>
   
-  <div id="js-expandable-ab89a4dd65bc4617ed0e2194ddcce4a3" hidden>
+  <div id="js-expandable-60dcc9e3bed6aea1941bd4d2c4547ad8" hidden>
     A weak <strong>yes</strong>. This system technically operates without any human intervention. Just set and forget, with occasional maintenance. This shuttle goes round and round around the airport terminals. It just runs &ldquo;one program&rdquo;, lacks adaptability, and is thus a rather &lsquo;unintelligent&rsquo; robot.
   </div>
 </div>
@@ -583,7 +601,7 @@
     </label>
   </div>
   
-    <small>Copyright © 2021</small>
+    <small>Copyright © 2021–2022</small>
   
 </footer>
 
