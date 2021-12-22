@@ -53,7 +53,7 @@
 
   /* Add "link here" links to <h2> headings */
   (function () {
-    var headings = document.querySelectorAll('main > h2');
+    var headings = document.querySelectorAll('h2, h3, h4, h5, h6');
 
     Array.prototype.forEach.call(headings, function (heading) {
       var id = heading.getAttribute('id');

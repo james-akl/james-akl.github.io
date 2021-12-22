@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.91.0" />
-  <link rel="canonical" href="/writings/robot-mechanics/">
+  <link rel="canonical" href="https://jamesakl.com/writings/robot-mechanics/" />
 
   
     
@@ -302,72 +302,18 @@ Consider these two points $\mathsf{A}$ and $\mathsf{B}$.">
     
     
       
-
   <nav class="toc" aria-labelledby="toc-heading">
-    <h2 id="toc-heading">Sections</h2>
-    <ol>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#motivation">
-            Motivation
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#forward--inverse-problems">
-            Forward &amp; Inverse Problems
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#pose-kinematics">
-            Pose Kinematics
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#higher-order-models">
-            Higher-Order Models
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#summary-table">
-            Summary Table
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#references">
-            References
-          </a>
-        </li>
-      
-    </ol>
+    <strong id="toc-heading">Sections</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#forward--inverse-problems">Forward &amp; Inverse Problems</a></li>
+    <li><a href="#pose-kinematics">Pose Kinematics</a></li>
+    <li><a href="#higher-order-models">Higher-Order Models</a></li>
+    <li><a href="#summary-table">Summary Table</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
   </nav>
 
 
@@ -388,11 +334,7 @@ Consider these two points $\mathsf{A}$ and $\mathsf{B}$.">
     <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
       <use xlink:href="#info"></use>
     </svg>
-    
-
-Before we can communicate the desired path <i>precisely</i> to a robot, we must first be able to precisely encode the differences between point $\mathsf{A}$ and <i>any</i> point $\mathbf{x}(t)$ along that path; noting that $\mathbf{x}(\mathsf{start}) = \mathsf{A}$ and $\mathbf{x}(\mathsf{end}) = \mathsf{B}$. In fact, we would like to encode the differences between <u>any two frames</u> in a space. A frame at a point informs about both position and orientation, called <i>pose</i>.
-
-
+    Before we can communicate the desired path <i>precisely</i> to a robot, we must first be able to precisely encode the differences between point $\mathsf{A}$ and <i>any</i> point $\mathbf{x}(t)$ along that path; noting that $\mathbf{x}(\mathsf{start}) = \mathsf{A}$ and $\mathbf{x}(\mathsf{end}) = \mathsf{B}$. In fact, we would like to encode the differences between <u>any two frames</u> in a space. A frame at a point informs about both position and orientation, called <i>pose</i>.
   </div>
 </aside>
 
@@ -408,11 +350,7 @@ Before we can communicate the desired path <i>precisely</i> to a robot, we must 
     <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
       <use xlink:href="#info"></use>
     </svg>
-    
-
-The position and orientation of a single rigid-body are collectively called <b><i>pose</i></b>. For a system of rigid-bodies (<i>e.g.</i>, a robot with multiple links), the poses of all the elements collectively are called <b><i>posture</i></b>.
-
-
+    The position and orientation of a single rigid-body are collectively called <b><i>pose</i></b>. For a system of rigid-bodies (<i>e.g.</i>, a robot with multiple links), the poses of all the elements collectively are called <b><i>posture</i></b>.
   </div>
 </aside>
 
@@ -447,11 +385,7 @@ $$</p>
     <svg class="sign" aria-hidden="true" viewBox="0 0 48.430474 41.646302" focusable="false">
       <use xlink:href="#warning"></use>
     </svg>
-    
-
-When $\mathrm{G^{inv}}$ does not exist, is intractable or too expensive to obtain exactly, or is ill-conditioned (behaves badly), it is often substituted (<i>e.g.</i>, pseudoinverses) or estimated with special methods (<i>e.g.</i>, numerical optimization).
-
-
+    When $\mathrm{G^{inv}}$ does not exist, is intractable or too expensive to obtain exactly, or is ill-conditioned (behaves badly), it is often substituted (<i>e.g.</i>, pseudoinverses) or estimated with special methods (<i>e.g.</i>, numerical optimization).
   </div>
 </aside>
 
@@ -478,11 +412,7 @@ When $\mathrm{G^{inv}}$ does not exist, is intractable or too expensive to obtai
     <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
       <use xlink:href="#info"></use>
     </svg>
-    
-
-A popular scenario that may loosely be considered "model identification" is in machine learning using neural networks. In problems where obtaining a model $\mathrm{G}$ is infeasible, but input-output data is abundant, an unknown real process $\mathrm{G_{real}}$ can approximated with an inferred estimate $\mathrm{\hat{G}_{real}}$. Ambitious data scientists also have been known to use this approach on problems where an explicit model $\mathrm{G}$ is already available; either in hopes of outperforming $\mathrm{G}$ (<i>i.e.</i>, $\mathrm{\hat{G}_{real}}$ is closer to $\mathrm{G_{real}}$ than $\mathrm{G}$ is), or to show comparable performance and thus a display of sophistication.
-
-
+    A popular scenario that may loosely be considered &ldquo;model identification&rdquo; is in machine learning using neural networks. In problems where obtaining a model $\mathrm{G}$ is infeasible, but input-output data is abundant, an unknown real process $\mathrm{G_{real}}$ can approximated with an inferred estimate $\mathrm{\hat{G}<em>{real}}$. Ambitious data scientists also have been known to use this approach on problems where an explicit model $\mathrm{G}$ is already available; either in hopes of outperforming $\mathrm{G}$ (<i>i.e.</i>, $\mathrm{\hat{G}</em>{real}}$ is closer to $\mathrm{G_{real}}$ than $\mathrm{G}$ is), or to show comparable performance and thus a display of sophistication.
   </div>
 </aside>
 
@@ -525,11 +455,7 @@ Without going into too much detail, the rotation terms $r_{uv'}$ capture the ang
     <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
       <use xlink:href="#info"></use>
     </svg>
-    
-
-There are different ways to interpret the same homogeneous transform, which are mathematically equivalent, just conceptually different. These nuances are explored in my <a href="/homogeneous-transforms">other article</a>. 
-
-
+    There are different ways to interpret the same homogeneous transform, which are mathematically equivalent, just conceptually different. These nuances are explored in my <a href="/homogeneous-transforms">other article</a>.
   </div>
 </aside>
 
@@ -565,9 +491,7 @@ $$</p>
     <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
       <use xlink:href="#info"></use>
     </svg>
-    
-For closed kinematic chains or parallel mechanisms, inverse kinematics is typically the easier problem while forward kinematics is typically more difficult.
-
+    For closed kinematic chains or parallel mechanisms, inverse kinematics is typically the easier problem while forward kinematics is typically more difficult.
   </div>
 </aside>
 
