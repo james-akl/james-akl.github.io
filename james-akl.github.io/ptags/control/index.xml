@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Control on James Akl</title>
+    <link>https://jamesakl.com/ptags/control/</link>
+    <description>Recent content in Control on James Akl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/ptags/control/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Robot Control Simulations</title>
+      <link>https://jamesakl.com/control-simulations/</link>
+      <pubDate>Tue, 14 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/control-simulations/</guid>
+      <description>GitHub Source files are available in the GitHub repository.
+This page summarizes the main ideas, detailed treatments are in the PDFs linked under the section titles.
+Three different control methods have been formulated and simulated.
+State Observer &amp;amp; Feedback Control PDF A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}+\mathrm{B} \mathbf{u}+\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed.</description>
+    </item>
+    
+    <item>
+      <title>Inverse Problems for DOBC</title>
+      <link>https://jamesakl.com/noise-dobc/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/noise-dobc/</guid>
+      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
+Description The project&amp;rsquo;s full title is:
+ Noise Extraction in Disturbance Observer-Based Control
+A Computational Inverse Problems Approach
+ In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
+    </item>
+    
+  </channel>
+</rss>
