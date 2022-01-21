@@ -368,7 +368,7 @@ caption {
 /* Patterns navigation */
 .patterns {
     overflow: auto;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     min-width: max-content;
 }
 .patterns * {
@@ -396,8 +396,8 @@ caption {
     align-items: baseline;
     font-weight: bold;
     padding: 0 1rem;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
 }
 .pattern a:focus {
     outline: none;
