@@ -6,15 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.91.0" />
-  <link rel="canonical" href="/nla-wave/">
+  <link rel="canonical" href="/_metapage/">
 
   
     
-    <meta name="description" content="GitHub Source code is available in the GitHub repository.
-Description The project’s full title is:
- Solving a Time–Dependent 1D Wave PDE
-A Numerical Linear Algebraic Approach
- Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,">
+    <meta name="description" content="_metapages">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -64,7 +60,7 @@ A Numerical Linear Algebraic Approach
 
   
   
-  <title>Numerical Analysis: Wave PDE | James Akl</title>
+  <title>_metapages | James Akl</title>
 </head>
 
   <body>
@@ -270,437 +266,93 @@ A Numerical Linear Algebraic Approach
       <div class="main-and-footer">
         <div>
           
-  <main id="main">
-    <h1>
-      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-        <use xlink:href="#bookmark"></use>
-      </svg>
-      Numerical Analysis: Wave PDE
-    </h1>
-
-    <div class="date">
-      
-        
-        
-        <strong>Date published: </strong>Sep 9, 2021
-        
-          
-            <br>
-            <strong>Last updated: </strong>Jan 25, 2022
-          
-        
-      
-    </div>
-
-    
-      <div class="tags">
-        <strong>Tags: </strong>
-        <ul aria-label="tags">
-          
-            <li>
-              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
-                <use xlink:href="#tag"></use>
-              </svg>
-              
-              <a href="/ptags/mathematics/">Mathematics</a>
-            </li>
-          
-        </ul>
-      </div>
-    
-    
-    
-      
-
-  <nav class="toc" aria-labelledby="toc-heading">
-    <h2 id="toc-heading">Sections</h2>
-    <ol>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#description">
-            Description
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#problem-statement">
-            Problem Statement
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#project-objectives">
-            Project Objectives
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#space-discretization">
-            Space Discretization
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#time-discretization">
-            Time Discretization
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#initialization">
-            Initialization
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#convergence">
-            Convergence
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#matlab-implementation">
-            MATLAB Implementation
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#solution">
-            Solution
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#references">
-            References
-          </a>
-        </li>
-      
-    </ol>
-  </nav>
-
-
-    
-
-    <p><a href="https://github.com/james-akl/nla-wave">GitHub</a>
-<br><small>Source code is available in the GitHub repository.</small></p>
-<h2 id="description">Description</h2>
-<p>The project&rsquo;s full title is:</p>
-<blockquote>
-<p><strong>Solving a Time–Dependent 1D Wave PDE</strong><br><em>A Numerical Linear Algebraic Approach</em></p>
-</blockquote>
-<h2 id="problem-statement">Problem Statement</h2>
-<p>The governing PDE often used to model wave phenomena is the <a href="https://en.wikipedia.org/wiki/Wave_equation">Wave equation</a>:
-$$
-\ddot{u} = c^2 \nabla^2 u
-$$
-Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,</p>
-<p>$$
-\frac{\partial^2}{\partial t^2}u(x,t) - c^2 \frac{\partial^2}{\partial x^2}u(x,t) = 0 \, \bigg|_{x \in (0, 1) \textrm{ and } t&gt;0}
-$$
-Here the function $u(x,t)$ is defined as,
-$$
-\begin{matrix}
-u: &amp; [0,1] \times \R_{\geq 0} &amp; \to   &amp; \R
-\\
-&amp; (x,t) &amp; \mapsto &amp; u(x,t)
-\end{matrix}
-$$
-The PDE boundary conditions are,
-$$
-u(0,t) = u(1,t) = 0
-$$
-And its initial conditions are,
-$$
-u(x,0) = v(x) \textrm{ and } \frac{\partial u}{\partial t}(x, 0) = w(x) \, \bigg|_{x \in (0, 1)}
-$$
-Here the functions $v, w: [0,1] \to \R$ are known.</p>
-<p>This PDE could model, for instance, vertical oscillations over a length $1$.</p>
-<p>Here $u(x, t)$ is thus the vertical position at point $x$ and time $t$. Likewise, $v$ and $w$ are the initial positions and initial velocities. $c \in \R^+$ is a  coefficient (<em>e.g.</em>, depends on the specific properties of the string).</p>
-<p>For sufficiently regular functions $v$ and $w$, this PDE admits a unique solution exists of the form,</p>
-<p>$$
-u(x,t) = \sum_{k=1}^{\infty} \alpha_k \cos(k \pi c t + \phi_k) \sin (k \pi x)
-$$
-Here $\alpha_k, \phi_k \in \R$ depend only on $v$ and $w$.</p>
-<h2 id="project-objectives">Project Objectives</h2>
-<p>The goal is to <strong>numerically solve</strong> this PDE, and thus find the numerical approximations to the exact solution $u(x, t)$ for any $x \in (0,1)$ and $t$.</p>
-<p>This problem is <strong>discretized twice</strong>:</p>
-<ol>
-<li><strong>Spatial discretization</strong> in $x$ to construct a system of second-order time-dependent differential equations with appropriate conditions.</li>
-<li><strong>Temporal discretization</strong> in $t$ to construct an iterative solution scheme and its initial values.</li>
-</ol>
-<p>Furthermore, a <strong>convergence analysis</strong> and <strong>MATLAB implementation</strong> are completed.</p>
-<h2 id="space-discretization">Space Discretization</h2>
-<p>Let the spatial step size be $h = \frac{1}{n + 1}$. Thus, the points $x_j = jh$ for $j \in \{1, \ldots , n\}$ define a uniform mesh on $[0, 1]$.</p>
-<p>For a fixed $t$, $\frac{\partial^2}{\partial x^2}u(x_j, t)$ is approximated by the second-order finite difference,
-$$
-\frac{u(x_{j-1}, t) - 2u(x_j, t) + u(x_{j+1}, t)}{h^2}
-$$</p>
-<p>For $j \in \{0, \ldots, n\}$, we introduce the approximations $u_j(t)$ of the exact values $u(x_j, t)$. Thus, from the original
-continuous system construct a discrete approximate system $(P_h)$.</p>
-<p>This is expressed as the following system of time-dependent second-order differential equations with boundary and initial conditions: for $j \in \{1, \ldots, n\}$
-$$
-(P_h)
-\begin{dcases}
-u''_j(t)+ c^2 \frac{u(x_{j-1}, t) - 2u(x_j, t) + u(x_{j+1}, t)}{h^2} = 0
-\\ u_0(t) = u_{n+1}(t) = 0
-\\ u_j(0) = v(x_j) \textrm{ and } u'_j(0) = w(x_j)
-\end{dcases}
-$$
-This can be rewritten in matrix form. Proceed by defining the second-order finite difference matrix operator,
-$$
-\mathrm{A} = \begin{bmatrix}
-2 &amp; -1 &amp; &amp;
-\\ -1 &amp; \ddots &amp; \ddots
-\\ &amp; \ddots &amp; \ddots &amp; -1
-\\ &amp; &amp; -1 &amp; 2
-\end{bmatrix}
-$$
-and the vectors,
-$$
-\mathbf{v} = \begin{bmatrix}
-v(x_1)
-\\ \vdots
-\\ v(x_n)
-\end{bmatrix},
-\quad
-\mathbf{w} = \begin{bmatrix}
-w(x_1)
-\\ \vdots
-\\ w(x_n)
-\end{bmatrix},
-\quad
-\mathbf{u} = \begin{bmatrix}
-u_1(t)
-\\ \vdots
-\\ u_n(t)
-\end{bmatrix}.
-$$
-The problem is thus rewritten to its matrix form,
-$$
-(P_h)
-\begin{dcases}
-\mathbf{u}''(t) + \frac{c^2}{h^2}\mathrm{A}\mathbf{u}(t), &amp; \textrm{for } t&gt;0
-\\ \mathbf{u}(0) = \mathbf{v}, \;\; \mathbf{u}'(0) = \mathbf{w}.
-\end{dcases}
-$$</p>
-<h2 id="time-discretization">Time Discretization</h2>
-<p>Introduce the time step size $\Delta t$, thus the time-steps are $t_k = k \Delta t$ for $k \in \N$.</p>
-<p>$u''_j(t_k)$ is approximated by the finite difference,
-$$
-\frac{-2 u_{j}\left(t_{k}\right)+u_{j}\left(t_{k+1}\right)+u_{j}\left(t_{k-1}\right)}{\Delta t^{2}}
-$$
-Using $u^k_j$ as an approximation of $u_j(t_k)$, deduce from $(P_h)$ for $j \in \{1, \ldots, n\}$ the equalities,
-$$
-\frac{-2 u_{j}^{k}+u_{j}^{k+1}+u_{j}^{k-1}}{\Delta t^{2}}+c^{2} \frac{2 u_{j}^{k}-u_{j+1}^{k}-u_{j-1}^{k}}{h^{2}}=0
-$$
-Rewrite into matrix form using the notation $\mathbf{u}^k = \begin{bmatrix}
-u^k_1 &amp; \cdots &amp; u^k_n
-\end{bmatrix}^\mathsf{T}$,
-$$
-\frac{-2 \mathbf{u}^{k}+\mathbf{u}^{k+1}+\mathbf{u}^{k-1}}{\Delta t^{2}}+\frac{c^{2}}{h^{2}} \mathrm{A} \mathbf{u}^{k}=0
-$$
-Deduce an explicit expression for $\mathbf{u}^{k+1}$,
-$$
-\mathbf{u}^{k+1} = (2\mathrm{I} - \lambda \mathrm{A})\mathbf{u}^{k} - \mathbf{u}^{k-1},
-$$
-with $\lambda=\left(\frac{c \Delta t}{h}\right)^{2}$.</p>
-<h2 id="initialization">Initialization</h2>
-<p>Initialize the iterations by choosing values for $\mathbf{u}^{0}$ and $\mathbf{u}^{1}$, the approximations of $\mathbf{u}$ at $t = 0$ and $t = \Delta t$.</p>
-<p>Choose $\mathbf{u}^{0} = \mathbf{v}$ since $\mathbf{u}(0) = \mathbf{v}$.</p>
-<p>To choose a good value for $\mathbf{u}^{1}$, exploit Taylor&rsquo;s theorem,</p>
-<p>$$
-u_j (\Delta t) = u_j (0) + \Delta t \, u'_j (0) + R_1(\Delta t)
-$$
-Express the remainder $R_1$ explicitly in <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem#Explicit_formulas_for_the_remainder">Lagrange mean-value form</a>.<br>$\exists \xi \in (0, \Delta t) :$
-$$
-R_{k}(\Delta t)=\frac{u_j^{(k+1)}\left(\xi \right)}{(k+1) !}(\Delta t - 0)^{k+1}
-$$
-For $k = 1$, obtain, $\exists \xi \in (0, \Delta t) :$
-$$
-u_j (\Delta t) = u_j (0) + \Delta u'_j (0) + \frac{\Delta t^2}{2}u''_j(\xi)
-$$
-Approximate $u''_j(\xi)$ with $u''_j(0)$, which is evaluated as in $(P_h)$, thus obtain,
-$$
-u_{j}(\Delta t) \approx u_{j}(0)+\Delta t u_{j}^{\prime}(0)+\frac{c^{2} \Delta t^{2}}{2h^{2}}\big[u_{j-1}(0)-2 u_{j}(0)+u_{j+1}(0)\big]
-$$
-Using this approximation, choose $\mathbf{u}^1$ to be,
-$$
-\mathbf{u}^1 = \mathbf{v} + \Delta t \, \mathbf{w} - \frac{\lambda}{2}\mathrm{A}\mathbf{v} = (\mathrm{I}-\tfrac{1}{2}\lambda \mathrm{A})\mathbf{v} + \Delta t \, \mathbf{w}
-$$
-The iterative scheme is thus, for $k \geq 1$,
-$$
-\begin{dcases}
-\mathbf{u}^{0} &amp;= \mathbf{v},
-\\ \mathbf{u}^{1} &amp;= \big(\mathrm{I}-\tfrac{1}{2}\lambda \mathrm{A}\big)\mathbf{v} + \Delta t \, \mathbf{w},
-\\ \mathbf{u}^{k+1} &amp;= (2\mathrm{I} - \lambda \mathrm{A})\mathbf{u}^{k} - \mathbf{u}^{k-1}, \end{dcases}
-$$
-with $\lambda=\left(\frac{c \Delta t}{h}\right)^{2}$.</p>
-<h2 id="convergence">Convergence</h2>
-<p>The sequence $(\mathbf{u}^k)$ must not diverge as $k$ increases. The iterative solution above is said to be stable if the sequence $(\mathbf{u}^k)$ verifies:
-$$
-\exists C&gt;0 : \left\Vert\mathbf{u}^k\right\Vert_\infty \leq C \quad \forall k \in \N
-$$
-To assure stability, we verify on the time and space steps ($\Delta t$ and $h$) the <a href="https://encyclopediaofmath.org/wiki/Courant-Friedrichs-Lewy_condition">Courant–Friedrichs–Lewy (CFL) convergence condition</a>,
-$$
-\frac{\Delta t}{h} \leq \frac{1}{c}
-$$
-When the CFL condition is satisfied, the iterative scheme is proven to converge quadratically.</p>
-<p>This means that, for a fixed time $T &gt; 0$, by approaching $u(x, T)$ over $[0, 1]$ using time step $ \Delta t=\frac{T}{M} \leq \frac{h}{c} $ then the error is bound as follows,
-$$
-\max_{1 \leq j \leq n}\left|u_{j}^{M}-u\left(x_{j}, T\right)\right| \leq K h^{2}
-$$
-Here $K$ is a constant independent from $M$ and $n$.</p>
-<h2 id="matlab-implementation">MATLAB Implementation</h2>
-<p>We numerically check the CFL condition and the convergence order in the particular case $c = 10$ with the initial conditions,
-$$
-v_\mathrm{ex}(x)=\sin (4 \pi x), \qquad w_\mathrm{ex}(x)=-40 \pi \sin (4 \pi x)
-$$
-Here, the exact solution $u_\mathrm{ex}$ is thus,
-$$
-u_\mathrm{ex}(x,t) = \sqrt{2} \cos \left(40 \pi t+\frac{\pi}{4}\right) \sin (4 \pi x)
-$$
-This is periodic in time $(\frac{1}{20})$ and in space $(\frac{1}{2})$.</p>
-<h3 id="implemented-functions">Implemented functions</h3>
-<p>The following functions have been implemented in MATLAB.</p>
-<blockquote>
-<p>$\mathtt{prodmatvec(x,n)}$</p>
-</blockquote>
-<div class="ticks">
-  <ul>
-<li>
-<p>returns the product $\mathrm{A}x$ where $x$ is a vector of dimension $\mathtt{n}$</p>
-</li>
-<li>
-<p>structures $\mathrm{A}$ as a sparse matrix (does not  construct it) to reduce computational cost and memory allocations</p>
-</li>
-</ul>
-
-</div>
-
-<blockquote>
-<p>$\mathtt{exinitpos(y)}$</p>
-</blockquote>
-<div class="ticks">
-  <ul>
-<li>returns a vector of values $v_\mathrm{ex}(y_i)$</li>
-</ul>
-
-</div>
-
-<blockquote>
-<p>$\mathtt{exinitvel(y)}$</p>
-</blockquote>
-<div class="ticks">
-  <ul>
-<li>returns a vector of values $w_\mathrm{ex}(y_i)$</li>
-</ul>
-
-</div>
-
-<blockquote>
-<p>$\mathtt{solex(y,t)}$</p>
-</blockquote>
-<div class="ticks">
-  <ul>
-<li>returns a vector of values $u_\mathrm{ex}(y_i,t)$</li>
-</ul>
-
-</div>
-
-<blockquote>
-<p>$\mathtt{sketchsolex(np,t)}$</p>
-</blockquote>
-<div class="ticks">
-  <ul>
-<li>plots for a fixed $t=\mathtt{t}$, the function $x \mapsto u_\mathrm{ex}(x,t)$ for $x \in [0,1]$</li>
-<li>$\mathtt{np}$ is the number of points that uniformly subdivide $[0,1]$ for plotting</li>
-</ul>
-
-</div>
-
-<blockquote>
-<p>$\mathtt{solverope(c, n, initpos,initvel,M,T)}$</p>
-</blockquote>
-<div class="ticks">
-  <ul>
-<li>returns the vector $\mathbf{u}^M$ using time step size $\frac{T}{M}$ and a space step size $\frac{1}{n+1}$</li>
-<li>plots the approximate solution at time $T$</li>
-<li>is memory-efficient during computation by storing only $3$ iterates corresponding to steps $j-1$, and $j$, and $j+1$</li>
-<li>$\mathtt{initpos}$ and $\mathtt{initvel}$ are functions defining initial position and initial velocity</li>
-</ul>
-
-</div>
-
-<p><strong>Example usage:</strong></p>
-<pre><code class="language-js">solverope(10, 4, @exinitpos, @exinitvel, 5, 0.02)
-&gt;&gt; ans = 
-    [-0.9427  1.5253  -1.5253  0.9427]
-</code></pre>
-<blockquote>
-<p>$\mathtt{study(T)}$</p>
-</blockquote>
-<div class="ticks">
-  <ul>
-<li>checks the CFL condition by varying $n$ and $M$ for a fixed $T$</li>
-<li>plots the curve $\ln(n) \mapsto -\ln(\mathrm{err}(n))$<br>where $\mathrm{err}(n) = \displaystyle\max_{1\leq j \leq n} \left| \mathbf{u}_j^M - u_\mathrm{ex}(jh, T) \right|$</li>
-<li>$\mathbf{u}^M$ is the numerical solution via time step size $\frac{T}{M}$ and space step size $\frac{1}{n+1}$</li>
-<li>calculates the slope of the least squares fit of the plotted curve</li>
-</ul>
-
-</div>
-
-<h2 id="solution">Solution</h2>
-<p>The obtained solution is animated below by varying the parameter $t$ and observing changes across $x$.</p>
-<div style="text-align:center">
-    <img src="sol.gif" alt="Animated PDE numerical solution." style="zoom:140%;" />
-</div>
-<h2 id="references">References</h2>
-<p>Trefethen &amp; Bau, <a href="https://my.siam.org/Store/Product/viewproduct/?ProductId=950"><em>Numerical Linear Algebra</em></a>, 1997.</p>
-<p>Strang, <a href="https://my.siam.org/Store/Product/viewproduct/?ProductId=1217"><em>Computational Science &amp; Engineering</em></a>, 2007.</p>
-
-  </main>
+<main id="main">
+  <h1>_metapages</h1>
   
+  <ul class="patterns-list" id="list">
+    
+    <li>
+      <h2>
+        <a href="/writings/">
+          <svg
+            class="bookmark"
+            aria-hidden="true"
+            viewBox="0 0 40 50"
+            focusable="false"
+          >
+            <use xlink:href="#bookmark"></use>
+          </svg>
+          Writings
+        </a>
+      </h2>
+    </li>
+    
+    <li>
+      <h2>
+        <a href="/resume/">
+          <svg
+            class="bookmark"
+            aria-hidden="true"
+            viewBox="0 0 40 50"
+            focusable="false"
+          >
+            <use xlink:href="#bookmark"></use>
+          </svg>
+          Resume
+        </a>
+      </h2>
+    </li>
+    
+    <li>
+      <h2>
+        <a href="/research/">
+          <svg
+            class="bookmark"
+            aria-hidden="true"
+            viewBox="0 0 40 50"
+            focusable="false"
+          >
+            <use xlink:href="#bookmark"></use>
+          </svg>
+          Research
+        </a>
+      </h2>
+    </li>
+    
+    <li>
+      <h2>
+        <a href="/projects/">
+          <svg
+            class="bookmark"
+            aria-hidden="true"
+            viewBox="0 0 40 50"
+            focusable="false"
+          >
+            <use xlink:href="#bookmark"></use>
+          </svg>
+          Projects
+        </a>
+      </h2>
+    </li>
+    
+    <li>
+      <h2>
+        <a href="/about/">
+          <svg
+            class="bookmark"
+            aria-hidden="true"
+            viewBox="0 0 40 50"
+            focusable="false"
+          >
+            <use xlink:href="#bookmark"></use>
+          </svg>
+          About
+        </a>
+      </h2>
+    </li>
+    
+  </ul>
+</main>
 
           
             <footer role="contentinfo">

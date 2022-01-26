@@ -126,6 +126,27 @@ For this, I focus on the relevant advances, sciences, and practices within:
     </item>
     
     <item>
+      <title>Projects</title>
+      <link>https://jamesakl.com/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/projects/</guid>
+      <description>Some of personal projects are showcased below. [View tags]
+Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions.  Keywords Mathematics, Proofs, Nonsmooth optimization, Mathematica    Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution to a time–dependent 1D wave PDE.  Keywords Mathematics, Numerical linear algebra, MATLAB  
+Finite Element Analysis &amp;amp; Implementation: 1D PDE  [PDF][GitHub] Designing and optimizing a finite element solution to a 1D PDE.</description>
+    </item>
+    
+    <item>
+      <title>Research</title>
+      <link>https://jamesakl.com/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/research/</guid>
+      <description>This page is under construction.
+[[View tags](/ptags)] -- [**Research Project Title**](/link/)  `[`[**`PDF`**](/fem-convdiff.pdf)`][`[**`GitHub`**](https://github.com/james-akl/fem-convdiff)`]` Concise and complete project description.  ***Keywords*** &amp;nbsp;&amp;nbsp;&amp;nbsp; *Mathematics, &amp;nbsp; Control theory, &amp;nbsp; Optimization, &amp;nbsp; MATLAB*   --  </description>
+    </item>
+    
+    <item>
       <title>Resume</title>
       <link>https://jamesakl.com/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -137,6 +158,16 @@ For this, I focus on the relevant advances, sciences, and practices within:
    I value openness and transparency, but also confidentiality.
 Hence, my educational and professional backgrounds are shared in detail.
 For private information, please request directly at james-akl@outlook.com.</description>
+    </item>
+    
+    <item>
+      <title>Writings</title>
+      <link>https://jamesakl.com/writings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/writings/</guid>
+      <description>Some of personal writings are listed below. [View tags]
+[**Article Title**](/article-link/)  Concise and complete article description.  ***Keywords*** &amp;nbsp;&amp;nbsp;&amp;nbsp; *Mathematics, &amp;nbsp; Control theory, &amp;nbsp; Optimization, &amp;nbsp; MATLAB*   -- Reading Spatial Transforms  Different ways to interpret a homogeneous (rigid-body) transform.  Keywords Mathematics, Linear algebra, Kinematics, Graphics   A Tour of Robot Mechanics  Broad but rigorous glide over robot kinematics and dynamics.  Keywords Robotics, Mathematics, Kinematics, Dynamics, Mechanics</description>
     </item>
     
   </channel>

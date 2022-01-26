@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on James Akl</title>
-    <link>https://jamesakl.com/projects/</link>
+    <link>https://jamesakl.com/_projects/</link>
     <description>Recent content in Projects on James Akl</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 14 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/projects/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://jamesakl.com/_projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Robot Control Simulations</title>
       <link>https://jamesakl.com/control-simulations/</link>
@@ -79,17 +78,6 @@ Description The project&amp;rsquo;s full title is:
  Noise Extraction in Disturbance Observer-Based Control
 A Computational Inverse Problems Approach
  In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>https://jamesakl.com/project/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/project/</guid>
-      <description>Some of my work and personal projects are showcased below. View project tags
-Mathematics  Convex Analysis: Select Works Numerical Analysis: Wave PDE FEM Optimization for 1D PDE Inverse Problems for DOBC  Control Robot Control Simulations
-CAD Model: MicroGuard Design</description>
     </item>
     
   </channel>
