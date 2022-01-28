@@ -98,7 +98,7 @@ A Computational Inverse Problems Approach
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/robot-mechanics/</guid>
-      <description>ABSTRACT ~ This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
+      <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
  Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
 Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
     </item>
@@ -109,8 +109,8 @@ Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/robot-definition/</guid>
-      <description>ABSTRACT ~ In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
- History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-slave.</description>
+      <description>In this article we will attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
+ History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-slave. However, a more suitable metaphor for our modern times is that of a “helper”; specifically, that a robot is a machine-helper.</description>
     </item>
     
     <item>
