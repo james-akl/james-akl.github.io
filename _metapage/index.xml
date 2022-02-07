@@ -25,8 +25,9 @@ For this, I focus on the relevant advances, sciences, and practices within:
       
       <guid>https://jamesakl.com/projects/</guid>
       <description>Some of my personal projects are showcased below. [View tags]
-Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions.  Keywords Mathematics, Proofs, Nonsmooth optimization, Mathematica    Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution to a time–dependent 1D wave PDE.  Keywords Mathematics, Numerical linear algebra, MATLAB  
-Finite Element Analysis &amp;amp; Implementation: 1D PDE  [PDF][GitHub] Designing and optimizing a finite element solution to a 1D PDE.</description>
+Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions.  Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE. 
+Finite Element Analysis &amp;amp; Implementation: 1D PDE  [PDF][GitHub] Designing and optimizing a finite element solution to a 1D PDE. 
+Inverse Problems for Disturbance Observer Control  [PDF][GitHub] Regularization and optimization applied to DOB control.</description>
     </item>
     
     <item>
