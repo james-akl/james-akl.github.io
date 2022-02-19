@@ -62,7 +62,9 @@ For private information, please request directly at james-akl@outlook.com.</desc
       
       <guid>https://jamesakl.com/writings/</guid>
       <description>Some of my personal writings are listed below. [View tags]
-[**Article Title**](/article-link/)  Concise and complete article description.  ***Keywords*** &amp;nbsp;&amp;nbsp;&amp;nbsp; *Mathematics, &amp;nbsp; Control theory, &amp;nbsp; Optimization, &amp;nbsp; MATLAB*   -- Reading Spatial Transforms  Different ways to interpret a homogeneous (rigid-body) transform.  Keywords Mathematics, Linear algebra, Kinematics, Graphics   A Tour of Robot Mechanics  Broad but rigorous glide over robot kinematics and dynamics.  Keywords Robotics, Mathematics, Kinematics, Dynamics, Mechanics</description>
+Reading Spatial Transforms  Different ways to interpret a homogeneous (rigid-body) transform. 
+A Tour of Robot Mechanics  Broad but rigorous glide over robot kinematics and dynamics. 
+Defining a Robot  An evolving attempt to answer “What is a robot?” in a prescriptive manner.</description>
     </item>
     
   </channel>
