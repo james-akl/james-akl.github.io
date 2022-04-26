@@ -80,5 +80,16 @@ A Computational Inverse Problems Approach
  In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
     </item>
     
+    <item>
+      <title>PyLAFS Python Package</title>
+      <link>https://jamesakl.com/pylafs/</link>
+      <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/pylafs/</guid>
+      <description>GitHub Source code is available in the GitHub repository.
+Description PyLAFS stands for Linear Algebra from Scratch in Python. This project implements common linear algebraic constructs in minimal Python 3, that is, without using external libraries.
+PyLAFS works best as a convenient matrix calculator that runs in the Python interpreter. Simplicy and convenience are optimized, not performance: it is designed to be used in the interpreter/console and not for development.</description>
+    </item>
+    
   </channel>
 </rss>

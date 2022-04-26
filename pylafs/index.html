@@ -6,11 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.91.0" />
-  <link rel="canonical" href="/_projects/">
+  <link rel="canonical" href="/pylafs/">
 
   
     
-    <meta name="description" content="Projects">
+    <meta name="description" content="GitHub Source code is available in the GitHub repository.
+Description PyLAFS stands for Linear Algebra from Scratch in Python. This project implements common linear algebraic constructs in minimal Python 3, that is, without using external libraries.
+PyLAFS works best as a convenient matrix calculator that runs in the Python interpreter. Simplicy and convenience are optimized, not performance: it is designed to be used in the interpreter/console and not for development.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -60,7 +62,7 @@
 
   
   
-  <title>Projects | James Akl</title>
+  <title>PyLAFS Python Package | James Akl</title>
 </head>
 
   <body>
@@ -222,7 +224,7 @@
       
       
       
-      <a href="/projects/" aria-current="page">
+      <a href="/projects/" >
         <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
           <use xlink:href="#bookmark"></use>
         </svg>
@@ -279,126 +281,335 @@
       <div class="main-and-footer">
         <div>
           
-<main id="main">
-  <h1>Projects</h1> 
- 
+  <main id="main">
+    <h1>
+      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      PyLAFS Python Package
+    </h1>
+
+    <div class="date">
+      
+        
+        
+        <strong>Date published: </strong>Aug 16, 2021
+        
+          
+            <br>
+            <strong>Last updated: </strong>Jan 25, 2022
+          
+        
+      
+    </div>
+
+    
+      <div class="tags">
+        <strong>Tags: </strong>
+        <ul aria-label="tags">
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/ptags/software/">Software</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/ptags/mathematics/">Mathematics</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+    
+    
+      
+
+  <nav class="toc" aria-labelledby="toc-heading">
+    <h2 id="toc-heading">Sections</h2>
+    <ol>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#description">
+            Description
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#example-usage">
+            Example Usage
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#matrix-functions">
+            Matrix Functions
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#matrix-generators">
+            Matrix Generators
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#matrix-algorithms">
+            Matrix Algorithms
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#matrix-class">
+            Matrix Class
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#global-variables">
+            Global Variables
+          </a>
+        </li>
+      
+    </ol>
+  </nav>
+
+
+    
+
+    <p><a href="https://github.com/james-akl/pylafs">GitHub</a>
+<br><small>Source code is available in the GitHub repository.</small></p>
+<h2 id="description">Description</h2>
+<p><strong><code>PyLAFS</code></strong> stands for <em>Linear Algebra from Scratch in Python</em>. This project implements common linear algebraic constructs in minimal Python 3, that is, without using external libraries.</p>
+<p><strong><code>PyLAFS</code></strong> works best as a convenient matrix calculator that runs in the Python interpreter. Simplicy and convenience are optimized, not performance: it is designed to be used in the interpreter/console and not for development.</p>
+<p>Below is the extensive documentation of the package&rsquo;s functions and classes. This documentation will be gradually expanded with demonstrations.</p>
+<h2 id="example-usage">Example Usage</h2>
+<aside aria-label="warning" class="note warning">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 48.430474 41.646302" focusable="false">
+      <use xlink:href="#warning"></use>
+    </svg>
+    
+This section is under construction.
+
+  </div>
+</aside>
+
+<h2 id="matrix-functions">Matrix Functions</h2>
+<div class="ticks">
+  <ul>
+<li><strong><code>det(matrix)</code></strong><br>
+Returns the determinant of the input matrix.</li>
+<li><strong><code>diag(matrix)</code></strong><br>
+Returns vector of the input matrix diagonal elements.</li>
+<li><strong><code>dim(matrix, dim_index=None)</code></strong><br>
+Returns the dimension of the input matrix.</li>
+<li><strong><code>is_colvector(matrix)</code></strong><br>
+Returns <strong><code>True</code></strong> if input is a column vector.</li>
+<li><strong><code>is_diag(matrix)</code></strong><br>
+Returns boolean of diagonal matrix test.</li>
+<li><strong><code>is_invertible(matrix)</code></strong><br>
+Returns boolean of invertibility test.</li>
+<li><strong><code>is_lower(matrix)</code></strong><br>
+Returns boolean of lower  triangular matrix test.</li>
+<li><strong><code>is_matrix(matrix)</code></strong><br>
+Returns <strong><code>True</code></strong> if input type is the lafs.Matrix class.</li>
+<li><strong><code>is_rowvector(matrix)</code></strong><br>
+Returns <strong><code>True</code></strong> if input is a row vector.</li>
+<li><strong><code>is_singular(matrix)</code></strong><br>
+Returns boolean of singularity test.</li>
+<li><strong><code>is_square(matrix)</code></strong><br>
+Returns boolean of square matrix test.</li>
+<li><strong><code>is_symmetric(matrix)</code></strong><br>
+Returns boolean of symmetry test.</li>
+<li><strong><code>is_triangular(matrix)</code></strong><br>
+Returns boolean of triangular matrix test.</li>
+<li><strong><code>is_upper(matrix)</code></strong><br>
+Returns boolean of upper triangular matrix test.</li>
+<li><strong><code>is_vector(matrix)</code></strong><br>
+Returns <strong><code>True</code></strong> if input is a vector.</li>
+<li><strong><code>total(matrix)</code></strong><br>
+Returns the sum total of all input matrix elements.</li>
+<li><strong><code>trace(matrix)</code></strong><br>
+Returns the trace of the input square matrix.</li>
+<li><strong><code>transpose(matrix)</code></strong><br>
+Returns the transpose of the input matrix.</li>
+</ul>
+
+</div>
+
+<h2 id="matrix-generators">Matrix Generators</h2>
+<div class="ticks">
+  <ul>
+<li><strong><code>I(n, n_col=None)</code></strong><br>
+Returns an Identity Matrix of dimensions (n, n_col)</li>
+<li><strong><code>Rx(t)</code></strong><br>
+Returns rotation matrix about the first axis of angle <strong><code>t</code></strong>.<br>
+Assumes default angle unit is in degrees.</li>
+<li><strong><code>Ry(t)</code></strong><br>
+Returns rotation matrix about the second axis of angle <strong><code>t</code></strong>.<br>
+Assumes default angle unit is in degrees.</li>
+<li><strong><code>Rz(t)</code></strong><br>
+Returns rotation matrix about the third axis of angle <strong><code>t</code></strong>.<br>
+Assumes default angle unit is in degrees.</li>
+<li><strong><code>U(n, n_col=None)</code></strong><br>
+Returns a Ones Matrix of dimensions <strong><code>(n, n_col)</code></strong>.<br>
+If input is Matrix <strong><code>A</code></strong>, returns a Ones Matrix of same size.</li>
+<li><strong><code>Z(n, n_col=None)</code></strong><br>
+Returns a Zeros Matrix of dimensions <strong><code>(n, n_col)</code></strong>.</li>
+<li><strong><code>lower(matrix)</code></strong><br>
+Returns lower triangular version of input matrix.<br></li>
+<li><strong><code>randm(n_row, n_col=None)</code></strong><br>
+Temporary function for random matrix generation.<br></li>
+<li><strong><code>randv(n)</code></strong><br>
+Temporary function for random vector generation.<br></li>
+<li><strong><code>upper(matrix)</code></strong><br>
+Returns upper triangular version of input matrix.</li>
+</ul>
+
+</div>
+
+<h2 id="matrix-algorithms">Matrix Algorithms</h2>
+<div class="ticks">
+  <ul>
+<li><strong><code>inv(matrix)</code></strong><br>
+Returns the direct inverse via Gaussian elimination of the input matrix.</li>
+<li><strong><code>linsolve(A, b)</code></strong><br>
+Returns the solution $x$ of the linear system $Ax = b$.</li>
+<li><strong><code>lu(matrix)</code></strong><br>
+Returns the naive LU decomposition of the matrix.</li>
+<li><strong><code>nullity(matrix)</code></strong><br>
+Returns the nullity of the input matrix.</li>
+<li><strong><code>rank(matrix)</code></strong><br>
+Returns the rank of the input matrix.</li>
+<li><strong><code>ref(matrix)</code></strong><br>
+Returns a row echelon form of the input matrix.</li>
+<li><strong><code>rref(matrix)</code></strong><br>
+Returns the reduced row echelon form of the input matrix.</li>
+</ul>
+
+</div>
+
+<h2 id="matrix-class">Matrix Class</h2>
+<div class="ticks">
+  <ul>
+<li><strong><code>Mat(*args)</code></strong><br>
+Shorthand call, aliased to <strong><code>Matrix(*args)</code></strong>.</li>
+<li><strong><code>Matrix(*args)</code></strong><br>
+Matrix class member functions are documented below:
+<ul>
+<li><strong><code>T(self)</code></strong><br>
+Returns matrix transpose.</li>
+<li><strong><code>__add__(self, summand)</code></strong><br>
+Defines matrix-matrix addition:  <strong><code>&lt;matrix&gt; + &lt;matrix&gt;</code></strong></li>
+<li><strong><code>__call__(self, i=None, j=None)</code></strong><br>
+Returns the entire data in list format when called with <strong><code>Matrix()</code></strong>.<br>
+Returns row <strong><code>i</code></strong> when called with <strong><code>Matrix(i)</code></strong>.<br>
+Returns element <strong><code>(i, j)</code></strong> when called with <strong><code>Matrix(i, j)</code></strong>.</li>
+<li><strong><code>__eq__(self, right)</code></strong><br>
+Defines equality operator: <strong><code>&lt;matrix&gt; == &lt;right&gt;</code></strong></li>
+<li><strong><code>__getitem__(self, row)</code></strong><br>
+Accessor: <strong><code>A[i][j]</code></strong> returns the element at row <strong><code>i</code></strong> and column <strong><code>j</code></strong>.</li>
+<li><strong><code>__init__(self, *args)</code></strong><br>
+Initialize self.  See help(type(self)) for accurate signature.</li>
+<li><strong><code>__matmul__(self, multiplicand)</code></strong><br>
+Defines array-wise/Hadamard multiplication:<br>
+<strong><code>&lt;matrix&gt; @ &lt;matrix&gt;</code></strong></li>
+<li><strong><code>__mul__(self, multiplicand)</code></strong><br>
+Defines matrix-scalar and matrix-matrix left-multplication:<br>
+<strong><code>&lt;matrix&gt; * &lt;scalar|matrix&gt;</code></strong></li>
+<li><strong><code>__neg__(self)</code></strong><br>
+Defines matrix negation: <strong><code>-&lt;matrix&gt;</code></strong></li>
+<li><strong><code>__pow__(self, n)</code></strong><br>
+Defines matrix power: <strong><code>&lt;matrix&gt; ** &lt;int&gt;</code></strong></li>
+<li><strong><code>__radd__(self, summand)</code></strong><br>
+Handles scalar-matrix right-addition: <strong><code>&lt;scalar&gt; + &lt;matrix&gt;</code></strong></li>
+<li><strong><code>__repr__(self)</code></strong><br>
+Returns the string representation of the matrix with configurable equal column spacing.</li>
+<li><strong><code>__rmul__(self, multiplier)</code></strong><br>
+Defines scalar-matrix right-multplication: <strong><code>&lt;scalar&gt; * &lt;matrix&gt;</code></strong></li>
+<li><strong><code> __rsub__(self, minuend)</code></strong><br>
+Handles matrix-matrix and scalar-matrix subtraction:<br>
+<strong><code>&lt;matrix&gt; - &lt;matrix&gt;</code></strong> and <strong><code>&lt;scalar&gt; - &lt;matrix&gt;</code></strong></li>
+<li><strong><code>__setitem__(self, row, new_value)</code></strong><br>
+Mutator: <strong><code>A[i][j] = a</code></strong> sets to value at row <strong><code>i</code></strong> and column <strong><code>j</code></strong> to the value of <strong><code>a</code></strong>.</li>
+<li><strong><code>__sub__(self, subtrahend)</code></strong><br>
+Defines matrix-matrix and matrix-scalar subtraction:<br>
+<strong><code>&lt;matrix&gt; - &lt;matrix&gt;</code></strong> and <strong><code>&lt;matrix&gt; - &lt;scalar&gt;</code></strong></li>
+<li><strong><code>__truediv__(self, divisor)</code></strong><br>
+Defines matrix-scalar left-division: <strong><code>&lt;matrix&gt; / &lt;scalar&gt;</code></strong></li>
+<li><strong><code>dim(self, k=None)</code></strong><br>
+Returns the Matrix dimension in a tuple <strong><code>(n_row, n_col)</code></strong>, or a specific dimension as an <strong><code>int</code></strong>.</li>
+<li><strong><code>identity(self)</code></strong><br>
+Returns identity matrix of the same dimensions.</li>
+<li><strong><code>inner(self, matrix)</code></strong><br>
+Returns the inner product with another matrix.</li>
+<li><strong><code>r(self, d=4</code></strong>)<br>
+Returns a rounded copy with precision <strong><code>d</code></strong> (default <strong><code>4</code></strong>).</li>
+<li><strong><code>sub(self, i_from, i_to, j_from, j_to)</code></strong><br>
+Returns the submatrix for the specified range of rows and columns (inclusive bounds), <em>i.e.</em>, <small>$(a_{ij})$</small> with <small>$i_\mathsf{from} \leq i \leq i_\mathsf{to}$</small> and <small>$j_\mathsf{from} \leq j \leq j_\mathsf{to}$</small>.</li>
+<li><strong><code>swap_rows(self, row1, row2)</code></strong><br>
+Swaps in-place the rows at indices <strong><code>row1</code></strong> and <strong><code>row2</code></strong> .</li>
+<li><strong><code>validate_data(self, n_row, n_col, vals)</code></strong><br>
+Validates dimensional correctness of data, raises errors otherwise.</li>
+</ul>
+</li>
+<li><strong><code>Vector(*args)</code></strong><br>
+Convenience fucntion that implements a vector using the <strong><code>Matrix</code></strong> class.</li>
+</ul>
+
+</div>
+
+<h2 id="global-variables">Global Variables</h2>
+<div class="ticks">
+  <ul>
+<li><strong><code>unit_angle</code></strong><br>
+The default is <strong><code>deg</code></strong>, where rotation matrices evaluate in degrees.<br>
+It can also be set to <strong><code>rad</code></strong> for evaluation in radians.</li>
+<li><strong><code>_</code></strong><br>
+In the interpreter, this variable (an underscore) stores the last value.<br>
+It serves the same function as <strong><code>ans</code></strong> or <strong><code>last</code></strong> in most calculators.</li>
+</ul>
+
+</div>
+
+
+  </main>
   
-  <ul class="patterns-list" id="list">
-    
-    <li>
-      <h2>
-        <a href="/control-simulations/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          Robot Control Simulations
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h2>
-        <a href="/convex-analysis/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          Convex Analysis: Select Works
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h2>
-        <a href="/nla-wave/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          Numerical Analysis: Wave PDE
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h2>
-        <a href="/fem-convdiff/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          FEM Optimization for 1D PDE
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h2>
-        <a href="/noise-dobc/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          Inverse Problems for DOBC
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h2>
-        <a href="/cad-microguard/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          CAD Model: MicroGuard Design
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h2>
-        <a href="/pylafs/">
-          <svg
-            class="bookmark"
-            aria-hidden="true"
-            viewBox="0 0 40 50"
-            focusable="false"
-          >
-            <use xlink:href="#bookmark"></use>
-          </svg>
-          PyLAFS Python Package
-        </a>
-      </h2>
-    </li>
-    
-  </ul>
-</main>
 
           
             <footer role="contentinfo">
