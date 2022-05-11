@@ -20,7 +20,7 @@ html {
     font-family: Arial, Helvetica Neue, sans-serif;
     line-height: 1.5;
     color: #111;
-    background-color: #fefefe;
+    background-color: #f7f7f7;
 }
 template {
   display: none !important;
@@ -236,21 +236,23 @@ button {
 label {
   display: inline-block;
   font-weight: bold;
-  font-size: small;
-  font-family: monospace;
+  font-size: 0.5rem;
+  /* font-family: monospace; */
 }
 [for="themer"] {
-  background: #111;
-  border-radius: 1em;
-  color: #fefefe;
-  padding: 0.15em 0.75em;
+  background: #090909;
+  border-radius: 0.15em;
+  /* border: 1px dashed; */
+  /* border-color: #666; */
+  color: #f6f6f6;
+  padding: 0.35em 0.55em;
   margin: 0rem;
 }
 [for="themer"] [aria-hidden]::before {
-  content: 'OFF';
+  content: 'BLACK THEME';
 }
 [for="themer"] :checked + [aria-hidden]::before {
-  content: 'ON';
+  content: 'WHITE THEME';
 }
 
 /* Tables */
