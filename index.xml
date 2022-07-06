@@ -8,6 +8,19 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Subanagram Search</title>
+      <link>https://jamesakl.com/subanagram-search/</link>
+      <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/subanagram-search/</guid>
+      <description>PDF | Docs | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
+Description The project&amp;rsquo;s full title is:
+ Subanagram Search:
+Algorithm, Implementation, and Benchmarking
+ Problem Statement    This section is under construction.   Project Summary    This section is under construction.   Demonstrations    This section is under construction.   References    This section is under construction.</description>
+    </item>
+    
+    <item>
       <title>Lists</title>
       <link>https://jamesakl.com/lists/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
@@ -157,10 +170,10 @@ By extension, I focus on the relevant advances/practices within:
       
       <guid>https://jamesakl.com/projects/</guid>
       <description>Some of my personal projects are showcased below.
-[[View tags](/ptags)] -- PyLAFS Package: Linear Algebra from Scratch  [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. 
+[[View tags](/ptags)] -- Subanagram Search: Algorithm &amp;amp; Implementation  [PDF][Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. 
+PyLAFS Package: Linear Algebra from Scratch  [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. 
 Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions. 
-Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE. 
-Finite Element Analysis &amp;amp; Implementation: 1D PDE  [PDF][GitHub] Designing and optimizing a finite element solution to a 1D PDE.</description>
+Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE.</description>
     </item>
     
     <item>
