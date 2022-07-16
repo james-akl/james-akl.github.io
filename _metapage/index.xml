@@ -27,10 +27,10 @@ By extension, I focus on the relevant advances/practices within:
       
       <guid>https://jamesakl.com/projects/</guid>
       <description>Some of my personal projects are showcased below.
-[[View tags](/ptags)] -- PyLAFS Package: Linear Algebra from Scratch  [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. 
+[[View tags](/ptags)] -- Subanagram Search: Algorithm &amp;amp; Implementation  [PDF][Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. 
+PyLAFS Package: Linear Algebra from Scratch  [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. 
 Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions. 
-Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE. 
-Finite Element Analysis &amp;amp; Implementation: 1D PDE  [PDF][GitHub] Designing and optimizing a finite element solution to a 1D PDE.</description>
+Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE.</description>
     </item>
     
     <item>

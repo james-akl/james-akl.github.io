@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms on James Akl</title>
+    <link>https://jamesakl.com/ptags/algorithms/</link>
+    <description>Recent content in Algorithms on James Akl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/ptags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Subanagram Search</title>
+      <link>https://jamesakl.com/subanagram-search/</link>
+      <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/subanagram-search/</guid>
+      <description>PDF | Docs | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
+Description The project&amp;rsquo;s full title is:
+ Subanagram Search:
+Algorithm, Implementation, and Benchmarking
+ Problem Statement    This section is under construction.   Project Summary    This section is under construction.   Demonstrations    This section is under construction.   References    This section is under construction.</description>
+    </item>
+    
+  </channel>
+</rss>
