@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>James Akl</title>
+    <link>https://jamesakl.com/</link>
+    <description>Recent content on James Akl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Opinions</title>
+      <link>https://jamesakl.com/opinions/</link>
+      <pubDate>Fri, 18 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/opinions/</guid>
+      <description>My main career interest is in the development, deployment, and commercialization of autonomous and intelligent systems from prototypes to the real world. Below, I list some of my career-related opinions.
+Work Interests I prefer working on pragmatic uses of intelligent systems to augment utility in the real world. For complex and realistic problems, I believe that open-minded and interdisciplinary approaches tend to work better. It seems to me that highly narrow approaches tend to perform better on idealized and artificial problems.</description>
+    </item>
+    
+    <item>
+      <title>Lists</title>
+      <link>https://jamesakl.com/lists/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/lists/</guid>
+      <description>I update this page regularly with resources that may be helpful to others.
+Learning and reference materials marked as “Online” are freely accessible. Learning Material Mathematics Foundations of Applied Mathematics – Book series by Humpherys &amp;amp; Jarvis
+Numerical Algorithms – Online book by Justin Solomon
+Mathematics for Machine Learning – Online book by Deisenroth, Faisal, and Ong
+Mathematics for Computer Science – Online book by Lehman, Leighton, and Meyer</description>
+    </item>
+    
+    <item>
+      <title>Robot Control Simulations</title>
+      <link>https://jamesakl.com/control-simulations/</link>
+      <pubDate>Tue, 14 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/control-simulations/</guid>
+      <description>GitHub Source files are available in the GitHub repository.
+This page summarizes the main ideas, detailed treatments are in the PDFs linked under the section titles.
+Three different control methods have been formulated and simulated.
+State Observer &amp;amp; Feedback Control PDF A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}+\mathrm{B} \mathbf{u}+\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed.</description>
+    </item>
+    
+    <item>
+      <title>Convex Analysis: Select Works</title>
+      <link>https://jamesakl.com/convex-analysis/</link>
+      <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/convex-analysis/</guid>
+      <description>These interesting problems are handpicked from several of my old projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.
+Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
+    </item>
+    
+    <item>
+      <title>Numerical Analysis: Wave PDE</title>
+      <link>https://jamesakl.com/nla-wave/</link>
+      <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/nla-wave/</guid>
+      <description>GitHub Source code is available in the GitHub repository.
+Description The project&amp;rsquo;s full title is:
+Solving a Time–Dependent 1D Wave PDE
+A Numerical Linear Algebraic Approach
+Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,
+$$ \frac{\partial^2}{\partial t^2}u(x,t) - c^2 \frac{\partial^2}{\partial x^2}u(x,t) = 0 \, \bigg|_{x \in (0, 1) \textrm{ and } t&amp;gt;0} $$ Here the function $u(x,t)$ is defined as, $$ \begin{matrix} u: &amp;amp; [0,1] \times \R_{\geq 0} &amp;amp; \to &amp;amp; \R \\ &amp;amp; (x,t) &amp;amp; \mapsto &amp;amp; u(x,t) \end{matrix} $$ The PDE boundary conditions are, $$ u(0,t) = u(1,t) = 0 $$ And its initial conditions are, $$ u(x,0) = v(x) \textrm{ and } \frac{\partial u}{\partial t}(x, 0) = w(x) \, \bigg|_{x \in (0, 1)} $$ Here the functions $v, w: [0,1] \to \R$ are known.</description>
+    </item>
+    
+    <item>
+      <title>FEM Optimization for 1D PDE</title>
+      <link>https://jamesakl.com/fem-convdiff/</link>
+      <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/fem-convdiff/</guid>
+      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
+Description The project&amp;rsquo;s full title is:
+Finite Element Analysis of a 1D Convection–Diffusion Problem
+Formulation, Implementation, and Optimization
+Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</description>
+    </item>
+    
+    <item>
+      <title>Reading Spatial Transforms</title>
+      <link>https://jamesakl.com/spatial-transforms/</link>
+      <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/spatial-transforms/</guid>
+      <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
+Homogeneous Matrices In the context of robot kinematics, a common modeling choice for forward kinematics is the use of homogeneous matrices.
+Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics, $$ \mathrm{T} = \begin{bmatrix} \mathrm{R} &amp;amp; \mathbf{d} \\ \mathbf{0}&amp;amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx&amp;rsquo;} &amp;amp; r_{xy&amp;rsquo;} &amp;amp; r_{xz&amp;rsquo;} &amp;amp; d_x \\ r_{yx&amp;rsquo;} &amp;amp; r_{yy&amp;rsquo;} &amp;amp; r_{yz&amp;rsquo;} &amp;amp; d_y \\ r_{zx&amp;rsquo;} &amp;amp; r_{zy&amp;rsquo;} &amp;amp; r_{zz&amp;rsquo;} &amp;amp; d_z \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix} $$</description>
+    </item>
+    
+    <item>
+      <title>CAD Model: MicroGuard Design</title>
+      <link>https://jamesakl.com/cad-microguard/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/cad-microguard/</guid>
+      <description>Renders | Drawings | Materials | GitHub Source files can be found in the GitHub repo.
+Description The project&amp;rsquo;s full title is:
+MicroGuard System: 3D Concept Model
+Examining Security via Intimidation
+This project is only a 3D visual concept model, not a fully-engineered system. The aim is security via deterrence, i.e., to de-escalate threats with intimidating appearance without the ability to actually shoot. Summary The system is designed and modeled fully from scratch.</description>
+    </item>
+    
+    <item>
+      <title>Inverse Problems for DOBC</title>
+      <link>https://jamesakl.com/noise-dobc/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/noise-dobc/</guid>
+      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
+Description The project&amp;rsquo;s full title is:
+Noise Extraction in Disturbance Observer-Based Control
+A Computational Inverse Problems Approach
+In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
+    </item>
+    
+    <item>
+      <title>A Tour of Robot Mechanics</title>
+      <link>https://jamesakl.com/robot-mechanics/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/robot-mechanics/</guid>
+      <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
+Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
+    </item>
+    
+    <item>
+      <title>Defining a Robot</title>
+      <link>https://jamesakl.com/robot-definition/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/robot-definition/</guid>
+      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
+History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
+    </item>
+    
+    <item>
+      <title>PyLAFS Python Package</title>
+      <link>https://jamesakl.com/pylafs/</link>
+      <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/pylafs/</guid>
+      <description>GitHub Source code is available in the GitHub repository.
+Description PyLAFS stands for Linear Algebra from Scratch in Python. This project implements common linear algebraic constructs in minimal Python 3, that is, without using external libraries.
+PyLAFS works best as a convenient matrix calculator that runs in the Python interpreter. Simplicy and convenience are optimized, not performance: it is designed to be used in the interpreter/console and not for development.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://jamesakl.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/about/</guid>
+      <description>I am a roboticist with a background in engineering, mathematics, and science. Currently, I am at Amazon Robotics working as Applied Scientist Co-op in the Innovation Lab.
+Previously, I completed my PhD in Robotics Engineering at Worcester Polytechnic Institute working in the Manipulation &amp;amp; Environmental Robotics Lab under the supervision of Prof. Berk Calli.
+At WPI, I was an R&amp;amp;D Trainee as part of the NSF Research Traineeship Program on the Future of Robots in the Workplace.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://jamesakl.com/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/projects/</guid>
+      <description>Some of my personal projects are showcased below.
+Subanagram Search: Algorithm &amp;amp; Implementation [Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. PyLAFS Package: Linear Algebra from Scratch [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. Convex Analysis &amp;amp; Optimization: Select Works Collection of interesting problems with my proofs and solutions. Numerical Analysis &amp;amp; Implementation: 1D PDE [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE. Finite Element Analysis &amp;amp; Implementation: 1D PDE [PDF][GitHub] Designing and optimizing a finite element solution to a 1D PDE.</description>
+    </item>
+    
+    <item>
+      <title>Research</title>
+      <link>https://jamesakl.com/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/research/</guid>
+      <description>Some of my research contributions are disclosed below.
+Publications All preprint material is subject to the corresponding publisher&#39;s copyright. [PDF] Feature-Driven Next View Planning for Cutting Path Generation in Robotic Metal Scrap Recycling, 2023 IEEE Transactions on Automation Science and Engineering (T-ASE).
+James Akl; Fadi Alladkani; Berk Calli. [PDF][Dataset] ZeroWaste Dataset: Towards Deformable Object Segmentation in Cluttered Scenes, 2022 IEEE Conference on Computer Vision and Pattern Recognition (CVPR).
+Dina Bashkirova; Mohamed Abdelfattah; Ziliang Zhu; James Akl; Fadi Alladkani; Ping Hu; Vitaly Ablavsky; Berk Calli; Sarah Adel Bargal; Kate Saenko.</description>
+    </item>
+    
+    <item>
+      <title>Resume</title>
+      <link>https://jamesakl.com/resume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/resume/</guid>
+      <description>My professional and educational backgrounds are summarized below. View my resume
+View my coursework
+For other information, please request directly at james-akl@outlook.com.</description>
+    </item>
+    
+    <item>
+      <title>Writings</title>
+      <link>https://jamesakl.com/writings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/writings/</guid>
+      <description>Some of my personal writings are listed below.
+Reading Spatial Transforms Different ways to interpret a homogeneous (rigid-body) transform. A Tour of Robot Mechanics Broad but rigorous glide over robot kinematics and dynamics. Defining a Robot An evolving attempt to answer “What is a robot?” in a prescriptive manner. </description>
+    </item>
+    
+  </channel>
+</rss>

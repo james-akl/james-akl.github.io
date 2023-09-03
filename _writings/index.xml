@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Writings on James Akl</title>
+    <link>https://jamesakl.com/_writings/</link>
+    <description>Recent content in Writings on James Akl</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://jamesakl.com/_writings/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Opinions</title>
+      <link>https://jamesakl.com/opinions/</link>
+      <pubDate>Fri, 18 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/opinions/</guid>
+      <description>My main career interest is in the development, deployment, and commercialization of autonomous and intelligent systems from prototypes to the real world. Below, I list some of my career-related opinions.
+Work Interests I prefer working on pragmatic uses of intelligent systems to augment utility in the real world. For complex and realistic problems, I believe that open-minded and interdisciplinary approaches tend to work better. It seems to me that highly narrow approaches tend to perform better on idealized and artificial problems.</description>
+    </item>
+    
+    <item>
+      <title>Lists</title>
+      <link>https://jamesakl.com/lists/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/lists/</guid>
+      <description>I update this page regularly with resources that may be helpful to others.
+Learning and reference materials marked as “Online” are freely accessible. Learning Material Mathematics Foundations of Applied Mathematics – Book series by Humpherys &amp;amp; Jarvis
+Numerical Algorithms – Online book by Justin Solomon
+Mathematics for Machine Learning – Online book by Deisenroth, Faisal, and Ong
+Mathematics for Computer Science – Online book by Lehman, Leighton, and Meyer</description>
+    </item>
+    
+    <item>
+      <title>Reading Spatial Transforms</title>
+      <link>https://jamesakl.com/spatial-transforms/</link>
+      <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/spatial-transforms/</guid>
+      <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
+Homogeneous Matrices In the context of robot kinematics, a common modeling choice for forward kinematics is the use of homogeneous matrices.
+Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics, $$ \mathrm{T} = \begin{bmatrix} \mathrm{R} &amp;amp; \mathbf{d} \\ \mathbf{0}&amp;amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx&amp;rsquo;} &amp;amp; r_{xy&amp;rsquo;} &amp;amp; r_{xz&amp;rsquo;} &amp;amp; d_x \\ r_{yx&amp;rsquo;} &amp;amp; r_{yy&amp;rsquo;} &amp;amp; r_{yz&amp;rsquo;} &amp;amp; d_y \\ r_{zx&amp;rsquo;} &amp;amp; r_{zy&amp;rsquo;} &amp;amp; r_{zz&amp;rsquo;} &amp;amp; d_z \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix} $$</description>
+    </item>
+    
+    <item>
+      <title>A Tour of Robot Mechanics</title>
+      <link>https://jamesakl.com/robot-mechanics/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/robot-mechanics/</guid>
+      <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
+Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
+    </item>
+    
+    <item>
+      <title>Defining a Robot</title>
+      <link>https://jamesakl.com/robot-definition/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/robot-definition/</guid>
+      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
+History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
+    </item>
+    
+  </channel>
+</rss>
