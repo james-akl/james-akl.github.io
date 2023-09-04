@@ -7,6 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jamesakl.com/_writings/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Robotics Companies</title>
+      <link>https://jamesakl.com/robotics-companies/</link>
+      <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/robotics-companies/</guid>
+      <description> This page is organized as a notebook on the robotics industry and is regularly updated with notes and relevant resources.
+This document is currently work in progress. Major Robotics Hubs Greater Boston Region Silicon Valley Waterloo Region (Kitchener–Waterloo–Cambridge) Pittsburgh United States Logistics and Manufacturing Amazon Robotics · Robotic fulfillment systems Vecna Robotics · Robotic warehousing and manufacturing RightHand Robotics · Robotic piece-picking Path Robotics · Robotic welding systems General-purpose Robots Boston Dynamics · Highly mobile robots Agility Robotics · Multipurpose humanoids Service Robots iRobot · Robot vacuums and mops Diligent Robotics · Robot assistants in healthcare Autonomous Vehicles Nuro · Autonomous delivery vehicles Starship Technologies · Autonomous delivery robots Built Robotics · Autonomous heavy equipment Canada Bluewrist · 3D machine vision Rigid Robotics · Precision mining Clearpath Robotics · Mobile robots for R&amp;amp;D OTTO Motors · Mobile robots for flexible material handling Kinova Robotics · Service robotics and manipulators Robotiq · Collaborative robot applications </description>
+    </item>
+    
+    <item>
       <title>Opinions</title>
       <link>https://jamesakl.com/opinions/</link>
       <pubDate>Fri, 18 Aug 2023 00:00:00 +0000</pubDate>
@@ -37,16 +47,6 @@ Learning and reference materials marked as “Online” are freely accessible. L
 Numerical Algorithms – Online book by Justin Solomon
 Mathematics for Machine Learning – Online book by Deisenroth, Faisal, and Ong
 Mathematics for Computer Science – Online book by Lehman, Leighton, and Meyer</description>
-    </item>
-    
-    <item>
-      <title>Robotics Companies</title>
-      <link>https://jamesakl.com/robotics-companies/</link>
-      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/robotics-companies/</guid>
-      <description> This page is organized as a notebook on the robotics industry and is regularly updated with notes and relevant resources.
-This document is currently work in progress. Major Robotics Hubs Greater Boston Region Silicon Valley Waterloo Region (Kitchener–Waterloo–Cambridge) Pittsburgh United States Logistics and Manufacturing Amazon Robotics · Robotic fulfillment systems Vecna Robotics · Robotic warehousing and manufacturing RightHand Robotics · Robotic piece-picking Path Robotics · Robotic welding systems General-purpose Robots Boston Dynamics · Highly mobile robots Agility Robotics · Multipurpose humanoids Service Robots iRobot · Robot vacuums and mops Diligent Robotics · Robot assistants in healthcare Autonomous Vehicles Nuro · Autonomous delivery vehicles Starship Technologies · Autonomous delivery robots Built Robotics · Autonomous heavy equipment Canada Bluewrist · 3D machine vision Rigid Robotics · Precision mining Clearpath Robotics · Mobile robots for R&amp;amp;D OTTO Motors · Mobile robots for flexible material handling Kinova Robotics · Service robotics and manipulators Robotiq · Collaborative robot applications </description>
     </item>
     
     <item>
