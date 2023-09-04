@@ -56,8 +56,16 @@ For other information, please request directly at james-akl@outlook.com.</descri
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/writings/</guid>
-      <description>Some of my personal writings are listed below.
-Reading Spatial Transforms Different ways to interpret a homogeneous (rigid-body) transform. A Tour of Robot Mechanics Broad but rigorous glide over robot kinematics and dynamics. Defining a Robot An evolving attempt to answer “What is a robot?” in a prescriptive manner. </description>
+      <description>Some of my personal writings are listed below. [Tags]
+Articles These address a particular topic and are sparsely updated (extensions, corrections).
+Reading Spatial Transforms
+Ways to interpret homogeneous (rigid-body) transform.
+A Tour of Robot Mechanics
+Broad glide over robot kinematics and dynamics.
+Defining a Robot
+Attempt to answer “What is a robot?” in a prescriptive manner.
+Notebooks These are living documents that are routinely updated and gradually refined.
+Robot Learning</description>
     </item>
     
   </channel>
