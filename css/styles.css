@@ -16,17 +16,17 @@
     box-sizing: border-box;
 }
 html {
-    font-size: calc(1em + 0.33vw);
+    font-size: calc(1em + 0.30vw);
     font-family: Arial, Helvetica Neue, sans-serif;
-    line-height: 1.5;
+    line-height: 1.30;
     color: #111;
-    background-color: #f7f7f7;
+    background-color: #fefefe;
 }
 template {
   display: none !important;
 }
 * + * {
-    margin-top: 2.25rem;
+    margin-top: 1.50rem;
 }
 br,
 dt,
@@ -361,7 +361,7 @@ caption {
     margin-left: 15rem;
 }
 .main-and-footer > div {
-    max-width: 40rem;
+    max-width: 50rem;
     margin: 0 auto;
     padding: 2.25rem;
 }
