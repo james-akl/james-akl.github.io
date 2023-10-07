@@ -106,8 +106,8 @@ Problem Statement Suppose that an ionic fluid is trapped between two flat parall
       
       <guid>https://jamesakl.com/spatial-transforms/</guid>
       <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
-Homogeneous Matrices In the context of robot kinematics, a common modeling choice for forward kinematics is the use of homogeneous matrices.
-Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics, $$ \mathrm{T} = \begin{bmatrix} \mathrm{R} &amp;amp; \mathbf{d} \\ \mathbf{0}&amp;amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx&amp;rsquo;} &amp;amp; r_{xy&amp;rsquo;} &amp;amp; r_{xz&amp;rsquo;} &amp;amp; d_x \\ r_{yx&amp;rsquo;} &amp;amp; r_{yy&amp;rsquo;} &amp;amp; r_{yz&amp;rsquo;} &amp;amp; d_y \\ r_{zx&amp;rsquo;} &amp;amp; r_{zy&amp;rsquo;} &amp;amp; r_{zz&amp;rsquo;} &amp;amp; d_z \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix} $$</description>
+Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
+With two frames $\mathsf{F}$ and $\mathsf{F}&amp;rsquo;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
     </item>
     
     <item>

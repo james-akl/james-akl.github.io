@@ -11,8 +11,8 @@
   
     
     <meta name="description" content="This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
-Homogeneous Matrices In the context of robot kinematics, a common modeling choice for forward kinematics is the use of homogeneous matrices.
-Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics, $$ \mathrm{T} = \begin{bmatrix} \mathrm{R} &amp; \mathbf{d} \\ \mathbf{0}&amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx’} &amp; r_{xy’} &amp; r_{xz’} &amp; d_x \\ r_{yx’} &amp; r_{yy’} &amp; r_{yz’} &amp; d_y \\ r_{zx’} &amp; r_{zy’} &amp; r_{zz’} &amp; d_z \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} $$">
+Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
+With two frames $\mathsf{F}$ and $\mathsf{F}’$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -403,16 +403,20 @@ Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in fo
 <p><small><i>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.</i></small></p>
 </blockquote>
 <h2 id="homogeneous-matrices">Homogeneous Matrices</h2>
-<p>In the context of robot kinematics, a common modeling choice for <a href="https://jamesakl.com/robot-mechanics">forward kinematics</a> is the use of homogeneous matrices.</p>
-<p>Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics,
+<p>In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.</p>
+<p>With two frames $\mathsf{F}$ and $\mathsf{F}&rsquo;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.
+Achieving either of these requires using a representation for translation and rotation (which has a <a href="https://en.wikipedia.org/wiki/Rotation_formalisms_in_three_dimensions">variety of formalisms</a>).</p>
+<p>A common representation used for <a href="https://jamesakl.com/robot-mechanics">forward kinematics</a> are homogeneous matrices.
+Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics,
 $$
 \mathrm{T} = \begin{bmatrix} \mathrm{R} &amp; \mathbf{d} \\ \mathbf{0}&amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx&rsquo;} &amp; r_{xy&rsquo;} &amp; r_{xz&rsquo;} &amp; d_x \\ r_{yx&rsquo;} &amp; r_{yy&rsquo;} &amp; r_{yz&rsquo;} &amp; d_y \\ r_{zx&rsquo;} &amp; r_{zy&rsquo;} &amp; r_{zz&rsquo;} &amp; d_z  \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}
-$$</p>
+$$
+The matrix $\mathrm{T}$ measures the state of frame $\mathsf{F}&rsquo; = \{o&rsquo;, (\hat{x}&rsquo;, \hat{y}&rsquo;, \hat{z}&rsquo;)\}$ relative to frame $\mathsf{F} = \{o, (\hat{x}, \hat{y}, \hat{z})\}$. Here $\mathsf{F}&rsquo;$ is the measured frame and $\mathsf{F}$ is the reference frame. Furthermore:</p>
 <ul>
 <li>$\mathrm{R}$ and $\mathrm{d}$ are the rotation and translation components respectively.</li>
-<li>Recall that $\mathrm{T} \in \mathsf{SE}(3)$ and $\mathrm{R} \in \mathsf{SO}(3)$, denoting the special Euclidean and special orthogonal groups respectively.</li>
-<li>$r_{uv} = \hat{\mathbf{u}} \cdot \hat{\mathbf{v}} = \cos(\hat{\mathbf{u}}, \hat{\mathbf{v}})$ quantifies the angle between the basis unit vectors.</li>
-<li>$d_u = oo&rsquo; \cdot \hat{\mathbf{u}}$ is the translation distance between both origins, in the direction of $\hat{\mathbf{u}}$.</li>
+<li>$\mathrm{T} \in \mathsf{SE}(3)$ and $\mathrm{R} \in \mathsf{SO}(3)$, denoting the special Euclidean and special orthogonal groups respectively.</li>
+<li>$r_{uv} = \hat{\mathbf{u}} \cdot \hat{\mathbf{v}} = \cos(\hat{\mathbf{u}}, \hat{\mathbf{v}})$ quantifies the relative orientation between the basis unit vectors through the oriented (typically, anticlockwise) angle $\measuredangle(\hat{\mathbf{u}}, \hat{\mathbf{v}})$ at $\hat{\mathbf{v}}$ measured from $\hat{\mathbf{u}}$.</li>
+<li>$d_u = oo&rsquo; \cdot \hat{\mathbf{u}}$ is the translation distance between both origins, at $o&rsquo;$ measured from $o$, and projected in the direction of $\hat{\mathbf{u}}$.</li>
 </ul>
 <aside aria-label="note" class="note">
   <div>
