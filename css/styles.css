@@ -16,7 +16,7 @@
     box-sizing: border-box;
 }
 html {
-    font-size: calc(1em + 0.30vw);
+    font-size: calc(1em + 0.20vw);
     font-family: Arial, Helvetica Neue, sans-serif;
     line-height: 1.30;
     color: #111;
