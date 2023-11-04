@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="generator" content="Hugo 0.91.0" />
+  <meta name="generator" content="Hugo 0.118.2">
   <link rel="canonical" href="/robot-mechanics/">
 
   
     
     <meta name="description" content="This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the ‘whys’ should become apparent, allowing the ‘hows’ to be better appreciated.
- Motivation The basic functionality we’d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+Motivation The basic functionality we’d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
 Consider these two points $\mathsf{A}$ and $\mathsf{B}$.">
   
 
@@ -179,7 +179,7 @@ Consider these two points $\mathsf{A}$ and $\mathsf{B}$.">
           alt="James Akl">
       </a>
       <p class="library-desc">
-         <h3><a href="/" style="border-bottom:none">James Akl</a></h3><big>Engineer & Researcher</big><br><small style="vertical-align:top;line-height:0.5rem"><b>Robotics</b>, <b>AI</b>, <b>Control</b>, and <b>Data</b></small><br><a href="https://www.linkedin.com/in/james-akl" target="_blank"><medium>LinkedIn</medium></a> · <a href="https://github.com/james-akl" target="_blank"><medium>GitHub</medium></a> · <a href="https://scholar.google.com/citations?user=6gPp9TMAAAAJ" target="_blank"><medium>Scholar</medium></a> 
+         <h3><a href="/" style="border-bottom:none">James Akl</a></h3><div style="margin-top:0.3rem; margin-bottom:0.3rem; font-size:0.9rem">R&D in Robotics, AI, and Autonomous Systems</div><div style="margin-top:0rem; font-size:0.86rem"><a href="https://www.linkedin.com/in/james-akl" target="_blank"><medium>LinkedIn</medium></a> · <a href="https://github.com/james-akl" target="_blank"><medium>GitHub</medium></a> · <a href="https://scholar.google.com/citations?user=6gPp9TMAAAAJ" target="_blank"><medium>Scholar</medium></a></div> 
       </p>
     </div>
     <nav id="patterns-nav" class="patterns" role="navigation">
@@ -543,17 +543,17 @@ $$
 Here, $\mathrm{R}$ is a rotation matrix and $\mathbf{d}$ is a translation vector.</p>
 <p>In 3D, $\mathrm{T}$ evaluates to,
 $$
-\mathrm{T} = \begin{bmatrix} r_{xx'} &amp; r_{xy'} &amp; r_{xz'} &amp; d_x \\ r_{yx'} &amp; r_{yy'} &amp; r_{yz'} &amp; d_y \\ r_{zx'} &amp; r_{zy'} &amp; r_{zz'} &amp; d_z  \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}
+\mathrm{T} = \begin{bmatrix} r_{xx&rsquo;} &amp; r_{xy&rsquo;} &amp; r_{xz&rsquo;} &amp; d_x \\ r_{yx&rsquo;} &amp; r_{yy&rsquo;} &amp; r_{yz&rsquo;} &amp; d_y \\ r_{zx&rsquo;} &amp; r_{zy&rsquo;} &amp; r_{zz&rsquo;} &amp; d_z  \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}
 $$
 While in 2D, it evaluates to,
 $$
-\mathrm{T} = \begin{bmatrix} r_{xx'} &amp; r_{xy'} &amp; d_x \\ r_{yx'} &amp; r_{yy'} &amp; d_y \\ 0 &amp; 0 &amp; 1 \end{bmatrix}
+\mathrm{T} = \begin{bmatrix} r_{xx&rsquo;} &amp; r_{xy&rsquo;} &amp; d_x \\ r_{yx&rsquo;} &amp; r_{yy&rsquo;} &amp; d_y \\ 0 &amp; 0 &amp; 1 \end{bmatrix}
 $$
-Without going into too much detail, the rotation terms $r_{uv}$ capture the angular difference of a measured frame&rsquo;s basis vectors $\{\hat{\mathbf{i}}', \hat{\mathbf{j}}', \hat{\mathbf{k}}'\}$ relative to a reference frame&rsquo;s basis vectors $\{\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}}\}$. For example, $r_{xx'}$ would provide information about about the oriented angle $\measuredangle(\hat{\mathbf{i}}, \hat{\mathbf{i}}')$.</p>
+Without going into too much detail, the rotation terms $r_{uv}$ capture the angular difference of a measured frame&rsquo;s basis vectors $\{\hat{\mathbf{i}}&rsquo;, \hat{\mathbf{j}}&rsquo;, \hat{\mathbf{k}}&rsquo;\}$ relative to a reference frame&rsquo;s basis vectors $\{\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}}\}$. For example, $r_{xx&rsquo;}$ would provide information about about the oriented angle $\measuredangle(\hat{\mathbf{i}}, \hat{\mathbf{i}}&rsquo;)$.</p>
 <p>In brief, $\mathbf{R}$ encodes the orientation changes between two frames by comparing the directions of their unit vectors.</p>
-<p>In similar fashion, the translation terms $d_u$  capture the positional difference of measured frame origin $O'$ relative to the reference frame origin $O$ using the reference frame&rsquo;s basis vectors $\{\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}}\}$. For example, $d_x$ would measure the $x$-component of the vector $\overrightarrow{OO'}$.</p>
+<p>In similar fashion, the translation terms $d_u$  capture the positional difference of measured frame origin $O&rsquo;$ relative to the reference frame origin $O$ using the reference frame&rsquo;s basis vectors $\{\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}}\}$. For example, $d_x$ would measure the $x$-component of the vector $\overrightarrow{OO&rsquo;}$.</p>
 <p>In brief, $\mathbf{d}$ encodes the position changes between two frames by comparing the locations of their origins.</p>
-<p>As a summary, the homogeneous matrix $\mathrm{T}$ encodes the pose differences of the measured frame $\{O', (\hat{\mathbf{i}}', \hat{\mathbf{j}}', \hat{\mathbf{k}}')\}$ relative to the reference frame $\{O, (\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}})\}$ by comparing the directions of their unit vectors and the locations of their origins.</p>
+<p>As a summary, the homogeneous matrix $\mathrm{T}$ encodes the pose differences of the measured frame $\{O&rsquo;, (\hat{\mathbf{i}}&rsquo;, \hat{\mathbf{j}}&rsquo;, \hat{\mathbf{k}}&rsquo;)\}$ relative to the reference frame $\{O, (\hat{\mathbf{i}}, \hat{\mathbf{j}}, \hat{\mathbf{k}})\}$ by comparing the directions of their unit vectors and the locations of their origins.</p>
 <aside aria-label="note" class="note">
   <div>
     <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">

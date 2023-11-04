@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="generator" content="Hugo 0.91.0" />
+  <meta name="generator" content="Hugo 0.118.2">
   <link rel="canonical" href="/nla-wave/">
 
   
     
     <meta name="description" content="GitHub Source code is available in the GitHub repository.
 Description The project’s full title is:
- Solving a Time–Dependent 1D Wave PDE
+Solving a Time–Dependent 1D Wave PDE
 A Numerical Linear Algebraic Approach
- Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,">
+Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,
+$$ \frac{\partial^2}{\partial t^2}u(x,t) - c^2 \frac{\partial^2}{\partial x^2}u(x,t) = 0 \, \bigg|_{x \in (0, 1) \textrm{ and } t&gt;0} $$ Here the function $u(x,t)$ is defined as, $$ \begin{matrix} u: &amp; [0,1] \times \R_{\geq 0} &amp; \to &amp; \R \\ &amp; (x,t) &amp; \mapsto &amp; u(x,t) \end{matrix} $$ The PDE boundary conditions are, $$ u(0,t) = u(1,t) = 0 $$ And its initial conditions are, $$ u(x,0) = v(x) \textrm{ and } \frac{\partial u}{\partial t}(x, 0) = w(x) \, \bigg|_{x \in (0, 1)} $$ Here the functions $v, w: [0,1] \to \R$ are known.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -181,7 +182,7 @@ A Numerical Linear Algebraic Approach
           alt="James Akl">
       </a>
       <p class="library-desc">
-         <h3><a href="/" style="border-bottom:none">James Akl</a></h3><big>Engineer & Researcher</big><br><small style="vertical-align:top;line-height:0.5rem"><b>Robotics</b>, <b>AI</b>, <b>Control</b>, and <b>Data</b></small><br><a href="https://www.linkedin.com/in/james-akl" target="_blank"><medium>LinkedIn</medium></a> · <a href="https://github.com/james-akl" target="_blank"><medium>GitHub</medium></a> · <a href="https://scholar.google.com/citations?user=6gPp9TMAAAAJ" target="_blank"><medium>Scholar</medium></a> 
+         <h3><a href="/" style="border-bottom:none">James Akl</a></h3><div style="margin-top:0.3rem; margin-bottom:0.3rem; font-size:0.9rem">R&D in Robotics, AI, and Autonomous Systems</div><div style="margin-top:0rem; font-size:0.86rem"><a href="https://www.linkedin.com/in/james-akl" target="_blank"><medium>LinkedIn</medium></a> · <a href="https://github.com/james-akl" target="_blank"><medium>GitHub</medium></a> · <a href="https://scholar.google.com/citations?user=6gPp9TMAAAAJ" target="_blank"><medium>Scholar</medium></a></div> 
       </p>
     </div>
     <nav id="patterns-nav" class="patterns" role="navigation">
@@ -495,9 +496,9 @@ continuous system construct a discrete approximate system $(P_h)$.</p>
 $$
 (P_h)
 \begin{dcases}
-u''_j(t)+ c^2 \frac{u(x_{j-1}, t) - 2u(x_j, t) + u(x_{j+1}, t)}{h^2} = 0
+u&rsquo;&rsquo;_j(t)+ c^2 \frac{u(x_{j-1}, t) - 2u(x_j, t) + u(x_{j+1}, t)}{h^2} = 0
 \\ u_0(t) = u_{n+1}(t) = 0
-\\ u_j(0) = v(x_j) \textrm{ and } u'_j(0) = w(x_j)
+\\ u_j(0) = v(x_j) \textrm{ and } u&rsquo;_j(0) = w(x_j)
 \end{dcases}
 $$
 This can be rewritten in matrix form. Proceed by defining the second-order finite difference matrix operator,
@@ -533,13 +534,13 @@ The problem is thus rewritten to its matrix form,
 $$
 (P_h)
 \begin{dcases}
-\mathbf{u}''(t) + \frac{c^2}{h^2}\mathrm{A}\mathbf{u}(t), &amp; \textrm{for } t&gt;0
-\\ \mathbf{u}(0) = \mathbf{v}, \;\; \mathbf{u}'(0) = \mathbf{w}.
+\mathbf{u}&rsquo;&rsquo;(t) + \frac{c^2}{h^2}\mathrm{A}\mathbf{u}(t), &amp; \textrm{for } t&gt;0
+\\ \mathbf{u}(0) = \mathbf{v}, \;\; \mathbf{u}&rsquo;(0) = \mathbf{w}.
 \end{dcases}
 $$</p>
 <h2 id="time-discretization">Time Discretization</h2>
 <p>Introduce the time step size $\Delta t$, thus the time-steps are $t_k = k \Delta t$ for $k \in \N$.</p>
-<p>$u''_j(t_k)$ is approximated by the finite difference,
+<p>$u&rsquo;&rsquo;_j(t_k)$ is approximated by the finite difference,
 $$
 \frac{-2 u_{j}\left(t_{k}\right)+u_{j}\left(t_{k+1}\right)+u_{j}\left(t_{k-1}\right)}{\Delta t^{2}}
 $$
@@ -563,7 +564,7 @@ with $\lambda=\left(\frac{c \Delta t}{h}\right)^{2}$.</p>
 <p>Choose $\mathbf{u}^{0} = \mathbf{v}$ since $\mathbf{u}(0) = \mathbf{v}$.</p>
 <p>To choose a good value for $\mathbf{u}^{1}$, exploit Taylor&rsquo;s theorem,</p>
 <p>$$
-u_j (\Delta t) = u_j (0) + \Delta t \, u'_j (0) + R_1(\Delta t)
+u_j (\Delta t) = u_j (0) + \Delta t \, u&rsquo;_j (0) + R_1(\Delta t)
 $$
 Express the remainder $R_1$ explicitly in <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem#Explicit_formulas_for_the_remainder">Lagrange mean-value form</a>.<br>$\exists \xi \in (0, \Delta t) :$
 $$
@@ -571,9 +572,9 @@ R_{k}(\Delta t)=\frac{u_j^{(k+1)}\left(\xi \right)}{(k+1) !}(\Delta t - 0)^{k+1}
 $$
 For $k = 1$, obtain, $\exists \xi \in (0, \Delta t) :$
 $$
-u_j (\Delta t) = u_j (0) + \Delta u'_j (0) + \frac{\Delta t^2}{2}u''_j(\xi)
+u_j (\Delta t) = u_j (0) + \Delta u&rsquo;_j (0) + \frac{\Delta t^2}{2}u&rsquo;&rsquo;_j(\xi)
 $$
-Approximate $u''_j(\xi)$ with $u''_j(0)$, which is evaluated as in $(P_h)$, thus obtain,
+Approximate $u&rsquo;&rsquo;_j(\xi)$ with $u&rsquo;&rsquo;_j(0)$, which is evaluated as in $(P_h)$, thus obtain,
 $$
 u_{j}(\Delta t) \approx u_{j}(0)+\Delta t u_{j}^{\prime}(0)+\frac{c^{2} \Delta t^{2}}{2h^{2}}\big[u_{j-1}(0)-2 u_{j}(0)+u_{j+1}(0)\big]
 $$
