@@ -36,10 +36,9 @@ Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and
       <guid>https://jamesakl.com/nla-wave/</guid>
       <description>GitHub Source code is available in the GitHub repository.
 Description The project&amp;rsquo;s full title is:
-Solving a Time–Dependent 1D Wave PDE
+ Solving a Time–Dependent 1D Wave PDE
 A Numerical Linear Algebraic Approach
-Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,
-$$ \frac{\partial^2}{\partial t^2}u(x,t) - c^2 \frac{\partial^2}{\partial x^2}u(x,t) = 0 \, \bigg|_{x \in (0, 1) \textrm{ and } t&amp;gt;0} $$ Here the function $u(x,t)$ is defined as, $$ \begin{matrix} u: &amp;amp; [0,1] \times \R_{\geq 0} &amp;amp; \to &amp;amp; \R \\ &amp;amp; (x,t) &amp;amp; \mapsto &amp;amp; u(x,t) \end{matrix} $$ The PDE boundary conditions are, $$ u(0,t) = u(1,t) = 0 $$ And its initial conditions are, $$ u(x,0) = v(x) \textrm{ and } \frac{\partial u}{\partial t}(x, 0) = w(x) \, \bigg|_{x \in (0, 1)} $$ Here the functions $v, w: [0,1] \to \R$ are known.</description>
+ Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,</description>
     </item>
     
     <item>
@@ -50,9 +49,9 @@ $$ \frac{\partial^2}{\partial t^2}u(x,t) - c^2 \frac{\partial^2}{\partial x^2}u(
       <guid>https://jamesakl.com/fem-convdiff/</guid>
       <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
 Description The project&amp;rsquo;s full title is:
-Finite Element Analysis of a 1D Convection–Diffusion Problem
+ Finite Element Analysis of a 1D Convection–Diffusion Problem
 Formulation, Implementation, and Optimization
-Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</description>
+ Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</description>
     </item>
     
     <item>
@@ -63,9 +62,9 @@ Problem Statement Suppose that an ionic fluid is trapped between two flat parall
       <guid>https://jamesakl.com/cad-microguard/</guid>
       <description>Renders | Drawings | Materials | GitHub Source files can be found in the GitHub repo.
 Description The project&amp;rsquo;s full title is:
-MicroGuard System: 3D Concept Model
+ MicroGuard System: 3D Concept Model
 Examining Security via Intimidation
-This project is only a 3D visual concept model, not a fully-engineered system. The aim is security via deterrence, i.e., to de-escalate threats with intimidating appearance without the ability to actually shoot. Summary The system is designed and modeled fully from scratch.</description>
+    This project is only a 3D visual concept model, not a fully-engineered system. The aim is security via deterrence, i.e., to de-escalate threats with intimidating appearance without the ability to actually shoot.   Summary The system is designed and modeled fully from scratch.</description>
     </item>
     
     <item>
@@ -76,9 +75,9 @@ This project is only a 3D visual concept model, not a fully-engineered system. T
       <guid>https://jamesakl.com/noise-dobc/</guid>
       <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
 Description The project&amp;rsquo;s full title is:
-Noise Extraction in Disturbance Observer-Based Control
+ Noise Extraction in Disturbance Observer-Based Control
 A Computational Inverse Problems Approach
-In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
+ In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
     </item>
     
     <item>

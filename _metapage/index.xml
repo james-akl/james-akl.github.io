@@ -24,7 +24,10 @@ At WPI, I was an R&amp;amp;D Trainee as part of the NSF Research Traineeship Pro
       
       <guid>https://jamesakl.com/projects/</guid>
       <description>Some of my personal projects are showcased below.
-Subanagram Search: Algorithm &amp;amp; Implementation [Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. PyLAFS Package: Linear Algebra from Scratch [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. Convex Analysis &amp;amp; Optimization: Select Works Collection of interesting problems with my proofs and solutions. Numerical Analysis &amp;amp; Implementation: 1D PDE [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE. Finite Element Analysis &amp;amp; Implementation: 1D PDE [PDF][GitHub] Designing and optimizing a finite element solution to a 1D PDE.</description>
+[[View tags](/ptags)] -- Subanagram Search: Algorithm &amp;amp; Implementation  [Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. 
+PyLAFS Package: Linear Algebra from Scratch  [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. 
+Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions. 
+Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE.</description>
     </item>
     
     <item>
@@ -34,11 +37,10 @@ Subanagram Search: Algorithm &amp;amp; Implementation [Docs][GitHub] Solver with
       
       <guid>https://jamesakl.com/research/</guid>
       <description>Some of my research contributions are disclosed below.
-Publications All preprint material is subject to the corresponding publisher&#39;s copyright. CNN-Based Task State Estimation for Safer Automation of Oxy-Fuel Metal Cutting,
+Publications    All preprint material is subject to the corresponding publisher&#39;s copyright.     CNN-Based Task State Estimation for Safer Automation of Oxy-Fuel Metal Cutting,
 2023 IEEE International Conference on Automation Science and Engineering (CASE).
-James Akl; Shreedhar Kodate; Berk Calli. [PDF] Feature-Driven Next View Planning for Cutting Path Generation in Robotic Metal Scrap Recycling,
-2023 IEEE Transactions on Automation Science and Engineering (T-ASE).
-James Akl; Fadi Alladkani; Berk Calli.</description>
+James Akl; Shreedhar Kodate; Berk Calli.  
+  [PDF] Feature-Driven Next View Planning for Cutting Path Generation in Robotic Metal Scrap Recycling,</description>
     </item>
     
     <item>
@@ -47,9 +49,9 @@ James Akl; Fadi Alladkani; Berk Calli.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/resume/</guid>
-      <description>My professional and educational backgrounds are summarized below. View my resume
-View my coursework
-For other information, please request directly at james-akl@outlook.com.</description>
+      <description>My professional and educational backgrounds are summarized below.   View my resume
+  View my coursework
+   For other information, please request directly at james-akl@outlook.com.</description>
     </item>
     
     <item>
@@ -59,15 +61,14 @@ For other information, please request directly at james-akl@outlook.com.</descri
       
       <guid>https://jamesakl.com/writings/</guid>
       <description>Some of my personal writings are listed below. [Tags]
-Articles These address a particular topic and are sparsely updated (extensions, corrections).
-Reading Spatial Transforms
+Articles  These address a particular topic and are sparsely updated (extensions, corrections).
+ Reading Spatial Transforms
 Ways to interpret homogeneous (rigid-body) transform.
 A Tour of Robot Mechanics
 Broad glide over robot kinematics and dynamics.
 Defining a Robot
 Attempt to answer “What is a robot?” in a prescriptive manner.
-Notebooks These are living documents that are routinely updated and gradually refined.
-Robot Learning</description>
+Notebooks  These are living documents that are routinely updated and gradually refined.</description>
     </item>
     
   </channel>
