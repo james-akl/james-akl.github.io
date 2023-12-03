@@ -7,6 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jamesakl.com/_writings/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Research List</title>
+      <link>https://jamesakl.com/research-list/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/research-list/</guid>
+      <description>Motion Planning Motion planning around obstacles with convex optimization [Marucci2023] Sampling-based motion planning: a comparative review [Orthey2024] Computer Vision Segment Anything [Kirillov2023] </description>
+    </item>
+    
+    <item>
       <title>Robotics Companies</title>
       <link>https://jamesakl.com/robotics-companies/</link>
       <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
@@ -43,10 +52,10 @@ This document is currently work in progress. Overview Robot learning is a multid
       
       <guid>https://jamesakl.com/lists/</guid>
       <description>I update this page regularly with resources that may be helpful to others.
-Learning and reference materials marked as “Online” are freely accessible. Learning Material Mathematics Foundations of Applied Mathematics – Book series by Humpherys &amp;amp; Jarvis
-Numerical Algorithms – Online book by Justin Solomon
-Mathematics for Machine Learning – Online book by Deisenroth, Faisal, and Ong
-Mathematics for Computer Science – Online book by Lehman, Leighton, and Meyer</description>
+Learning and reference materials marked as “Online” are freely accessible. Learning Material Mathematics Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
+Numerical Algorithms · Online book by Justin Solomon
+Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong
+Mathematics for Computer Science · Online book by Lehman, Leighton, and Meyer</description>
     </item>
     
     <item>

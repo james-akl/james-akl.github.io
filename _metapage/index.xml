@@ -23,8 +23,8 @@ At WPI, I was an R&amp;amp;D Trainee as part of the NSF Research Traineeship Pro
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/projects/</guid>
-      <description>Some of my personal projects are showcased below.
-Subanagram Search: Algorithm &amp;amp; Implementation [Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. PyLAFS Package: Linear Algebra from Scratch [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. Convex Analysis &amp;amp; Optimization: Select Works Collection of interesting problems with my proofs and solutions. Numerical Analysis &amp;amp; Implementation: 1D PDE [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE. Finite Element Analysis &amp;amp; Implementation: 1D PDE [PDF][GitHub] Designing and optimizing a finite element solution to a 1D PDE.</description>
+      <description>Some of my personal projects are showcased below. [View tags]
+Subanagram Search: Algorithm &amp;amp; Implementation [Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. PyLAFS Package: Linear Algebra from Scratch [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. Convex Analysis &amp;amp; Optimization: Select Works Collection of interesting problems with my proofs and solutions. Numerical Analysis &amp;amp; Implementation: 1D PDE [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE.</description>
     </item>
     
     <item>
@@ -58,15 +58,11 @@ For other information, please request directly at james-akl@outlook.com.</descri
       
       <guid>https://jamesakl.com/writings/</guid>
       <description>Some of my personal writings are listed below. [Tags]
-Articles These address a particular topic and are sparsely updated (extensions, corrections).
-Reading Spatial Transforms
-Ways to interpret homogeneous (rigid-body) transform.
-A Tour of Robot Mechanics
-Broad glide over robot kinematics and dynamics.
-Defining a Robot
-Attempt to answer “What is a robot?” in a prescriptive manner.
-Notebooks These are living documents that are routinely updated and gradually refined.
-Robot Learning</description>
+Articles Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform.
+A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics.
+Defining a Robot · Attempt to answer “What is a robot?” in a prescriptive manner.
+Notebooks Robot Learning · ML-based methods for learning robot actions.
+Robotics Companies · Companies and business clusters in the robotics industry.</description>
     </item>
     
   </channel>
