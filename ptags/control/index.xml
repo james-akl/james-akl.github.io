@@ -27,9 +27,9 @@ State Observer &amp;amp; Feedback Control PDF A linear state observer is designe
       <guid>https://jamesakl.com/noise-dobc/</guid>
       <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
 Description The project&amp;rsquo;s full title is:
- Noise Extraction in Disturbance Observer-Based Control
+Noise Extraction in Disturbance Observer-Based Control
 A Computational Inverse Problems Approach
- In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
+In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
     </item>
     
   </channel>
