@@ -13,7 +13,7 @@
       <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/research-list/</guid>
-      <description>Papers Motion Planning Motion planning around obstacles with convex optimization [Marucci2023] Computer Vision Segment Anything [Kirillov2023] Robot Learning Distilled Feature Fields Enable Few-Shot Language-Guided Manipulation [Shen2023] Uncategorized Large Language Models for Mathematicians [Frieder2023] Reviews Annual Review of Control, Robotics, and Autonomous Systems Sampling-based Motion Planning: A Comparative Review [Orthey2024] Grasp Learning: Models, Methods, and Performance [Platt2023] The Role of Physics-Based Simulators in Robotics [Liu2021] An Historical Perspective on the Control of Robotic Manipulators [Spong2022] A Tour of Reinforcement Learning: The View from Continuous Control [Recht2019] Integrated Task and Motion Planning [Garrett2021] </description>
+      <description>Papers Motion Planning  Motion planning around obstacles with convex optimization [Marucci2023]  Computer Vision  Segment Anything [Kirillov2023]  Robot Learning  Distilled Feature Fields Enable Few-Shot Language-Guided Manipulation [Shen2023]  Uncategorized  Large Language Models for Mathematicians [Frieder2023]  Reviews Annual Review of Control, Robotics, and Autonomous Systems  Sampling-based Motion Planning: A Comparative Review [Orthey2024] Grasp Learning: Models, Methods, and Performance [Platt2023] The Role of Physics-Based Simulators in Robotics [Liu2021] An Historical Perspective on the Control of Robotic Manipulators [Spong2022] A Tour of Reinforcement Learning: The View from Continuous Control [Recht2019] Integrated Task and Motion Planning [Garrett2021]  </description>
     </item>
     
     <item>
@@ -22,8 +22,8 @@
       <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/robotics-companies/</guid>
-      <description> This page is organized as a notebook on the robotics industry and is regularly updated with notes and relevant resources.
-This document is currently work in progress. Major Robotics Hubs Greater Boston Region Silicon Valley Waterloo Region (Kitchener–Waterloo–Cambridge) Pittsburgh United States Logistics and Manufacturing Amazon Robotics · Robotic fulfillment systems Vecna Robotics · Robotic warehousing and manufacturing RightHand Robotics · Robotic piece-picking Path Robotics · Robotic welding systems Nimble · ‍Autonomous fulfillment General-purpose Robots Boston Dynamics · Highly mobile robots Agility Robotics · Multipurpose humanoids Service Robots iRobot · Robot vacuums and mops Diligent Robotics · Robot assistants in healthcare Autonomous Vehicles Nuro · Autonomous delivery vehicles Starship Technologies · Autonomous delivery robots Built Robotics · Autonomous heavy equipment Canada Bluewrist · 3D machine vision Rigid Robotics · Precision mining Clearpath Robotics · Mobile robots for R&amp;amp;D OTTO Motors · Mobile robots for flexible material handling Kinova Robotics · Service robotics and manipulators Robotiq · Collaborative robot applications </description>
+      <description>This page is organized as a notebook on the robotics industry and is regularly updated with notes and relevant resources.
+     This document is currently work in progress.   Major Robotics Hubs  Greater Boston Region Silicon Valley Waterloo Region (Kitchener–Waterloo–Cambridge) Pittsburgh  United States Logistics and Manufacturing  Amazon Robotics · Robotic fulfillment systems Vecna Robotics · Robotic warehousing and manufacturing RightHand Robotics · Robotic piece-picking Path Robotics · Robotic welding systems Nimble · ‍Autonomous fulfillment  General-purpose Robots  Boston Dynamics · Highly mobile robots Agility Robotics · Multipurpose humanoids  Service Robots  iRobot · Robot vacuums and mops Diligent Robotics · Robot assistants in healthcare  Autonomous Vehicles  Nuro · Autonomous delivery vehicles Starship Technologies · Autonomous delivery robots Built Robotics · Autonomous heavy equipment  Canada  Bluewrist · 3D machine vision Rigid Robotics · Precision mining Clearpath Robotics · Mobile robots for R&amp;amp;D OTTO Motors · Mobile robots for flexible material handling Kinova Robotics · Service robotics and manipulators Robotiq · Collaborative robot applications  Automated collision-free motion planning -- Factory automation systems * ABB * KUKA * Kawasaki https://kawasakirobotics.</description>
     </item>
     
     <item>
@@ -33,7 +33,7 @@ This document is currently work in progress. Major Robotics Hubs Greater Boston 
       
       <guid>https://jamesakl.com/opinions/</guid>
       <description>My main career interest is in the development, deployment, and commercialization of autonomous and intelligent systems from prototypes to the real world. Below, I list some of my career-related opinions.
-Work Interests I prefer working on pragmatic uses of intelligent systems to augment utility in the real world. For complex and realistic problems, I believe that open-minded and interdisciplinary approaches tend to work better. It seems to me that highly narrow approaches tend to perform better on idealized and artificial problems.</description>
+Work Interests  I prefer working on pragmatic uses of intelligent systems to augment utility in the real world. For complex and realistic problems, I believe that open-minded and interdisciplinary approaches tend to work better. It seems to me that highly narrow approaches tend to perform better on idealized and artificial problems.</description>
     </item>
     
     <item>
@@ -43,7 +43,7 @@ Work Interests I prefer working on pragmatic uses of intelligent systems to augm
       
       <guid>https://jamesakl.com/robot-learning/</guid>
       <description>This page is organized as a notebook on the topic of robot learning and is regularly updated with notes and relevant resources.
-This document is currently work in progress. Overview Robot learning is a multidisciplinary field at the intersection of machine learning and robotics, focused on enabling robots to acquire know-how and skills through experience. The goal is for robots to adapt and improve their performance in various tasks autonomously.</description>
+     This document is currently work in progress.   Overview Robot learning is a multidisciplinary field at the intersection of machine learning and robotics, focused on enabling robots to acquire know-how and skills through experience. The goal is for robots to adapt and improve their performance in various tasks autonomously.</description>
     </item>
     
     <item>
@@ -53,10 +53,9 @@ This document is currently work in progress. Overview Robot learning is a multid
       
       <guid>https://jamesakl.com/lists/</guid>
       <description>I update this page regularly with resources that may be helpful to others.
-Learning and reference materials marked as “Online” are freely accessible. Learning Material Mathematics Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
-Numerical Algorithms · Online book by Justin Solomon
-Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong
-Mathematics for Computer Science · Online book by Lehman, Leighton, and Meyer</description>
+Learning and reference materials marked as “Online” are freely accessible.   Learning Material  Mathematics       Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
+  Numerical Algorithms · Online book by Justin Solomon
+  Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong</description>
     </item>
     
     <item>
@@ -89,10 +88,9 @@ Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and
       <guid>https://jamesakl.com/nla-wave/</guid>
       <description>GitHub Source code is available in the GitHub repository.
 Description The project&amp;rsquo;s full title is:
-Solving a Time–Dependent 1D Wave PDE
+ Solving a Time–Dependent 1D Wave PDE
 A Numerical Linear Algebraic Approach
-Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,
-$$ \frac{\partial^2}{\partial t^2}u(x,t) - c^2 \frac{\partial^2}{\partial x^2}u(x,t) = 0 \, \bigg|_{x \in (0, 1) \textrm{ and } t&amp;gt;0} $$ Here the function $u(x,t)$ is defined as, $$ \begin{matrix} u: &amp;amp; [0,1] \times \R_{\geq 0} &amp;amp; \to &amp;amp; \R \\ &amp;amp; (x,t) &amp;amp; \mapsto &amp;amp; u(x,t) \end{matrix} $$ The PDE boundary conditions are, $$ u(0,t) = u(1,t) = 0 $$ And its initial conditions are, $$ u(x,0) = v(x) \textrm{ and } \frac{\partial u}{\partial t}(x, 0) = w(x) \, \bigg|_{x \in (0, 1)} $$ Here the functions $v, w: [0,1] \to \R$ are known.</description>
+ Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,</description>
     </item>
     
     <item>
@@ -103,9 +101,9 @@ $$ \frac{\partial^2}{\partial t^2}u(x,t) - c^2 \frac{\partial^2}{\partial x^2}u(
       <guid>https://jamesakl.com/fem-convdiff/</guid>
       <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
 Description The project&amp;rsquo;s full title is:
-Finite Element Analysis of a 1D Convection–Diffusion Problem
+ Finite Element Analysis of a 1D Convection–Diffusion Problem
 Formulation, Implementation, and Optimization
-Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</description>
+ Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</description>
     </item>
     
     <item>
@@ -115,8 +113,8 @@ Problem Statement Suppose that an ionic fluid is trapped between two flat parall
       
       <guid>https://jamesakl.com/spatial-transforms/</guid>
       <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
-Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
-With two frames $\mathsf{F}$ and $\mathsf{F}&amp;rsquo;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
+ Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
+With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
     </item>
     
     <item>
@@ -127,9 +125,9 @@ With two frames $\mathsf{F}$ and $\mathsf{F}&amp;rsquo;$ defined, one can measur
       <guid>https://jamesakl.com/cad-microguard/</guid>
       <description>Renders | Drawings | Materials | GitHub Source files can be found in the GitHub repo.
 Description The project&amp;rsquo;s full title is:
-MicroGuard System: 3D Concept Model
+ MicroGuard System: 3D Concept Model
 Examining Security via Intimidation
-This project is only a 3D visual concept model, not a fully-engineered system. The aim is security via deterrence, i.e., to de-escalate threats with intimidating appearance without the ability to actually shoot. Summary The system is designed and modeled fully from scratch.</description>
+    This project is only a 3D visual concept model, not a fully-engineered system. The aim is security via deterrence, i.e., to de-escalate threats with intimidating appearance without the ability to actually shoot.   Summary The system is designed and modeled fully from scratch.</description>
     </item>
     
     <item>
@@ -140,9 +138,9 @@ This project is only a 3D visual concept model, not a fully-engineered system. T
       <guid>https://jamesakl.com/noise-dobc/</guid>
       <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
 Description The project&amp;rsquo;s full title is:
-Noise Extraction in Disturbance Observer-Based Control
+ Noise Extraction in Disturbance Observer-Based Control
 A Computational Inverse Problems Approach
-In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
+ In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
     </item>
     
     <item>
@@ -152,7 +150,7 @@ In the context of control theory, a system with inputs $u$ and outputs $y$ may b
       
       <guid>https://jamesakl.com/robot-mechanics/</guid>
       <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
-Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+ Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
 Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
     </item>
     
@@ -163,7 +161,7 @@ Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
       
       <guid>https://jamesakl.com/robot-definition/</guid>
       <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
-History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
+ History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
     </item>
     
     <item>
@@ -195,7 +193,10 @@ At WPI, I was an R&amp;amp;D Trainee as part of the NSF Research Traineeship Pro
       
       <guid>https://jamesakl.com/projects/</guid>
       <description>Some of my personal projects are showcased below. [View tags]
-Subanagram Search: Algorithm &amp;amp; Implementation [Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. PyLAFS Package: Linear Algebra from Scratch [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. Convex Analysis &amp;amp; Optimization: Select Works Collection of interesting problems with my proofs and solutions. Numerical Analysis &amp;amp; Implementation: 1D PDE [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE.</description>
+  Subanagram Search: Algorithm &amp;amp; Implementation  [Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. 
+  PyLAFS Package: Linear Algebra from Scratch  [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. 
+  Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions. 
+  Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE.</description>
     </item>
     
     <item>
@@ -205,10 +206,10 @@ Subanagram Search: Algorithm &amp;amp; Implementation [Docs][GitHub] Solver with
       
       <guid>https://jamesakl.com/research/</guid>
       <description>Some of my research contributions are disclosed below.
-Publications All preprint material is subject to the corresponding publisher&#39;s copyright. [Dataset] CNN-Based Task State Estimation for Safer Automation of Oxy-Fuel Metal Cutting,
+Publications    All preprint material is subject to the corresponding publisher&#39;s copyright.     [Dataset] CNN-Based Task State Estimation for Safer Automation of Oxy-Fuel Metal Cutting,
 2023 IEEE International Conference on Automation Science and Engineering (CASE).
-James Akl; Shreedhar Kodate; Berk Calli. [PDF] Feature-Driven Next View Planning for Cutting Path Generation in Robotic Metal Scrap Recycling,
-2023 IEEE Transactions on Automation Science and Engineering (T-ASE).</description>
+James Akl; Shreedhar Kodate; Berk Calli.  
+  [PDF] Feature-Driven Next View Planning for Cutting Path Generation in Robotic Metal Scrap Recycling,</description>
     </item>
     
     <item>
@@ -217,9 +218,9 @@ James Akl; Shreedhar Kodate; Berk Calli. [PDF] Feature-Driven Next View Planning
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/resume/</guid>
-      <description>My professional and educational backgrounds are summarized below. View my resume
-View my coursework
-For other information, please request directly at james-akl@outlook.com.</description>
+      <description>My professional and educational backgrounds are summarized below.   View my resume
+  View my coursework
+   For other information, please request directly at james-akl@outlook.com.</description>
     </item>
     
     <item>
@@ -229,11 +230,11 @@ For other information, please request directly at james-akl@outlook.com.</descri
       
       <guid>https://jamesakl.com/writings/</guid>
       <description>Some of my personal writings are listed below. [Tags]
-Articles Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform.
-A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics.
-Defining a Robot · Attempt to answer “What is a robot?” in a prescriptive manner.
-Notebooks Robot Learning · ML-based methods for learning robot actions.
-Robotics Companies · Companies and business clusters in the robotics industry.</description>
+Articles  Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform.
+ A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics.
+ Defining a Robot · Attempt to answer “What is a robot?” in a prescriptive manner.
+  Notebooks  Robot Learning · ML-based methods for learning robot actions.
+ Robotics Companies · Companies and business clusters in the robotics industry.</description>
     </item>
     
   </channel>
