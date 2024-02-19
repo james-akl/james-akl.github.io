@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jamesakl.com/tags/mathematics/</loc>
+    <lastmod>2024-02-18T19:15:15-05:00</lastmod>
+  </url><url>
+    <loc>https://jamesakl.com/tags/optimization/</loc>
+    <lastmod>2024-02-18T19:15:15-05:00</lastmod>
+  </url><url>
+    <loc>https://jamesakl.com/qp-least-squares/</loc>
+    <lastmod>2024-02-18T19:15:15-05:00</lastmod>
+  </url><url>
     <loc>https://jamesakl.com/research-list/</loc>
     <lastmod>2023-12-10T19:22:15-05:00</lastmod>
   </url><url>
@@ -47,9 +56,6 @@
     <loc>https://jamesakl.com/fem-convdiff/</loc>
     <lastmod>2022-01-25T23:34:56-05:00</lastmod>
   </url><url>
-    <loc>https://jamesakl.com/tags/mathematics/</loc>
-    <lastmod>2023-10-07T19:36:22-04:00</lastmod>
-  </url><url>
     <loc>https://jamesakl.com/spatial-transforms/</loc>
     <lastmod>2023-10-07T19:24:20-04:00</lastmod>
   </url><url>
@@ -78,7 +84,7 @@
     <lastmod>2022-10-22T14:21:20-04:00</lastmod>
   </url><url>
     <loc>https://jamesakl.com/_metapage/</loc>
-    <lastmod>2024-02-18T09:34:42-05:00</lastmod>
+    <lastmod>2024-02-18T19:15:15-05:00</lastmod>
   </url><url>
     <loc>https://jamesakl.com/about/</loc>
     <lastmod>2023-09-17T09:31:25-04:00</lastmod>
@@ -105,7 +111,7 @@
     <lastmod>2021-09-02T16:58:34-04:00</lastmod>
   </url><url>
     <loc>https://jamesakl.com/writings/</loc>
-    <lastmod>2023-12-03T09:44:00-05:00</lastmod>
+    <lastmod>2024-02-18T19:15:15-05:00</lastmod>
   </url><url>
     <loc>https://jamesakl.com/_writings/</loc>
     <lastmod>2022-01-25T23:34:56-05:00</lastmod>

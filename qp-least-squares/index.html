@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.91.0" />
-  <link rel="canonical" href="/robot-definition/">
+  <link rel="canonical" href="/qp-least-squares/">
 
   
     
-    <meta name="description" content="In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
- History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.">
+    <meta name="description" content="This article covers the problem formulations of quadratic programming and least squares under linear constraints.
+ Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -61,7 +61,7 @@
 
   
   
-  <title>Defining a Robot | James Akl</title>
+  <title>QP and Least Squares | James Akl</title>
 </head>
 
   <body>
@@ -285,17 +285,17 @@
       <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
         <use xlink:href="#bookmark"></use>
       </svg>
-      Defining a Robot
+      QP and Least Squares
     </h1>
 
     <div class="date">
       
       
-      <strong>Date published: </strong>Aug 20, 2021
+      <strong>Date published: </strong>Feb 18, 2024
       
         
           <br>
-          <strong>Last updated: </strong>Sep 17, 2023
+          <strong>Last updated: </strong>Feb 18, 2024
         
       
     </div>
@@ -310,7 +310,15 @@
                 <use xlink:href="#tag"></use>
               </svg>
               
-              <a href="/tags/robotics/">Robotics</a>
+              <a href="/tags/mathematics/">Mathematics</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="/tags/optimization/">Optimization</a>
             </li>
           
         </ul>
@@ -329,8 +337,8 @@
           
           
           
-          <a href="#history">
-            History
+          <a href="#background">
+            Background
           </a>
         </li>
       
@@ -339,58 +347,8 @@
           
           
           
-          <a href="#present-day-opinions">
-            Present-day Opinions
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#long-form-definition">
-            Long-form Definition
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#short-form-definition">
-            Short-form Definition
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#discussion--implications">
-            Discussion &amp; Implications
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#examples">
-            Examples
-          </a>
-        </li>
-      
-        <li>
-          
-          
-          
-          
-          <a href="#conclusion">
-            Conclusion
+          <a href="#problem-structure">
+            Problem Structure
           </a>
         </li>
       
@@ -411,206 +369,106 @@
     
 
     <blockquote>
-<p><i><small>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.</small></i></p>
+<p><small><i>This article covers the problem formulations of quadratic programming and least squares under linear constraints.</i></small></p>
 </blockquote>
-<h2 id="history">History</h2>
-<p>The word <em><strong>robot</strong></em> has literary <a href="https://en.wikipedia.org/wiki/Rossum's_Universal_Robots">origins</a> (specifically, Czech) meaning <em>forced labor</em>, vaguely implying that a robot is a <em>machine-worker</em>. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (<em>e.g.</em>, automaton, device, machine).</p>
-<p>The definition of a robot changes across cultures and has changed throughout time. Some machines considered robots by Japanese standards are not by American standards <a href="#references">[1]</a>. But we can try to find overlap and force a consensus.</p>
-<h2 id="present-day-opinions">Present-day Opinions</h2>
-<p>Nowadays, we can agree that a robot is a system, comprised of various components and subsystems, that has some objective, some awareness of itself or surroundings, some ability to physically interact with its environment (move, touch, grab, drill, shoot, …), and potentially some level of autonomy (in the engineering sense; automatic, not driven; no detailed direct human operation). It is difficult to reach an agreeable and precise definition as opinions often quickly disperse.</p>
-<p>Consider the example of <a href="https://en.wikipedia.org/wiki/Teleoperation">teleoperated systems</a>, still considered by some to be robots, but also excluded by others. Nevertheless, many roboticists actively working on teleoperation have made it <a href="https://en.wikipedia.org/wiki/Telerobotics">more intelligent</a>.</p>
-<p>Another example is in wearable systems (<em>e.g.</em>, exoskeletons, exosuits, prosthetics). Again, whether a particular system should be called a wearable robot, or rather, simply a wearable system, is up to interpretation.</p>
-<p>There is no satisfying definition for robotics as the field is too vast, somewhat fragmented, and not mature enough. The need for a clearcut and comprehensive definition is certainly appealing. But, to settle on one today would be premature and reductive.</p>
-<p>Still, it doesn&rsquo;t hurt to try, while striving to be less incorrect. Here is a proposed definition, in both long- then short-form.</p>
-<h2 id="long-form-definition">Long-form Definition</h2>
+<h2 id="background">Background</h2>
+<p>When formulating optimization problems in applied settings <small>(<em>e.g.</em>, robotics, vision)</small>, it may be unclear whether to frame them as a <a href="https://en.wikipedia.org/wiki/Quadratic_programming">quadratic program</a> (QP) or as a <a href="https://en.wikipedia.org/wiki/Least_squares">least squares</a> (LS) problem.
+Typically, this has the structure of an <a href="/robot-mechanics/#forward--inverse-problems">inverse problem</a>; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.
+Sometimes, it is easy to obtain an inverse model $\mathrm{G}^{\mathsf{inv}}$ which fulfills the map $\mathbf{y} \mapsto \mathbf{x}$.</p>
+<p>As is often the case, it may be more convenient to solve the associated least squares problem that minimizes the residual $\Vert \mathrm{G}(\mathbf{x}) - \mathbf{y} \Vert_2$.
+Example scenarios where a least squares problem structure can be used include <a href="https://en.wikipedia.org/wiki/Inverse_kinematics#Numerical_solutions_to_IK_problems">inverse kinematics</a> and <a href="https://en.wikipedia.org/wiki/Camera_resectioning">camera calibration</a> (resectioning, <em>i.e.</em>, camera extrinsic/intrinsic parameter estimation).
+Depending on the specific problem instance, the meanings of $(\mathrm{G}, \mathbf{x}, \mathbf{y})$ will vary and may not be immediately obvious.</p>
+<p>As will be shown in this article, the LS problem under specific conditions can be framed as a QP problem.
+We assume a linear forward model $\mathrm{G}$ and linear constraints on the input $\mathbf{x}$.</p>
+<h2 id="problem-structure">Problem Structure</h2>
+<p>Below, we develop the structure and assumptions of the least squares  and the quadratic programming problems.</p>
+<h3 id="least-squares-problem">Least squares problem</h3>
+<p>Let $(\mathsf{LS})$ be our least squares problem having $m$ output variables, $n$ input variables, $p$ linear constraints, and a linear forward model $\mathrm{G}$. This problem can be termed <em>linearly-constrained linear least squares</em>.</p>
+<p>$$
+(\mathsf{LS}):
+\begin{dcases}
+\begin{aligned}
+\min &amp; \quad J_\mathsf{LS}(\mathbf{x}) = \Vert \mathrm{G} \mathbf{x} - \mathbf{y}\Vert_2^2
+\\
+\operatorname{s.t.} &amp; \quad \mathrm{A} \mathbf{x} \preceq \mathbf{b}
+\end{aligned}
+\end{dcases}
+$$</p>
+<p>Here, $\mathbf{y} \in \mathbb{R}^m$, $\mathrm{G} \in \mathbb{R}^{m × n}$, $\mathbf{x} \in \mathbb{R}^n$, $\mathbf{b} \in \mathbb{R}^p$, and $\mathrm{A} \in \mathbb{R}^{p × n}$.</p>
+<aside aria-label="note" class="note">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
+      <use xlink:href="#info"></use>
+    </svg>
+    
+<b>Note on notation:</b> In this context, the partial order $\preceq$ applied on vectors is component-wise, <i>i.e.</i>, $\mathbf{u}$ ‘precedes or equals’ $\mathbf{v}$ means $u_i \leq v_i$.
+As such, $\mathrm{A} \mathbf{x} \preceq \mathbf{b}$ are the $p$ inequality constraints. Explicitly, this is $\sum_{j}^n a_{ij} x_j \leq b_i$ for $i \in \{1, …, p\}$ or $\mathrm{A}_{i,:}\mathbf{x} \leq b_i$ where $\mathrm{A}_{i,:}$ are the rows of $\mathrm{A}$.
+When applied to matrices, this notation typically denotes definiteness, <i>e.g.</i>, $\mathrm{B} \succ 0$ means $\mathrm{B}$ is positive definite and $\mathrm{B} \succeq 0$ means $\mathrm{B}$ is positive semidefinite.
+
+  </div>
+</aside>
+
+<aside aria-label="note" class="note">
+  <div>
+    <svg class="sign" aria-hidden="true" viewBox="0 0 41.667306 41.66729" focusable="false">
+      <use xlink:href="#info"></use>
+    </svg>
+    
+<b>Note on rank and definiteness:</b>
+In general $\operatorname{rank}(\mathrm{G}) \leq \min \{m, n\}$.
+The matrix $\mathrm{G}^\mathsf{T} \mathrm{G} \in \mathbb{R}^{n × n}$ is symmetric and $\mathrm{G}^\mathsf{T} \mathrm{G} \succeq 0$.
+When $m \geq n$ and $\mathrm{G}$ is full-rank then $\mathrm{G}^\mathsf{T} \mathrm{G} \succ 0$.
+Otherwise, when $m < n$ or $\mathrm{G}$ is rank-deficient, then $\mathrm{G}^\mathsf{T} \mathrm{G} \succeq 0$.
+
+  </div>
+</aside>
+
+<h3 id="qp-problem">QP problem</h3>
+<p>Let $(\mathsf{QP})$ be our quadratic programming problem having $n$ variables and $p$ linear constraints. This problem is specifically <em>linearly-constrained quadratic programming</em>.</p>
+<p>$$
+(\mathsf{QP}):
+\begin{dcases}
+\begin{aligned}
+\min &amp; \quad J_\mathsf{QP}(\mathbf{x}) = \frac{1}{2} \mathbf{x}^\mathsf{T} \mathrm{Q} \mathbf{x} + \mathbf{c}^\mathsf{T} \mathbf{x}
+\\
+\operatorname{s.t.} &amp; \quad \mathrm{A} \mathbf{x} \preceq \mathbf{b}
+\end{aligned}
+\end{dcases}
+$$
+Here, $\mathrm{Q} \in \mathbb{R}^{n × n}$ is a real symmetric matrix ($\mathrm{Q}^\mathsf{T} = \mathrm{Q}$), $\mathbf{x} \in \mathbb{R}^n$, $\mathbf{b} \in \mathbb{R}^p$, and ${\mathrm{A} \in \mathbb{R}^{p × n}}$.
+In general, there are no restrictions on the definiteness of $\mathrm{Q}$.</p>
+<h3 id="from-mathsfls-to-mathsfqp">From $(\mathsf{LS})$ to $(\mathsf{QP})$</h3>
+<p>To restate our least squares problem as a QP problem, we first rewrite the cost function $J_\mathsf{LS}(\mathbf{x})$ can be rewritten as:</p>
+<p>$$
+\begin{aligned}
+J_\mathsf{LS}(\mathbf{x})
+&amp;= (\mathrm{G} \mathbf{x} - \mathbf{y})^\mathsf{T} (\mathrm{G} \mathbf{x} - \mathbf{y}) \\
+&amp;= (\mathbf{x}^\mathsf{T} \mathrm{G}^\mathsf{T} - \mathbf{y}^\mathsf{T}) (\mathrm{G} \mathbf{x} - \mathbf{y}) \\
+&amp;= \mathbf{x}^\mathsf{T} \mathrm{G}^\mathsf{T} \mathrm{G} \mathbf{x} - \mathbf{y}^\mathsf{T} \mathrm{G} \mathbf{x} - \mathbf{x}^\mathsf{T} \mathrm{G}^\mathsf{T} \mathbf{y} + \mathbf{y}^\mathsf{T} \mathbf{y} \\
+&amp;= \mathbf{x}^\mathsf{T} \mathrm{G}^\mathsf{T} \mathrm{G} \mathbf{x} - 2\mathbf{y}^\mathsf{T} \mathrm{G} \mathbf{x} + \mathbf{y}^\mathsf{T} \mathbf{y}
+\end{aligned}
+$$</p>
+<p>Notice that the minimizer $\mathbf{x}^*$ of $\tilde{J}_\mathsf{LS}(\mathbf{x}) = \frac{1}{2}[J_\mathsf{LS}(\mathbf{x}) - \mathbf{y}^\mathsf{T} \mathbf{y}]$ is that of $J_\mathsf{LS}(\mathbf{x})$; however, the minimum value is different.
+The modified cost function can thus be rewritten into a QP objective function, as follows:</p>
+<p>$$
+\begin{aligned}
+\tilde{J}_\mathsf{LS}(\mathbf{x})
+&amp;= \frac{1}{2} \mathbf{x}^\mathsf{T} \mathrm{G}^\mathsf{T} \mathrm{G} \mathbf{x} - \mathbf{y}^\mathsf{T} \mathrm{G} \mathbf{x} \\
+&amp;=  \frac{1}{2} \mathbf{x}^\mathsf{T} \mathrm{Q} \mathbf{x} + \mathbf{c}^\mathsf{T} \mathbf{x}
+\end{aligned}
+$$
+By setting $\mathrm{Q} = \mathrm{G}^\mathsf{T} \mathrm{G}$ and  $\mathbf{c} = -\mathrm{G}^\mathsf{T} \mathbf{y}$, the problem $(\mathsf{LS})$ is restated in the from of $(\mathsf{QP})$.
+In the scenario where $\mathrm{Q} \succ 0$ (see the above note on definiteness), then $J_\mathsf{QP}(\mathbf{x})$ is strictly convex and its minimizer $\mathbf{x}^*$ is unique.</p>
+<h3 id="from-mathsfqp-to-mathsfls">From $(\mathsf{QP})$ to $(\mathsf{LS})$</h3>
 <blockquote>
-<p>A robot is any goal-oriented and human-made system, typically a machine but not necessarily, endowed with some capabilities for sensing, perception, cognition, planning, control, and acting in the physical world; while subject to human authority, in the form of high-level command or low-level control.</p>
+<p><em><strong>Work in progress</strong></em>.<br>
+<em>This can be achieved using <a href="https://en.wikipedia.org/wiki/Cholesky_decomposition">Cholesky decomposition</a></em>.</p>
 </blockquote>
-<h2 id="short-form-definition">Short-form Definition</h2>
-<blockquote>
-<p>A robot is any <u>goal-oriented</u> and <u>human-made</u> <u>system</u> under <u>human authority</u> that can <u>sense</u>, <u>plan</u>, and <u>act</u> in the <u>physical world</u>.</p>
-</blockquote>
-<h2 id="discussion--implications">Discussion &amp; Implications</h2>
-<p>The above definitions may be dissected and discussed for depth and clarity.</p>
-<h3 id="a-robot-is-a-system">A robot is a system.</h3>
-<p>We may emphasize the word <em><strong>system</strong></em> rather than machine <a href="#references">[2]</a>. There is no reason why a robot cannot be grown as an organism, rather than built as a machine. If it can be designed for a goal, commanded or controlled, with some level of autonomy, then the choice of the corpus, body, or mechanism is, in principle, arbitrary. Machines are much better understood, and can be designed to be more predictable, and thus today are almost always preferred to organisms.</p>
-<p>This systems-view also alludes to <a href="http://www.scholarpedia.org/article/Swarm_robotics">robotic swarms</a>. In some swarms, each individual machine can be complex enough to be a robot in its own right. But, in principle, individual machines that are too simple to be considered robots, can be collectively considered a robotic system, <em>provided that</em> the swarm can collectively meet the definition.</p>
-<h3 id="a-robot-directly-interacts-with-the-physical-world">A robot directly interacts with the physical world.</h3>
-<p>In other words, if it cannot mechanically interact with the physical world, it is less robot and more device, or sometimes even a computer. If it cannot sense nor plan, then it lacks the ability to adapt, which is closer to traditional machines than to &lsquo;intelligent&rsquo; robots. Many consumer &ldquo;robot assistants&rdquo; or &ldquo;robot companions&rdquo; get branded as robots, and those that interact physically indeed are; but those who cannot are closer to computers than to robots, even if they have speech features and sophisticated natural language processing.</p>
-<h3 id="a-robot-is-made-by-humans-for-humans">A robot is made by humans, for humans.</h3>
-<p>Despite the musings of popular culture and the entertainment industry, robots are a human invention: designed by people, built by people, and ruled by people. Bluntly put, a robot is an artificial creation indentured to serve a specific goal or purpose defined by its <em>human</em> creators, owners, or programmers.</p>
-<p>One implication here is that a living system found in nature cannot be converted into a robot. A machine modeled after a horse can be a robot, but a live horse controlled using implants is closer to a rigidly-controlled animal. A robot, in this regard, may be thought of as &ldquo;artificial life&rdquo; with &ldquo;human masters&rdquo;. One curious scenario is: would a dead horse, <em>i.e.</em>, a cadaver, taxidermied and repurposed into an obedient &lsquo;biomachine&rsquo; (cyborg?) be considered a robot? Potentially yes, it is somewhat artificial life, that is used to serve humans.</p>
-<p>Another implication is about authority. Since robots are built by people to serve people, then it must remain under human authority to be considered a robot. If that subordination is breached, then the system is no longer a robot, but a rogue or independent machine. My interpretation of this is as follows:</p>
-<blockquote>
-<p>Robots may be given some forms of intelligence, but by design, they lack free will. Otherwise, we create, at best, independent machines, at worst, rogue machines.</p>
-</blockquote>
-<p>Many fictional movie characters we call &lsquo;robots&rsquo;, especially &lsquo;killer robots&rsquo;, such as the famous Terminator, are not under human authority and so are not robots in the normative sense. There are other tricky scenarios: Consider a robot, once working for people, now fallen under the authority of a hypothetical and hostile non-human entity. It is a &lsquo;robot&rsquo; vis-à-vis the entity, but perhaps just a killer machine to people. What about robots commanded by one group of people, instructed against another group of people? It gets tricky, both nominally and ethically.</p>
-<p>It is in this context that many <a href="https://en.wikipedia.org/wiki/Laws_of_robotics">laws of robotics</a> have been proposed or imagined, the most famous of which are Asimov&rsquo;s in literary contexts.</p>
-<p>When a robot exhibits behavior that may be perceived as (supposedly) free-willed, then it should, in principle, cease being considered a robot (a bound system), but rather a free entity. But such scenarios are, so far, only in fiction.</p>
-<h2 id="examples">Examples</h2>
-<p>Consider these systems, and argue whether each is closer to a robot, or not.</p>
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-c42900590de89858c9b8688a9c23e2fd">
-      <span class="expandable-label">Handshake machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-c42900590de89858c9b8688a9c23e2fd" hidden>
-    It <strong>depends</strong>. A sophisticated handshake machine that can sense a user&rsquo;s hand, plan the shake, and execute it in the physical world does exhibit the characteristics of a robot. However, a passive handshake machine which plays a sequence upon a person&rsquo;s touch, is closer to a traditional machine.
-  </div>
-</div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-e3f07e8f235363e68fa9f7b4d6483744">
-      <span class="expandable-label">Washing machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-e3f07e8f235363e68fa9f7b4d6483744" hidden>
-    It <strong>depends</strong>. A basic washing machine is closer to an electromechanical appliance than a robot. But consider an advanced washer that scans its contents and determines the best washing program for them, all autonomously. That would be closer to a robot.
-  </div>
-</div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-a3297e5eb27bd2889c687ad34e34b302">
-      <span class="expandable-label">ATM machine?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-a3297e5eb27bd2889c687ad34e34b302" hidden>
-    Ambivalent <strong>yes</strong>, could easily be a <strong>no</strong>. An ATM can be considered a weak robot. It responds to input, reads cards, shuffles banknotes, and so on, all in the physical world. It can fulfill its task without any human operator. It could be called a robot, though is closer to a sophisticated vending machine.
-  </div>
-</div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-20fc20ea70347449e1c45b53cfefd94f">
-      <span class="expandable-label">Speaker home assistant?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-20fc20ea70347449e1c45b53cfefd94f" hidden>
-    Most likely <strong>no</strong>. It can sense and hear voice commands. It can process and respond. But it cannot move nor interact physically with the environment. If it&rsquo;s a mobile home assistant, then it&rsquo;s likely yes.
-  </div>
-</div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-5e1c47675e05594646648cb37013da59">
-      <span class="expandable-label">Remote-controlled drone?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-5e1c47675e05594646648cb37013da59" hidden>
-    Most would say <strong>no</strong> as it cannot function without a pilot. Perhaps if the drone has some built-in autonomy to assist, correct, or otherwise smoothen the flight as driven by the remote pilot, then maybe it is closer to a robot.
-  </div>
-</div>
-
-<div class="expandable-section">
-  
-    <h4>
-  
-    
-    
-    
-    
-    
-    <button aria-expanded="false" data-expands="js-expandable-e2852caa9476a041fb2830200b5ee616">
-      <span class="expandable-label">Driverless airport terminal shuttle?</span>
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
-        <g transform="translate(0 -981.5)">
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
-          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
-        </g>
-      </svg>
-    </button>
-  
-    </h4>
-  
-  <div id="js-expandable-e2852caa9476a041fb2830200b5ee616" hidden>
-    A weak <strong>yes</strong>. This system technically operates without any human intervention. Just set and forget, with occasional maintenance. This shuttle goes round and round the airport terminals. It just runs &ldquo;one program&rdquo;, lacks adaptability, and is thus a rather &lsquo;unintelligent&rsquo; robot.
-  </div>
-</div>
-
-<h2 id="conclusion">Conclusion</h2>
-<p>In everyday practice, it is perfectly fine to call robot-esque machines robots, for concision. This article was merely a pedantic attempt to feed thought and debate. Though eventually, legislation should take the nomenclature and classification of automation more seriously (in Japan, there is a subjective albeit interesting classification of robots into six levels of &ldquo;generality&rdquo; or autonomy). Clarity would help to design sensible laws and stimulate less fuzzy discussions surrounding automation regarding moral agency, economic policy, and so on.</p>
-<p>Certainly, the definition remains fuzzy. But in many ways, the failure to cement the meaning of &ldquo;robot&rdquo; nor reach a singular interpretation of it, is that which brings much richness and diversity to the field.</p>
 <h2 id="references">References</h2>
-<p><a href="#history">[1]</a> Saeed B. Niku, §1.3, <a href="https://www.wiley.com/en-us/Introduction+to+Robotics%3A+Analysis%2C+Control%2C+Applications%2C+3rd+Edition-p-9781119527602"><em>Introduction to Robotics: Analysis, Control, Applications</em></a>, 2019, Wiley.</p>
-<p><a href="#discussion--implications">[2]</a> Kris Hauser, Preface §1, <a href="https://motion.cs.illinois.edu/RoboticSystems/Preface.html"><em>Robotic Systems</em></a> , 2020.</p>
+<blockquote>
+<p><em><strong>Work in progress</strong></em>.<br>
+<em>Reference will be added at a future date</em>.</p>
+</blockquote>
 
   </main>
   

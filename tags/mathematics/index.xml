@@ -6,7 +6,17 @@
     <description>Recent content in Mathematics on James Akl</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>QP and Least Squares</title>
+      <link>https://jamesakl.com/qp-least-squares/</link>
+      <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/qp-least-squares/</guid>
+      <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.
+ Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
+    </item>
+    
     <item>
       <title>Reading Spatial Transforms</title>
       <link>https://jamesakl.com/spatial-transforms/</link>

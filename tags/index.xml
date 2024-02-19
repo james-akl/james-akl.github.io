@@ -7,6 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jamesakl.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Mathematics</title>
+      <link>https://jamesakl.com/tags/mathematics/</link>
+      <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/tags/mathematics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Optimization</title>
+      <link>https://jamesakl.com/tags/optimization/</link>
+      <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Machine Learning</title>
       <link>https://jamesakl.com/tags/machine-learning/</link>
       <pubDate>Mon, 07 Aug 2023 00:00:00 +0000</pubDate>
@@ -21,15 +39,6 @@
       <pubDate>Mon, 07 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/tags/robotics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mathematics</title>
-      <link>https://jamesakl.com/tags/mathematics/</link>
-      <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/tags/mathematics/</guid>
       <description></description>
     </item>
     
