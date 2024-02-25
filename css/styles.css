@@ -86,6 +86,8 @@ a {
     margin-top: 0;
     background-color: transparent;
 }
+.katex-display { overflow: auto hidden }
+
 
 /* Fix for IE :( */
 [tabindex="-1"]:focus,
