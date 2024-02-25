@@ -499,7 +499,7 @@ The types of input objects $\Box_i$ we are interested in are scalars $\mathbb{R}
 Intuitively, the ‘matrix derivative’ handles at most two indices coming from its arguments.
 Therefore, the ‘matrix derivative’ is defined when the orders of its arguments $\Box _{1}$ and $\Box _{2}$ are at most $2$;
 that is:
-$$\tag{1}
+$$
 \operatorname{order} \left[\frac{\partial \Box_1}{\partial \Box_2}\right] = \operatorname{order} [\Box_1] + \operatorname{order} [\Box_2] \leq 2
 $$</p>
 <p>The output $\frac{\partial \Box_1}{\partial \Box_2}$ would be a scalar, vector, or matrix. Before proceeding with the definition of $\frac{\partial \Box_1}{\partial \Box_2}$, we define its underlying operations. For a matrix $\mathrm{X} \in \mathbb{R}^{m×n}$:</p>
@@ -512,13 +512,13 @@ This also covers the special cases of vectors ${\partial \mathbf{x} = [\partial 
 <p>With these, we can define $\frac{\partial \Box_1}{\partial \Box_2}$.
 However, as mentioned earlier, there are two layout conventions.
 We denote numerator layout as $\overline{[\frac{\partial \Box_1}{\partial \Box_2}]}$ and denominator layout as $\underline{[\frac{\partial \Box_1}{\partial \Box_2}]}$, for which we define the ‘matrix derivative’ as:</p>
-<p>$$\tag{2}
+<p>$$
 \overline{\left[\frac{\partial \Box _{1}}{\partial \Box _{2}}\right]} = \partial \Box _{1}  \; \widetilde{\partial {\Box} _{2}}^{\mathsf{T}},
 \quad
 \underline{\left[\frac{\partial \Box _{1}}{\partial \Box _{2}}\right]} =  \widetilde{\partial {\Box} _{2}}  \;  \partial \Box _{1}^{\mathsf{T}}
 $$</p>
 <p>Observe that $\overline{[\frac{\partial \Box_1}{\partial \Box_2}]} = \underline{[\frac{\partial \Box_1}{\partial \Box_2}]}^\mathsf{T}$.
-It is also important to be aware that the product used in Eq.$(2)$ is a placeholder product, which can either be a scalar–matrix product (left or right, since it is commutative) or a matrix product (requiring compatible dimensions).</p>
+It is also important to be aware that the product used in the above equation is a placeholder product, which can either be a scalar–matrix product (left or right, since it is commutative) or a matrix product (requiring compatible dimensions).</p>
 <p>Finally, as a (notational) mnemonic we take inspiration from the pattern ${\mathbf{u} \otimes \mathbf{v} = \mathbf{u}\mathbf{v}^\mathsf{T}}$ in the outer product ($\otimes$) of vectors.
 We use the $\boxtimes$ accordingly to write the shorthands:
 $$\tag{3}
