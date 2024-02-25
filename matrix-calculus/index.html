@@ -430,7 +430,7 @@ We recall common examples of derivatives in higher dimensions:</p>
 <b>Warning against ambiguity in notation and definitions:</b>
 Notational convention and usage can vary, especially in the context of differentiation. For example, $\partial$ can denote a differential $\partial x$, a partial derivative $\partial_x f$, a <a href="https://en.wikipedia.org/wiki/Subderivative">subdifferential</a> $\partial f(x_0)$, or a <a href="https://en.wikipedia.org/wiki/Boundary_(topology)">boundary</a> $\partial S$, or otherwise.
 Similarly, the nabla symbol $\nabla$ can denote gradient $\nabla f(\mathbf{x})$ or other specialized uses.
-Furthermore,  $\nabla_\mathbf{x} f(\mathbf{x})$ or $\nabla_\mathbf{v} f(\mathbf{x})$ can denote a gradient w.r.t. vector $\mathbf{x}$ or a <a href="https://en.wikipedia.org/wiki/Directional_derivative">directional derivative</a> w.r.t. vector $\mathbf{v}$, mote commonly denoted $\mathrm{D}_\mathbf{v} f(\mathbf{x}$).
+Furthermore,  $\nabla_\mathbf{x} f(\mathbf{x})$ or $\nabla_\mathbf{v} f(\mathbf{x})$ can denote a gradient w.r.t. vector $\mathbf{x}$ or a <a href="https://en.wikipedia.org/wiki/Directional_derivative">directional derivative</a> w.r.t. vector $\mathbf{v}$, more commonly denoted $\mathrm{D}_\mathbf{v} f(\mathbf{x}$).
 Aside from notation, sometimes the construct itself may be defined differently.
 It is common to define the Jacobian such that its rows are gradient transposes. Though, in some contexts the Jacobian is defined as the transpose of the former variant whereby the columns are the gradients.
 For these reasons, it is best to confirm the intended meaning of symbols and notations from context before proceeding.
@@ -471,14 +471,14 @@ Herein lies the two layout conventions:</p>
       <use xlink:href="#info"></use>
     </svg>
     
-In effect, when read in the same layout, ${\frac{\partial \Box\_1}{\partial \Box\_2}}$ and ${\frac{\partial \Box\_2}{\partial \Box\_1}}$ yield matrices that are transposes of one another.
+In effect, when read in the same layout, ${\frac{\partial \Box_1}{\partial \Box_2}}$ and ${\frac{\partial \Box_2}{\partial \Box_1}}$ yield matrices that are transposes of one another.
 The interpretations would be equivalent only when the matrix resulting from ${\frac{\partial \Box_1}{\partial \Box_2}}$ is symmetric.
 
   </div>
 </aside>
 
 <p>Our goal in the remainder of this article is to examine all sources of nuance in interpreting and writing matrix calculus notation.
-Furthermore, we will design a mnemnonic and an explicit notation to disambiguate these nuances directly for the purposes of this discussion.</p>
+Furthermore, we will design a mnemonic and an explicit notation to disambiguate these nuances directly for the purposes of this discussion.</p>
 <aside aria-label="warning" class="note warning">
   <div>
     <svg class="sign" aria-hidden="true" viewBox="0 0 48.430474 41.646302" focusable="false">
@@ -496,7 +496,7 @@ There is little formal richness in this operator; the purpose of the discussion 
 <h2 id="formal-discussion">Formal Discussion</h2>
 <p>We will formally analyze the operator $\frac{\partial \Box_1}{\partial \Box_2}$, which we will call the ‘matrix derivative’.
 The types of input objects $\Box_i$ we are interested in are scalars $\mathbb{R}$ (order $0$, no indices), vectors $\mathbb{R}^n$ (order $1$, one index), and matrices $\mathbb{R}^{m×n}$ (order $2$, two indices).
-Intuitvely, the ‘matrix derivative’ handles at most two indices coming from its argments.
+Intuitively, the ‘matrix derivative’ handles at most two indices coming from its arguments.
 Therefore, the ‘matrix derivative’ is defined when the orders of its arguments $\Box _{1}$ and $\Box _{2}$ are at most $2$;
 that is:
 $$\tag{1}
@@ -507,7 +507,7 @@ $$</p>
 <li>We define the element-wise differential to be ${\partial \mathrm{X} = [\partial x_{ij}]_{ij}}$.
 This also covers the special cases of vectors ${\partial \mathbf{x} = [\partial x_{i}]_{i}}$ and scalars $\partial x$.</li>
 <li>We use the Hadamard inversion (element-wise reciprocal) ${\mathrm{X}^{\circ - 1} = [\frac{1}{\partial x_{ij}}]_{ij}}$, which also covers vectors ${[\frac{1}{\partial x_{i}}]_{i}}$ and scalars $\frac{1}{\partial x}$.</li>
-<li>We will use the shorthand ${\widetilde{\partial \mathrm{X}} = (\partial \mathrm{X})^{\circ - 1} = [\frac{1}{\partial x_{ij}}]_{ij}}$ to succintly compose these operations.</li>
+<li>We will use the shorthand ${\widetilde{\partial \mathrm{X}} = (\partial \mathrm{X})^{\circ - 1} = [\frac{1}{\partial x_{ij}}]_{ij}}$ to succinctly compose these operations.</li>
 </ul>
 <p>With these, we can define $\frac{\partial \Box_1}{\partial \Box_2}$.
 However, as mentioned earlier, there are two layout conventions.
