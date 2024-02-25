@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Matrix Calculus Notation</title>
+      <link>https://jamesakl.com/matrix-calculus/</link>
+      <pubDate>Thu, 22 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/matrix-calculus/</guid>
+      <description>This article discusses notational practices in matrix calculus and recommends a mnemnonic inspired by the outer product.
+ Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.</description>
+    </item>
+    
+    <item>
       <title>QP and Least Squares</title>
       <link>https://jamesakl.com/qp-least-squares/</link>
       <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
@@ -239,11 +249,11 @@ James Akl; Sumanth Pericherla; Berk Calli.
       
       <guid>https://jamesakl.com/writings/</guid>
       <description>Some of my personal writings are listed below. [Tags]
-Articles  QP and Least Squares · Analyzing the relationship between QP and least squares.
+Articles  Matrix Calculus Notation · Discussing the ‘matrix derivative’ in formal settings.
+ QP and Least Squares · Analyzing the relationship between QP and least squares.
  Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform.
  A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics.
- Defining a Robot · Attempt to answer “What is a robot?” in a prescriptive manner.
-  Notebooks  Robot Learning · ML-based methods for learning robot actions.</description>
+ Defining a Robot · Attempt to answer “What is a robot?</description>
     </item>
     
   </channel>

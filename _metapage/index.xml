@@ -60,11 +60,11 @@ James Akl; Sumanth Pericherla; Berk Calli.
       
       <guid>https://jamesakl.com/writings/</guid>
       <description>Some of my personal writings are listed below. [Tags]
-Articles  QP and Least Squares · Analyzing the relationship between QP and least squares.
+Articles  Matrix Calculus Notation · Discussing the ‘matrix derivative’ in formal settings.
+ QP and Least Squares · Analyzing the relationship between QP and least squares.
  Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform.
  A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics.
- Defining a Robot · Attempt to answer “What is a robot?” in a prescriptive manner.
-  Notebooks  Robot Learning · ML-based methods for learning robot actions.</description>
+ Defining a Robot · Attempt to answer “What is a robot?</description>
     </item>
     
   </channel>
