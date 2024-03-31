@@ -29,15 +29,6 @@
     <loc>https://jamesakl.com/opinions/</loc>
     <lastmod>2023-08-18T22:46:35-04:00</lastmod>
   </url><url>
-    <loc>https://jamesakl.com/tags/machine-learning/</loc>
-    <lastmod>2023-09-04T17:34:35-04:00</lastmod>
-  </url><url>
-    <loc>https://jamesakl.com/robot-learning/</loc>
-    <lastmod>2023-09-04T17:34:35-04:00</lastmod>
-  </url><url>
-    <loc>https://jamesakl.com/tags/robotics/</loc>
-    <lastmod>2023-10-07T19:36:22-04:00</lastmod>
-  </url><url>
     <loc>https://jamesakl.com/lists/</loc>
     <lastmod>2023-12-11T20:53:34-05:00</lastmod>
   </url><url>
@@ -67,6 +58,9 @@
   </url><url>
     <loc>https://jamesakl.com/spatial-transforms/</loc>
     <lastmod>2023-10-07T19:24:20-04:00</lastmod>
+  </url><url>
+    <loc>https://jamesakl.com/tags/robotics/</loc>
+    <lastmod>2023-10-07T19:36:22-04:00</lastmod>
   </url><url>
     <loc>https://jamesakl.com/cad-microguard/</loc>
     <lastmod>2023-01-28T10:43:29-05:00</lastmod>
