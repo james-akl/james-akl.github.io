@@ -13,7 +13,7 @@
       
       <guid>https://jamesakl.com/matrix-calculus/</guid>
       <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.
-Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.</description>
+ Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.</description>
     </item>
     
     <item>
@@ -23,7 +23,7 @@ Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s
       
       <guid>https://jamesakl.com/qp-least-squares/</guid>
       <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.
-Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
+ Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
     </item>
     
     <item>
@@ -32,7 +32,7 @@ Background When formulating optimization problems in applied settings (e.g., rob
       <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/research-list/</guid>
-      <description>Papers Motion Planning Motion planning around obstacles with convex optimization [Marucci2023] Computer Vision Segment Anything [Kirillov2023] Robot Learning Distilled Feature Fields Enable Few-Shot Language-Guided Manipulation [Shen2023] Uncategorized Large Language Models for Mathematicians [Frieder2023] Reviews Annual Review of Control, Robotics, and Autonomous Systems Sampling-based Motion Planning: A Comparative Review [Orthey2024] Grasp Learning: Models, Methods, and Performance [Platt2023] The Role of Physics-Based Simulators in Robotics [Liu2021] An Historical Perspective on the Control of Robotic Manipulators [Spong2022] A Tour of Reinforcement Learning: The View from Continuous Control [Recht2019] Integrated Task and Motion Planning [Garrett2021] </description>
+      <description>Papers Motion Planning  Motion planning around obstacles with convex optimization [Marucci2023]  Computer Vision  Segment Anything [Kirillov2023]  Robot Learning  Distilled Feature Fields Enable Few-Shot Language-Guided Manipulation [Shen2023]  Uncategorized  Large Language Models for Mathematicians [Frieder2023]  Reviews Annual Review of Control, Robotics, and Autonomous Systems  Sampling-based Motion Planning: A Comparative Review [Orthey2024] Grasp Learning: Models, Methods, and Performance [Platt2023] The Role of Physics-Based Simulators in Robotics [Liu2021] An Historical Perspective on the Control of Robotic Manipulators [Spong2022] A Tour of Reinforcement Learning: The View from Continuous Control [Recht2019] Integrated Task and Motion Planning [Garrett2021]  </description>
     </item>
     
     <item>
@@ -41,8 +41,8 @@ Background When formulating optimization problems in applied settings (e.g., rob
       <pubDate>Mon, 04 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/robotics-companies/</guid>
-      <description> This page is organized as a notebook on the robotics industry and is regularly updated with notes and relevant resources.
-This document is currently work in progress. Major Robotics Hubs Greater Boston Region Silicon Valley Waterloo Region (Kitchener–Waterloo–Cambridge) Pittsburgh United States Logistics and Manufacturing Amazon Robotics · Robotic fulfillment systems Vecna Robotics · Robotic warehousing and manufacturing RightHand Robotics · Robotic piece-picking Path Robotics · Robotic welding systems Nimble · ‍Autonomous fulfillment General-purpose Robots Boston Dynamics · Highly mobile robots Agility Robotics · Multipurpose humanoids Service Robots iRobot · Robot vacuums and mops Diligent Robotics · Robot assistants in healthcare Autonomous Vehicles Nuro · Autonomous delivery vehicles Starship Technologies · Autonomous delivery robots Built Robotics · Autonomous heavy equipment Canada Bluewrist · 3D machine vision Rigid Robotics · Precision mining Clearpath Robotics · Mobile robots for R&amp;amp;D OTTO Motors · Mobile robots for flexible material handling Kinova Robotics · Service robotics and manipulators Robotiq · Collaborative robot applications </description>
+      <description>This page is organized as a notebook on the robotics industry and is regularly updated with notes and relevant resources.
+     This document is currently work in progress.   Major Robotics Hubs  Greater Boston Region Silicon Valley Waterloo Region (Kitchener–Waterloo–Cambridge) Pittsburgh  United States Logistics and Manufacturing  Amazon Robotics · Robotic fulfillment systems Vecna Robotics · Robotic warehousing and manufacturing RightHand Robotics · Robotic piece-picking Path Robotics · Robotic welding systems Nimble · ‍Autonomous fulfillment  General-purpose Robots  Boston Dynamics · Highly mobile robots Agility Robotics · Multipurpose humanoids  Service Robots  iRobot · Robot vacuums and mops Diligent Robotics · Robot assistants in healthcare  Autonomous Vehicles  Nuro · Autonomous delivery vehicles Starship Technologies · Autonomous delivery robots Built Robotics · Autonomous heavy equipment  Canada  Bluewrist · 3D machine vision Rigid Robotics · Precision mining Clearpath Robotics · Mobile robots for R&amp;amp;D OTTO Motors · Mobile robots for flexible material handling Kinova Robotics · Service robotics and manipulators Robotiq · Collaborative robot applications  Automated collision-free motion planning -- Factory automation systems * ABB * KUKA * Kawasaki https://kawasakirobotics.</description>
     </item>
     
     <item>
@@ -52,7 +52,7 @@ This document is currently work in progress. Major Robotics Hubs Greater Boston 
       
       <guid>https://jamesakl.com/opinions/</guid>
       <description>My main career interest is in the development, deployment, and commercialization of autonomous and intelligent systems from prototypes to the real world. Below, I list some of my career-related opinions.
-Work Interests I prefer working on pragmatic uses of intelligent systems to augment utility in the real world. For complex and realistic problems, I believe that open-minded and interdisciplinary approaches tend to work better. It seems to me that highly narrow approaches tend to perform better on idealized and artificial problems.</description>
+Work Interests  I prefer working on pragmatic uses of intelligent systems to augment utility in the real world. For complex and realistic problems, I believe that open-minded and interdisciplinary approaches tend to work better. It seems to me that highly narrow approaches tend to perform better on idealized and artificial problems.</description>
     </item>
     
     <item>
@@ -62,10 +62,9 @@ Work Interests I prefer working on pragmatic uses of intelligent systems to augm
       
       <guid>https://jamesakl.com/lists/</guid>
       <description>I update this page regularly with resources that may be helpful to others.
-Learning and reference materials marked as “Online” are freely accessible. Learning Material Mathematics Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
-Numerical Algorithms · Online book by Justin Solomon
-Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong
-Mathematics for Computer Science · Online book by Lehman, Leighton, and Meyer</description>
+Learning and reference materials marked as “Online” are freely accessible.   Learning Material  Mathematics       Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
+  Numerical Algorithms · Online book by Justin Solomon
+  Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong</description>
     </item>
     
     <item>
@@ -75,8 +74,8 @@ Mathematics for Computer Science · Online book by Lehman, Leighton, and Meyer</
       
       <guid>https://jamesakl.com/spatial-transforms/</guid>
       <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
-Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
-With two frames $\mathsf{F}$ and $\mathsf{F}&amp;rsquo;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
+ Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
+With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
     </item>
     
     <item>
@@ -86,7 +85,7 @@ With two frames $\mathsf{F}$ and $\mathsf{F}&amp;rsquo;$ defined, one can measur
       
       <guid>https://jamesakl.com/robot-mechanics/</guid>
       <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
-Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+ Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
 Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
     </item>
     
@@ -97,7 +96,7 @@ Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
       
       <guid>https://jamesakl.com/robot-definition/</guid>
       <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
-History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
+ History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
     </item>
     
   </channel>
