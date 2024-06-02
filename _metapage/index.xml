@@ -24,10 +24,7 @@ At WPI, I was an R&amp;amp;D Trainee as part of the NSF Research Traineeship Pro
       
       <guid>https://jamesakl.com/projects/</guid>
       <description>Some of my personal projects are showcased below. [View tags]
-  Subanagram Search: Algorithm &amp;amp; Implementation  [Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. 
-  PyLAFS Package: Linear Algebra from Scratch  [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. 
-  Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions. 
-  Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE.</description>
+Subanagram Search: Algorithm &amp;amp; Implementation [Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. PyLAFS Package: Linear Algebra from Scratch [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. Convex Analysis &amp;amp; Optimization: Select Works Collection of interesting problems with my proofs and solutions. Numerical Analysis &amp;amp; Implementation: 1D PDE [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE.</description>
     </item>
     
     <item>
@@ -37,11 +34,11 @@ At WPI, I was an R&amp;amp;D Trainee as part of the NSF Research Traineeship Pro
       
       <guid>https://jamesakl.com/research/</guid>
       <description>Some of my research contributions are disclosed below.
-Publications    All preprint material is subject to the corresponding publisher&#39;s copyright.     [PDF] Cut Sequencing Algorithm for Safely Disassembling Large Structures,
+Publications All preprint material is subject to the corresponding publisher&#39;s copyright. [PDF] Cut Sequencing Algorithm for Safely Disassembling Large Structures,
 2023 IEEE Conference on Decision and Control (CDC).
-James Akl; Sumanth Pericherla; Berk Calli.  
-  [PDF] Vision-Based Oxy-Fuel Torch Control for Robotic Metal Cutting,
-2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).</description>
+James Akl; Sumanth Pericherla; Berk Calli. [PDF] Vision-Based Oxy-Fuel Torch Control for Robotic Metal Cutting,
+2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).
+James Akl; Yash Patil; Chinmay Todankar; Berk Calli. [PDF][Dataset] CNN-Based Task State Estimation for Safer Automation of Oxy-Fuel Metal Cutting,</description>
     </item>
     
     <item>
@@ -50,7 +47,7 @@ James Akl; Sumanth Pericherla; Berk Calli.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/resume/</guid>
-      <description>My professional and educational backgrounds are summarized below.  View my resume   For other information, please request directly at james-akl@outlook.com.</description>
+      <description>My professional and educational backgrounds are summarized below. View my resume For other information, please request directly at james-akl@outlook.com.</description>
     </item>
     
     <item>
@@ -60,11 +57,11 @@ James Akl; Sumanth Pericherla; Berk Calli.
       
       <guid>https://jamesakl.com/writings/</guid>
       <description>Some of my personal writings are listed below. [Tags]
-Articles  Matrix Calculus Notation · Discussing the ‘matrix derivative’ in formal settings.
- QP and Least Squares · Analyzing the relationship between QP and least squares.
- Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform.
- A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics.
- Defining a Robot · Attempt to answer “What is a robot?</description>
+Articles Matrix Calculus Notation · Discussing the ‘matrix derivative’ in formal settings.
+QP and Least Squares · Analyzing the relationship between QP and least squares.
+Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform.
+A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics.
+Defining a Robot · Attempt to answer “What is a robot?” in a prescriptive manner.</description>
     </item>
     
   </channel>

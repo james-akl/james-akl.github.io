@@ -14,7 +14,7 @@
       
       <guid>https://jamesakl.com/matrix-calculus/</guid>
       <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.
- Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.</description>
+Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.</description>
     </item>
     
   </channel>
