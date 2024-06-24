@@ -24,9 +24,7 @@ At WPI, I was an R&amp;amp;D Trainee as part of the NSF Research Traineeship Pro
       
       <guid>https://jamesakl.com/projects/</guid>
       <description>Some of my personal projects are showcased below. [View tags]
-  Subanagram Search: Algorithm &amp;amp; Implementation  [Docs][GitHub] Solver with asymptotic analysis and runtime benchmarks. 
-  PyLAFS Package: Linear Algebra from Scratch  [GitHub] Linear algebraic constructs and matrix calculator written in Python 3. 
-  Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions. 
+`[`[**`Docs`**](/docs_solver.pdf)`][`[**`GitHub`**](https://github.com/james-akl/subanagram-search)`]` Solver with asymptotic analysis and runtime benchmarks.  * [**PyLAFS Package: Linear Algebra from Scratch**](/pylafs/)  `[`[**`GitHub`**](https://github.com/james-akl/pylafs)`]` Linear algebraic constructs and matrix calculator written in Python 3.  --   Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions. 
   Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE.</description>
     </item>
     
