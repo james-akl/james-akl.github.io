@@ -177,14 +177,17 @@ At WPI, I was an R&amp;amp;D Trainee as part of the NSF Research Traineeship Pro
     </item>
     
     <item>
-      <title>Projects</title>
-      <link>https://jamesakl.com/projects/</link>
+      <title>Posts</title>
+      <link>https://jamesakl.com/posts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://jamesakl.com/projects/</guid>
-      <description>Some of my personal projects are showcased below. [View tags]
-`[`[**`Docs`**](/docs_solver.pdf)`][`[**`GitHub`**](https://github.com/james-akl/subanagram-search)`]` Solver with asymptotic analysis and runtime benchmarks.  * [**PyLAFS Package: Linear Algebra from Scratch**](/pylafs/)  `[`[**`GitHub`**](https://github.com/james-akl/pylafs)`]` Linear algebraic constructs and matrix calculator written in Python 3.  --   Convex Analysis &amp;amp; Optimization: Select Works  Collection of interesting problems with my proofs and solutions. 
-  Numerical Analysis &amp;amp; Implementation: 1D PDE  [GitHub] Numerical linear algebraic solution of a time–dependent wave PDE.</description>
+      <guid>https://jamesakl.com/posts/</guid>
+      <description>Articles Some of my personal writings are listed below. [Tags]
+ Matrix Calculus Notation · Discussing the ‘matrix derivative’ in formal settings.
+ QP and Least Squares · Analyzing the relationship between QP and least squares.
+ Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform.
+ A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics.
+ Defining a Robot · Attempt to answer “What is a robot?</description>
     </item>
     
     <item>
@@ -208,20 +211,6 @@ James Akl; Sumanth Pericherla; Berk Calli.
       
       <guid>https://jamesakl.com/resume/</guid>
       <description>My professional and educational backgrounds are summarized below.  View my resume   For other information, please request directly at james-akl@outlook.com.</description>
-    </item>
-    
-    <item>
-      <title>Writings</title>
-      <link>https://jamesakl.com/writings/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/writings/</guid>
-      <description>Some of my personal writings are listed below. [Tags]
- Matrix Calculus Notation · Discussing the ‘matrix derivative’ in formal settings.
- QP and Least Squares · Analyzing the relationship between QP and least squares.
- Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform.
- A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics.
- Defining a Robot · Attempt to answer “What is a robot?</description>
     </item>
     
   </channel>
