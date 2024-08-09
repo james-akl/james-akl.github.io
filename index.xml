@@ -72,13 +72,6 @@
       <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.&#xA;Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.&#xA;With two frames $\mathsf{F}$ and $\mathsf{F}&amp;rsquo;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
     </item>
     <item>
-      <title>CAD Model: MicroGuard Design</title>
-      <link>https://jamesakl.com/cad-microguard/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>https://jamesakl.com/cad-microguard/</guid>
-      <description>Renders | Drawings | Materials | GitHub Source files can be found in the GitHub repo.&#xA;Description The project&amp;rsquo;s full title is:&#xA;MicroGuard System: 3D Concept Model&#xA;Examining Security via Intimidation&#xA;This project is only a 3D visual concept model, not a fully-engineered system. The aim is security via deterrence, i.e., to de-escalate threats with intimidating appearance without the ability to actually shoot. Summary The system is designed and modeled fully from scratch.</description>
-    </item>
-    <item>
       <title>Inverse Problems for DOBC</title>
       <link>https://jamesakl.com/noise-dobc/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
@@ -98,13 +91,6 @@
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       <guid>https://jamesakl.com/robot-definition/</guid>
       <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.&#xA;History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
-    </item>
-    <item>
-      <title>PyLAFS Python Package</title>
-      <link>https://jamesakl.com/pylafs/</link>
-      <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>https://jamesakl.com/pylafs/</guid>
-      <description>GitHub Source code is available in the GitHub repository.&#xA;Description PyLAFS stands for Linear Algebra from Scratch in Python. This project implements common linear algebraic constructs in minimal Python 3, that is, without using external libraries.&#xA;PyLAFS works best as a convenient matrix calculator that runs in the Python interpreter. Simplicy and convenience are optimized, not performance: it is designed to be used in the interpreter/console and not for development.</description>
     </item>
     <item>
       <title>Posts</title>

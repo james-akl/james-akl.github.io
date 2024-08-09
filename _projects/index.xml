@@ -36,25 +36,11 @@
       <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.&#xA;Description The project&amp;rsquo;s full title is:&#xA;Finite Element Analysis of a 1D Convection–Diffusion Problem&#xA;Formulation, Implementation, and Optimization&#xA;Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</description>
     </item>
     <item>
-      <title>CAD Model: MicroGuard Design</title>
-      <link>https://jamesakl.com/cad-microguard/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>https://jamesakl.com/cad-microguard/</guid>
-      <description>Renders | Drawings | Materials | GitHub Source files can be found in the GitHub repo.&#xA;Description The project&amp;rsquo;s full title is:&#xA;MicroGuard System: 3D Concept Model&#xA;Examining Security via Intimidation&#xA;This project is only a 3D visual concept model, not a fully-engineered system. The aim is security via deterrence, i.e., to de-escalate threats with intimidating appearance without the ability to actually shoot. Summary The system is designed and modeled fully from scratch.</description>
-    </item>
-    <item>
       <title>Inverse Problems for DOBC</title>
       <link>https://jamesakl.com/noise-dobc/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       <guid>https://jamesakl.com/noise-dobc/</guid>
       <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.&#xA;Description The project&amp;rsquo;s full title is:&#xA;Noise Extraction in Disturbance Observer-Based Control&#xA;A Computational Inverse Problems Approach&#xA;In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
-    </item>
-    <item>
-      <title>PyLAFS Python Package</title>
-      <link>https://jamesakl.com/pylafs/</link>
-      <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>https://jamesakl.com/pylafs/</guid>
-      <description>GitHub Source code is available in the GitHub repository.&#xA;Description PyLAFS stands for Linear Algebra from Scratch in Python. This project implements common linear algebraic constructs in minimal Python 3, that is, without using external libraries.&#xA;PyLAFS works best as a convenient matrix calculator that runs in the Python interpreter. Simplicy and convenience are optimized, not performance: it is designed to be used in the interpreter/console and not for development.</description>
     </item>
   </channel>
 </rss>
