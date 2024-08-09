@@ -11,7 +11,7 @@
   
     
     <meta name="description" content="This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.
-Background and Motivation In the context of differentiation, Leibniz’s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.">
+Background and Motivation In the context of differentiation, Leibniz’s notation ${\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)}$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing ${\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}}$. In higher-dimensional settings, a function can be multivariate (multidimensional input), vector-valued (multidimensional output), or both.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -282,7 +282,7 @@ Background and Motivation In the context of differentiation, Leibniz’s notatio
       
         
           <br>
-          <strong>Last updated: </strong>Jul 13, 2024
+          <strong>Last updated: </strong>Aug 9, 2024
         
       
     </div>
@@ -397,13 +397,13 @@ Background and Motivation In the context of differentiation, Leibniz’s notatio
 <p><small><i>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.</i></small></p>
 </blockquote>
 <h2 id="background-and-motivation">Background and Motivation</h2>
-<p>In the context of differentiation, <a href="https://en.wikipedia.org/wiki/Leibniz%27s_notation">Leibniz&rsquo;s notation</a> $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, <em>i.e.</em>, scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$.
-In higher-dimensional settings, a function can be <a href="https://en.wikipedia.org/wiki/Function_of_several_real_variables">multivariate</a> (multiple inputs), <a href="https://en.wikipedia.org/wiki/Vector-valued_function">vector-valued</a> (multiple outputs), or both.
-In general, an input ${\mathbf{x} \in \mathbb{R}^n}$ is mapped by the function ${\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m}$ where $n, m \in \mathbb{N}^*$.
+<p>In the context of differentiation, <a href="https://en.wikipedia.org/wiki/Leibniz%27s_notation">Leibniz&rsquo;s notation</a> ${\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)}$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, <em>i.e.</em>, scalar-valued function of a real variable, and is a shorthand representing ${\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}}$.
+In higher-dimensional settings, a function can be <a href="https://en.wikipedia.org/wiki/Function_of_several_real_variables">multivariate</a> (multidimensional input), <a href="https://en.wikipedia.org/wiki/Vector-valued_function">vector-valued</a> (multidimensional output), or both.
+In general, an input ${\mathbf{x} \in \mathbb{R}^n}$ is mapped by the function ${\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m}$ where ${n, m \in \mathbb{N}^*}$.
 We recall common examples of derivatives in higher dimensions:</p>
 <ul>
-<li>The gradient $\nabla f(\mathbf{x}) = \left[\dfrac{\partial f}{\partial x_i}
-\right]_i$ of a scalar-valued multivariate function ${f: \mathbb{R}^n \to \mathbb{R}}$ is the column vector whose components are the partial derivatives of $f$.</li>
+<li>The gradient ${\nabla f(\mathbf{x}) = \left[\dfrac{\partial f}{\partial x_i}
+\right]_i}$ of a scalar-valued multivariate function ${f: \mathbb{R}^n \to \mathbb{R}}$ is the column vector whose components are the partial derivatives of $f$.</li>
 <li>The Jacobian $\mathrm{J}_\mathbf{f}(\mathbf{x}) = \left[\dfrac{\partial f_i}{\partial x_j} \right]_{ij} = [\nabla f_i(\mathbf{x})^\mathsf{T}]_i$ of a vector-valued multivariate function ${\mathbf{f}: \mathbb{R}^n \to \mathbb{R}^m}$ is the matrix whose rows are the gradient transposes of the components of $\mathbf{f}$.</li>
 </ul>
 <p>Additional examples include the <a href="https://en.wikipedia.org/wiki/Hessian_matrix">Hessian matrix</a> $\mathrm{H}_f(\mathbf{x})$, among others.</p>
