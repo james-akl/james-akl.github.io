@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linear algebra on James Akl</title>
+    <title>Linear Algebra on James Akl</title>
     <link>https://jamesakl.com/tags/linear-algebra/</link>
-    <description>Recent content in Linear algebra on James Akl</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Linear Algebra on James Akl</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jul 2024 13:48:32 -0400</lastBuildDate>
+    <atom:link href="https://jamesakl.com/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Matrix Calculus Notation</title>
       <link>https://jamesakl.com/matrix-calculus/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/matrix-calculus/</guid>
-      <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.
- Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.</description>
+      <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.&#xA;Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.</description>
     </item>
-    
   </channel>
 </rss>

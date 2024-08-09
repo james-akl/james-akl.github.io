@@ -4,198 +4,128 @@
     <title>James Akl</title>
     <link>https://jamesakl.com/</link>
     <description>Recent content on James Akl</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Jul 2024 23:45:50 -0400</lastBuildDate>
+    <atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Matrix Calculus Notation</title>
       <link>https://jamesakl.com/matrix-calculus/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/matrix-calculus/</guid>
-      <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.
- Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.</description>
+      <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.&#xA;Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.</description>
     </item>
-    
     <item>
       <title>QP and Least Squares</title>
       <link>https://jamesakl.com/qp-least-squares/</link>
       <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/qp-least-squares/</guid>
-      <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.
- Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
+      <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.&#xA;Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
     </item>
-    
     <item>
       <title>Research List</title>
       <link>https://jamesakl.com/research-list/</link>
       <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/research-list/</guid>
-      <description>Papers Motion Planning  Motion planning around obstacles with convex optimization [Marucci2023]  Computer Vision  Segment Anything [Kirillov2023]  Robot Learning  Distilled Feature Fields Enable Few-Shot Language-Guided Manipulation [Shen2023]  Uncategorized  Large Language Models for Mathematicians [Frieder2023]  Reviews Annual Review of Control, Robotics, and Autonomous Systems  Sampling-based Motion Planning: A Comparative Review [Orthey2024] Grasp Learning: Models, Methods, and Performance [Platt2023] The Role of Physics-Based Simulators in Robotics [Liu2021] An Historical Perspective on the Control of Robotic Manipulators [Spong2022] A Tour of Reinforcement Learning: The View from Continuous Control [Recht2019] Integrated Task and Motion Planning [Garrett2021]  </description>
+      <description>Papers Motion Planning Motion planning around obstacles with convex optimization [Marucci2023] Computer Vision Segment Anything [Kirillov2023] Robot Learning Distilled Feature Fields Enable Few-Shot Language-Guided Manipulation [Shen2023] Uncategorized Large Language Models for Mathematicians [Frieder2023] Reviews Annual Review of Control, Robotics, and Autonomous Systems Sampling-based Motion Planning: A Comparative Review [Orthey2024] Grasp Learning: Models, Methods, and Performance [Platt2023] The Role of Physics-Based Simulators in Robotics [Liu2021] An Historical Perspective on the Control of Robotic Manipulators [Spong2022] A Tour of Reinforcement Learning: The View from Continuous Control [Recht2019] Integrated Task and Motion Planning [Garrett2021] </description>
     </item>
-    
     <item>
       <title>Lists</title>
       <link>https://jamesakl.com/lists/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/lists/</guid>
-      <description>I update this page regularly with resources that may be helpful to others.
-Learning and reference materials marked as “Online” are freely accessible.   Learning Material  Mathematics       Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
-  Numerical Algorithms · Online book by Justin Solomon
-  Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong</description>
+      <description>I update this page regularly with resources that may be helpful to others.&#xA;Learning and reference materials marked as “Online” are freely accessible. Learning Material Mathematics Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis&#xA;Numerical Algorithms · Online book by Justin Solomon&#xA;Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong&#xA;Mathematics for Computer Science · Online book by Lehman, Leighton, and Meyer</description>
     </item>
-    
     <item>
       <title>Robot Control Simulations</title>
       <link>https://jamesakl.com/control-simulations/</link>
       <pubDate>Tue, 14 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/control-simulations/</guid>
-      <description>GitHub Source files are available in the GitHub repository.
-This page summarizes the main ideas, detailed treatments are in the PDFs linked under the section titles.
-Three different control methods have been formulated and simulated.
-State Observer &amp;amp; Feedback Control PDF A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}+\mathrm{B} \mathbf{u}+\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed.</description>
+      <description>GitHub Source files are available in the GitHub repository.&#xA;This page summarizes the main ideas, detailed treatments are in the PDFs linked under the section titles.&#xA;Three different control methods have been formulated and simulated.&#xA;State Observer &amp;amp; Feedback Control PDF A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}+\mathrm{B} \mathbf{u}+\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed.</description>
     </item>
-    
     <item>
       <title>Convex Analysis: Select Works</title>
       <link>https://jamesakl.com/convex-analysis/</link>
       <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/convex-analysis/</guid>
-      <description>These interesting problems are handpicked from several of my old projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.
-Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
+      <description>These interesting problems are handpicked from several of my old projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.&#xA;Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
     </item>
-    
     <item>
       <title>Numerical Analysis: Wave PDE</title>
       <link>https://jamesakl.com/nla-wave/</link>
       <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/nla-wave/</guid>
-      <description>GitHub Source code is available in the GitHub repository.
-Description The project&amp;rsquo;s full title is:
- Solving a Time–Dependent 1D Wave PDE
-A Numerical Linear Algebraic Approach
- Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,</description>
+      <description>GitHub Source code is available in the GitHub repository.&#xA;Description The project&amp;rsquo;s full title is:&#xA;Solving a Time–Dependent 1D Wave PDE&#xA;A Numerical Linear Algebraic Approach&#xA;Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,&#xA;$$ \frac{\partial^2}{\partial t^2}u(x,t) - c^2 \frac{\partial^2}{\partial x^2}u(x,t) = 0 \, \bigg|_{x \in (0, 1) \textrm{ and } t&amp;gt;0} $$ Here the function $u(x,t)$ is defined as, $$ \begin{matrix} u: &amp;amp; [0,1] \times \R_{\geq 0} &amp;amp; \to &amp;amp; \R \\ &amp;amp; (x,t) &amp;amp; \mapsto &amp;amp; u(x,t) \end{matrix} $$ The PDE boundary conditions are, $$ u(0,t) = u(1,t) = 0 $$ And its initial conditions are, $$ u(x,0) = v(x) \textrm{ and } \frac{\partial u}{\partial t}(x, 0) = w(x) \, \bigg|_{x \in (0, 1)} $$ Here the functions $v, w: [0,1] \to \R$ are known.</description>
     </item>
-    
     <item>
       <title>FEM Optimization for 1D PDE</title>
       <link>https://jamesakl.com/fem-convdiff/</link>
       <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/fem-convdiff/</guid>
-      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
-Description The project&amp;rsquo;s full title is:
- Finite Element Analysis of a 1D Convection–Diffusion Problem
-Formulation, Implementation, and Optimization
- Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</description>
+      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.&#xA;Description The project&amp;rsquo;s full title is:&#xA;Finite Element Analysis of a 1D Convection–Diffusion Problem&#xA;Formulation, Implementation, and Optimization&#xA;Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</description>
     </item>
-    
     <item>
       <title>Reading Spatial Transforms</title>
       <link>https://jamesakl.com/spatial-transforms/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/spatial-transforms/</guid>
-      <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
- Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
-With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
+      <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.&#xA;Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.&#xA;With two frames $\mathsf{F}$ and $\mathsf{F}&amp;rsquo;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
     </item>
-    
     <item>
       <title>CAD Model: MicroGuard Design</title>
       <link>https://jamesakl.com/cad-microguard/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/cad-microguard/</guid>
-      <description>Renders | Drawings | Materials | GitHub Source files can be found in the GitHub repo.
-Description The project&amp;rsquo;s full title is:
- MicroGuard System: 3D Concept Model
-Examining Security via Intimidation
-    This project is only a 3D visual concept model, not a fully-engineered system. The aim is security via deterrence, i.e., to de-escalate threats with intimidating appearance without the ability to actually shoot.   Summary The system is designed and modeled fully from scratch.</description>
+      <description>Renders | Drawings | Materials | GitHub Source files can be found in the GitHub repo.&#xA;Description The project&amp;rsquo;s full title is:&#xA;MicroGuard System: 3D Concept Model&#xA;Examining Security via Intimidation&#xA;This project is only a 3D visual concept model, not a fully-engineered system. The aim is security via deterrence, i.e., to de-escalate threats with intimidating appearance without the ability to actually shoot. Summary The system is designed and modeled fully from scratch.</description>
     </item>
-    
     <item>
       <title>Inverse Problems for DOBC</title>
       <link>https://jamesakl.com/noise-dobc/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/noise-dobc/</guid>
-      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.
-Description The project&amp;rsquo;s full title is:
- Noise Extraction in Disturbance Observer-Based Control
-A Computational Inverse Problems Approach
- In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
+      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.&#xA;Description The project&amp;rsquo;s full title is:&#xA;Noise Extraction in Disturbance Observer-Based Control&#xA;A Computational Inverse Problems Approach&#xA;In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
     </item>
-    
     <item>
       <title>A Tour of Robot Mechanics</title>
       <link>https://jamesakl.com/robot-mechanics/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/robot-mechanics/</guid>
-      <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
- Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
-Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
+      <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.&#xA;Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.&#xA;Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
     </item>
-    
     <item>
       <title>Defining a Robot</title>
       <link>https://jamesakl.com/robot-definition/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/robot-definition/</guid>
-      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
- History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
+      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.&#xA;History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
     </item>
-    
     <item>
       <title>PyLAFS Python Package</title>
       <link>https://jamesakl.com/pylafs/</link>
       <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/pylafs/</guid>
-      <description>GitHub Source code is available in the GitHub repository.
-Description PyLAFS stands for Linear Algebra from Scratch in Python. This project implements common linear algebraic constructs in minimal Python 3, that is, without using external libraries.
-PyLAFS works best as a convenient matrix calculator that runs in the Python interpreter. Simplicy and convenience are optimized, not performance: it is designed to be used in the interpreter/console and not for development.</description>
+      <description>GitHub Source code is available in the GitHub repository.&#xA;Description PyLAFS stands for Linear Algebra from Scratch in Python. This project implements common linear algebraic constructs in minimal Python 3, that is, without using external libraries.&#xA;PyLAFS works best as a convenient matrix calculator that runs in the Python interpreter. Simplicy and convenience are optimized, not performance: it is designed to be used in the interpreter/console and not for development.</description>
     </item>
-    
     <item>
       <title>Posts</title>
       <link>https://jamesakl.com/posts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/posts/</guid>
-      <description>Articles  Matrix Calculus Notation · Discussing the ‘matrix derivative’ in formal settings. QP and Least Squares · Analyzing the relationship between QP and least squares. Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform. A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics. Defining a Robot · Attempt to answer “What is a robot?” in a prescriptive manner.   Projects  Convex Analysis &amp;amp; Optimization: Select Works · Collection of interesting problems with my proofs and solutions.</description>
+      <description>Articles Matrix Calculus Notation · Discussing the ‘matrix derivative’ in formal settings. QP and Least Squares · Analyzing the relationship between QP and least squares. Reading Spatial Transforms · Ways to interpret homogeneous (rigid-body) transform. A Tour of Robot Mechanics · Broad glide over robot kinematics and dynamics. Defining a Robot · Attempt to answer “What is a robot?” in a prescriptive manner. Projects Convex Analysis &amp;amp; Optimization: Select Works · Collection of interesting problems with my proofs and solutions.</description>
     </item>
-    
     <item>
       <title>Research</title>
       <link>https://jamesakl.com/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/research/</guid>
-      <description>Some of my research contributions are disclosed below.
-Publications    All preprint material is subject to the corresponding publisher&#39;s copyright.     [PDF] Cut Sequencing Algorithm for Safely Disassembling Large Structures,
-2023 IEEE Conference on Decision and Control (CDC).
-James Akl; Sumanth Pericherla; Berk Calli.  
-  [PDF] Vision-Based Oxy-Fuel Torch Control for Robotic Metal Cutting,
-2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).</description>
+      <description>Some of my research contributions are disclosed below.&#xA;Publications All preprint material is subject to the corresponding publisher&#39;s copyright. [PDF] Cut Sequencing Algorithm for Safely Disassembling Large Structures,&#xA;2023 IEEE Conference on Decision and Control (CDC).&#xA;James Akl; Sumanth Pericherla; Berk Calli. [PDF] Vision-Based Oxy-Fuel Torch Control for Robotic Metal Cutting,&#xA;2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).&#xA;James Akl; Yash Patil; Chinmay Todankar; Berk Calli. [PDF][Dataset] CNN-Based Task State Estimation for Safer Automation of Oxy-Fuel Metal Cutting,</description>
     </item>
-    
     <item>
       <title>Resume</title>
       <link>https://jamesakl.com/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/resume/</guid>
-      <description>My professional and educational backgrounds are summarized below.  View my resume   For other information, please request directly at james-akl@outlook.com.</description>
+      <description>My professional and educational backgrounds are summarized below. View my resume For other information, please request directly at james-akl@outlook.com.</description>
     </item>
-    
   </channel>
 </rss>

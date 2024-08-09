@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.131.0">
   <link rel="canonical" href="/matrix-calculus/">
 
   
     
     <meta name="description" content="This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.
- Background and Motivation In the context of differentiation, Leibniz’s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.">
+Background and Motivation In the context of differentiation, Leibniz’s notation $\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing $\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$. In higher-dimensional settings, a function can be multivariate (multiple inputs), vector-valued (multiple outputs), or both.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -656,7 +656,7 @@ $$</p>
 <li><strong>Unclear layout convention:</strong> Is the notation $\frac{\partial f}{\partial x}$ implicitly assuming numerator layout $\overline{\left[\frac{\partial f}{\partial x}\right]}$ or denominator layout $\underline{\left[\frac{\partial f}{\partial x}\right]}$?</li>
 <li><strong>Inconsistent layout convention:</strong> Is the notation $\frac{\partial f}{\partial x}$ throughout the treatment always either numerator layout or denominator layout?
 In some texts, there is an implicit mixed convention where some expressions use one layout convention and other expressions use another.</li>
-<li><strong>Unclear operand representation:</strong> Are the operands $f$ and $x$ implicitly transposed? For a vector, is it row or column? Some notations apply a transposition $\frac{\partial f}{\partial x'}$ (where $x'$ means $x^\mathsf{T}$); our rules in Eq.$(3)$ still apply after all operand representation and shape ambiguities are clarified.</li>
+<li><strong>Unclear operand representation:</strong> Are the operands $f$ and $x$ implicitly transposed? For a vector, is it row or column? Some notations apply a transposition $\frac{\partial f}{\partial x&rsquo;}$ (where $x&rsquo;$ means $x^\mathsf{T}$); our rules in Eq.$(3)$ still apply after all operand representation and shape ambiguities are clarified.</li>
 <li><strong>Unclear derivative notation:</strong> As explained in the first warning in this article, do the symbols such as $\nabla$ retain their conventional meaning?
 Is the Jacobian definition transposed w.r.t. gradients?
 Similar verifications may be needed.</li>

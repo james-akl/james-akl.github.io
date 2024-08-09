@@ -4,19 +4,16 @@
     <title>Software on James Akl</title>
     <link>https://jamesakl.com/ptags/software/</link>
     <description>Recent content in Software on James Akl</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/ptags/software/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Oct 2022 14:21:20 -0400</lastBuildDate>
+    <atom:link href="https://jamesakl.com/ptags/software/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PyLAFS Python Package</title>
       <link>https://jamesakl.com/pylafs/</link>
       <pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://jamesakl.com/pylafs/</guid>
-      <description>GitHub Source code is available in the GitHub repository.
-Description PyLAFS stands for Linear Algebra from Scratch in Python. This project implements common linear algebraic constructs in minimal Python 3, that is, without using external libraries.
-PyLAFS works best as a convenient matrix calculator that runs in the Python interpreter. Simplicy and convenience are optimized, not performance: it is designed to be used in the interpreter/console and not for development.</description>
+      <description>GitHub Source code is available in the GitHub repository.&#xA;Description PyLAFS stands for Linear Algebra from Scratch in Python. This project implements common linear algebraic constructs in minimal Python 3, that is, without using external libraries.&#xA;PyLAFS works best as a convenient matrix calculator that runs in the Python interpreter. Simplicy and convenience are optimized, not performance: it is designed to be used in the interpreter/console and not for development.</description>
     </item>
-    
   </channel>
 </rss>
