@@ -6,7 +6,7 @@
     <description>Recent content on James Akl</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Aug 2024 22:03:09 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2024 22:06:25 -0400</lastBuildDate>
     <atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Matrix Calculus Notation</title>
@@ -44,7 +44,7 @@
       <description>Three popular control schemes are formulated and simulated. This page summarizes the main ideas, detailed treatments are in the PDFs (with accompanying Simulink implementations) linked under the section titles.&#xA;State Observer &amp;amp; Feedback Control PDF · Simulink&#xA;A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}+\mathrm{B} \mathbf{u}+\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed. The state matrix $\mathrm{A}$, input matrix $\mathrm{B}$, and output matrix $\mathrm{C}$ come from the LTI system, $$ \begin{dcases} \dot{\mathbf{x}}=\mathrm{A} \mathbf{x}+\mathrm{B} \mathbf{u} \\ \mathbf{y}=\mathrm{Cx} \end{dcases} $$ The feedforward matrix $\mathrm{D}$ is assumed null.</description>
     </item>
     <item>
-      <title>Convex Analysis: Select Works</title>
+      <title>Convex Analysis &amp; Optimization</title>
       <link>https://jamesakl.com/convex-analysis/</link>
       <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
       <guid>https://jamesakl.com/convex-analysis/</guid>
