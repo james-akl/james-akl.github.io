@@ -6,7 +6,7 @@
     <description>Recent content on James Akl</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Aug 2024 21:47:37 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2024 21:52:03 -0400</lastBuildDate>
     <atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Matrix Calculus Notation</title>
@@ -58,13 +58,6 @@
       <description>GitHub Source code is available in the GitHub repository.&#xA;Description The project&amp;rsquo;s full title is:&#xA;Solving a Time–Dependent 1D Wave PDE&#xA;A Numerical Linear Algebraic Approach&#xA;Problem Statement The governing PDE often used to model wave phenomena is the Wave equation: $$ \ddot{u} = c^2 \nabla^2 u $$ Our setting is one-dimensional $(\nabla = \frac{\partial}{\partial x} \widehat{\mathbf{i}})$ and we constrain $x \in [0,1]$. Thus, this PDE is equivalent to,&#xA;$$ \frac{\partial^2}{\partial t^2}u(x,t) - c^2 \frac{\partial^2}{\partial x^2}u(x,t) = 0 \, \bigg|_{x \in (0, 1) \textrm{ and } t&amp;gt;0} $$ Here the function $u(x,t)$ is defined as, $$ \begin{matrix} u: &amp;amp; [0,1] \times \R_{\geq 0} &amp;amp; \to &amp;amp; \R \\ &amp;amp; (x,t) &amp;amp; \mapsto &amp;amp; u(x,t) \end{matrix} $$ The PDE boundary conditions are, $$ u(0,t) = u(1,t) = 0 $$ And its initial conditions are, $$ u(x,0) = v(x) \textrm{ and } \frac{\partial u}{\partial t}(x, 0) = w(x) \, \bigg|_{x \in (0, 1)} $$ Here the functions $v, w: [0,1] \to \R$ are known.</description>
     </item>
     <item>
-      <title>FEM Optimization for 1D PDE</title>
-      <link>https://jamesakl.com/fem-convdiff/</link>
-      <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>https://jamesakl.com/fem-convdiff/</guid>
-      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.&#xA;Description The project&amp;rsquo;s full title is:&#xA;Finite Element Analysis of a 1D Convection–Diffusion Problem&#xA;Formulation, Implementation, and Optimization&#xA;Problem Statement Suppose that an ionic fluid is trapped between two flat parallel electrodes. The fluid cations are propelled by the cathode and attracted by the anode. The objective is to determine the cation concentration $C$ at any point in space between the two electrodes.</description>
-    </item>
-    <item>
       <title>Reading Spatial Transforms</title>
       <link>https://jamesakl.com/spatial-transforms/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
@@ -97,7 +90,7 @@
       <link>https://jamesakl.com/posts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://jamesakl.com/posts/</guid>
-      <description>Articles Matrix calculus notation · Discussing the ‘matrix derivative’ in formal settings. QP and least squares · Analyzing the relationship between QP and least squares. Reading spatial transforms · Ways to interpret homogeneous (rigid-body) transform. A tour of robot mechanics · Broad glide over robot kinematics and dynamics. Defining a robot · Attempt to answer “What is a robot?” in a prescriptive manner. Projects Convex analysis and optimization problems · Collection of interesting problems with my proofs and solutions.</description>
+      <description>Articles Matrix calculus notation · Discussing the ‘matrix derivative’ in formal settings. QP and least squares · Analyzing the relationship between QP and least squares. Reading spatial transforms · Ways to interpret homogeneous (rigid-body) transform. A tour of robot mechanics · Broad glide over robot kinematics and dynamics. Defining a robot · Attempt to answer “What is a robot?” in a prescriptive manner. Projects Convex analysis and optimization · Collection of problems with my proofs and solutions.</description>
     </item>
     <item>
       <title>Research</title>
