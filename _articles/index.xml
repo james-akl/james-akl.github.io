@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Writings on James Akl</title>
-    <link>https://jamesakl.com/_writings/</link>
-    <description>Recent content in Writings on James Akl</description>
+    <title>_Articles on James Akl</title>
+    <link>https://jamesakl.com/_articles/</link>
+    <description>Recent content in _Articles on James Akl</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://jamesakl.com/_writings/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jamesakl.com/_articles/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Matrix Calculus Notation</title>
       <link>https://jamesakl.com/matrix-calculus/</link>
@@ -20,20 +21,6 @@
       <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
       <guid>https://jamesakl.com/qp-least-squares/</guid>
       <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.&#xA;Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
-    </item>
-    <item>
-      <title>Research List</title>
-      <link>https://jamesakl.com/research-list/</link>
-      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://jamesakl.com/research-list/</guid>
-      <description>Papers Motion Planning Motion planning around obstacles with convex optimization [Marucci2023] Computer Vision Segment Anything [Kirillov2023] Robot Learning Distilled Feature Fields Enable Few-Shot Language-Guided Manipulation [Shen2023] Uncategorized Large Language Models for Mathematicians [Frieder2023] Reviews Annual Review of Control, Robotics, and Autonomous Systems Sampling-based Motion Planning: A Comparative Review [Orthey2024] Grasp Learning: Models, Methods, and Performance [Platt2023] The Role of Physics-Based Simulators in Robotics [Liu2021] An Historical Perspective on the Control of Robotic Manipulators [Spong2022] A Tour of Reinforcement Learning: The View from Continuous Control [Recht2019] Integrated Task and Motion Planning [Garrett2021] </description>
-    </item>
-    <item>
-      <title>Lists</title>
-      <link>https://jamesakl.com/lists/</link>
-      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://jamesakl.com/lists/</guid>
-      <description>I update this page regularly with resources that may be helpful to others.&#xA;Learning and reference materials marked as “Online” are freely accessible. Learning Material Mathematics Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis&#xA;Numerical Algorithms · Online book by Justin Solomon&#xA;Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong&#xA;Mathematics for Computer Science · Online book by Lehman, Leighton, and Meyer</description>
     </item>
     <item>
       <title>Reading Spatial Transforms</title>
