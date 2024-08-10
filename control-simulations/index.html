@@ -10,10 +10,9 @@
 
   
     
-    <meta name="description" content="GitHub Source files are available in the GitHub repository.
-This page summarizes the main ideas, detailed treatments are in the PDFs linked under the section titles.
-Three different control methods have been formulated and simulated.
-State Observer &amp; Feedback Control PDF A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}&#43;\mathrm{B} \mathbf{u}&#43;\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed.">
+    <meta name="description" content="Three popular control schemes are formulated and simulated. This page summarizes the main ideas, detailed treatments are in the PDFs (with accompanying Simulink implementations) linked under the section titles.
+State Observer &amp; Feedback Control PDF · Simulink
+A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}&#43;\mathrm{B} \mathbf{u}&#43;\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed. The state matrix $\mathrm{A}$, input matrix $\mathrm{B}$, and output matrix $\mathrm{C}$ come from the LTI system, $$ \begin{dcases} \dot{\mathbf{x}}=\mathrm{A} \mathbf{x}&#43;\mathrm{B} \mathbf{u} \\ \mathbf{y}=\mathrm{Cx} \end{dcases} $$ The feedforward matrix $\mathrm{D}$ is assumed null.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -369,12 +368,10 @@ State Observer &amp; Feedback Control PDF A linear state observer is designed, s
 
     
 
-    <p><a href="https://github.com/james-akl/control-simulations">GitHub</a>
-<br><small>Source files are available in the GitHub repository.</small></p>
-<p>This page summarizes the main ideas, detailed treatments are in the PDFs linked under the section titles.</p>
-<p>Three different control methods have been formulated and simulated.</p>
+    <p>Three popular control schemes are formulated and simulated.
+This page summarizes the main ideas, detailed treatments are in the PDFs (with accompanying Simulink implementations) linked under the section titles.</p>
 <h2 id="state-observer--feedback-control">State Observer &amp; Feedback Control</h2>
-<h3 id="pdfluenbergerpdf"><a href="./luenberger.pdf">PDF</a></h3>
+<p><a href="./luenberger.pdf"><strong>PDF</strong></a> · <a href="./luenberger.slx"><strong>Simulink</strong></a></p>
 <p>A linear state observer is designed, specifically a <em>Luenberger</em> observer of the form:
 $$
 \begin{dcases}
@@ -390,7 +387,7 @@ $$
 The feedforward matrix $\mathrm{D}$ is assumed null.</p>
 <p>A feedback controller is designed to stabilize the system, while the Luenberger observer provides state estimates. The controlled system is simulated and successfully stabilized.</p>
 <h2 id="pd--computed-torque-control">PD &amp; Computed Torque Control</h2>
-<h3 id="pdfrobot-pd-ctcpdf"><a href="./robot-pd-ctc.pdf">PDF</a></h3>
+<p><a href="./robot-pd-ctc.pdf"><strong>PDF</strong></a> · <a href="./robot-pd.slx"><strong>Simulink</strong></a> (PD) · <a href="./robot-ctc.slx"><strong>Simulink</strong></a> (CTC)</p>
 <p>A robotic manipulator dynamical system is designed of the form,
 $$
 \tau = \mathrm{M}(q)\ddot{q} + \mathrm{C}(q, \dot{q})\dot{q} + \mathrm{N}(q,\dot{q})
@@ -406,7 +403,7 @@ u(t)=\mathrm{M}(q) \ddot{q}_{d}+\mathrm{C}(q, \dot{q}) \dot{q}+\mathrm{N}(q, \do
 $$
 Both controlled systems are simulated and successfully stabilized.</p>
 <h2 id="modelreference-adaptive-control">Model–Reference Adaptive Control</h2>
-<h3 id="pdfmracpdf"><a href="./mrac.pdf">PDF</a></h3>
+<p><a href="./mrac.pdf"><strong>PDF</strong></a> · <a href="./mrac.slx"><strong>MRAC</strong></a></p>
 <p>A system $\dot{x} = a x + b u + c$ with desired reference $r(t) = 0$ is used to design its model reference for the MRAC scheme.</p>
 <p>The adaptive control law is: $u=\hat{k}_{x} x+\hat{k}_{r} x+\hat{\theta}^{\top} \phi(x)$</p>
 <p>These parameter estimates have the following adjustment mechanism,
