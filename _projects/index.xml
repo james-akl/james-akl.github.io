@@ -21,12 +21,5 @@
       <guid>https://jamesakl.com/convex-analysis/</guid>
       <description>These interesting problems are handpicked from several of my old projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.&#xA;Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
     </item>
-    <item>
-      <title>Inverse Problems for DOBC</title>
-      <link>https://jamesakl.com/noise-dobc/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>https://jamesakl.com/noise-dobc/</guid>
-      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.&#xA;Description The project&amp;rsquo;s full title is:&#xA;Noise Extraction in Disturbance Observer-Based Control&#xA;A Computational Inverse Problems Approach&#xA;In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
-    </item>
   </channel>
 </rss>

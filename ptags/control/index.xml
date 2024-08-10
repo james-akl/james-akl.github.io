@@ -15,12 +15,5 @@
       <guid>https://jamesakl.com/control-simulations/</guid>
       <description>Three popular control schemes are formulated and simulated. This page summarizes the main ideas, detailed treatments are in the PDFs (with accompanying Simulink implementations) linked under the section titles.&#xA;State Observer &amp;amp; Feedback Control PDF · Simulink&#xA;A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}+\mathrm{B} \mathbf{u}+\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed. The state matrix $\mathrm{A}$, input matrix $\mathrm{B}$, and output matrix $\mathrm{C}$ come from the LTI system, $$ \begin{dcases} \dot{\mathbf{x}}=\mathrm{A} \mathbf{x}+\mathrm{B} \mathbf{u} \\ \mathbf{y}=\mathrm{Cx} \end{dcases} $$ The feedforward matrix $\mathrm{D}$ is assumed null.</description>
     </item>
-    <item>
-      <title>Inverse Problems for DOBC</title>
-      <link>https://jamesakl.com/noise-dobc/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>https://jamesakl.com/noise-dobc/</guid>
-      <description>PDF | GitHub Full treatment is in the linked PDF and GitHub repo. This page summarizes the main ideas.&#xA;Description The project&amp;rsquo;s full title is:&#xA;Noise Extraction in Disturbance Observer-Based Control&#xA;A Computational Inverse Problems Approach&#xA;In the context of control theory, a system with inputs $u$ and outputs $y$ may be subject to disturbances on the input, either as unknown external inputs or as model mismatch (inaccurate knowledge of the system).</description>
-    </item>
   </channel>
 </rss>
