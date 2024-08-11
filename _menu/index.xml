@@ -1,33 +1,46 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>_Menus on James Akl</title>
+    <title>_menus on James Akl</title>
     <link>https://jamesakl.com/_menu/</link>
-    <description>Recent content in _Menus on James Akl</description>
-    <generator>Hugo</generator>
+    <description>Recent content in _menus on James Akl</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2024 11:42:08 -0400</lastBuildDate>
-    <atom:link href="https://jamesakl.com/_menu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/_menu/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lists</title>
       <link>https://jamesakl.com/lists/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/lists/</guid>
-      <description>I update this page regularly with resources that may be helpful to others.&#xA;Learning and reference materials marked as “Online” are freely accessible. Learning Material Mathematics Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis&#xA;Numerical Algorithms · Online book by Justin Solomon&#xA;Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong&#xA;Mathematics for Computer Science · Online book by Lehman, Leighton, and Meyer</description>
+      <description>I update this page regularly with resources that may be helpful to others.
+Learning and reference materials marked as “Online” are freely accessible.   Learning Material  Mathematics       Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
+  Numerical Algorithms · Online book by Justin Solomon
+  Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong</description>
     </item>
+    
     <item>
       <title>Posts</title>
       <link>https://jamesakl.com/posts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/posts/</guid>
-      <description>Articles Matrix calculus notation · Discussing the ‘matrix derivative’ in formal settings. QP and least squares · Analyzing the relationship between QP and least squares. Reading spatial transforms · Ways to interpret homogeneous (rigid-body) transform. A tour of robot mechanics · Broad glide over robot kinematics and dynamics. Defining a robot · Attempt to answer “What is a robot?” in a prescriptive manner. Projects Convex analysis and optimization · Collection of problems with my proofs and solutions.</description>
+      <description>Articles  Matrix calculus notation · Discussing the ‘matrix derivative’ in formal settings. QP and least squares · Analyzing the relationship between QP and least squares. Reading spatial transforms · Ways to interpret homogeneous (rigid-body) transform. A tour of robot mechanics · Broad glide over robot kinematics and dynamics. Defining a robot · Attempt to answer “What is a robot?” in a prescriptive manner.   Projects  Convex analysis and optimization · Collection of problems with my proofs and solutions.</description>
     </item>
+    
     <item>
       <title>Research</title>
       <link>https://jamesakl.com/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/research/</guid>
-      <description>Some of my research contributions are disclosed below.&#xA;Publications All preprint material is subject to the corresponding publisher&#39;s copyright. [PDF] Cut Sequencing Algorithm for Safely Disassembling Large Structures,&#xA;2023 IEEE Conference on Decision and Control (CDC).&#xA;James Akl; Sumanth Pericherla; Berk Calli. [PDF] Vision-Based Oxy-Fuel Torch Control for Robotic Metal Cutting,&#xA;2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).&#xA;James Akl; Yash Patil; Chinmay Todankar; Berk Calli. [PDF][Dataset] CNN-Based Task State Estimation for Safer Automation of Oxy-Fuel Metal Cutting,</description>
+      <description>Some of my research contributions are disclosed below.
+Publications    All preprint material is subject to the corresponding publisher&#39;s copyright.     [PDF] Cut Sequencing Algorithm for Safely Disassembling Large Structures,
+2023 IEEE Conference on Decision and Control (CDC).
+James Akl; Sumanth Pericherla; Berk Calli.  
+  [PDF] Vision-Based Oxy-Fuel Torch Control for Robotic Metal Cutting,
+2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).</description>
     </item>
+    
   </channel>
 </rss>

@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="generator" content="Hugo 0.131.0">
+  <meta name="generator" content="Hugo 0.92.2" />
   <link rel="canonical" href="/spatial-transforms/">
 
   
     
     <meta name="description" content="This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
-Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
-With two frames $\mathsf{F}$ and $\mathsf{F}’$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.">
+ Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
+With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -275,19 +275,19 @@ With two frames $\mathsf{F}$ and $\mathsf{F}’$ defined, one can measure the re
 </blockquote>
 <h2 id="homogeneous-matrices">Homogeneous Matrices</h2>
 <p>In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.</p>
-<p>With two frames $\mathsf{F}$ and $\mathsf{F}&rsquo;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.
+<p>With two frames $\mathsf{F}$ and $\mathsf{F}'$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.
 Achieving either of these requires using a representation for translation and rotation (which has a <a href="https://en.wikipedia.org/wiki/Rotation_formalisms_in_three_dimensions">variety of formalisms</a>).</p>
 <p>A common representation used for <a href="https://jamesakl.com/robot-mechanics">forward kinematics</a> are homogeneous matrices.
 Recall the familiar homogeneous transformation matrix $\mathrm{T}$ as used in forward kinematics,
 $$
-\mathrm{T} = \begin{bmatrix} \mathrm{R} &amp; \mathbf{d} \\ \mathbf{0}&amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx&rsquo;} &amp; r_{xy&rsquo;} &amp; r_{xz&rsquo;} &amp; d_x \\ r_{yx&rsquo;} &amp; r_{yy&rsquo;} &amp; r_{yz&rsquo;} &amp; d_y \\ r_{zx&rsquo;} &amp; r_{zy&rsquo;} &amp; r_{zz&rsquo;} &amp; d_z  \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}
+\mathrm{T} = \begin{bmatrix} \mathrm{R} &amp; \mathbf{d} \\ \mathbf{0}&amp; 1 \end{bmatrix} = \begin{bmatrix} r_{xx'} &amp; r_{xy'} &amp; r_{xz'} &amp; d_x \\ r_{yx'} &amp; r_{yy'} &amp; r_{yz'} &amp; d_y \\ r_{zx'} &amp; r_{zy'} &amp; r_{zz'} &amp; d_z  \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}
 $$
-The matrix $\mathrm{T}$ measures the state of frame $\mathsf{F}&rsquo; = \{o&rsquo;, (\hat{x}&rsquo;, \hat{y}&rsquo;, \hat{z}&rsquo;)\}$ relative to frame $\mathsf{F} = \{o, (\hat{x}, \hat{y}, \hat{z})\}$. Here $\mathsf{F}&rsquo;$ is the measured frame and $\mathsf{F}$ is the reference frame. Furthermore:</p>
+The matrix $\mathrm{T}$ measures the state of frame $\mathsf{F}' = \{o', (\hat{x}', \hat{y}', \hat{z}')\}$ relative to frame $\mathsf{F} = \{o, (\hat{x}, \hat{y}, \hat{z})\}$. Here $\mathsf{F}'$ is the measured frame and $\mathsf{F}$ is the reference frame. Furthermore:</p>
 <ul>
 <li>$\mathrm{R}$ and $\mathrm{d}$ are the rotation and translation components respectively.</li>
 <li>$\mathrm{T} \in \mathsf{SE}(3)$ and $\mathrm{R} \in \mathsf{SO}(3)$, denoting the special Euclidean and special orthogonal groups respectively.</li>
 <li>$r_{uv} = \hat{\mathbf{u}} \cdot \hat{\mathbf{v}} = \cos(\hat{\mathbf{u}}, \hat{\mathbf{v}})$ quantifies the relative orientation between the basis unit vectors through the oriented (typically, anticlockwise) angle $\measuredangle(\hat{\mathbf{u}}, \hat{\mathbf{v}})$ at $\hat{\mathbf{v}}$ measured from $\hat{\mathbf{u}}$.</li>
-<li>$d_u = oo&rsquo; \cdot \hat{\mathbf{u}}$ is the translation distance between both origins, at $o&rsquo;$ measured from $o$, and projected in the direction of $\hat{\mathbf{u}}$.</li>
+<li>$d_u = oo' \cdot \hat{\mathbf{u}}$ is the translation distance between both origins, at $o'$ measured from $o$, and projected in the direction of $\hat{\mathbf{u}}$.</li>
 </ul>
 <aside aria-label="note" class="note">
   <div>
@@ -373,15 +373,15 @@ There is nothing mathematically distinct about these interpretations. They are <
 <li>The  function <code>transform</code> is assumed to read <code>object1</code>&rsquo;s state by copy, modify it, and then return it;  it does <strong>not</strong>  modify it in-place, nor delete it.</li>
 <li>Here <code>object1</code>&rsquo;s state is updated <em>i.e.</em>, it is translated and/or rotated.</li>
 </ol>
-<h3 id="example-mathsfavmathrmt_mathrmr-mathbfd--mathsfav">Example: ${}^{\mathsf{A}}v&rsquo;=\mathrm{T}_{\mathrm{R}, \mathbf{d}} \; {}^{\mathsf{A}}v$</h3>
+<h3 id="example-mathsfavmathrmt_mathrmr-mathbfd--mathsfav">Example: ${}^{\mathsf{A}}v'=\mathrm{T}_{\mathrm{R}, \mathbf{d}} \; {}^{\mathsf{A}}v$</h3>
 <ul>
-<li>There is one frame $\mathsf{A}$ and two vectors $v$ and $v&rsquo;$.</li>
+<li>There is one frame $\mathsf{A}$ and two vectors $v$ and $v'$.</li>
 <li>This changes the vector using rotation $\mathrm{R}$ and translation $\mathbf{d}$ into a <em>new vector</em> in the <strong>same</strong> frame $\mathsf{A}$.</li>
 </ul>
-<h3 id="example-mathsfa-mathrmt_mathsfb--mathrmt_mathrmr-mathbfd--mathsfa-mathrmt_mathsfb">Example: ${}^{\mathsf{A}} \mathrm{T}_\mathsf{B&rsquo;} = \mathrm{T}_{\mathrm{R}, \mathbf{d}} \; {}^{\mathsf{A}} \mathrm{T}_\mathsf{B}$</h3>
+<h3 id="example-mathsfa-mathrmt_mathsfb--mathrmt_mathrmr-mathbfd--mathsfa-mathrmt_mathsfb">Example: ${}^{\mathsf{A}} \mathrm{T}_\mathsf{B'} = \mathrm{T}_{\mathrm{R}, \mathbf{d}} \; {}^{\mathsf{A}} \mathrm{T}_\mathsf{B}$</h3>
 <ul>
-<li>There are three frames $\mathsf{A}$, $\mathsf{B}$ and $\mathsf{B&rsquo;}$.</li>
-<li>This encodes the pose of a transformed output frame $\mathsf{B&rsquo;}$ measured from same frame $\mathsf{A}$.</li>
+<li>There are three frames $\mathsf{A}$, $\mathsf{B}$ and $\mathsf{B'}$.</li>
+<li>This encodes the pose of a transformed output frame $\mathsf{B'}$ measured from same frame $\mathsf{A}$.</li>
 </ul>
 <h2 id="tasteful-notation">Tasteful Notation</h2>
 <p>Notation often implies the preferred interpretation. Consider this example,</p>

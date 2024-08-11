@@ -1,47 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>_Articles on James Akl</title>
+    <title>_articles on James Akl</title>
     <link>https://jamesakl.com/_articles/</link>
-    <description>Recent content in _Articles on James Akl</description>
-    <generator>Hugo</generator>
+    <description>Recent content in _articles on James Akl</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2024 11:23:37 -0400</lastBuildDate>
-    <atom:link href="https://jamesakl.com/_articles/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/_articles/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Matrix Calculus Notation</title>
       <link>https://jamesakl.com/matrix-calculus/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/matrix-calculus/</guid>
-      <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.&#xA;Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation ${\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)}$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing ${\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}}$. In higher-dimensional settings, a function can be multivariate (multidimensional input), vector-valued (multidimensional output), or both.</description>
+      <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.
+ Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation ${\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)}$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing ${\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}}$. In higher-dimensional settings, a function can be multivariate (multidimensional input), vector-valued (multidimensional output), or both.</description>
     </item>
+    
     <item>
       <title>QP and Least Squares</title>
       <link>https://jamesakl.com/qp-least-squares/</link>
       <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/qp-least-squares/</guid>
-      <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.&#xA;Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
+      <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.
+ Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
     </item>
+    
     <item>
       <title>Reading Spatial Transforms</title>
       <link>https://jamesakl.com/spatial-transforms/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/spatial-transforms/</guid>
-      <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.&#xA;Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.&#xA;With two frames $\mathsf{F}$ and $\mathsf{F}&amp;rsquo;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
+      <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
+ Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
+With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
     </item>
+    
     <item>
       <title>A Tour of Robot Mechanics</title>
       <link>https://jamesakl.com/robot-mechanics/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/robot-mechanics/</guid>
-      <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.&#xA;Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.&#xA;Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
+      <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
+ Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
     </item>
+    
     <item>
       <title>Defining a Robot</title>
       <link>https://jamesakl.com/robot-definition/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/robot-definition/</guid>
-      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.&#xA;History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
+      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
+ History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
     </item>
+    
   </channel>
 </rss>

@@ -4,79 +4,116 @@
     <title>James Akl</title>
     <link>https://jamesakl.com/</link>
     <description>Recent content on James Akl</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2024 11:42:08 -0400</lastBuildDate>
-    <atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Matrix Calculus Notation</title>
       <link>https://jamesakl.com/matrix-calculus/</link>
       <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/matrix-calculus/</guid>
-      <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.&#xA;Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation ${\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)}$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing ${\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}}$. In higher-dimensional settings, a function can be multivariate (multidimensional input), vector-valued (multidimensional output), or both.</description>
+      <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.
+ Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation ${\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)}$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing ${\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}}$. In higher-dimensional settings, a function can be multivariate (multidimensional input), vector-valued (multidimensional output), or both.</description>
     </item>
+    
     <item>
       <title>QP and Least Squares</title>
       <link>https://jamesakl.com/qp-least-squares/</link>
       <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/qp-least-squares/</guid>
-      <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.&#xA;Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
+      <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.
+ Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
     </item>
+    
     <item>
       <title>Lists</title>
       <link>https://jamesakl.com/lists/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/lists/</guid>
-      <description>I update this page regularly with resources that may be helpful to others.&#xA;Learning and reference materials marked as “Online” are freely accessible. Learning Material Mathematics Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis&#xA;Numerical Algorithms · Online book by Justin Solomon&#xA;Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong&#xA;Mathematics for Computer Science · Online book by Lehman, Leighton, and Meyer</description>
+      <description>I update this page regularly with resources that may be helpful to others.
+Learning and reference materials marked as “Online” are freely accessible.   Learning Material  Mathematics       Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
+  Numerical Algorithms · Online book by Justin Solomon
+  Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong</description>
     </item>
+    
     <item>
       <title>Robot Control Simulations</title>
       <link>https://jamesakl.com/control-simulations/</link>
       <pubDate>Tue, 14 Sep 2021 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/control-simulations/</guid>
-      <description>Three popular control schemes are formulated and simulated. This page summarizes the main ideas, detailed treatments are in the PDFs (with accompanying Simulink implementations) linked under the section titles.&#xA;State Observer &amp;amp; Feedback Control PDF · Simulink&#xA;A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}+\mathrm{B} \mathbf{u}+\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed. The state matrix $\mathrm{A}$, input matrix $\mathrm{B}$, and output matrix $\mathrm{C}$ come from the LTI system, $$ \begin{dcases} \dot{\mathbf{x}}=\mathrm{A} \mathbf{x}+\mathrm{B} \mathbf{u} \\ \mathbf{y}=\mathrm{Cx} \end{dcases} $$ The feedforward matrix $\mathrm{D}$ is assumed null.</description>
+      <description>Three popular control schemes are formulated and simulated. This page summarizes the main ideas, detailed treatments are in the PDFs (with accompanying Simulink implementations) linked under the section titles.
+State Observer &amp;amp; Feedback Control PDF · Simulink
+A linear state observer is designed, specifically a Luenberger observer of the form: $$ \begin{dcases} \dot{\hat{\mathrm{x}}}=\mathrm{A} \hat{\mathrm{x}}+\mathrm{B} \mathbf{u}+\mathrm{L}(\mathbf{y}-\hat{\mathbf{y}}) \\ \hat{\mathbf{y}}=\mathrm{Cx} \end{dcases} $$ The observer gain matrix $\mathrm{L}$ is to be designed. The state matrix $\mathrm{A}$, input matrix $\mathrm{B}$, and output matrix $\mathrm{C}$ come from the LTI system, $$ \begin{dcases} \dot{\mathbf{x}}=\mathrm{A} \mathbf{x}+\mathrm{B} \mathbf{u} \\ \mathbf{y}=\mathrm{Cx} \end{dcases} $$ The feedforward matrix $\mathrm{D}$ is assumed null.</description>
     </item>
+    
     <item>
       <title>Convex Analysis &amp; Optimization</title>
       <link>https://jamesakl.com/convex-analysis/</link>
       <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/convex-analysis/</guid>
-      <description>These interesting problems are handpicked from several of my old projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.&#xA;Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
+      <description>These interesting problems are handpicked from several of my old projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.
+Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
     </item>
+    
     <item>
       <title>Reading Spatial Transforms</title>
       <link>https://jamesakl.com/spatial-transforms/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/spatial-transforms/</guid>
-      <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.&#xA;Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.&#xA;With two frames $\mathsf{F}$ and $\mathsf{F}&amp;rsquo;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
+      <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
+ Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
+With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
     </item>
+    
     <item>
       <title>A Tour of Robot Mechanics</title>
       <link>https://jamesakl.com/robot-mechanics/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/robot-mechanics/</guid>
-      <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.&#xA;Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.&#xA;Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
+      <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
+ Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
     </item>
+    
     <item>
       <title>Defining a Robot</title>
       <link>https://jamesakl.com/robot-definition/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/robot-definition/</guid>
-      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.&#xA;History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
+      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
+ History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
     </item>
+    
     <item>
       <title>Posts</title>
       <link>https://jamesakl.com/posts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/posts/</guid>
-      <description>Articles Matrix calculus notation · Discussing the ‘matrix derivative’ in formal settings. QP and least squares · Analyzing the relationship between QP and least squares. Reading spatial transforms · Ways to interpret homogeneous (rigid-body) transform. A tour of robot mechanics · Broad glide over robot kinematics and dynamics. Defining a robot · Attempt to answer “What is a robot?” in a prescriptive manner. Projects Convex analysis and optimization · Collection of problems with my proofs and solutions.</description>
+      <description>Articles  Matrix calculus notation · Discussing the ‘matrix derivative’ in formal settings. QP and least squares · Analyzing the relationship between QP and least squares. Reading spatial transforms · Ways to interpret homogeneous (rigid-body) transform. A tour of robot mechanics · Broad glide over robot kinematics and dynamics. Defining a robot · Attempt to answer “What is a robot?” in a prescriptive manner.   Projects  Convex analysis and optimization · Collection of problems with my proofs and solutions.</description>
     </item>
+    
     <item>
       <title>Research</title>
       <link>https://jamesakl.com/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://jamesakl.com/research/</guid>
-      <description>Some of my research contributions are disclosed below.&#xA;Publications All preprint material is subject to the corresponding publisher&#39;s copyright. [PDF] Cut Sequencing Algorithm for Safely Disassembling Large Structures,&#xA;2023 IEEE Conference on Decision and Control (CDC).&#xA;James Akl; Sumanth Pericherla; Berk Calli. [PDF] Vision-Based Oxy-Fuel Torch Control for Robotic Metal Cutting,&#xA;2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).&#xA;James Akl; Yash Patil; Chinmay Todankar; Berk Calli. [PDF][Dataset] CNN-Based Task State Estimation for Safer Automation of Oxy-Fuel Metal Cutting,</description>
+      <description>Some of my research contributions are disclosed below.
+Publications    All preprint material is subject to the corresponding publisher&#39;s copyright.     [PDF] Cut Sequencing Algorithm for Safely Disassembling Large Structures,
+2023 IEEE Conference on Decision and Control (CDC).
+James Akl; Sumanth Pericherla; Berk Calli.  
+  [PDF] Vision-Based Oxy-Fuel Torch Control for Robotic Metal Cutting,
+2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).</description>
     </item>
+    
   </channel>
 </rss>
