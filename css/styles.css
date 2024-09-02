@@ -254,10 +254,10 @@ label {
   margin: 0rem;
 }
 [for="themer"] [aria-hidden]::before {
-  content: 'OFF';
+  content: '☀️ LIGHT';
 }
 [for="themer"] :checked + [aria-hidden]::before {
-  content: 'ON';
+  content: '🌙 DARK';
 }
 
 /* Tables */
@@ -325,7 +325,7 @@ caption {
     overflow-x: hidden;
 }
 .intro-and-nav {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     width: 15rem;
     height: 100vh;
     position: fixed;
