@@ -254,10 +254,10 @@ label {
   margin: 0rem;
 }
 [for="themer"] [aria-hidden]::before {
-  content: 'BLACK THEME';
+  content: 'OFF';
 }
 [for="themer"] :checked + [aria-hidden]::before {
-  content: 'WHITE THEME';
+  content: 'ON';
 }
 
 /* Tables */
