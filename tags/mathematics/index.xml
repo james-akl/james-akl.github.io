@@ -28,16 +28,6 @@ Background When formulating optimization problems in applied settings (e.g., rob
     </item>
     
     <item>
-      <title>Convex Analysis &amp; Optimization</title>
-      <link>https://jamesakl.com/convex-analysis/</link>
-      <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/convex-analysis/</guid>
-      <description>These problems are handpicked from my projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.
-Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
-    </item>
-    
-    <item>
       <title>Spatial transforms</title>
       <link>https://jamesakl.com/spatial-transforms/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>

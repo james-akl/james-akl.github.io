@@ -50,16 +50,6 @@ A linear state observer is designed, specifically a Luenberger observer of the f
     </item>
     
     <item>
-      <title>Convex Analysis &amp; Optimization</title>
-      <link>https://jamesakl.com/convex-analysis/</link>
-      <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/convex-analysis/</guid>
-      <description>These problems are handpicked from my projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.
-Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
-    </item>
-    
-    <item>
       <title>Spatial transforms</title>
       <link>https://jamesakl.com/spatial-transforms/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
@@ -91,6 +81,16 @@ The definition of a robot changes across cultures and has changed throughout tim
 Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
 Consider these two points $\mathsf{A}$ and $\mathsf{B}$.
  There are infinite paths from $\mathsf{A}$ to $\mathsf{B}$. Same start and end positions, but different intermediate states. The gray paths are two alternatives to our desired one.</description>
+    </item>
+    
+    <item>
+      <title>Convex Analysis &amp; Optimization</title>
+      <link>https://jamesakl.com/convex-analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/convex-analysis/</guid>
+      <description>These problems are handpicked from my projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.
+Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
     </item>
     
     <item>
