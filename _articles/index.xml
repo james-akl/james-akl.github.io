@@ -6,27 +6,7 @@
     <description>Recent content in _articles on James Akl</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/_articles/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Matrix calculus</title>
-      <link>https://jamesakl.com/matrix-calculus/</link>
-      <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/matrix-calculus/</guid>
-      <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.
-Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation ${\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)}$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing ${\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}}$. In higher-dimensional settings, a function can be multivariate (multidimensional input), vector-valued (multidimensional output), or both.</description>
-    </item>
-    
-    <item>
-      <title>QP and least squares</title>
-      <link>https://jamesakl.com/qp-least-squares/</link>
-      <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/qp-least-squares/</guid>
-      <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.
-Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
-    </item>
-    
+    <lastBuildDate>Mon, 06 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/_articles/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spatial transforms</title>
       <link>https://jamesakl.com/spatial-transforms/</link>
@@ -59,6 +39,26 @@ The definition of a robot changes across cultures and has changed throughout tim
 Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
 Consider these two points $\mathsf{A}$ and $\mathsf{B}$.
  There are infinite paths from $\mathsf{A}$ to $\mathsf{B}$. Same start and end positions, but different intermediate states. The gray paths are two alternatives to our desired one.</description>
+    </item>
+    
+    <item>
+      <title>Matrix calculus</title>
+      <link>https://jamesakl.com/matrix-calculus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/matrix-calculus/</guid>
+      <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product. Published: 2024-02-24 · Revised: 2024-07-02
+ Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation ${\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)}$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing ${\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}}$. In higher-dimensional settings, a function can be multivariate (multidimensional input), vector-valued (multidimensional output), or both.</description>
+    </item>
+    
+    <item>
+      <title>QP and least squares</title>
+      <link>https://jamesakl.com/qp-least-squares/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/qp-least-squares/</guid>
+      <description>This article relates the problem formulations of quadratic programming and least squares under linear constraints. Published: 2024-02-18
+ Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
     </item>
     
   </channel>

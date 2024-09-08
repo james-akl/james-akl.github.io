@@ -10,8 +10,8 @@
 
   
     
-    <meta name="description" content="This article covers the problem formulations of quadratic programming and least squares under linear constraints.
-Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.">
+    <meta name="description" content="This article relates the problem formulations of quadratic programming and least squares under linear constraints. Published: 2024-02-18
+ Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -269,7 +269,11 @@ Background When formulating optimization problems in applied settings (e.g., rob
           
   <main id="main">
     <h1>QP and least squares</h1>
-    <p>This article covers the problem formulations of quadratic programming and least squares under linear constraints.</p>
+    <blockquote>
+<p><small>This article relates the problem formulations of quadratic programming and least squares under linear constraints.
+<br>
+<strong><code>Published:</code></strong> <code>2024-02-18</code></small></p>
+</blockquote>
 <h2 id="background">Background</h2>
 <p>When formulating optimization problems in applied settings <small>(<em>e.g.</em>, robotics, vision)</small>, it may be unclear whether to frame them as a <a href="https://en.wikipedia.org/wiki/Quadratic_programming">quadratic program</a> (QP) or as a <a href="https://en.wikipedia.org/wiki/Least_squares">least squares</a> (LS) problem.
 Typically, this has the structure of an <a href="/robot-mechanics/#forward--inverse-problems">inverse problem</a>; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.
