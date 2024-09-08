@@ -23,7 +23,7 @@
       
       <guid>https://jamesakl.com/qp-least-squares/</guid>
       <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.
- Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
+Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
     </item>
     
     <item>
@@ -65,8 +65,8 @@ Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/spatial-transforms/</guid>
-      <description>This article covers different ways to interpret homogeneous spatial transforms and provides appropriate notational practices for each.
- Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
+      <description>This article covers ways to interpret homogeneous transforms while recommending notational practices.
+Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
 With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
     </item>
     
@@ -76,8 +76,9 @@ With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the 
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/robot-definition/</guid>
-      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
- History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
+      <description>This article discusses the nuances and difficulties in trying to define a robot.
+History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.g., automaton, device, machine).
+The definition of a robot changes across cultures and has changed throughout time. Some machines considered robots by Japanese standards are not by American standards [1].</description>
     </item>
     
     <item>
@@ -86,9 +87,10 @@ With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the 
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/robot-mechanics/</guid>
-      <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
- Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
-Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
+      <description>This article covers a broad but formal understanding of concepts in robot kinematics and dynamics.
+Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+Consider these two points $\mathsf{A}$ and $\mathsf{B}$.
+ There are infinite paths from $\mathsf{A}$ to $\mathsf{B}$. Same start and end positions, but different intermediate states. The gray paths are two alternatives to our desired one.</description>
     </item>
     
     <item>

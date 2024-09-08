@@ -11,7 +11,7 @@
   
     
     <meta name="description" content="This article covers the problem formulations of quadratic programming and least squares under linear constraints.
- Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.">
+Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.">
   
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jamesakl.com/apple-touch-icon.png">
@@ -269,9 +269,7 @@
           
   <main id="main">
     <h1>QP and least squares</h1>
-    <blockquote>
-<p><small><i>This article covers the problem formulations of quadratic programming and least squares under linear constraints.</i></small></p>
-</blockquote>
+    <p>This article covers the problem formulations of quadratic programming and least squares under linear constraints.</p>
 <h2 id="background">Background</h2>
 <p>When formulating optimization problems in applied settings <small>(<em>e.g.</em>, robotics, vision)</small>, it may be unclear whether to frame them as a <a href="https://en.wikipedia.org/wiki/Quadratic_programming">quadratic program</a> (QP) or as a <a href="https://en.wikipedia.org/wiki/Least_squares">least squares</a> (LS) problem.
 Typically, this has the structure of an <a href="/robot-mechanics/#forward--inverse-problems">inverse problem</a>; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.

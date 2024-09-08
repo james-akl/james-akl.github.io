@@ -14,7 +14,7 @@
       
       <guid>https://jamesakl.com/qp-least-squares/</guid>
       <description>This article covers the problem formulations of quadratic programming and least squares under linear constraints.
- Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
+Background When formulating optimization problems in applied settings (e.g., robotics, vision), it may be unclear whether to frame them as a quadratic program (QP) or as a least squares (LS) problem. Typically, this has the structure of an inverse problem; briefly: given a desired output $\mathbf{y}_\mathsf{d}$ and a forward model ${\mathrm{G}: \mathbf{x} \mapsto \mathbf{y}}$, we seek the input $\mathbf{x}^*$ that is mapped closest to $\mathbf{y}_\mathsf{d}$.</description>
     </item>
     
   </channel>
