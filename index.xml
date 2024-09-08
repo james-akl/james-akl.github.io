@@ -66,7 +66,7 @@ The definition of a robot changes across cultures and has changed throughout tim
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/posts/</guid>
-      <description>Articles          Matrix calculus The ‘matrix derivative’   QP and least squares Relating formulations   Spatial transforms Interpretation and notation   Robot mechanics Kinematics and dynamics   Defining a robot Discussing ‘what is a robot?’      Projects          Convex optimization Problems, proofs, solutions   Control simulations Observers, manipulators, adaptive control      Resources          General resources Material for robotics and AI    </description>
+      <description>Articles          Matrix calculus The ‘matrix derivative’   QP and least squares Relating formulations   Spatial transforms Interpretation and notation   Robot mechanics Kinematics and dynamics   Defining a robot Discussing ‘what is a robot?’      Projects          Convex optimization Problems, proofs, solutions   Control simulations State estimation, manipulators      Resources          General resources Material for robotics and AI    </description>
     </item>
     
     <item>
