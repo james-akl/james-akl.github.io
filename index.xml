@@ -7,40 +7,6 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jamesakl.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Spatial transforms</title>
-      <link>https://jamesakl.com/spatial-transforms/</link>
-      <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/spatial-transforms/</guid>
-      <description>This article covers ways to interpret homogeneous transforms while recommending notational practices.
-Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
-With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
-    </item>
-    
-    <item>
-      <title>Defining a robot</title>
-      <link>https://jamesakl.com/robot-definition/</link>
-      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/robot-definition/</guid>
-      <description>This article discusses the nuances and difficulties in trying to define a robot.
-History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.g., automaton, device, machine).
-The definition of a robot changes across cultures and has changed throughout time. Some machines considered robots by Japanese standards are not by American standards [1].</description>
-    </item>
-    
-    <item>
-      <title>Robot mechanics</title>
-      <link>https://jamesakl.com/robot-mechanics/</link>
-      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/robot-mechanics/</guid>
-      <description>This article covers a broad but formal understanding of concepts in robot kinematics and dynamics.
-Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
-Consider these two points $\mathsf{A}$ and $\mathsf{B}$.
- There are infinite paths from $\mathsf{A}$ to $\mathsf{B}$. Same start and end positions, but different intermediate states. The gray paths are two alternatives to our desired one.</description>
-    </item>
-    
-    <item>
       <title>Control simulations</title>
       <link>https://jamesakl.com/control-simulations/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -59,6 +25,17 @@ A linear state observer is designed, specifically a Luenberger observer of the f
       <guid>https://jamesakl.com/convex-analysis/</guid>
       <description>These problems are handpicked from my projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles. Published: 2021-09-13
  Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
+    </item>
+    
+    <item>
+      <title>Defining a robot</title>
+      <link>https://jamesakl.com/robot-definition/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/robot-definition/</guid>
+      <description>This article discusses the nuances and difficulties in trying to define a robot. Published: 2021-08-20
+ History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.g., automaton, device, machine).
+The definition of a robot changes across cultures and has changed throughout time.</description>
     </item>
     
     <item>
@@ -116,6 +93,29 @@ James Akl; Sumanth Pericherla; Berk Calli.
 James Akl; Yash Patil; Chinmay Todankar; Berk Calli.  
 [PDF][Dataset] CNN-Based Task State Estimation for Safer Automation of Oxy-Fuel Metal Cutting,
 2023 IEEE International Conference on Automation Science and Engineering (CASE).</description>
+    </item>
+    
+    <item>
+      <title>Robot mechanics</title>
+      <link>https://jamesakl.com/robot-mechanics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/robot-mechanics/</guid>
+      <description>This article covers a broad but formal understanding of concepts in robot kinematics and dynamics. Published: 2021-08-20
+ Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
+Consider these two points $\mathsf{A}$ and $\mathsf{B}$.
+ There are infinite paths from $\mathsf{A}$ to $\mathsf{B}$. Same start and end positions, but different intermediate states. The gray paths are two alternatives to our desired one.</description>
+    </item>
+    
+    <item>
+      <title>Spatial transforms</title>
+      <link>https://jamesakl.com/spatial-transforms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/spatial-transforms/</guid>
+      <description>This article covers ways to interpret homogeneous transforms while recommending notational practices. Published: 2021-09-06
+ Homogeneous Matrices In robot kinematics, coordinate frames are commonly used to keep track of the position and orientation of entities in the space. A coordinate frame $\{O, (\hat{i}, \hat{j}, \hat{k})\}$ in 3D Euclidean space is defined commonly using an origin $O$ and orthonormal basis vectors $(\hat{i}, \hat{j}, \hat{k})$.
+With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the relative position and orientation of one frame relative to another; or one can translate and rotate one frame relative to another.</description>
     </item>
     
   </channel>
