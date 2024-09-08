@@ -24,7 +24,7 @@ A linear state observer is designed, specifically a Luenberger observer of the f
       <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/convex-analysis/</guid>
-      <description>These interesting problems are handpicked from several of my old projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.
+      <description>These problems are handpicked from my projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles.
 Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
     </item>
     
