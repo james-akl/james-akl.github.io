@@ -19,10 +19,10 @@ A linear state observer is designed, specifically a Luenberger observer of the f
     
     <item>
       <title>Convex optimization</title>
-      <link>https://jamesakl.com/convex-analysis/</link>
+      <link>https://jamesakl.com/convex-optimization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://jamesakl.com/convex-analysis/</guid>
+      <guid>https://jamesakl.com/convex-optimization/</guid>
       <description>These problems are handpicked from my projects in Convex Analysis &amp;amp; Optimization and Real Analysis. The solutions and proofs are my own and are linked as PDFs under the section titles. Published: 2021-09-13
  Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and $g : \R \to \R$ be a lower semicontinuous and nondecreasing function. Show that the function $h$ defined by $h(x) = g \circ f(x)$ is lower semicontinuous.</description>
     </item>
@@ -40,10 +40,10 @@ The definition of a robot changes across cultures and has changed throughout tim
     
     <item>
       <title>General resources</title>
-      <link>https://jamesakl.com/lists/</link>
+      <link>https://jamesakl.com/general-resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://jamesakl.com/lists/</guid>
+      <guid>https://jamesakl.com/general-resources/</guid>
       <description>I update this page regularly with resources that may be helpful to others. Learning and reference materials marked as “Online” are freely accessible. Published: 2022-03-01 · Revised: 2024-07-10
  Learning Material  Mathematics       Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
   Numerical Algorithms · Online book by Justin Solomon

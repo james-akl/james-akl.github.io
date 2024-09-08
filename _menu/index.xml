@@ -7,18 +7,6 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jamesakl.com/_menu/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>General resources</title>
-      <link>https://jamesakl.com/lists/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/lists/</guid>
-      <description>I update this page regularly with resources that may be helpful to others. Learning and reference materials marked as “Online” are freely accessible. Published: 2022-03-01 · Revised: 2024-07-10
- Learning Material  Mathematics       Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
-  Numerical Algorithms · Online book by Justin Solomon
-  Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong</description>
-    </item>
-    
-    <item>
       <title>Posts</title>
       <link>https://jamesakl.com/posts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
