@@ -1088,14 +1088,14 @@ h1 svg {
     text-align: left;
     font-weight: bold;
     color: #333;
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 /* Style for the second column */
 .custom-table td:nth-child(2),
 .custom-table th:nth-child(2) {
     /* font-style: italic; */
-    font-size: 0.78em;
+    font-size: 0.8em;
     color: #111;
     text-align: left;
 }
