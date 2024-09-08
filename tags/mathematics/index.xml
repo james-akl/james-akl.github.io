@@ -18,7 +18,7 @@
     </item>
     
     <item>
-      <title>QP and Least Squares</title>
+      <title>QP and least squares</title>
       <link>https://jamesakl.com/qp-least-squares/</link>
       <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
       
@@ -38,7 +38,7 @@ Semicontinuity PDF Let $f : \R^n \to \R$ be a lower semicontinuous function, and
     </item>
     
     <item>
-      <title>Reading Spatial Transforms</title>
+      <title>Spatial transforms</title>
       <link>https://jamesakl.com/spatial-transforms/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -49,7 +49,7 @@ With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the 
     </item>
     
     <item>
-      <title>A Tour of Robot Mechanics</title>
+      <title>Robot mechanics</title>
       <link>https://jamesakl.com/robot-mechanics/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       

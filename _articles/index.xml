@@ -18,7 +18,7 @@
     </item>
     
     <item>
-      <title>QP and Least Squares</title>
+      <title>QP and least squares</title>
       <link>https://jamesakl.com/qp-least-squares/</link>
       <pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate>
       
@@ -28,7 +28,7 @@
     </item>
     
     <item>
-      <title>Reading Spatial Transforms</title>
+      <title>Spatial transforms</title>
       <link>https://jamesakl.com/spatial-transforms/</link>
       <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -39,7 +39,17 @@ With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the 
     </item>
     
     <item>
-      <title>A Tour of Robot Mechanics</title>
+      <title>Defining a robot</title>
+      <link>https://jamesakl.com/robot-definition/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jamesakl.com/robot-definition/</guid>
+      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
+ History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
+    </item>
+    
+    <item>
+      <title>Robot mechanics</title>
       <link>https://jamesakl.com/robot-mechanics/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -47,16 +57,6 @@ With two frames $\mathsf{F}$ and $\mathsf{F}&#39;$ defined, one can measure the 
       <description>This article provides a conceptual but rigorous understanding of common robot kinematics and dynamics, presented in a forward and inverse problems setting. After careful reading, the &amp;lsquo;whys&amp;rsquo; should become apparent, allowing the &amp;lsquo;hows&amp;rsquo; to be better appreciated.
  Motivation The basic functionality we&amp;rsquo;d like robots to have, is to move. However, describing a motion from point $\mathsf{A}$ to point $\mathsf{B}$ precisely is not straightforward.
 Consider these two points $\mathsf{A}$ and $\mathsf{B}$.</description>
-    </item>
-    
-    <item>
-      <title>Defining a Robot</title>
-      <link>https://jamesakl.com/robot-definition/</link>
-      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/robot-definition/</guid>
-      <description>In this article, we attempt to define a robot by examining the underlying conditions that distinguish robotic systems. It is impossible to satisfy all opinions with one definition, but being objectively right is not the goal. Instead, the aim is to better understand the nuances surrounding robots.
- History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.</description>
     </item>
     
   </channel>
