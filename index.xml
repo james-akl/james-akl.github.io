@@ -13,7 +13,7 @@
       
       <guid>https://jamesakl.com/matrix-calculus/</guid>
       <description>This article discusses notational practices in matrix calculus and recommends a mnemonic inspired by the outer product.
- Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation ${\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)}$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing ${\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}}$. In higher-dimensional settings, a function can be multivariate (multidimensional input), vector-valued (multidimensional output), or both.</description>
+Background and Motivation In the context of differentiation, Leibniz&amp;rsquo;s notation ${\big(\frac{\mathrm{d}f}{\mathrm{d}x}\big)}$ is typically used for functions ${f: \mathbb{R} \to \mathbb{R}}$, i.e., scalar-valued function of a real variable, and is a shorthand representing ${\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}}$. In higher-dimensional settings, a function can be multivariate (multidimensional input), vector-valued (multidimensional output), or both.</description>
     </item>
     
     <item>
@@ -32,10 +32,11 @@ Background When formulating optimization problems in applied settings (e.g., rob
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/lists/</guid>
-      <description>I update this page regularly with resources that may be helpful to others.
-Learning and reference materials marked as “Online” are freely accessible.   Learning Material  Mathematics       Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
+      <description>I update this page regularly with resources that may be helpful to others. Learning and reference materials marked as “Online” are freely accessible.
+Learning Material  Mathematics       Foundations of Applied Mathematics · Book series by Humpherys &amp;amp; Jarvis
   Numerical Algorithms · Online book by Justin Solomon
-  Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong</description>
+  Mathematics for Machine Learning · Online book by Deisenroth, Faisal, and Ong
+  Mathematics for Computer Science · Online book by Lehman, Leighton, and Meyer</description>
     </item>
     
     <item>
