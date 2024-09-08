@@ -1056,7 +1056,7 @@ h1 svg {
 /* Ensure the table fits content tightly */
 .custom-table table {
     table-layout: auto; /* Allows columns to resize based on content */
-    width: auto; /* Table width will be adjusted based on content */
+    /* width: auto; Table width will be adjusted based on content */
     border-collapse: collapse; /* Ensures cells collapse into one another without extra space */
 }
 
@@ -1082,7 +1082,7 @@ h1 svg {
 /* Style for the first column */
 .custom-table td:nth-child(1),
 .custom-table th:nth-child(1) {
-    width: 40%;
+    width: 23%;
     padding-right: 1em;
     padding-left: 1em;
     text-align: left;
