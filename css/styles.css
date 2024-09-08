@@ -1044,3 +1044,58 @@ h1 svg {
   background: rgba(0,0,0,.8);
   color: #fefefe;
 }
+
+
+/* CUSTOM TABLE FOR POSTS */
+.custom-table-container {
+    overflow-x: auto; /* Adds horizontal scrolling if the table overflows */
+    -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on touch devices */
+    width: 100%; /* Ensure the container takes up full width of its parent */
+}
+
+/* Ensure the table fits content tightly */
+.custom-table table {
+    table-layout: auto; /* Allows columns to resize based on content */
+    width: auto; /* Table width will be adjusted based on content */
+    border-collapse: collapse; /* Ensures cells collapse into one another without extra space */
+}
+
+/* Style cells to fit content tightly */
+.custom-table td, .custom-table th {
+    border: none;
+    height: auto; /* Allow rows to adjust height based on content */
+    padding: 5px; /* Add minimal padding for better readability */
+    margin: 0; /* Remove margin to prevent extra space */
+    white-space: nowrap;
+}
+
+/* Target and completely remove the header row */
+.custom-table thead {
+    display: none;
+}
+
+/* Ensure the first row doesn't shift due to hidden header */
+.custom-table tr:first-child {
+    margin-top: 0;
+}
+
+/* Style for the first column */
+.custom-table td:nth-child(1),
+.custom-table th:nth-child(1) {
+    width: 40%;
+    padding-right: 1em;
+    padding-left: 1em;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    font-size: 0.8em;
+}
+
+/* Style for the second column */
+.custom-table td:nth-child(2),
+.custom-table th:nth-child(2) {
+    /* font-style: italic; */
+    font-size: 0.78em;
+    color: #111;
+    text-align: left;
+}
