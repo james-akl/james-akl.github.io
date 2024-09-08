@@ -2,12 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jamesakl.com/_projects/</loc>
-    <lastmod>2024-09-08T15:14:05-04:00</lastmod>
-  </url><url>
-    <loc>https://jamesakl.com/control-simulations/</loc>
-    <lastmod>2024-09-08T15:14:05-04:00</lastmod>
-  </url><url>
     <loc>https://jamesakl.com/_articles/</loc>
     <lastmod>2024-09-08T15:37:25-04:00</lastmod>
   </url><url>
@@ -35,8 +29,14 @@
     <loc>https://jamesakl.com/_menu/</loc>
     <lastmod>2024-09-08T15:37:25-04:00</lastmod>
   </url><url>
-    <loc>https://jamesakl.com/convex-analysis/</loc>
+    <loc>https://jamesakl.com/_projects/</loc>
+    <lastmod>2024-09-08T15:40:15-04:00</lastmod>
+  </url><url>
+    <loc>https://jamesakl.com/control-simulations/</loc>
     <lastmod>2024-09-08T15:14:05-04:00</lastmod>
+  </url><url>
+    <loc>https://jamesakl.com/convex-analysis/</loc>
+    <lastmod>2024-09-08T15:40:15-04:00</lastmod>
   </url><url>
     <loc>https://jamesakl.com/lists/</loc>
     <lastmod>2024-09-08T15:37:25-04:00</lastmod>
