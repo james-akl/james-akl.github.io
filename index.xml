@@ -28,17 +28,6 @@ A linear state observer is designed, specifically a Luenberger observer of the f
     </item>
     
     <item>
-      <title>Defining a robot</title>
-      <link>https://jamesakl.com/robot-definition/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jamesakl.com/robot-definition/</guid>
-      <description>This essay discusses the nuances and difficulties in trying to define a robot. Published: 2021-08-20
- History The word robot has literary origins (specifically, Czech) meaning forced labor, vaguely implying that a robot is a machine-worker. Curiously though, in the initial literary context, robots were described as artificial biological organisms, rather than the popular mechanical interpretation (e.g., automaton, device, machine).
-The definition of a robot changes across cultures and has changed throughout time.</description>
-    </item>
-    
-    <item>
       <title>General resources</title>
       <link>https://jamesakl.com/general-resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -66,7 +55,7 @@ The definition of a robot changes across cultures and has changed throughout tim
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jamesakl.com/posts/</guid>
-      <description>Articles          Matrix calculus The ‘matrix derivative’   QP and least squares Relating formulations   Spatial transforms Interpretation and notation   Robot mechanics Kinematics and dynamics      Projects          Convex optimization Problems, proofs, solutions   Control simulations Estimation, manipulators      Essays          Defining a robot Discussing ‘what is a robot?</description>
+      <description>Articles          Matrix calculus The ‘matrix derivative’   QP and least squares Relating formulations   Spatial transforms Interpretation and notation   Robot mechanics Kinematics and dynamics      Projects          Convex optimization Problems, proofs, solutions   Control simulations Estimation, manipulators     | | | |-|-| | [Defining a robot](/robot-definition/) | Discussing ‘what is a robot?</description>
     </item>
     
     <item>
