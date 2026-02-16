@@ -1,0 +1,6 @@
+# robots.txt for jamesakl.com
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://jamesakl.com/sitemap.xml
