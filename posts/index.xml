@@ -1,0 +1,1267 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>James Akl</title><link>https://jamesakl.com/posts/</link><description>Recent content on James Akl</description><generator>Hugo</generator><language>en-us</language><managingEditor>James Akl</managingEditor><webMaster>James Akl</webMaster><lastBuildDate>Sun, 07 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jamesakl.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Symbols and the real</title><link>https://jamesakl.com/posts/symbols-and-the-real/</link><pubDate>Sun, 07 Jun 2026 00:00:00 +0000</pubDate><author>James Akl</author><guid>https://jamesakl.com/posts/symbols-and-the-real/</guid><description>The world is more detailed and more intricate than we ever fully take in. We reach it through perception, which is bounded by the range and resolution of our senses and registers only part of what is there. Over perception we lay a symbolic order: words, numbers, models, measurements, and the like. We call something red, then name its shade, then fix it in a color space; we encode the world in species, units, equations, and so on.</description><content:encoded><![CDATA[<p>The world is more detailed and more intricate than we ever fully take in. We reach it through perception, which is bounded by the range and resolution of our senses and registers only part of what is there. Over perception we lay a symbolic order: words, numbers, models, measurements, and the like. We call something red, then name its shade, then fix it in a color space; we encode the world in species, units, equations, and so on. Much of what we call &lsquo;knowledge&rsquo; lives in this top layer, in part because symbols are compact and easy to share.</p>
+<p>A representation holds only what was put into it. It can be recombined, scaled, and refined, and that does not, on its own, add what was never captured; such things generally have to come from the world. When what a task needs is already in the symbols, the problem is largely amenable to data and scale. When it is not, work inside the representation tends to stop paying off, and what is missing, whether a property never measured or a behavior only crudely modeled, usually has to be sought in the world.</p>
+<h2 id="the-symbolic-gap">The symbolic gap</h2>
+<p>Nearly every symbolic system leaves a residue it cannot express. An alphabet has sounds it cannot write; a language has distinctions it has no words for. Even vision is not a photograph: an RGB image is a uniform grid of samples, while the eye samples unevenly, concentrating acuity at the fovea. Neither the image nor the eye is the scene itself; each keeps part of it and discards the rest, in its own way. Omission is part of what makes a representation useful; a description that left nothing out would be as unwieldy as what it describes. What matters is which omissions it makes, and whether the task depends on what was left out.</p>
+<h2 id="robot-learning">Robot learning</h2>
+<p>These gaps show up concretely in robot learning, where a machine acts on the world through such a stack, and the gaps there can carry a measurable cost. It helps to separate that stack into three, less a theory than a convenience for naming where things come apart. $\Phi$ is the physical world the robot acts in but does not observe directly, including its contact, friction, deformation, surface properties, and lighting. $P$ is perception, the lossy pipeline of cameras, encoders, and force-torque sensors that samples it. $\Sigma$ is the representation the policy computes over: tensors, latents, tokens, simulator state. A simulator lives in $\Sigma$ and approximates $\Phi$ as well as its numerics allow.</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TB
+    subgraph PhiBox[&quot; &quot;]
+        F[&quot;&lt;b&gt;Φ: the real&lt;/b&gt;&lt;br/&gt;contact, friction,&lt;br/&gt;deformation, lighting,&lt;br/&gt;surface properties&lt;br/&gt;&lt;i&gt;inaccessible&lt;/i&gt;&quot;]
+    end
+    subgraph PBox[&quot; &quot;]
+        Per[&quot;&lt;b&gt;P: perception&lt;/b&gt;&lt;br/&gt;cameras, IMU, encoders,&lt;br/&gt;force/torque sensors&lt;br/&gt;&lt;i&gt;lossy&lt;/i&gt;&quot;]
+    end
+    subgraph SigmaBox[&quot; &quot;]
+        Sym[&quot;&lt;b&gt;Σ: symbolic&lt;/b&gt;&lt;br/&gt;tensors, latents, tokens,&lt;br/&gt;action chunks, sim state&lt;br/&gt;&lt;i&gt;what the policy computes over&lt;/i&gt;&quot;]
+    end
+
+    Sym --&gt;|&quot;action via actuators&quot;| F
+    F --&gt;|&quot;sensing&quot;| Per
+    Per --&gt;|&quot;encoding&quot;| Sym
+
+    style F fill:#1a1a1a,stroke:#86efac,stroke-width:2px,color:#86efac
+    style Per fill:#1a1a1a,stroke:#60a5fa,stroke-width:2px,color:#60a5fa
+    style Sym fill:#1a1a1a,stroke:#fbbf24,stroke-width:2px,color:#fbbf24
+    style PhiBox fill:none,stroke:none
+    style PBox fill:none,stroke:none
+    style SigmaBox fill:none,stroke:none
+
+    classDef default font-family:Source Code Pro
+</code></pre><p>A prominent case is contact. A simulator does model it, but only approximately, and tends to handle foot-on-ground contact better than finger-on-object contact. So legged-locomotion policies can be trained in simulation and carried over to hardware, and they are small, around 1.4 million parameters (<a href="https://arxiv.org/abs/2303.03381">Radosavovic et al., 2023</a>). Contact-rich manipulation is far harder to train this way, and tends to fall back on demonstrations collected by teleoperation. These are still lossy, but sampled at higher fidelity, closer to the real than any model of it (<a href="https://people.csail.mit.edu/brooks/papers/elephants.pdf">Brooks, 1990</a>). Those demonstrations are real-time and costly, often person-years of operator effort, which is part of why contact looms large in the field.</p>
+<p>One temptation is to avoid that cost by staying inside the model and fusing what is already there: a multiphysics solver coupling several equations, or a network folding many channels into one representation. But fusion mostly recombines what was already encoded, and does not by itself add a component that was not there. What a model lacks tends to come from the world, through a new kind of measurement or a real interaction, rather than from rearranging what it already holds.</p>
+<h2 id="scale-and-span">Scale and span</h2>
+<p>Scale is powerful where a representation already spans the task: it fills the space in, and is often hard to beat. Language shows this especially clearly, since text already carries most of what a language model needs. It is the <a href="http://incompleteideas.net/IncIdeas/BitterLesson.html">bitter-lesson</a> bet from language, that general methods with scale and data tend to win out, and web pretraining even reaches robots: a model can pick a rock when the task calls for an improvised hammer, with no robot data teaching it the concept (<a href="https://arxiv.org/abs/2307.15818">RT-2</a>). But that web pretraining seems to transfer recognition more than execution, what a scene contains rather than how to act in it. Execution turns on the fidelity of the dynamics a policy learns from, whether from a faithful simulator or from real data.</p>
+<p>Where a dimension is genuinely missing, scale appears to do much less. A policy that must tell a wet surface from a dry one needs information its cameras may not carry; a visible sheen is a weak proxy for wetness, not a measurement of it, and more images only give more of that proxy, not the measurement. Telling a genuinely absent property from a merely faint one is hard, and scale sometimes recovers what looked missing, so it is easy to call something absent that was only hard to detect. Our measures of progress are representations too, and they can drift from what they track. A benchmark score, how often a model succeeds on the test, can stay high while the capability behind it does not: when the test&rsquo;s scenes are meaningfully changed (an object moved, an instruction reworded), that success can fall sharply, though newer policies hold up better (<a href="https://arxiv.org/abs/2510.03827">LIBERO-PRO</a>). Such a score reflects the benchmark more than the task it stands for. What decides it, in the end, is the fit between the data and the task.</p>
+<h2 id="closing-remarks">Closing remarks</h2>
+<p>Underneath the specifics the claim is general. We act on the world through representations, and a representation gives back essentially what was put into it; scale and refinement work within what has already been captured, while what was never captured generally has to come from the world. Robot learning makes this concrete and expensive: what a simulator approximates too crudely, or a sensor does not record, usually has to be bought in real interaction. What this asks for is not less empiricism but more of the right kind: build the representation to hold what the task depends on, and then scale along it.</p>
+<h2 id="related-ideas">Related ideas</h2>
+<p>The thought is old, and it recurs in many vocabularies. Korzybski&rsquo;s <a href="https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation">map–territory distinction</a> names the gap between a description and the thing described, and Borges pressed it to a limit: <a href="https://en.wikipedia.org/wiki/On_Exactitude_in_Science">a map so exact</a> that it covers the territory point for point, and is abandoned as useless. Kant drew a sharper line, between appearances and the <a href="https://en.wikipedia.org/wiki/Thing-in-itself">thing-in-itself</a> we never reach directly, and Lacan called the part that resists symbolization <a href="https://en.wikipedia.org/wiki/The_Real">the Real</a>. Wiener&rsquo;s <a href="https://en.wikipedia.org/wiki/Cybernetics"><em>Cybernetics</em></a> treated information as a quantity of its own, not reducible to matter or energy, and Shannon&rsquo;s <a href="https://en.wikipedia.org/wiki/Data_processing_inequality">data-processing inequality</a> set a limit on it: no processing recovers information a signal never carried. In artificial intelligence the same concern runs through Harnad&rsquo;s <a href="https://en.wikipedia.org/wiki/Symbol_grounding_problem">symbol grounding problem</a>, how symbols mean anything if defined only through other symbols; Brooks&rsquo;s argument that a robot does better to treat <a href="https://people.csail.mit.edu/brooks/papers/elephants.pdf">the world as its own model</a> than to carry an internal copy of it; and <a href="https://en.wikipedia.org/wiki/Moravec%27s_paradox">Moravec&rsquo;s paradox</a>, that the sensorimotor skills we share with animals have proved far harder to reproduce than abstract reasoning. Polanyi&rsquo;s <a href="https://en.wikipedia.org/wiki/Tacit_knowledge">tacit knowledge</a>, what we can do but cannot state, is the same gap seen from the other side.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Brohan, A. <em>et al.</em> (2023). <a href="https://arxiv.org/abs/2307.15818">RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control</a>.</li>
+<li>Brooks, R. (1990). <a href="https://people.csail.mit.edu/brooks/papers/elephants.pdf">Elephants Don&rsquo;t Play Chess</a>. <em>Robotics and Autonomous Systems</em>.</li>
+<li>LIBERO-PRO (Zhou, X. <em>et al.</em>, 2025). <a href="https://arxiv.org/abs/2510.03827">Towards Robust and Fair Evaluation of Vision-Language-Action Models Beyond Memorization</a>.</li>
+<li>Radosavovic, I. <em>et al.</em> (2023). <a href="https://arxiv.org/abs/2303.03381">Real-World Humanoid Locomotion with Reinforcement Learning</a>.</li>
+<li>Sutton, R. (2019). <a href="http://incompleteideas.net/IncIdeas/BitterLesson.html">The Bitter Lesson</a>.</li>
+</ul>
+]]></content:encoded></item><item><title>Principled testing</title><link>https://jamesakl.com/posts/principled-testing/</link><pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate><author>James Akl</author><guid>https://jamesakl.com/posts/principled-testing/</guid><description>Testing software-intensive systems involves more decisions than the standard vocabulary suggests. The conventional taxonomy (unit, integration, system, acceptance) organizes tests along a single axis of scope. But each test also involves deciding why to run it (intent), where to run it (environment), and how to judge correctness (the oracle: the mechanism that decides whether an output is right). Separating these decisions can clarify what a test strategy covers and where the gaps are.</description><content:encoded><![CDATA[<p>Testing software-intensive systems involves more decisions than the standard vocabulary suggests. The conventional taxonomy (unit, integration, system, acceptance) organizes tests along a single axis of scope. But each test also involves deciding <em>why</em> to run it <span style="color: darkgray">(intent)</span>, <em>where</em> to run it <span style="color: darkgray">(environment)</span>, and <em>how to judge correctness</em> <span style="color: darkgray">(the <a href="https://en.wikipedia.org/wiki/Test_oracle">oracle</a>: the mechanism that decides whether an output is right)</span>. Separating these decisions can clarify what a test strategy covers and where the gaps are.</p>
+<p>This article builds a more complete picture of what testing involves: the gap between structural and behavioral correctness; the oracle challenges that intensify in systems that learn from data or interface with the physical world; the range from <em>ad hoc</em> exploration to formal verification; and the reality that most teams work under constraints where the question is not whether to test more, but what to invest in.</p>
+<h2 id="conventional-frameworks">Conventional frameworks</h2>
+<ul>
+<li><strong>Unit → integration → system → acceptance.</strong> The “test levels,” ordered by scope. Myers (<a href="https://books.google.com/books/about/The_Art_of_Software_Testing.html?id=GjyEFPkMCwcC">1979</a>) introduced foundational ideas about test levels in <em>The Art of Software Testing</em>; the <a href="https://istqb.org/">ISTQB syllabus</a> later codified the four-level hierarchy as the primary organizing axis.</li>
+<li><strong>The V-model.</strong> Requirements map to acceptance tests, architecture to integration tests, detailed design to unit tests. Standards like <a href="https://www.iso.org/standard/81291.html">ISO/IEC/IEEE 29119</a> define generic test processes compatible with this and other lifecycle models.</li>
+<li><strong>The test pyramid.</strong> Cohn (<a href="https://www.mountaingoatsoftware.com/blog/the-forgotten-layer-of-the-test-automation-pyramid">2009</a>) proposed a cost heuristic: many unit tests, fewer service-level tests, fewer still UI tests, as described by Fowler (<a href="https://martinfowler.com/bliki/TestPyramid.html">2012</a>). Variants include the <a href="https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications">testing trophy</a> <span style="color: darkgray">(Dodds, emphasizing integration tests)</span> and the testing diamond <span style="color: darkgray">(wider in the middle, for service-oriented architectures)</span>.</li>
+<li><strong>Test-driven development.</strong> Beck (<a href="https://books.google.com/books/about/Test_driven_Development.html?id=CUlsAQAAQBAJ">2002</a>) formalized writing tests before implementation: red, green, refactor. TDD is a design discipline as much as a testing practice; it forces interface decisions before implementation. Its strength is in domains where the oracle is clear and the specification is stable enough to write a test against.</li>
+</ul>
+<p>These frameworks capture real tradeoffs. They also compress distinct decisions into a single label. “Integration test” means one thing in embedded systems <span style="color: darkgray">(testing interfaces between hardware and software components)</span> and something different in web development <span style="color: darkgray">(testing interactions between services)</span>. “Hardware-in-the-loop” has a precise meaning in automotive and aerospace <span style="color: darkgray">(real controller hardware running real firmware, with a simulated plant model, in real time)</span> but is used loosely elsewhere for any test involving physical hardware. This is not a failure of the vocabulary; these terms serve their communities well. But they fix one dimension and leave the rest implicit, and different communities fill in those gaps differently. Decomposing a test into its constituent decisions can help bridge this ambiguity.</p>
+<div style="background: #1a1a1a; padding: 1.2em 1.5em; border-radius: 4px; margin: 1.5em 0; border-left: 3px solid #60a5fa;">
+<p><strong>A note on terminology.</strong> Adjacent disciplines use overlapping but distinct terms for related activities. <em>Verification</em> asks whether the system meets its specification; <em>validation</em> asks whether the specification meets the actual need. These are often paired as V&amp;V <span style="color: darkgray">(<a href="https://standards.ieee.org/standard/1012-2016.html">IEEE 1012</a>, DO-178C)</span>. In modeling and simulation, particularly in defense contexts, this extends to VV&amp;A <span style="color: darkgray">(Verification, Validation, and Accreditation)</span>, where <em>accreditation</em> is the formal determination that a model is acceptable for a specific use. <em>Evaluation</em> is used broadly in machine learning for model assessment <span style="color: darkgray">(often shortened to “evals”)</span>. <em>Qualification</em> and <em>certification</em> appear in hardware, pharmaceutical, and aerospace contexts for formal attestation against regulatory criteria. This article uses “testing” broadly to encompass the act of executing a system and judging its outputs, which overlaps with all of these but is not synonymous with any of them.</p>
+</div>
+<h2 id="dimensions-of-a-test">Dimensions of a test</h2>
+<p>A test involves several decisions that can, to a useful degree, be considered separately: <strong>Scope</strong> <span style="color: darkgray">(what is being tested)</span>, <strong>Intent</strong> <span style="color: darkgray">(why the test exists)</span>, <strong>Environment</strong> <span style="color: darkgray">(where it runs)</span>, and <strong>Oracle</strong> <span style="color: darkgray">(how correctness is judged)</span>. These four are not exhaustive or perfectly independent — they interact, and there may be others worth identifying <span style="color: darkgray">(test input generation strategy, for instance, interacts with all four but is not reducible to any of them)</span>. But conflating any two can cause confusion.</p>
+<h3 id="scope">Scope</h3>
+<p>What is the system-under-test?</p>
+<ul>
+<li><strong>Component</strong> <span style="color: darkgray">(a single function, class, or module)</span></li>
+<li><strong>Subsystem</strong> <span style="color: darkgray">(a pipeline, service, or bounded context)</span></li>
+<li><strong>System</strong> <span style="color: darkgray">(the full deployed artifact)</span></li>
+<li><strong>System-of-systems</strong> <span style="color: darkgray">(multiple interacting systems, including dependencies outside the team&rsquo;s deployment authority)</span></li>
+</ul>
+<p>Scope is about <em>boundaries</em>, not code size. What counts as a unit depends on where the architecture draws its interfaces. Meszaros (<a href="http://xunitpatterns.com/">2007</a>) formalized the taxonomy of <a href="https://en.wikipedia.org/wiki/Test_double">test doubles</a> <span style="color: darkgray">(stubs, mocks, fakes, dummies, spies)</span> in <em>xUnit Test Patterns</em> precisely because scope decisions require explicit management of what lies outside the boundary.</p>
+<h3 id="intent">Intent</h3>
+<p>Why is this test being run?</p>
+<ul>
+<li><strong>Regression</strong> <span style="color: darkgray">(did existing behavior break?)</span></li>
+<li><strong>Progression</strong> <span style="color: darkgray">(does the new or changed behavior work as specified?)</span></li>
+<li><strong>Exploration</strong> <span style="color: darkgray">(what does the system actually do in this scenario?)</span></li>
+<li><strong>Acceptance</strong> <span style="color: darkgray">(does the system meet requirements?)</span></li>
+</ul>
+<p>Regression and progression are complementary. A code change affects two surfaces: existing behaviors that might break, and new behaviors that must work. A progression test, if retained, becomes a regression guard once the behavior it verified is established. The distinction matters for test design. To illustrate: adding concurrency to a module calls for progression tests for the new thread-safety requirements and regression tests for existing sequential behavior. These tests have different oracle and environment requirements, since concurrency bugs are timing-dependent and may not manifest in-process. Rothermel and Harrold (<a href="https://doi.org/10.1145/248233.248262">1997</a>) formalized safe regression test selection, showing that the problem has structure independent of the other dimensions.</p>
+<div style="background: #1a1a1a; padding: 1.2em 1.5em; border-radius: 4px; margin: 1.5em 0; border-left: 3px solid #60a5fa;">
+<p><strong>On “progression testing.”</strong> “Regression testing” is standard across ISTQB, IEEE, and ISO vocabularies. “Progression testing” is less universal — it originates from the <a href="https://www.tmap.net/wiki/regression-testing-and-progression-testing/">TMap methodology</a> (Sogeti), where it is formally defined as testing new or adapted functionality. ISTQB uses “confirmation testing” for a related but narrower concept <span style="color: darkgray">(specifically re-testing a defect fix to verify the fix works, rather than testing new features generally)</span>. The term “progression” is used here to emphasize the symmetry between checking that old behavior survived and checking that new behavior works.</p>
+</div>
+<p>Exploration includes interactive, <em>ad hoc</em> testing — someone running the system in varied conditions to see what happens. It does not produce a persistent automated artifact, but it consumes budget and produces information. In early development, when interfaces are still changing, it is often the most appropriate form of testing.</p>
+<p>In regulated domains <span style="color: darkgray">(<em>e.g.</em>, DO-178C for avionics, ISO 26262 for automotive)</span>, acceptance testing becomes certification testing: the regulatory framework prescribes specific evidence and coverage criteria, constraining the other dimensions <span style="color: darkgray">(<em>e.g.</em>, <a href="https://en.wikipedia.org/wiki/DO-178C">DO-178C</a> Level A requires <a href="https://en.wikipedia.org/wiki/Modified_condition/decision_coverage">MC/DC</a> structural coverage; <a href="https://en.wikipedia.org/wiki/IEC_61508">IEC 61508</a> SIL 4 highly recommends it)</span>.</p>
+<h3 id="environment">Environment</h3>
+<p>Where does the test execute?</p>
+<ul>
+<li><strong>In-process</strong> <span style="color: darkgray">(same process as the test runner, with mocked or stubbed dependencies)</span></li>
+<li><strong>Simulated</strong> <span style="color: darkgray">(against a model (<em>e.g.</em>, physics, networks, patients) with varying fidelity; sometimes called <em>in-silico</em> testing)</span></li>
+<li><strong>Hardware-in-the-loop</strong> <span style="color: darkgray">(real hardware running real firmware, with simulated stimuli)</span></li>
+<li><strong>Field</strong> <span style="color: darkgray">(real hardware, real world)</span></li>
+</ul>
+<p>Environment determines <em>what phenomena the test can observe</em>. An in-process test cannot observe real-time timing faults. A simulation cannot reproduce all sensor characteristics. Each environment has a <em>fidelity envelope</em>: the set of phenomena that can, in principle, manifest during execution.</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+    A[&quot;In-process&quot;]
+    B[&quot;Simulated&quot;]
+    C[&quot;HIL&quot;]
+    D[&quot;Field&quot;]
+
+    A --&gt;|&quot;+ model&quot;| B
+    B --&gt;|&quot;+ real&lt;br&gt;hardware&quot;| C
+    C --&gt;|&quot;+ real&lt;br&gt;world&quot;| D
+
+    style A fill:#1a1a1a,stroke:#60a5fa,stroke-width:2px,color:#60a5fa
+    style B fill:#1a1a1a,stroke:#86efac,stroke-width:2px,color:#86efac
+    style C fill:#1a1a1a,stroke:#fbbf24,stroke-width:2px,color:#fbbf24
+    style D fill:#1a1a1a,stroke:#f87171,stroke-width:2px,color:#f87171
+
+    classDef default font-family:Source Code Pro
+</code></pre><p>“Simulated” spans a range. In automotive and aerospace, this is formalized: model-in-the-loop <span style="color: darkgray">(MIL — testing a model of the software before code generation)</span>, software-in-the-loop <span style="color: darkgray">(SIL — compiled production code against a simulated environment)</span>, and processor-in-the-loop <span style="color: darkgray">(PIL — real code on the target processor, simulated I/O)</span>. MIL cannot reveal bugs introduced by code generation; SIL cannot reveal bugs caused by the target processor&rsquo;s timing. In domains where these distinctions are formalized <span style="color: darkgray">(<em>e.g.</em>, ISO 26262)</span>, they warrant separate treatment.</p>
+<p>Much of practical test engineering involves shifting tests along the environment dimension. Recording HTTP interactions for replay, mocking database connections, or using containerized dependencies <span style="color: darkgray">(<em>e.g.</em>, <a href="https://testcontainers.com/">Testcontainers</a>)</span> all convert what would be an integration test against real services into a faster, more deterministic in-process or simulated test. This gains repeatability and speed but can lose fidelity: the mock may drift from the real dependency over time, and bugs that arise from the interaction with the real service (<em>e.g.</em>, latency, partial failures, version mismatches) become invisible. <a href="https://martinfowler.com/bliki/ContractTest.html">Contract testing</a> is one response: verify that the mock and the real service agree on the interface, so that the fidelity loss is bounded. The tradeoff is general: moving a test to a cheaper environment generally narrows the fidelity envelope, and the question is whether the phenomena lost are ones that matter.</p>
+<p><a href="https://en.wikipedia.org/wiki/Chaos_engineering">Chaos engineering</a> pushes in the opposite direction — deliberately injecting faults <span style="color: darkgray">(<em>e.g.</em>, network partitions, service failures, resource exhaustion)</span> into a production or production-like environment to test resilience. In the dimensional framework, this is exploration or progression intent at system scope, in a degraded field environment, with property oracles <span style="color: darkgray">(“does the system degrade gracefully?”)</span>. It explicitly targets the phenomena that convenient testing cannot observe.</p>
+<h3 id="oracle">Oracle</h3>
+<p>How is correctness judged?</p>
+<ul>
+<li><strong>Exact</strong> <span style="color: darkgray">(a specific expected output, known in advance)</span></li>
+<li><strong>Differential</strong> <span style="color: darkgray">(compare against a reference implementation or a previous version)</span></li>
+<li><strong>Property</strong> <span style="color: darkgray">(output satisfies a constraint, without specifying the exact value)</span></li>
+<li><strong>Statistical</strong> <span style="color: darkgray">(output distribution satisfies criteria over many runs)</span></li>
+<li><strong>Human</strong> <span style="color: darkgray">(a person evaluates the output)</span></li>
+</ul>
+<p>Exact and property oracles differ in specificity: an exact oracle says “this is <em>the</em> answer” <span style="color: darkgray">(<em>e.g.</em>, <code>output == 42</code>)</span>; a property oracle says “any answer satisfying this constraint is acceptable” <span style="color: darkgray">(<em>e.g.</em>, <code>output &gt; 0</code> or <code>is_sorted(output)</code>)</span>. The boundary is not always sharp; a floating-point comparison with a tolerance <span style="color: darkgray">(<code>abs(output - expected) &lt; epsilon</code>)</span> looks like an exact oracle but is technically a property oracle, since it accepts a range of values. Non-deterministic systems <span style="color: darkgray">(<em>e.g.</em>, concurrent programs, stochastic algorithms)</span> push further: if running the same test twice can produce different results, exact oracles on full system output become unreliable, and property or statistical oracles are often more appropriate. Despite the blurred boundary, the distinction matters: exact and property oracles have different failure modes and different sensitivity to system changes.</p>
+<p>Differential oracles deserve attention. Running the same inputs through the current and previous version of a system and comparing outputs is a widely used technique <span style="color: darkgray">(sometimes called golden-file testing, snapshot testing, or <a href="https://en.wikipedia.org/wiki/Characterization_test">characterization testing</a> in the legacy code context)</span>. Its interpretation depends on intent: for a pure refactoring <span style="color: darkgray">(no intended behavioral change)</span>, any output difference is a regression. For a feature change, some differences are expected <span style="color: darkgray">(new behavior working as intended)</span> and others are not <span style="color: darkgray">(existing behavior inadvertently broken)</span>. The differential oracle reports all differences without distinguishing between them; a human or further test must decide which are acceptable. This makes differential oracles powerful for regression detection but insufficient on their own for progression testing.</p>
+<p>The oracle is often the most underspecified dimension. A test can verify that a function returns the correct type and structure without necessarily checking whether the <em>content</em> is correct. The gap between <em>structural</em> correctness <span style="color: darkgray">(right types, right interfaces)</span> and <em>behavioral</em> correctness <span style="color: darkgray">(right outputs under the right conditions)</span> is where many real failures live. A perception module can pass all its unit tests — correct interfaces, correct data formats, correct latency — and misclassify objects in deployment, because the tests verified structure rather than behavior. Barr <em>et al.</em> (<a href="https://doi.org/10.1109/TSE.2014.2372785">2015</a>) surveyed the oracle problem and found it pervasive across software testing.</p>
+<p><a href="https://en.wikipedia.org/wiki/Metamorphic_testing">Metamorphic testing</a> <span style="color: darkgray">(Chen <em>et al.</em>, <a href="https://www.cse.ust.hk/faculty/scc/publ/CS98-01-metamorphictesting.pdf">1998</a>)</span> sidesteps the need for a complete oracle: instead of specifying the expected output for input $x$, specify a <em>relation</em> between outputs for related inputs <span style="color: darkgray">(<em>e.g.</em>, rotating an image should not change which objects are detected)</span>. This requires domain knowledge to identify useful metamorphic relations, but it is one of the few oracle strategies that scales to systems without deterministic expected outputs. <a href="https://en.wikipedia.org/wiki/Fuzzing">Fuzzing</a> takes a complementary approach: generate large volumes of inputs <span style="color: darkgray">(often random or mutation-guided)</span> and check for violations of broad properties like “does not crash” or “does not trigger undefined behavior.” Fuzzing is powerful for finding faults without specifying expected outputs, though its property oracles are typically coarse.</p>
+<h2 id="oracles-for-learned-systems">Oracles for learned systems</h2>
+<p>Machine learning systems, from classical models to large-scale foundation models, present the oracle problem in especially sharp form. The challenge is not limited to any one model architecture; it is inherent, arising from the nature of learned behavior itself.</p>
+<p><strong>The held-out test set</strong> is a statistical oracle at system scope: it estimates generalization beyond the training data. But it only estimates generalization <em>to the test distribution</em>. A model that performs well on a curated benchmark can fail on data from a different sensor, geography, or season. This gap (between “passes the test set” and “works in deployment”) is structurally similar to “passes in simulation” versus “works on hardware”: an environment mismatch between where the test runs and where the system operates.</p>
+<p><strong>Benchmark saturation</strong> compounds this. Widely used benchmarks can saturate (state-of-the-art models can exceed 90% accuracy), which reduces their discriminative power and drives a cycle of replacing benchmarks with harder ones. The benchmarks remain useful for baseline comparison, but high scores on them say progressively less about deployment readiness. A related concern is data contamination: models trained on internet-scale data may have encountered benchmark items during training, inflating scores without a corresponding improvement in capability.</p>
+<p><strong>Generative models</strong> intensify the oracle problem further. When the system&rsquo;s output is natural language, code, or other open-ended artifacts, there is often no single correct answer. The same prompt can have many valid responses differing in tone, structure, or emphasis. For some inputs exact oracles still apply <span style="color: darkgray">(<em>e.g.</em>, factual questions with unambiguous answers)</span>, but for most generative tasks the field has converged on several alternatives:</p>
+<ul>
+<li><strong>Rubric-based evaluation.</strong> Define natural-language criteria <span style="color: darkgray">(<em>e.g.</em>, factual accuracy, coherence, relevance)</span> and score outputs against them, often using another model as an automated judge. This is effective at scale but inherits the judge model&rsquo;s own biases <span style="color: darkgray">(<em>e.g.</em>, positional preference, sensitivity to phrasing)</span>, and the rubric itself encodes assumptions about what “good” means.</li>
+<li><strong>Metamorphic relations for language.</strong> Paraphrasing a question should not change the factual content of the answer; translating and back-translating should preserve meaning. These are property oracles adapted to generative outputs, an application of Chen <em>et al.</em>&rsquo;s (<a href="https://www.cse.ust.hk/faculty/scc/publ/CS98-01-metamorphictesting.pdf">1998</a>) framework to a domain far removed from its origins.</li>
+<li><strong>Red-teaming and adversarial probing.</strong> Systematically searching for inputs that elicit harmful, incorrect, or policy-violating outputs, an exploration-intent technique with a human or rubric-based oracle.</li>
+</ul>
+<div style="background: #1a1a1a; padding: 1.2em 1.5em; border-radius: 4px; margin: 1.5em 0; border-left: 3px solid #86efac;">
+<p><strong>The common thread.</strong> Whether the system under test is a classical ML pipeline, a reinforcement learning policy, or a large language model, the fundamental challenge is the same: the oracle must judge <em>behavior</em>, not just <em>structure</em>, and the behaviors that matter most in deployment are often the hardest to specify in advance. The dimensional framework applies uniformly: the question is always what scope, intent, environment, and oracle are appropriate, even as the specific oracle strategies differ.</p>
+</div>
+<h2 id="the-test-space">The test space</h2>
+<p>The dimensions described in the preceding sections form a space. A concrete test is a point in it; a test strategy is a distribution of effort across it:</p>
+<p>$$\mathcal{T} = \text{Scope} \times \text{Intent} \times \text{Environment} \times \text{Oracle}$$</p>
+<p>The space is sparse: many cells are impractical, and the dimensions are not fully independent <span style="color: darkgray">(scope constrains environment; regulatory acceptance constrains oracle)</span>. Conventional terms name regions of this space by fixing some dimensions and leaving others as wildcards:</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Scope</th>
+<th>Intent</th>
+<th>Env.</th>
+<th>Oracle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit test</td>
+<td>Component</td>
+<td>—</td>
+<td>In-process</td>
+<td>Exact / Property</td>
+</tr>
+<tr>
+<td>Integration test</td>
+<td>Subsystem</td>
+<td>—</td>
+<td>In-process / Sim.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>System test</td>
+<td>System</td>
+<td>—</td>
+<td>Sim. / HIL / Field</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Regression test</td>
+<td>—</td>
+<td>Regression</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Acceptance test</td>
+<td>—</td>
+<td>Acceptance</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Smoke test</td>
+<td>System</td>
+<td>Regression</td>
+<td>—</td>
+<td>Exact</td>
+</tr>
+</tbody>
+</table>
+<div style="background: #1a1a1a; padding: 1.2em 1.5em; border-radius: 4px; margin: 1.5em 0; border-left: 3px solid #fbbf24;">
+<p><strong>Reading this table.</strong> Each <code>—</code> is an unspecified dimension — a decision the term leaves implicit. These mappings describe <em>typical</em> usage, not definitions; they are approximate by design. A “unit test” usually uses an exact oracle <span style="color: darkgray">(<code>assertEqual</code>)</span>, but property-based testing frameworks like <a href="https://en.wikipedia.org/wiki/QuickCheck">QuickCheck</a> and <a href="https://hypothesis.readthedocs.io/">Hypothesis</a> operate at component scope with property oracles. A “regression test” specifies only intent; scope, environment, and oracle are all open. The value of the table is not in fixing rigid definitions but in making visible how much conventional terms leave unspecified.</p>
+</div>
+<h2 id="recurring-challenges">Recurring challenges</h2>
+<p>The dimensional view makes certain patterns visible.</p>
+<p><strong>The structural-behavioral gap.</strong> The gap between structural and behavioral correctness, introduced in the <a href="#oracle">oracle</a> discussion above, is one of the most common blind spots in test strategies. A test suite can achieve high coverage while checking only structural properties <span style="color: darkgray">(<em>e.g.</em>, correct types, interfaces, control flow)</span> without checking whether the system&rsquo;s outputs are <em>substantively correct</em>. This is an oracle problem: the tests use exact oracles on structural properties when the critical question requires property, statistical, or human oracles on behavioral properties.</p>
+<p>This pattern is not unique to any particular workflow. Wherever tests are written without intimate knowledge of the system&rsquo;s intended behavior — its domain invariants, its failure modes, its edge cases — the tests tend toward structural checks, because structural properties are observable from the code alone. Behavioral oracles require understanding what the system <em>should</em> do, not just what it <em>does do</em>. This applies equally to a developer unfamiliar with the domain, a team working under time pressure, or an AI coding agent generating tests without system-level context. The issue is not who writes the test but whether the test writer (human or otherwise) has access to the domain knowledge needed to specify meaningful behavioral oracles. A passing CI pipeline built on structural tests provides less assurance than it appears to.</p>
+<p><strong>Testing a moving target.</strong> In R&amp;D, features often have not stabilized. Tests written against an immature interface break not because the system regressed but because the specification moved. The effort shifts from catching bugs to maintaining tests. Regression tests assume a stable specification; when the specification is in flux, exploration and progression are more appropriate. This is a specific case of <a href="/posts/premature-intervention/">premature intervention</a>: committing resources to a structure that has not yet settled.</p>
+<p><strong>Concentrating effort where testing is convenient.</strong> Test effort naturally clusters where tooling supports it: in-process, component-scoped, exact oracles. But production failures often involve interactions between components, behavior under degraded conditions, or inputs that were never anticipated. The gap is not in coverage of the code but in coverage of the <em>phenomena</em>.</p>
+<h2 id="the-limits-of-sampling">The limits of sampling</h2>
+<p>Outside of exhaustive enumeration, testing is sampling. Every test evaluates the system on a finite set of inputs and declares the result representative. For sufficiently small finite input spaces <span style="color: darkgray">(<em>e.g.</em>, a Boolean function of a few variables, or all entries in a lookup table)</span>, exhaustive enumeration is possible: the sample covers the entire space, and the test result is definitive for that space. <a href="https://en.wikipedia.org/wiki/Model_checking">Model checking</a> achieves this for finite-state systems. But for most real systems, the input space is far too large to enumerate, and any test suite is necessarily a sample. How representative that sample is depends on the relationship between the test distribution and the deployment distribution — and on the nature of the risk.</p>
+<p><strong>Quantifiable risk.</strong> When failure modes are known and their probabilities estimable, statistical testing is effective. Run $n$ tests, observe $k$ failures, bound the failure rate. This is where statistical oracles and confidence intervals are meaningful.</p>
+<p><strong>Statistical uncertainty.</strong> When data exists but the distribution is not fully known, bounds are weaker. A test suite may cover the observed distribution well while missing regions that have not been encountered. This is where most ML systems on real data live: a model tested on a curated dataset may perform well there and poorly on data from a different distribution.</p>
+<p><strong><a href="https://en.wikipedia.org/wiki/Knightian_uncertainty">Knightian uncertainty</a>.</strong> When the failure modes themselves are unknown, no amount of testing provides guarantees. A system deployed in an uncontrolled environment faces inputs outside any test distribution. <a href="https://www.iso.org/standard/77490.html">ISO 21448 (SOTIF)</a> frames the goal as shrinking the “unknown unsafe” region, acknowledging that it cannot be eliminated.</p>
+<p>These regimes require different responses. In the quantifiable regime, the question is sample size. In the statistical regime, the question is distribution coverage. In the Knightian regime, the question shifts from “does the system work correctly?” to “does the system fail safely?”, and the response moves from testing toward runtime monitoring, graceful degradation, and safety architecture. Butler and Finelli (<a href="https://doi.org/10.1109/32.210303">1993</a>) showed that for ultra-high reliability targets <span style="color: darkgray">($10^{-9}$ failure rate)</span>, the required test volume is infeasible, a concrete illustration that statistical evidence from testing has fundamental limits.</p>
+<h2 id="the-spectrum-of-rigor">The spectrum of rigor</h2>
+<p>Given these limits, testing practices range widely, and most of this range is legitimate.</p>
+<p>At one end: someone runs the system, tries some inputs, watches the output. Informal, unrepeatable, but in early development it may be all that makes sense. When interfaces are unstable and requirements unclear, investing in automated test infrastructure can be <a href="/posts/premature-intervention/">premature</a>.</p>
+<p>In the middle: automated test suites, continuous integration, regression pipelines. Most software teams operate here. The dimensional decomposition is most useful at this level, as a tool for auditing where effort is allocated and where gaps exist. <a href="https://en.wikipedia.org/wiki/Mutation_testing">Mutation testing</a> <span style="color: darkgray">(introducing small faults into the source code to check whether the test suite detects them)</span> provides a complementary lens: rather than asking “what did we test?”, it asks “what faults would our tests miss?”, a direct measure of test suite adequacy that is independent of code coverage.</p>
+<p>At the other end: <a href="https://en.wikipedia.org/wiki/Formal_verification">formal verification</a>. Formal methods prove properties about the system&rsquo;s behavior for <em>all</em> possible inputs using mathematical proof. Dijkstra (<a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD249/EWD249.html">1970</a>) observed that program testing can show the presence of bugs, but never their absence; formal verification, in principle, can show absence. In practice, formal methods verify <em>models</em> of the system, and the gap between model and reality is its own source of failure. Formal verification is established in hardware design, protocol verification, and safety-critical software <span style="color: darkgray">(<em>e.g.</em>, avionics, automotive, nuclear)</span>. For most teams, full formal verification is beyond reach, but its existence clarifies what testing is and is not: outside of small finite spaces and formal proofs, testing is sampling, and sampling has limits.</p>
+<p>The right rigor depends on what is at stake. A research prototype justifies <em>ad hoc</em> testing. A consumer product justifies automated regression suites. A flight control system justifies formal verification of critical properties. Many teams operate under constraints where rigorous testing is a luxury. The question for those teams is not “are we testing enough?” but “given what we can afford, are we testing the right things?”</p>
+<h2 id="physically-facing-systems">Physically-facing systems</h2>
+<p>Systems that interface with the physical world — through direct actuation <span style="color: darkgray">(<em>e.g.</em>, robotics, autonomous vehicles, drones, industrial automation)</span> or through real-world perception <span style="color: darkgray">(<em>e.g.</em>, anomaly detection on sensor data, computer vision on medical or satellite imagery, environmental monitoring)</span> — are where all of these problems compound, because each dimension has richer structure.</p>
+<p>The simulation fidelity ladder <span style="color: darkgray">(MIL → SIL → PIL → HIL → field)</span> is not only a cost tradeoff; each rung has a different fidelity envelope. The sim-to-real gap is a fundamental epistemic boundary: simulation tests can only observe phenomena that the simulator models. The oracle problem is harder: there is generally no exact expected output for a perception pipeline, and the conditions under which correctness matters most <span style="color: darkgray">(<em>e.g.</em>, sensor noise, weather, novel objects)</span> are the hardest to specify oracles for. Non-determinism is intrinsic: sensor noise and actuator variance mean that running the same test twice may not produce the same result. Scope boundaries are porous: isolating a component requires simulating its physical context, and the simulation is itself a system with its own fidelity assumptions.</p>
+<p>Sensor log replay <span style="color: darkgray">(recording real sensor data and replaying it through the software pipeline — <em>e.g.</em>, rosbag replay in ROS, or equivalent tooling in other frameworks)</span> is an effective regression technique because it makes good choices along each dimension: system scope, regression intent, real-data environment, differential oracle. Compare current pipeline output to previous output on the same recording to catch unintended changes. The technique works well, but designing it systematically — choosing which recordings, which oracle, what constitutes a meaningful difference — remains largely <em>ad hoc</em>.</p>
+<p>Learned policies <span style="color: darkgray">(trained via reinforcement learning, imitation learning, or other methods)</span> compound the problem further. A policy may be tested in simulation during training, on hardware in a controlled setting, or both, then evaluated on held-out scenarios and deployed — each stage occupying a different point in the test space. The critical question is behavioral: does the policy do the right thing under sensor degradation, novel objects, and conditions it has never encountered? This is the oracle problem, the environment problem, and the uncertainty problem, all at once.</p>
+<h2 id="practical-guidance">Practical guidance</h2>
+<p>The point of decomposing tests along multiple dimensions is not to add process but to make visible what is already being decided.</p>
+<p><strong>Enumerate the space.</strong> For each component, subsystem, and system: what intents apply? What environments are available? What oracles are feasible? The grid reveals gaps.</p>
+<p><strong>Match oracle to environment.</strong> An exact oracle in simulation is only as good as the simulation&rsquo;s fidelity. A property oracle <span style="color: darkgray">(<em>e.g.</em>, “the robot does not collide with a known obstacle”)</span> can be valid across environments because it constrains behavior rather than predicting output.</p>
+<p><strong>Defer regression investment until interfaces stabilize.</strong> When the specification is in flux, exploration and progression are more valuable. The time to invest in regression infrastructure is when the interfaces it guards are stable enough that breaking them is informative.</p>
+<p><strong>Test behavior, not just structure.</strong> Structural tests <span style="color: darkgray">(<em>e.g.</em>, correct types, interfaces, return codes)</span> are valuable; they catch real bugs and are cheap to write. But they do not substitute for behavioral coverage. The key is whether the test writer has access to the domain knowledge needed to specify meaningful behavioral oracles. This is a question of inputs to the test design process, not of who or what performs the writing.</p>
+<p><strong>Design for testability.</strong> Controllability <span style="color: darkgray">(ease of placing the system in a known state)</span> and observability <span style="color: darkgray">(ease of inspecting internal state)</span> must be designed in. The PIE model <span style="color: darkgray">(Execution, Infection, Propagation — Voas, <a href="https://doi.org/10.1109/32.153381">1992</a>)</span> formalizes this: a fault must be <em>executed</em>, cause <em>infection</em> of intermediate state, and <em>propagate</em> to an observable output. Code coverage measures execution but does not directly measure infection or propagation.</p>
+<p><strong>Accept irreducible costs.</strong> Some tests must run on hardware. Some oracles must be human. Weyuker (<a href="https://ieeexplore.ieee.org/document/6313008">1986</a>) proposed axioms for test adequacy and showed that most common criteria fail to satisfy them all. A principled strategy identifies where costs are unavoidable and allocates resources accordingly.</p>
+<h2 id="closing-remarks">Closing remarks</h2>
+<p>This decomposition is a lens, not a ground truth. The dimensions proposed here are not exhaustive, not perfectly independent, and not the only useful decomposition. The deeper point is that testing can be a principled practice. The conventional vocabulary is useful shorthand, but it leaves most decisions implicit. Making them explicit, even approximately, is what allows a team to reason about whether its testing investment matches its actual risk, given its actual constraints. That reasoning is available to any team. The investment is less in tooling than in clarity about what the tests are for.</p>
+<h2 id="references">References</h2>
+<h3 id="works-cited">Works cited</h3>
+<p>Barr, E.T., Harman, M., McMinn, P., Shahbaz, M. and Yoo, S. (2015). <a href="https://doi.org/10.1109/TSE.2014.2372785">“The Oracle Problem in Software Testing: A Survey.”</a> <em>IEEE Transactions on Software Engineering</em>, 41(5), pp. 507–525.</p>
+<p>Beck, K. (2002). <a href="https://books.google.com/books/about/Test_driven_Development.html?id=CUlsAQAAQBAJ"><em>Test-Driven Development: By Example</em></a>. Addison-Wesley.</p>
+<p>Butler, R.W. and Finelli, G.B. (1993). <a href="https://doi.org/10.1109/32.210303">“The Infeasibility of Quantifying the Reliability of Life-Critical Real-Time Software.”</a> <em>IEEE Transactions on Software Engineering</em>, 19(1), pp. 3–12.</p>
+<p>Chen, T.Y., Cheung, S.C. and Yiu, S.M. (1998). <a href="https://www.cse.ust.hk/faculty/scc/publ/CS98-01-metamorphictesting.pdf">“Metamorphic Testing: A New Approach for Generating Next Test Cases.”</a> Technical Report HKUST-CS98-01, Department of Computer Science, Hong Kong University of Science and Technology.</p>
+<p>Cohn, M. (2009). <em>Succeeding with Agile: Software Development Using Scrum</em>, Addison-Wesley. See also: <a href="https://www.mountaingoatsoftware.com/blog/the-forgotten-layer-of-the-test-automation-pyramid">“The Forgotten Layer of the Test Automation Pyramid.”</a> Mountain Goat Software.</p>
+<p>Dijkstra, E.W. (1970). <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD249/EWD249.html">“Notes on Structured Programming.”</a> EWD249, Technological University Eindhoven. Reprinted in Dahl, O.-J., Dijkstra, E.W. and Hoare, C.A.R. (1972), <em>Structured Programming</em>, Academic Press.</p>
+<p>Fowler, M. (2012). <a href="https://martinfowler.com/bliki/TestPyramid.html">“TestPyramid.”</a> martinfowler.com.</p>
+<p>Meszaros, G. (2007). <a href="http://xunitpatterns.com/"><em>xUnit Test Patterns: Refactoring Test Code</em></a>. Addison-Wesley.</p>
+<p>Myers, G.J. (1979). <a href="https://books.google.com/books/about/The_Art_of_Software_Testing.html?id=GjyEFPkMCwcC"><em>The Art of Software Testing</em></a>. John Wiley &amp; Sons.</p>
+<p>Rothermel, G. and Harrold, M.J. (1997). <a href="https://doi.org/10.1145/248233.248262">“A Safe, Efficient Regression Test Selection Technique.”</a> <em>ACM Transactions on Software Engineering and Methodology</em>, 6(2), pp. 173–210.</p>
+<p>Voas, J.M. (1992). <a href="https://doi.org/10.1109/32.153381">“PIE: A Dynamic Failure-Based Technique.”</a> <em>IEEE Transactions on Software Engineering</em>, 18(8), pp. 717–727.</p>
+<p>Weyuker, E.J. (1986). <a href="https://ieeexplore.ieee.org/document/6313008">“Axiomatizing Software Test Data Adequacy.”</a> <em>IEEE Transactions on Software Engineering</em>, SE-12(12), pp. 1128–1138.</p>
+<h3 id="standards-cited">Standards cited</h3>
+<p><a href="https://en.wikipedia.org/wiki/DO-178C">DO-178C</a>. <em>Software Considerations in Airborne Systems and Equipment Certification</em>. RTCA, 2011.</p>
+<p><a href="https://en.wikipedia.org/wiki/IEC_61508">IEC 61508</a>. <em>Functional Safety of Electrical/Electronic/Programmable Electronic Safety-Related Systems</em>. International Electrotechnical Commission.</p>
+<p><a href="https://standards.ieee.org/standard/1012-2016.html">IEEE 1012</a>. <em>IEEE Standard for System, Software, and Hardware Verification and Validation</em>. IEEE, 2016.</p>
+<p><a href="https://www.iso.org/standard/77490.html">ISO 21448:2022</a>. <em>Road Vehicles — Safety of the Intended Functionality</em>. International Organization for Standardization.</p>
+<p><a href="https://en.wikipedia.org/wiki/ISO_26262">ISO 26262</a>. <em>Road Vehicles — Functional Safety</em>. International Organization for Standardization.</p>
+<p><a href="https://www.iso.org/standard/81291.html">ISO/IEC/IEEE 29119</a>. <em>Software and Systems Engineering — Software Testing</em>. International Organization for Standardization.</p>
+]]></content:encoded></item><item><title>Proof clarity</title><link>https://jamesakl.com/posts/proof-clarity/</link><pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate><author>James Akl</author><guid>https://jamesakl.com/posts/proof-clarity/</guid><description>Mathematical proofs can be difficult to read—even for the person who wrote them. Some of this difficulty is intrinsic: abstract structures, nested quantifiers, long dependency chains. But some is incidental, arising not from the logical content but from choices in exposition. Proofs tend to be compressed, and less often refactored for comprehension.
+The interpretive burden Disciplines that manage complex information tend to develop organizational systems. Accounting has double-entry bookkeeping, standardized ledgers, and audit trails.</description><content:encoded><![CDATA[<p>Mathematical proofs can be difficult to read—even for the person who wrote them. Some of this difficulty is intrinsic: abstract structures, nested quantifiers, long dependency chains. But some is incidental, arising not from the logical content but from choices in exposition. Proofs tend to be compressed, and less often refactored for comprehension.</p>
+<h2 id="the-interpretive-burden">The interpretive burden</h2>
+<p>Disciplines that manage complex information tend to develop organizational systems. Accounting has double-entry bookkeeping, standardized ledgers, and audit trails. Software has type systems, version control, explicit interfaces, and refactoring practices. Law has citation systems and structured argumentation.</p>
+<p>Mathematics has conventions too, but they tend toward implicit patterns absorbed through practice rather than explicit structure in the writing itself. Difficulty with a proof is usually attributed to the reader&rsquo;s background—but sometimes the writing itself could be clearer.</p>
+<p>There may be historical reasons. Mathematical practice evolved partly in oral contexts, where a proof was explained and discussed. Compression made sense when you could say &ldquo;here&rsquo;s what I mean&rdquo; in real time. Written proofs inherit the compression without the accompanying dialogue.</p>
+<h2 id="prior-work">Prior work</h2>
+<p>Others have thought carefully about proof presentation and mathematical writing.</p>
+<p><strong>Leslie Lamport</strong> developed <em>structured proofs</em>—a hierarchical style where each step is numbered by level, with explicit statement of what is being proved. Lamport, whose background is in concurrent and distributed systems, found that rewriting proofs in structured form revealed errors that traditional presentation had obscured. His papers <a href="https://lamport.azurewebsites.net/pubs/lamport-how-to-write.pdf">&ldquo;How to Write a Proof&rdquo; (1995)</a> and <a href="https://lamport.azurewebsites.net/pubs/proof.pdf">&ldquo;How to Write a 21st Century Proof&rdquo; (2012)</a> describe this approach. The style is also used in the <a href="https://en.wikipedia.org/wiki/TLA%2B">TLA+ proof system</a>.</p>
+<p><strong>Donald Knuth</strong> taught a <a href="https://jmlr.csail.mit.edu/reviewing-papers/knuth_mathematical_writing.pdf">course on mathematical writing at Stanford (1987)</a> covering clarity, precision, and exposition. Topics included word choice, notation, the refereeing process, and how to present algorithms. Knuth is also known for <em>literate programming</em>, an approach where programs are written as narratives with embedded code.</p>
+<p><strong>Cognitive load theory</strong>, developed by John Sweller, distinguishes <em>intrinsic load</em> <span style="color: darkgray">(inherent complexity of material)</span> from <em>extraneous load</em> <span style="color: darkgray">(load imposed by how material is presented)</span>. A related distinction appears in Fred Brooks' <a href="https://worrydream.com/refs/Brooks_1986_-_No_Silver_Bullet.pdf">&ldquo;No Silver Bullet&rdquo; (1986)</a>: <em>essential complexity</em> <span style="color: darkgray">(inherent to the problem)</span> versus <em>accidental complexity</em> <span style="color: darkgray">(introduced by the solution)</span>.</p>
+<p><strong>Constructive mathematics</strong> requires proofs to provide explicit witnesses: to prove something exists, one must show how to construct it. Proof assistants like Lean, Coq, and Agda enforce this through their type systems, though their primary aim is machine-checkable correctness rather than human readability.</p>
+<p>The question here isn&rsquo;t formal verification. It&rsquo;s more modest: what would it look like to make the semantic structure of a proof more visible in the writing?</p>
+<h2 id="what-stays-implicit">What stays implicit</h2>
+<p>In conventional mathematical prose, several aspects of the reasoning tend to remain unstated:</p>
+<p><strong>Intent.</strong> Why is this object introduced? What role will it play? A proof often reads forward (step after step) while the reasoning that motivated it ran backward from the goal. The reader discovers purpose retrospectively, reconstructing the author&rsquo;s planning after the fact.</p>
+<p><strong>Scope and quantification.</strong> Which variables are fixed for the whole proof? Which are arbitrary within a local scope? Which are existentially chosen, depending on prior values? The word &ldquo;let&rdquo; alone can mean: <em>let $x$ be arbitrary</em> <span style="color: darkgray">(universal)</span>, <em>let $x$ be this specific value</em> <span style="color: darkgray">(definition)</span>, <em>let $x$ be some value satisfying…</em> <span style="color: darkgray">(obtaining a witness)</span>, or <em>let $x$ be given</em> <span style="color: darkgray">(assumption)</span>. Context disambiguates, but the reader must infer the quantifier status.</p>
+<p><strong>Strategy.</strong> Is this a direct proof, a contradiction, a contrapositive, a case analysis, an induction? The technique may become apparent only after reading the whole proof, or may be recognized partway through from structural cues.</p>
+<p><strong>Justification.</strong> What licensed each step? Which prior statements are being used? Sometimes obvious, sometimes requiring the reader to scan backward or supply background knowledge.</p>
+<p><strong>Decomposition.</strong> Complex proofs are often broken into lemmas, but the structure of that breakdown can be opaque. Why was this lemma isolated? How do the pieces fit together? The same questions of intent and dependency arise at the level of proof organization.</p>
+<p><strong>Context.</strong> Which mathematical setting are we in? A proof in analysis carries conventions about limits and approximation; a proof in algebra assumes familiarity with group-theoretic moves. Notation, standard techniques, and background definitions often go unstated. This is less about proof structure than about prerequisites—but it&rsquo;s another layer that remains implicit.</p>
+<p>These are matters of exposition, not rigor. A proof can be correct without being clear.</p>
+<h2 id="proofs-as-plans">Proofs as plans</h2>
+<p>A proof is a deductive argument with a goal: starting from axioms, definitions, and prior results, proceeding through justified steps to a conclusion. It&rsquo;s not empirical or inductive <span style="color: darkgray">(in the epistemological sense, not mathematical induction, which is deductive)</span>.</p>
+<p>Each move in a proof has a semantic role. Without aiming to be exhaustive, some common ones:</p>
+<ul>
+<li><strong>Goal</strong>—stating what needs to be shown. The main goal comes from the theorem; subgoals arise from proof strategies <span style="color: darkgray">(<em>e.g.</em>, to prove $P \Rightarrow Q$, we assume $P$ and set $Q$ as our new goal)</span>.</li>
+<li><strong>Introducing objects</strong>—bringing a new object into scope (a variable, constant, function, set, etc.), with a specific quantifier status:
+<ul>
+<li><em>Arbitrary</em>: to prove a universal claim, we let $x$ be an arbitrary element and reason about it without using any special properties. What we derive holds for all $x$.</li>
+<li><em>Witness</em>: to use an existential claim, we obtain a specific object satisfying some property. This object may depend on earlier choices <span style="color: darkgray">(<em>e.g.</em>, “for this $\varepsilon$, pick $N$ such that…”)</span>.</li>
+<li><em>Defined</em>: we construct a new object from existing ones <span style="color: darkgray">(<em>e.g.</em>, “let $N = \max(N_1, N_2)$”)</span>. This is neither arbitrary nor a witness—it&rsquo;s a specific construction.</li>
+</ul>
+</li>
+<li><strong>Assuming</strong>—temporarily taking a proposition as given, opening a scope that will later close. This happens in conditional proofs <span style="color: darkgray">(assume $P$ to derive $Q$, then conclude $P \Rightarrow Q$)</span>, proof by contradiction <span style="color: darkgray">(assume $\neg P$, derive a contradiction)</span>, case analysis, and “without loss of generality” <span style="color: darkgray">(assume one of several symmetric cases, claiming the others follow analogously)</span>.</li>
+<li><strong>Deriving</strong>—obtaining a new fact from what&rsquo;s established, by applying a definition, inference rule, or prior result. The justification may be explicit or left for the reader to supply.</li>
+<li><strong>Concluding</strong>—discharging a goal and closing a scope. This happens when we complete a subproof <span style="color: darkgray">(<em>e.g.</em>, having derived $Q$ under assumption $P$, we conclude $P \Rightarrow Q$ and exit that scope)</span>.</li>
+</ul>
+<p>These roles correspond to moves in natural deduction and related proof systems, though informal proofs rarely label them explicitly.</p>
+<p>A proof is often <em>constructed</em> backward <span style="color: darkgray">(from goal to subgoals to known facts)</span> but <em>written</em> forward <span style="color: darkgray">(from assumptions through derivations to conclusion)</span>. The reader sees the forward presentation but must infer the backward reasoning that motivated each step. Marking the semantic role of each move can reduce this reconstruction effort.</p>
+<p>The logical content remains the same; the presentation carries more of the reasoning explicitly.</p>
+<h2 id="example-uniqueness-of-limits">Example: uniqueness of limits</h2>
+<p><strong>Theorem.</strong> In a metric space, a convergent sequence has a unique limit.</p>
+<p>A conventional proof:</p>
+<blockquote>
+<p><em>Suppose $(x_n) \to L$ and $(x_n) \to M$. Let $\varepsilon &gt; 0$. There exist $N_1, N_2$ such that $n \geq N_1$ implies $d(x_n, L) &lt; \varepsilon/2$ and $n \geq N_2$ implies $d(x_n, M) &lt; \varepsilon/2$. For $n \geq \max(N_1, N_2)$, we have $d(L, M) \leq d(L, x_n) + d(x_n, M) &lt; \varepsilon$. Since $\varepsilon$ was arbitrary, $d(L, M) = 0$, so $L = M$.</em> $\blacksquare$</p>
+</blockquote>
+<p>Correct and concise. But parsing requires reconstructing: What kind of argument? Why $\varepsilon/2$? What&rsquo;s the role of $N_1, N_2$—fixed or chosen? Why does &ldquo;$\varepsilon$ arbitrary&rdquo; yield $d(L,M) = 0$?</p>
+<p>A version making structure explicit:</p>
+<div style="background: #1a1a1a; padding: 1.5em; border-radius: 4px; margin: 1em 0; line-height: 1.8; overflow-x: auto;">
+<p><strong>Theorem.</strong> In a metric space $(X, d)$, if a sequence $(x_n)$ in $X$ converges, its limit is unique.</p>
+<p><strong>Definition.</strong> For $L \in X$, $(x_n) \to L$ means: $\forall \varepsilon &gt; 0$, $\exists N$, $\forall n \geq N$: $d(x_n, L) &lt; \varepsilon$.</p>
+<p><strong>Strategy.</strong> Assume two limits exist; show they must be equal by proving $d(L,M) &lt; \varepsilon$ for arbitrary $\varepsilon$, forcing $d(L,M) = 0$.</p>
+<hr>
+<p><strong>Proof.</strong></p>
+<p><em>Let</em> $(x_n)$ be a sequence in $X$ with $(x_n) \to L$ and $(x_n) \to M$. <br>
+<em>Goal:</em> $L = M$.</p>
+<p><em>Let</em> $\varepsilon &gt; 0$ be arbitrary.</p>
+<div style="margin-left: 2em;">
+<p><em>From</em> $(x_n) \to L$: <em>pick</em> $N_1$ such that $n \geq N_1 \Rightarrow d(x_n, L) &lt; \varepsilon/2$. <br>
+<em>From</em> $(x_n) \to M$: <em>pick</em> $N_2$ such that $n \geq N_2 \Rightarrow d(x_n, M) &lt; \varepsilon/2$.</p>
+<p><em>Let</em> $N = \max(N_1, N_2)$. <em>Take</em> $n = N$. By the triangle inequality:
+$$d(L, M) \leq d\bigl(L, x_n\bigr) + d\bigl(x_n, M\bigr) &lt; \varepsilon/2 + \varepsilon/2 = \varepsilon$$</p>
+</div>
+<p><em>Since</em> $\varepsilon &gt; 0$ was arbitrary, $d(L, M) &lt; \varepsilon$ for all $\varepsilon &gt; 0$. <br>
+<em>Therefore</em> $d(L, M) = 0$, so $L = M$. $\blacksquare$</p>
+</div>
+<p>The logical steps are the same. The structure makes explicit what the conventional version leaves implicit: the strategy is stated upfront, the role of each variable is marked (arbitrary vs. chosen), the definition anchors notation, and the $\varepsilon/2$ is visibly motivated <span style="color: darkgray">(to sum to $\varepsilon$)</span>.</p>
+<h2 id="example-composition-of-continuous-functions">Example: composition of continuous functions</h2>
+<p><strong>Theorem.</strong> The composition of continuous functions between metric spaces is continuous.</p>
+<p>A conventional proof:</p>
+<blockquote>
+<p><em>Let $f: X \to Y$ and $g: Y \to Z$ be continuous. Let $x \in X$ and $\varepsilon &gt; 0$. Since $g$ is continuous at $f(x)$, there exists $\delta' &gt; 0$ such that $d_Y(y, f(x)) &lt; \delta'$ implies $d_Z(g(y), g(f(x))) &lt; \varepsilon$. Since $f$ is continuous at $x$, there exists $\delta &gt; 0$ such that $d_X(x', x) &lt; \delta$ implies $d_Y(f(x'), f(x)) &lt; \delta'$. Then $d_X(x', x) &lt; \delta$ implies $d_Z(g(f(x')), g(f(x))) &lt; \varepsilon$.</em> $\blacksquare$</p>
+</blockquote>
+<p>The reader must track: which $\delta$ came from which condition, what depends on what, why $g$&rsquo;s continuity is used before $f$&rsquo;s.</p>
+<p>A version making structure explicit:</p>
+<div style="background: #1a1a1a; padding: 1.5em; border-radius: 4px; margin: 1em 0; line-height: 1.8; overflow-x: auto;">
+<p><strong>Theorem.</strong> Let $(X, d_X)$, $(Y, d_Y)$, $(Z, d_Z)$ be metric spaces. If $f: X \to Y$ and $g: Y \to Z$ are continuous, then $g \circ f: X \to Z$ is continuous.</p>
+<p><strong>Definition.</strong> $f$ continuous at $x$ means: $\forall \varepsilon &gt; 0$, $\exists \delta &gt; 0$, $\forall x' \in X$: $d_X(x', x) &lt; \delta \Rightarrow d_Y\bigl(f(x'), f(x)\bigr) &lt; \varepsilon$.</p>
+<p><strong>Strategy.</strong> Given $x \in X$ and $\varepsilon &gt; 0$, find $\delta &gt; 0$ satisfying the continuity condition for $g \circ f$. Work backward: use $g$&rsquo;s continuity to obtain an intermediate bound $\delta'$, then $f$&rsquo;s continuity to achieve it.</p>
+<hr>
+<p><strong>Proof.</strong></p>
+<p><em>Let</em> $x \in X$ be arbitrary. <em>Let</em> $\varepsilon &gt; 0$ be arbitrary. <br>
+<em>Goal:</em> find $\delta &gt; 0$ such that for all $x' \in X$, $d_X(x', x) &lt; \delta \Rightarrow d_Z\Bigl(g\bigl(f(x')\bigr), g\bigl(f(x)\bigr)\Bigr) &lt; \varepsilon$.</p>
+<div style="margin-left: 2em;">
+<p><strong>Step 1.</strong> Apply $g$&rsquo;s continuity at $f(x)$.</p>
+<div style="margin-left: 2em;">
+<p>$g$ is continuous at $f(x)$, so for this $\varepsilon$: <br>
+<em>pick</em> $\delta' &gt; 0$ such that for all $y \in Y$, $d_Y\bigl(y, f(x)\bigr) &lt; \delta' \Rightarrow d_Z\Bigl(g(y), g\bigl(f(x)\bigr)\Bigr) &lt; \varepsilon$.</p>
+</div>
+<p><strong>Step 2.</strong> Apply $f$&rsquo;s continuity at $x$.</p>
+<div style="margin-left: 2em;">
+<p>$f$ is continuous at $x$, so for $\delta'$ from Step 1: <br>
+<em>pick</em> $\delta &gt; 0$ such that for all $x' \in X$, $d_X(x', x) &lt; \delta \Rightarrow d_Y\bigl(f(x'), f(x)\bigr) &lt; \delta'$.</p>
+</div>
+<p><strong>Step 3.</strong> Chain the implications.</p>
+<div style="margin-left: 2em;">
+<p><em>Let</em> $x' \in X$ satisfy $d_X(x', x) &lt; \delta$. <br>
+<em>By Step 2:</em> $d_Y\bigl(f(x'), f(x)\bigr) &lt; \delta'$. <br>
+<em>By Step 1</em> (with $y = f(x')$): $d_Z\Bigl(g\bigl(f(x')\bigr), g\bigl(f(x)\bigr)\Bigr) &lt; \varepsilon$.</p>
+</div>
+</div>
+<p>We have produced $\delta &gt; 0$ with the required property.</p>
+<p><em>Since</em> $x$ and $\varepsilon$ were arbitrary, $g \circ f$ is continuous. $\blacksquare$</p>
+</div>
+<p>The explicit structure shows: why $g$&rsquo;s continuity comes first <span style="color: darkgray">(to get the target $\delta'$)</span>, what each choice depends on, how implications chain.</p>
+<h2 id="discussion">Discussion</h2>
+<p>This is not formal verification. Proof assistants like Lean or Coq serve a different purpose: machine-checkable correctness under specific type theories. The approach here is closer to documentation—prose that remains human-readable but carries more structural context.</p>
+<p>Experienced mathematicians already recognize proof patterns implicitly: a contradiction setup, an approaching use of compactness. This knowledge exists but lives in the reader&rsquo;s mind rather than in the text. Explicit structure externalizes some of it.</p>
+<p>Restructuring proofs adds effort, but can clarify the writer&rsquo;s own understanding and improve archival value. Language models may lower this cost by assisting with translation between formats.</p>
+<h2 id="closing-remarks">Closing remarks</h2>
+<p>The aim is not to prescribe a format, but to notice that conventional mathematical writing favors some qualities <span style="color: darkgray">(concision, elegance)</span> over others <span style="color: darkgray">(explicitness, accessibility)</span>. The right balance can depend on context—audience, purpose, complexity of the argument.</p>
+<p>Proofs that mark their semantic structure don&rsquo;t become less rigorous. Making the logical moves visible can sometimes reveal gaps or ambiguities that compressed prose obscures. This practice is compatible with mathematical work; it simply asks more of the written artifact.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Lamport, L. (1995). <a href="https://lamport.azurewebsites.net/pubs/lamport-how-to-write.pdf">How to Write a Proof</a>. <em>American Mathematical Monthly</em> 102(7), 600–608.</li>
+<li>Lamport, L. (2012). <a href="https://lamport.azurewebsites.net/pubs/proof.pdf">How to Write a 21st Century Proof</a>. <em>Journal of Fixed Point Theory and Applications</em> 11, 43–63.</li>
+<li>Knuth, D., Larrabee, T., &amp; Roberts, P. (1989). <a href="https://jmlr.csail.mit.edu/reviewing-papers/knuth_mathematical_writing.pdf">Mathematical Writing</a>. MAA Notes.</li>
+<li>Brooks, F. (1986). <a href="https://worrydream.com/refs/Brooks_1986_-_No_Silver_Bullet.pdf">No Silver Bullet</a>. <em>Proceedings of the IFIP Tenth World Computing Conference</em>, 1069–1076.</li>
+<li>Acolyer, A. (2015). <a href="https://blog.acolyer.org/2015/01/12/how-to-write-a-21st-century-proof/">How to Write a 21st Century Proof</a>. <em>The Morning Paper</em>.</li>
+</ul>
+]]></content:encoded></item><item><title>CUDA ontology</title><link>https://jamesakl.com/posts/cuda-ontology/</link><pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate><author>James Akl</author><guid>https://jamesakl.com/posts/cuda-ontology/</guid><description>CUDA&amp;rsquo;s terminology carries significant overloading: the word &amp;ldquo;CUDA&amp;rdquo; itself refers to at least five distinct concepts, &amp;ldquo;driver&amp;rdquo; means different things in different contexts, and version numbers reported by various tools measure different subsystems. This article provides a rigorous ontology of CUDA components: a systematic description of what exists in the CUDA ecosystem, how components relate to each other, their versioning semantics, compatibility rules, and failure modes. Each term is defined precisely to eliminate ambiguity.</description><content:encoded><![CDATA[<p>CUDA&rsquo;s terminology carries significant overloading: the word &ldquo;CUDA&rdquo; itself refers to at least five distinct concepts, &ldquo;driver&rdquo; means different things in different contexts, and version numbers reported by various tools measure different subsystems. This article provides a rigorous ontology of CUDA components: a systematic description of what exists in the CUDA ecosystem, how components relate to each other, their versioning semantics, compatibility rules, and failure modes. Each term is defined precisely to eliminate ambiguity. Understanding this structure is essential for diagnosing version incompatibilities and reasoning about CUDA system behavior.</p>
+<h2 id="terminology-and-disambiguation">Terminology and disambiguation</h2>
+<h3 id="the-term-cuda">The term &ldquo;CUDA&rdquo;</h3>
+<p><code>CUDA</code> is overloaded across at least five distinct meanings:</p>
+<ol>
+<li><strong>CUDA as compute architecture:</strong> The parallel computing platform and programming model designed by NVIDIA.</li>
+<li><strong>CUDA as instruction set:</strong> The GPU instruction set architecture (ISA) supported by NVIDIA hardware, versioned by compute capability (<code>compute_8.0</code>, <code>compute_9.0</code>, etc.).</li>
+<li><strong>CUDA as source language:</strong> The C/C++ language extensions (<code>__global__</code>, <code>__device__</code>, etc.) used to write GPU code.</li>
+<li><strong>CUDA Toolkit:</strong> The development package containing <code>nvcc</code>, libraries, headers, and development tools.</li>
+<li><strong>CUDA Runtime:</strong> The runtime library (<code>libcudart</code>) that applications link against.</li>
+</ol>
+<p>When someone says &ldquo;CUDA version,&rdquo; they may be referring to toolkit version, runtime version, driver API version, or compute capability. Precision requires explicit qualification.</p>
+<h3 id="the-term-kernel">The term &ldquo;kernel&rdquo;</h3>
+<p><code>kernel</code> has two completely distinct meanings in GPU computing contexts:</p>
+<ol>
+<li><strong>Operating system kernel (<sup>OS</sup>kernel):</strong> The <sup>OS</sup>kernel running in privileged <sup>OS</sup>kernel-space. Examples: Linux <sup>OS</sup>kernel (e.g., version <code>6.6.87</code>), Windows NT <sup>OS</sup>kernel, macOS XNU <sup>OS</sup>kernel.</li>
+<li><strong>CUDA kernel (<sup>CUDA</sup>kernel):</strong> A C++ function marked with <code>__global__</code> that executes on the GPU. When invoked from host code, the <sup>CUDA</sup>kernel launches as a grid of thread blocks.</li>
+</ol>
+<p>Throughout this article, <sup>OS</sup>kernel always refers to the operating system kernel (Linux, Windows, etc.), and <sup>CUDA</sup>kernel always refers to GPU functions.</p>
+<h3 id="the-term-driver">The term &ldquo;driver&rdquo;</h3>
+<p>In computing, a &ldquo;driver&rdquo; is software that allows the operating system to communicate with hardware devices. <code>driver</code> in the CUDA context is overloaded between:</p>
+<ol>
+<li>
+<p><strong>NVIDIA GPU Driver</strong> (also called &ldquo;NVIDIA Display Driver&rdquo;): The <sup>OS</sup>kernel-space driver (<sup>OS</sup>kernel module on Linux, <sup>OS</sup>kernel driver on Windows) that manages GPU hardware. Despite the historical name &ldquo;display driver,&rdquo; this unified driver handles all GPU operations: graphics rendering, compute workloads, memory management, and scheduling. The name reflects NVIDIA&rsquo;s evolution from graphics-focused GPUs to general-purpose compute accelerators.</p>
+<ul>
+<li>Installed as <sup>OS</sup>kernel modules: <code>nvidia.ko</code>, <code>nvidia-modeset.ko</code>, <code>nvidia-uvm.ko</code> (Linux), or as a Windows <sup>OS</sup>kernel driver.</li>
+<li>Versioned independently: <code>535.104.05</code>, <code>550.54.15</code>, etc.</li>
+</ul>
+</li>
+<li>
+<p><strong>CUDA Driver API</strong>: A low-level C API (<code>libcuda.so</code> on Linux, <code>nvcuda.dll</code> on Windows) that provides direct access to GPU functionality. This is a user-space library provided by the NVIDIA GPU driver package.</p>
+<ul>
+<li>Located at: <code>/usr/lib/x86_64-linux-gnu/libcuda.so</code> (Linux).</li>
+<li>API version distinct from GPU driver version but distributed together in the same driver package.</li>
+</ul>
+</li>
+</ol>
+<p>The NVIDIA GPU driver package includes both <sup>OS</sup>kernel components (<sup>OS</sup>kernel modules/drivers) and the <code>libcuda</code> user-space library.</p>
+<h2 id="component-architecture">Component architecture</h2>
+<p>The CUDA ecosystem consists of multiple layers, each with distinct responsibilities. Understanding this layering is fundamental to reasoning about version compatibility and system behavior.</p>
+<h3 id="system-layers">System layers</h3>
+<p>The CUDA stack spans <sup>OS</sup>kernel-space and user-space:</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TB
+    A[&quot;&lt;b&gt;Application&lt;/b&gt; (PyTorch, TensorFlow, custom)&quot;]
+    B[&quot;&lt;b&gt;libcudart.so&lt;/b&gt; (Runtime API, user-space)&quot;]
+    C[&quot;&lt;b&gt;libcuda.so&lt;/b&gt; (Driver API, user-space)&quot;]
+    D[&quot;&lt;b&gt;nvidia.ko&lt;/b&gt; (GPU Driver, &lt;sup&gt;OS&lt;/sup&gt;kernel-space)&quot;]
+    E[&quot;&lt;b&gt;GPU Hardware&lt;/b&gt;&quot;]
+
+    A --&gt;|calls| B
+    B --&gt;|calls| C
+    C --&gt;|ioctl syscalls| D
+    D --&gt;|commands| E
+
+    style A fill:#1a1a1a,stroke:#86efac,stroke-width:2px,color:#86efac,text-align:left
+    style B fill:#1e2a3a,stroke:#60a5fa,stroke-width:2px,color:#60a5fa,text-align:left
+    style C fill:#1e2a3a,stroke:#60a5fa,stroke-width:2px,color:#60a5fa,text-align:left
+    style D fill:#3a2a1e,stroke:#fbbf24,stroke-width:3px,color:#fbbf24,text-align:left
+    style E fill:#1a1a1a,stroke:#86efac,stroke-width:2px,color:#86efac,text-align:left
+
+    classDef default font-family:Source Code Pro
+</code></pre><h3 id="component-definitions">Component definitions</h3>
+<p><strong><code>libcuda.so</code> / <code>nvcuda.dll</code></strong> (Driver API, backend):</p>
+<ul>
+<li>Provided by the NVIDIA GPU driver package.</li>
+<li>Installed system-wide:
+<ul>
+<li>Linux: <code>/usr/lib/x86_64-linux-gnu/libcuda.so</code> (or <code>/usr/lib64/libcuda.so</code>)</li>
+<li>Windows: <code>C:\Windows\System32\nvcuda.dll</code></li>
+</ul>
+</li>
+<li>Provides low-level primitives: <code>cuInit</code>, <code>cuMemAlloc</code>, <code>cuLaunchKernel</code>, etc.</li>
+<li>Communicates with <sup>OS</sup>kernel driver via system calls:
+<ul>
+<li>Linux: <code>ioctl</code> system calls (I/O control syscalls for <sup>OS</sup>kernel device communication)</li>
+<li>Windows: <code>DeviceIoControl</code> calls to <sup>OS</sup>kernel driver</li>
+</ul>
+</li>
+<li>Versioned by GPU driver version (e.g., driver <code>535.x</code> provides <code>libcuda.so</code>/<code>nvcuda.dll</code> with CUDA Driver API <code>12.2</code>).</li>
+</ul>
+<p><strong><code>libcudart.so</code> / <code>cudart64_*.dll</code></strong> (Runtime API, frontend):</p>
+<ul>
+<li>Provided by CUDA Toolkit (or bundled with applications like PyTorch).</li>
+<li>File locations:
+<ul>
+<li>Linux: <code>libcudart.so</code> (shared), <code>libcudart_static.a</code> (static)</li>
+<li>Windows: <code>cudart64_&lt;version&gt;.dll</code> (shared), <code>cudart_static.lib</code> (static)</li>
+</ul>
+</li>
+<li>Higher-level API: <code>cudaMalloc</code>, <code>cudaMemcpy</code>, <code>cudaLaunchKernel</code>, etc.</li>
+<li>Internally calls <code>libcuda.so</code>/<code>nvcuda.dll</code> (Driver API) to perform operations.</li>
+<li>Can be statically linked or dynamically linked.</li>
+<li>Application code typically uses Runtime API, not Driver API directly.</li>
+</ul>
+<p><strong>CUDA Toolkit</strong>:</p>
+<ul>
+<li>Development package containing:
+<ul>
+<li><code>nvcc</code>: Compiler for <sup>CUDA</sup>kernel code</li>
+<li><code>libcudart</code>/<code>cudart64_*.dll</code>: Runtime library</li>
+<li>Headers (<code>cuda.h</code>, <code>cuda_runtime.h</code>)</li>
+<li>Math libraries: <code>cuBLAS</code>, <code>cuDNN</code>, <code>cuFFT</code>, etc.</li>
+<li>Profiling and debugging tools: <code>nvprof</code>, <code>nsight</code>, <code>cuda-gdb</code></li>
+</ul>
+</li>
+<li>Versioned independently from GPU driver: toolkit <code>12.1</code>, <code>12.4</code>, etc.</li>
+<li>Required at build time to compile <sup>CUDA</sup>kernel code.</li>
+<li>Runtime library (<code>libcudart</code>) required at execution time, but <code>nvcc</code> and headers are not.</li>
+<li>Installation paths:
+<ul>
+<li>Linux: <code>/usr/local/cuda/</code> (default)</li>
+<li>Windows: <code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.x\</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>NVIDIA GPU Driver</strong>:</p>
+<ul>
+<li>Operating system-level driver software managing GPU hardware.</li>
+<li>Provides <sup>OS</sup>kernel modules (<code>nvidia.ko</code> on Linux, <sup>OS</sup>kernel driver on Windows) and user-space library (<code>libcuda.so</code> on Linux/macOS, <code>nvcuda.dll</code> on Windows).</li>
+<li>Must be installed on all machines running CUDA applications.</li>
+<li>Supports a range of CUDA Runtime API versions via forward compatibility (newer driver supports older runtime versions).</li>
+<li><strong>Note:</strong> NVIDIA deprecated CUDA support for macOS as of CUDA 10.2 (2019). Modern CUDA development targets Linux and Windows.</li>
+</ul>
+<h3 id="layered-architecture-model">Layered architecture model</h3>
+<p>The CUDA stack separates concerns between application-facing and system-facing layers:</p>
+<ul>
+<li><strong>Frontend (application layer):</strong> <code>libcudart.so</code> + application code. Provides high-level Runtime API (<code>cudaMalloc</code>, <code>cudaMemcpy</code>, etc.). Bundled with or linked by applications.</li>
+<li><strong>Backend (system layer):</strong> <code>libcuda.so</code> + GPU driver (<code>nvidia.ko</code>). Provides low-level Driver API and hardware management. Installed system-wide, must be present at execution time.</li>
+</ul>
+<p>This separation allows applications to use a consistent high-level API while the backend handles hardware-specific details. <code>libcudart</code> translates Runtime API calls into Driver API calls, which <code>libcuda</code> executes via the <sup>OS</sup>kernel driver.</p>
+<h3 id="build-time-vs-execution-time-components">Build-time vs. execution-time components</h3>
+<p><strong>Note on terminology:</strong> Execution-time refers to when the application runs (at runtime). This is distinct from the Runtime API (<code>libcudart</code>), which is a specific CUDA library required at execution-time.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Build-time (compilation)</th>
+<th>Execution-time (at runtime)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nvcc</code></td>
+<td>Required to compile <sup>CUDA</sup>kernel code</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td>CUDA headers (<code>cuda.h</code>, etc.)</td>
+<td>Required</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td><code>libcudart</code> (Runtime API)</td>
+<td>Required to link application</td>
+<td>Required to run application</td>
+</tr>
+<tr>
+<td><code>libcuda</code> (Driver API)</td>
+<td>Not directly used</td>
+<td>Required (system-wide)</td>
+</tr>
+<tr>
+<td>GPU driver (<code>nvidia.ko</code>)</td>
+<td>Not required</td>
+<td>Required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong> PyTorch compilation:</p>
+<ul>
+<li>PyTorch is compiled against CUDA Toolkit <code>12.1</code> (meaning the build process links to and uses headers from toolkit <code>12.1</code>).</li>
+<li>At build time: <code>nvcc</code>, headers, and <code>libcudart</code> from toolkit <code>12.1</code> are used.</li>
+<li>At execution time: PyTorch bundles or depends on <code>libcudart.so</code> (often statically linked or packaged), and calls <code>libcuda.so</code> provided by the system&rsquo;s GPU driver.</li>
+<li>The system must have a GPU driver that supports CUDA Driver API version ≥ the version PyTorch expects (≥ <code>12.1</code> in this example).</li>
+</ul>
+<h2 id="version-semantics">Version semantics</h2>
+<p>The CUDA ecosystem has multiple independent versioning schemes. Each version number measures a different aspect of the system. Conflating these versions is a primary source of confusion.</p>
+<h3 id="compute-capability">Compute capability</h3>
+<p>Compute capability (CC) defines the GPU&rsquo;s instruction set and hardware features. This is a property of the GPU hardware itself, not software:</p>
+<ul>
+<li>Format: <code>X.Y</code> where <code>X</code> = major version, <code>Y</code> = minor version (e.g., <code>8.0</code>, <code>9.0</code>).</li>
+<li>Determined by GPU hardware: RTX 4090 has CC <code>8.9</code>, H100 has CC <code>9.0</code>.</li>
+<li>Query compute capability via <code>nvidia-smi</code> or <code>cudaGetDeviceProperties()</code>.</li>
+</ul>
+<p>GPU code can be compiled to two forms:</p>
+<ul>
+<li><strong>SASS (Shader Assembly):</strong> GPU-specific machine code compiled for a specific compute capability. Executable directly on hardware matching that CC, but not portable across different CCs.</li>
+<li><strong>PTX (Parallel Thread Execution):</strong> NVIDIA&rsquo;s virtual instruction set architecture (ISA) and intermediate representation. Platform-independent bytecode that can be JIT-compiled (Just-In-Time compiled) by the driver at execution time to SASS for any supported GPU architecture.</li>
+</ul>
+<p><strong>Binary compatibility rules:</strong></p>
+<p>SASS (compiled machine code) has strict compatibility constraints:</p>
+<ul>
+<li><strong>Binary compatibility is NOT guaranteed between different compute capabilities.</strong> SASS compiled for CC <code>8.0</code> will generally NOT run on CC <code>8.6</code> hardware, even though both are major version 8.x. Each compute capability may have different instruction encoding.</li>
+<li><strong>SASS cannot run on older hardware:</strong> SASS for CC <code>8.0</code> will NOT run on CC <code>7.5</code> hardware (older hardware lacks required instructions).</li>
+<li><strong>SASS cannot run across major versions:</strong> SASS for CC <code>8.0</code> will NOT run on CC <code>9.0</code> hardware (different major version, different ISA).</li>
+</ul>
+<p>PTX (intermediate representation) provides forward compatibility:</p>
+<ul>
+<li><strong>PTX is portable across compute capabilities:</strong> PTX compiled for CC <code>8.0</code> can be JIT-compiled by the driver at execution time to native SASS for any supported GPU architecture (CC <code>8.6</code>, <code>8.9</code>, <code>9.0</code>, etc.).</li>
+<li><strong>Requirements:</strong> The binary must include PTX, and the driver must support the target GPU architecture.</li>
+<li><strong>Performance consideration:</strong> JIT compilation incurs a one-time cost at first <sup>CUDA</sup>kernel launch. Pre-compiled SASS avoids this cost.</li>
+<li><strong>Recommendation:</strong> Include both SASS for known target architectures and PTX for forward compatibility with future GPUs.</li>
+</ul>
+<h3 id="gpu-driver-version">GPU driver version</h3>
+<p>Format (Linux): <code>R.M.P</code> (e.g., <code>535.104.05</code>, <code>550.54.15</code>).</p>
+<ul>
+<li>R: Major release (corresponds to CUDA Driver API major version support)</li>
+<li>M: Minor release</li>
+<li>P: Patch</li>
+</ul>
+<p>Format (Windows): Display driver uses different versioning (e.g., <code>31.0.15.3623</code>), but CUDA components report similar <code>R.M</code> versioning.</p>
+<p>Each driver version supports a maximum CUDA Driver API version. For example:</p>
+<ul>
+<li>Driver <code>535.x</code> supports CUDA Driver API <code>12.2</code></li>
+<li>Driver <code>550.x</code> supports CUDA Driver API <code>12.4</code></li>
+</ul>
+<p><strong>Critical:</strong> Driver version determines maximum CUDA Driver API version, which must be ≥ Runtime API version used by applications.</p>
+<p>Query driver version and maximum supported CUDA Driver API version via <code>nvidia-smi</code>.</p>
+<h3 id="cuda-toolkit-version">CUDA Toolkit version</h3>
+<p>Format: <code>X.Y.Z</code> (e.g., <code>12.1.0</code>, <code>12.4.1</code>).</p>
+<ul>
+<li>Corresponds to the toolkit package version installed during development.</li>
+<li>Determines <code>nvcc</code> version, <code>libcudart</code> version, and available API features.</li>
+<li>Query toolkit version via <code>nvcc --version</code> (requires toolkit installation).</li>
+</ul>
+<h3 id="cuda-runtime-api-version">CUDA Runtime API version</h3>
+<ul>
+<li>The API version supported by <code>libcudart</code>.</li>
+<li>Typically matches toolkit version (toolkit <code>12.1</code> provides <code>libcudart</code> with Runtime API <code>12.1</code>).</li>
+<li>Applications may bundle a specific <code>libcudart</code> version.</li>
+<li>Query runtime API version via <code>cudaRuntimeGetVersion()</code> in application code.</li>
+</ul>
+<h3 id="cuda-driver-api-version">CUDA Driver API version</h3>
+<ul>
+<li>The API version provided by <code>libcuda.so</code>.</li>
+<li>Determined by GPU driver version.</li>
+<li>Must be ≥ the Runtime API version used by the application.</li>
+<li>Query Driver API version via <code>cudaDriverGetVersion()</code> in application code, or via <code>nvidia-smi</code> (shown as &ldquo;CUDA Version&rdquo;).</li>
+</ul>
+<h3 id="pytorch-cuda-versions">PyTorch CUDA versions</h3>
+<p>When PyTorch reports CUDA version, it refers to:</p>
+<ul>
+<li><strong>Build-time toolkit version:</strong> The CUDA Toolkit version PyTorch was compiled against (the build process linked to this version). Queried via <code>torch.version.cuda</code> (e.g., <code>&quot;12.1&quot;</code>).</li>
+<li><strong>Runtime driver version:</strong> The CUDA Driver API version available on the system at runtime. Queried via <code>torch.cuda.is_available()</code> and driver checks.</li>
+</ul>
+<p>PyTorch may be compiled against toolkit <code>12.1</code> (linked at build time) but run on a system with driver supporting CUDA Driver API <code>12.4</code>. This is valid as long as Driver API version ≥ toolkit&rsquo;s CUDA version (12.4 ≥ 12.1).</p>
+<h2 id="version-compatibility">Version compatibility</h2>
+<p>Version compatibility in CUDA follows specific rules. Understanding these rules is critical for ensuring applications run correctly across different systems.</p>
+<p><strong>Terminology note:</strong> Compatibility is described from the perspective of the backend (driver + GPU hardware). &ldquo;Forward compatible&rdquo; means the backend can work with frontends built against older toolkit versions (example: driver version 12.4 works with libcudart from toolkit 12.1). &ldquo;Backward compatible&rdquo; means the backend can work with frontends built against newer toolkit versions (example: driver version 12.1 working with libcudart from toolkit 12.4). CUDA drivers are forward compatible (support older frontend versions) but not backward compatible (cannot support newer frontend versions).</p>
+<h3 id="forward-compatibility-older-frontend-on-newer-backend">Forward compatibility: older frontend on newer backend</h3>
+<p>CUDA maintains forward compatibility in specific dimensions:</p>
+<p><strong>Driver API is forward-compatible with Runtime API:</strong></p>
+<ul>
+<li>A driver supporting CUDA Driver API <code>12.4</code> can run applications built with Runtime API <code>12.1</code>, <code>12.2</code>, <code>12.3</code>, or <code>12.4</code>.</li>
+<li>Newer drivers support older runtime versions.</li>
+<li>Applications run on systems with newer drivers without recompilation.</li>
+</ul>
+<p><strong>PTX provides forward compatibility across compute capabilities:</strong></p>
+<ul>
+<li>PTX compiled for CC <code>8.0</code> can be JIT-compiled by the driver to run on CC <code>8.6</code>, <code>8.9</code>, or <code>9.0</code> hardware (across major version boundaries).</li>
+<li>Requirements: Binary must include PTX, and driver must support target GPU.</li>
+<li>Applications can run on newer GPUs without recompilation, at the cost of JIT compilation overhead.</li>
+</ul>
+<h3 id="backward-compatibility-newer-frontend-on-older-backend">Backward compatibility: newer frontend on older backend</h3>
+<p>Backward compatibility is not supported in CUDA:</p>
+<p><strong>Driver API cannot support newer Runtime API:</strong></p>
+<ul>
+<li>A driver supporting CUDA Driver API <code>12.1</code> cannot run applications requiring Runtime API <code>12.4</code>.</li>
+<li>Older drivers do not support newer runtime versions.</li>
+<li><strong>Resolution:</strong> Upgrade GPU driver to support required Driver API version.</li>
+</ul>
+<p><strong>SASS cannot run on older hardware:</strong></p>
+<ul>
+<li>SASS compiled for CC <code>8.0</code> will not run on CC <code>7.5</code> hardware (older GPU lacks instructions).</li>
+<li><strong>Resolution:</strong> Recompile for older compute capability, or include PTX for JIT compilation.</li>
+</ul>
+<p><strong>SASS is not portable across compute capabilities:</strong></p>
+<ul>
+<li>SASS compiled for CC <code>8.0</code> will generally not run on CC <code>8.6</code> or <code>9.0</code> hardware.</li>
+<li><strong>Resolution:</strong> Include PTX in binary for forward compatibility, or compile SASS for all target architectures.</li>
+</ul>
+<h3 id="compatibility-requirements">Compatibility requirements</h3>
+<p>For a CUDA application to execute successfully, two independent conditions must be satisfied:</p>
+<p><strong>Condition 1: API version compatibility</strong></p>
+<pre tabindex="0"><code>Driver API version ≥ Runtime API version
+</code></pre><p>The Driver API version (provided by <code>libcuda.so</code>, determined by GPU driver) must be greater than or equal to the Runtime API version (provided by <code>libcudart</code>, bundled with or linked by application).</p>
+<p><strong>Condition 2: GPU code availability</strong></p>
+<p>At least one of the following must be true:</p>
+<pre tabindex="0"><code>Binary contains SASS for GPU's compute capability
+  OR
+Binary contains PTX AND driver supports JIT compilation for GPU's architecture
+</code></pre><p>The application binary must contain executable GPU code. This can be either:</p>
+<ul>
+<li>Pre-compiled SASS matching the GPU&rsquo;s compute capability (fastest execution, no JIT overhead)</li>
+<li>PTX intermediate representation that the driver can JIT-compile to SASS (enables forward compatibility, incurs one-time JIT cost)</li>
+</ul>
+<p><strong>Common failure modes:</strong></p>
+<ul>
+<li><code>cudaErrorInsufficientDriver</code>: Condition 1 violated (Driver API version &lt; Runtime API version)</li>
+<li><code>cudaErrorNoKernelImageForDevice</code>: Condition 2 violated (no SASS or PTX available for GPU)</li>
+</ul>
+<h2 id="diagnostic-tools-and-version-reporting">Diagnostic tools and version reporting</h2>
+<p>Different tools report different version numbers. Understanding what each tool measures is essential for diagnosing compatibility issues.</p>
+<h3 id="nvidia-smi"><code>nvidia-smi</code></h3>
+<p><code>nvidia-smi</code> (NVIDIA System Management Interface) queries the GPU driver and reports driver-related information.</p>
+<p><strong>Reports:</strong></p>
+<ul>
+<li>GPU driver version (e.g., <code>535.104.05</code>)</li>
+<li>Maximum supported CUDA Driver API version (e.g., <code>12.2</code>)</li>
+<li>GPU model (e.g., &ldquo;NVIDIA GeForce RTX 4090&rdquo;)</li>
+<li>Compute capability (can be queried with <code>nvidia-smi --query-gpu=compute_cap --format=csv</code>)</li>
+</ul>
+<p><strong>Does NOT report:</strong></p>
+<ul>
+<li>CUDA Toolkit version (toolkit may not be installed on the system)</li>
+<li>Runtime API version used by applications</li>
+<li><code>nvcc</code> compiler version</li>
+</ul>
+<p><strong>Example output:</strong></p>
+<pre tabindex="0"><code>Driver Version: 535.104.05    CUDA Version: 12.2
+</code></pre><ul>
+<li><code>535.104.05</code>: GPU driver version installed on the system</li>
+<li><code>12.2</code>: Maximum CUDA Driver API version this driver supports (applications requiring ≤ 12.2 can run)</li>
+</ul>
+<h3 id="nvcc---version"><code>nvcc --version</code></h3>
+<p><strong>Reports:</strong></p>
+<ul>
+<li>CUDA Toolkit version installed (e.g., <code>12.1.0</code>).</li>
+<li><code>nvcc</code> compiler version (matches toolkit).</li>
+</ul>
+<p><strong>Does not report:</strong></p>
+<ul>
+<li>GPU driver version.</li>
+<li>Runtime API version currently in use.</li>
+<li>Driver API version currently in use.</li>
+</ul>
+<p><strong>May not be available if:</strong></p>
+<ul>
+<li>CUDA Toolkit is not installed (only driver installed).</li>
+<li>Application bundles <code>libcudart</code> but not full toolkit.</li>
+<li>Running in a container without toolkit (runtime-only image).</li>
+</ul>
+<h3 id="torchversioncuda"><code>torch.version.cuda</code></h3>
+<p><strong>Reports:</strong></p>
+<ul>
+<li>CUDA Toolkit version PyTorch was compiled against (e.g., <code>&quot;12.1&quot;</code>).</li>
+</ul>
+<p><strong>Does not report:</strong></p>
+<ul>
+<li>Driver version.</li>
+<li>Runtime driver API version available on the system.</li>
+</ul>
+<h3 id="torchcudais_available"><code>torch.cuda.is_available()</code></h3>
+<p><strong>Reports:</strong></p>
+<ul>
+<li>Whether PyTorch can access a CUDA-capable GPU.</li>
+<li>Requires compatible driver and runtime.</li>
+</ul>
+<p>Returns boolean indicating CUDA availability. Failure indicates version mismatch or missing driver.</p>
+<h3 id="cudaruntimegetversion-and-cudadrivergetversion"><code>cudaRuntimeGetVersion()</code> and <code>cudaDriverGetVersion()</code></h3>
+<p>Queried programmatically in application code:</p>
+<ul>
+<li><code>cudaRuntimeGetVersion()</code>: Runtime API version (from <code>libcudart</code>).</li>
+<li><code>cudaDriverGetVersion()</code>: Driver API version (from <code>libcuda</code>).</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> runtimeVersion, driverVersion;
+cudaRuntimeGetVersion(<span style="color:#f92672">&amp;</span>runtimeVersion);  <span style="color:#75715e">// e.g., 12010 (12.1)
+</span><span style="color:#75715e"></span>cudaDriverGetVersion(<span style="color:#f92672">&amp;</span>driverVersion);    <span style="color:#75715e">// e.g., 12040 (12.4)
+</span></code></pre></div><h2 id="compilation-and-execution-model">Compilation and execution model</h2>
+<h3 id="compilation-pipeline">Compilation pipeline</h3>
+<p>When compiling CUDA code:</p>
+<ol>
+<li>
+<p><strong>Source code (<code>.cu</code> file):</strong> Contains <sup>CUDA</sup>kernel definitions (<code>__global__</code> functions) and host code.</p>
+</li>
+<li>
+<p><strong><code>nvcc</code> compilation:</strong></p>
+<ul>
+<li>Separates device code (GPU) from host code (CPU).</li>
+<li>Device code compiled to PTX (intermediate representation) and/or SASS (GPU machine code) for specified compute capabilities.</li>
+<li>Host code compiled with host compiler (e.g., <code>g++</code>, <code>cl.exe</code> on Windows).</li>
+</ul>
+</li>
+<li>
+<p><strong>Linking:</strong></p>
+<ul>
+<li>Object files linked with <code>libcudart</code> (Runtime API).</li>
+<li>Resulting binary contains host code and embedded GPU code (PTX/SASS).</li>
+</ul>
+</li>
+</ol>
+<p><strong>Compute capability targeting:</strong> <code>nvcc</code> uses <code>-arch</code> and <code>-code</code> flags:</p>
+<ul>
+<li><code>-arch=compute_XY</code>: Sets the virtual architecture (PTX feature level). Determines which CUDA features are available during compilation.</li>
+<li><code>-code=sm_XY</code>: Generates SASS (native machine code) for specific GPU architecture CC X.Y.</li>
+<li><code>-code=compute_XY</code>: Embeds PTX for CC X.Y in the binary for forward compatibility.</li>
+<li>Multiple <code>-code</code> targets can be comma-separated.</li>
+</ul>
+<p><strong>Default behavior:</strong> If only <code>-arch=compute_XY</code> is specified without <code>-code</code>, <code>nvcc</code> implicitly generates both <code>sm_XY</code> SASS and <code>compute_XY</code> PTX for that architecture.</p>
+<p><strong>Best practice:</strong> Always specify both <code>-arch</code> (virtual architecture) and <code>-code</code> (real architectures). While <code>-code</code> can be used without <code>-arch</code>, <code>nvcc</code> will infer the PTX level, which may not be the intended behavior.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvcc -arch<span style="color:#f92672">=</span>compute_80 -code<span style="color:#f92672">=</span>sm_80,sm_86,sm_89,compute_80 kernel.cu -o app
+</code></pre></div><p>This generates four outputs:</p>
+<ul>
+<li>SASS for CC <code>8.0</code> (A100), <code>8.6</code> (RTX 3090/3080), <code>8.9</code> (RTX 4090/4080)</li>
+<li>PTX for CC <code>8.0</code> for forward compatibility with future GPUs</li>
+</ul>
+<p>At execution time:</p>
+<ul>
+<li>On A100 (CC 8.0): Loads sm_80 SASS directly</li>
+<li>On RTX 3090 (CC 8.6): Loads sm_86 SASS directly</li>
+<li>On RTX 4090 (CC 8.9): Loads sm_89 SASS directly</li>
+<li>On H100 (CC 9.0): No matching SASS, so driver JIT-compiles PTX for CC 8.0 to SASS for CC 9.0</li>
+</ul>
+<h3 id="execution-model">Execution model</h3>
+<p>When the application executes:</p>
+<ol>
+<li>Application calls <code>cudaMalloc</code>, <code>cudaMemcpy</code>, <code>cudaLaunchKernel</code>, etc. (Runtime API).</li>
+<li><code>libcudart</code> translates these to Driver API calls (<code>cuMemAlloc</code>, <code>cuMemcpyHtoD</code>, <code>cuLaunchKernel</code>).</li>
+<li><code>libcuda.so</code> communicates with <sup>OS</sup>kernel driver via <code>ioctl</code> syscalls.</li>
+<li>Driver schedules <sup>CUDA</sup>kernel execution on GPU hardware.</li>
+<li>GPU executes <sup>CUDA</sup>kernel (SASS instructions), processes data, returns results.</li>
+</ol>
+<p><strong>What is being transmitted:</strong> When <sup>CUDA</sup>kernel code is &ldquo;launched,&rdquo; the host does not send C++ source code to the GPU. Instead:</p>
+<ul>
+<li>Pre-compiled GPU machine code (SASS) or PTX is embedded in the application binary (created at compile time by <code>nvcc</code>).</li>
+<li>At application startup, the driver loads the appropriate code into GPU memory:
+<ul>
+<li>If SASS matching the GPU&rsquo;s compute capability exists, driver loads SASS directly.</li>
+<li>If only PTX is available, driver JIT-compiles PTX to SASS for the GPU&rsquo;s architecture, then loads it.</li>
+</ul>
+</li>
+<li>At <sup>CUDA</sup>kernel launch, the host specifies:
+<ul>
+<li>Grid/block dimensions (how many thread blocks, how many threads per block)</li>
+<li><sup>CUDA</sup>kernel parameters (function arguments passed to <sup>CUDA</sup>kernel)</li>
+<li>Shared memory size</li>
+</ul>
+</li>
+<li>The GPU&rsquo;s hardware scheduler executes the SASS code across thread blocks.</li>
+</ul>
+<p>The execution model is not RPC (Remote Procedure Call) in the network sense, but shares conceptual similarities:</p>
+<ul>
+<li><strong>Command submission:</strong> Host enqueues commands (<sup>CUDA</sup>kernel launch, memory transfer) into a command buffer.</li>
+<li><strong>Driver interpretation:</strong> Driver translates commands into GPU-specific operations.</li>
+<li><strong>Asynchronous execution:</strong> GPU executes independently; host can continue or synchronize via <code>cudaDeviceSynchronize()</code>.</li>
+</ul>
+<p>The programming model resembles remote execution: host code invokes operations on a separate processor (GPU) with its own memory space and instruction set.</p>
+<h2 id="version-mismatch-scenarios">Version mismatch scenarios</h2>
+<h3 id="scenario-1-runtime-version--driver-version">Scenario 1: Runtime version &gt; Driver version</h3>
+<p><strong>Setup:</strong></p>
+<ul>
+<li>GPU driver supports CUDA Driver API <code>12.1</code>.</li>
+<li>Application built with Runtime API <code>12.4</code>.</li>
+</ul>
+<p><strong>Result:</strong></p>
+<ul>
+<li>Application calls <code>libcudart</code> (Runtime API version <code>12.4</code>).</li>
+<li><code>libcudart</code> calls <code>libcuda.so</code> (Driver API version <code>12.1</code>, provided by GPU driver).</li>
+<li><code>libcuda.so</code> does not support newer Driver API features required by Runtime API <code>12.4</code>.</li>
+<li><strong>Failure:</strong> Application crashes or returns <code>cudaErrorInsufficientDriver</code>.</li>
+</ul>
+<p><strong>Possible solutions:</strong> Upgrade GPU driver to version supporting CUDA Driver API ≥ <code>12.4</code>.</p>
+<h3 id="scenario-2-compiled-compute-capability--gpu-compute-capability">Scenario 2: Compiled compute capability &gt; GPU compute capability</h3>
+<p><strong>Setup:</strong></p>
+<ul>
+<li>Code compiled for CC <code>8.0</code> (e.g., A100).</li>
+<li>Running on CC <code>7.5</code> hardware (e.g., RTX 2080 Ti).</li>
+</ul>
+<p><strong>Result:</strong></p>
+<ul>
+<li>Driver attempts to load <sup>CUDA</sup>kernel code for CC <code>8.0</code>.</li>
+<li>GPU does not support CC <code>8.0</code> instructions.</li>
+<li><strong>Failure:</strong> <code>cudaErrorNoKernelImageForDevice</code> or similar.</li>
+</ul>
+<p><strong>Possible solutions:</strong></p>
+<ul>
+<li>Recompile code for CC <code>7.5</code> (<code>-arch=compute_75</code>).</li>
+<li>Or include PTX in binary for JIT compilation (<code>-arch=compute_75</code> without <code>sm_</code> code).</li>
+</ul>
+<h3 id="scenario-3-missing-ptx-for-forward-compatibility">Scenario 3: Missing PTX for forward compatibility</h3>
+<p><strong>Setup:</strong></p>
+<ul>
+<li>Code compiled with <code>-code=sm_80</code> (SASS only for CC <code>8.0</code>, no PTX included).</li>
+<li>Running on newer GPU with CC <code>9.0</code> (e.g., H100).</li>
+</ul>
+<p><strong>Result:</strong></p>
+<ul>
+<li>Binary contains only SASS for CC <code>8.0</code>.</li>
+<li>No PTX available for JIT compilation.</li>
+<li>SASS for CC <code>8.0</code> is incompatible with CC <code>9.0</code> (different major version, different ISA).</li>
+<li><strong>Failure:</strong> <code>cudaErrorNoKernelImageForDevice</code> - no compatible <sup>CUDA</sup>kernel image found in binary.</li>
+</ul>
+<p><strong>Possible solutions:</strong></p>
+<ul>
+<li>Recompile with PTX included: <code>-arch=compute_80 -code=sm_80,compute_80</code>.</li>
+<li>The <code>compute_80</code> in <code>-code</code> ensures PTX is embedded in the binary.</li>
+<li>At execution time on CC <code>9.0</code> hardware, driver JIT-compiles the PTX to SASS for CC <code>9.0</code>.</li>
+</ul>
+<h3 id="scenario-4-pytorch-toolkit-version-vs-driver-version">Scenario 4: PyTorch toolkit version vs. driver version</h3>
+<p><strong>Setup:</strong></p>
+<ul>
+<li>PyTorch compiled against CUDA Toolkit <code>12.1</code>.</li>
+<li>System driver supports CUDA <code>12.4</code>.</li>
+</ul>
+<p><strong>Result:</strong></p>
+<ul>
+<li>PyTorch bundles or links <code>libcudart</code> (version <code>12.1</code>).</li>
+<li>Driver provides <code>libcuda.so</code> (version <code>12.4</code>).</li>
+<li><code>12.4 ≥ 12.1</code>: <strong>Success.</strong> No issue.</li>
+</ul>
+<p><strong>Setup (reverse):</strong></p>
+<ul>
+<li>PyTorch compiled against CUDA Toolkit <code>12.4</code>.</li>
+<li>System GPU driver supports CUDA Driver API <code>12.1</code>.</li>
+</ul>
+<p><strong>Result:</strong></p>
+<ul>
+<li>PyTorch runtime calls require Driver API <code>12.4</code> features.</li>
+<li><code>libcuda.so</code> (Driver API version <code>12.1</code>) does not support them.</li>
+<li><strong>Failure:</strong> <code>cudaErrorInsufficientDriver</code> or runtime error.</li>
+</ul>
+<p><strong>Possible solutions:</strong> Upgrade GPU driver to version supporting CUDA Driver API ≥ <code>12.4</code>.</p>
+<h3 id="scenario-5-multiple-cuda-toolkits-installed">Scenario 5: Multiple CUDA toolkits installed</h3>
+<p><strong>Setup:</strong></p>
+<ul>
+<li>System has toolkit <code>12.1</code> at <code>/usr/local/cuda-12.1</code>.</li>
+<li>System has toolkit <code>12.4</code> at <code>/usr/local/cuda-12.4</code>.</li>
+<li><code>PATH</code> points to <code>/usr/local/cuda-12.1/bin</code>.</li>
+<li>Application compiled with toolkit <code>12.4</code>.</li>
+</ul>
+<p><strong>Result:</strong></p>
+<ul>
+<li><code>nvcc --version</code> reports <code>12.1</code> (from <code>PATH</code>).</li>
+<li>Application uses <code>libcudart</code> from toolkit <code>12.4</code>.</li>
+<li>Version reported by <code>nvcc</code> does not match application runtime.</li>
+</ul>
+<p><strong>Note:</strong> <code>nvcc --version</code> reports the toolkit in <code>PATH</code>, not the toolkit used by applications. Applications may bundle or link against a different toolkit version.</p>
+<p><strong>Possible solutions:</strong> Check application&rsquo;s linked libraries (<code>ldd ./app</code>) to determine actual <code>libcudart</code> version.</p>
+<h3 id="scenario-6-docker-container-with-cuda-runtime-but-no-toolkit">Scenario 6: Docker container with CUDA runtime but no toolkit</h3>
+<p><strong>Setup:</strong></p>
+<ul>
+<li>Container image based on <code>nvidia/cuda:12.1-runtime</code>.</li>
+<li>Application requires <code>nvcc</code> to compile <sup>CUDA</sup>kernel code at runtime.</li>
+</ul>
+<p><strong>Result:</strong></p>
+<ul>
+<li>Runtime image includes <code>libcudart</code>, but not <code>nvcc</code> or headers.</li>
+<li><strong>Failure:</strong> <code>nvcc</code> not found.</li>
+</ul>
+<p><strong>Possible solutions:</strong></p>
+<ul>
+<li>Use <code>nvidia/cuda:12.1-devel</code> image, which includes full toolkit.</li>
+<li>Or install toolkit separately in runtime image.</li>
+</ul>
+<p><strong>Note:</strong> Runtime vs. devel images:</p>
+<ul>
+<li><strong>Runtime (<code>-runtime</code>):</strong> Includes <code>libcudart</code> and libraries needed to run CUDA applications. Does not include <code>nvcc</code> or headers.</li>
+<li><strong>Devel (<code>-devel</code>):</strong> Includes full toolkit (<code>nvcc</code>, headers, libraries) for compiling CUDA code.</li>
+</ul>
+<h3 id="scenario-7-static-vs-dynamic-linking-of-libcudart">Scenario 7: Static vs. dynamic linking of <code>libcudart</code></h3>
+<p><strong>Setup:</strong></p>
+<ul>
+<li>Application statically links <code>libcudart_static.a</code> (toolkit <code>12.1</code>).</li>
+<li>System driver supports CUDA <code>12.4</code>.</li>
+</ul>
+<p><strong>Result:</strong></p>
+<ul>
+<li>Application contains embedded <code>libcudart</code> code (version <code>12.1</code>).</li>
+<li><code>libcudart</code> calls <code>libcuda.so</code> (version <code>12.4</code>).</li>
+<li><code>12.4 ≥ 12.1</code>: <strong>Success.</strong></li>
+</ul>
+<p><strong>Setup (reverse):</strong></p>
+<ul>
+<li>Application statically links <code>libcudart_static.a</code> (toolkit <code>12.4</code>).</li>
+<li>System driver supports CUDA <code>12.1</code>.</li>
+</ul>
+<p><strong>Result:</strong></p>
+<ul>
+<li>Embedded <code>libcudart</code> (version <code>12.4</code>) calls <code>libcuda.so</code> (version <code>12.1</code>).</li>
+<li><code>12.1 &lt; 12.4</code>: <strong>Failure.</strong></li>
+</ul>
+<p><strong>Note:</strong> Static linking bundles <code>libcudart</code> into the application binary. The version used is determined at build time, not runtime. Dynamic linking allows runtime version selection via library search paths (<code>LD_LIBRARY_PATH</code> on Linux, <code>PATH</code> on Windows) or system libraries.</p>
+<h2 id="summary-of-component-relationships">Summary of component relationships</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Provided by</th>
+<th>Location (Linux / Windows)</th>
+<th>Purpose</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><sup>OS</sup>kernel driver</td>
+<td>NVIDIA GPU driver</td>
+<td><sup>OS</sup>kernel-space: <code>nvidia.ko</code> / <code>nvlddmkm.sys</code></td>
+<td>Manage GPU hardware</td>
+<td>Driver</td>
+</tr>
+<tr>
+<td>Driver API library</td>
+<td>NVIDIA GPU driver</td>
+<td><code>/usr/lib/libcuda.so</code> / <code>System32\nvcuda.dll</code></td>
+<td>Driver API (low-level)</td>
+<td>Driver</td>
+</tr>
+<tr>
+<td>Runtime library</td>
+<td>CUDA Toolkit</td>
+<td><code>/usr/local/cuda/lib64</code> / <code>CUDA\v12.x\bin</code></td>
+<td>Runtime API (high-level)</td>
+<td>Toolkit</td>
+</tr>
+<tr>
+<td><code>nvcc</code></td>
+<td>CUDA Toolkit</td>
+<td><code>/usr/local/cuda/bin</code> / <code>CUDA\v12.x\bin</code></td>
+<td>Compile <sup>CUDA</sup>kernel</td>
+<td>Toolkit</td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>CUDA Toolkit</td>
+<td><code>/usr/local/cuda/include</code> / <code>CUDA\v12.x\include</code></td>
+<td>Build-time API definitions</td>
+<td>Toolkit</td>
+</tr>
+<tr>
+<td>Math libraries</td>
+<td>CUDA Toolkit</td>
+<td><code>/usr/local/cuda/lib64</code> / <code>CUDA\v12.x\lib</code></td>
+<td>Optimized GPU operations</td>
+<td>Toolkit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="practical-guidelines">Practical guidelines</h2>
+<h3 id="for-application-developers">For application developers</h3>
+<ul>
+<li><strong>Specify minimum driver version:</strong> Document required CUDA Driver API version.</li>
+<li><strong>Bundle or specify runtime version:</strong> If statically linking <code>libcudart</code>, ensure driver compatibility. If dynamically linking, document required <code>libcudart</code> version.</li>
+<li><strong>Compile for multiple compute capabilities:</strong> Use <code>-arch</code> and <code>-code</code> flags to support a range of GPUs. Include PTX for forward compatibility.</li>
+<li><strong>Check versions at runtime:</strong> Use <code>cudaDriverGetVersion()</code> and <code>cudaRuntimeGetVersion()</code> to verify compatibility.</li>
+</ul>
+<h3 id="for-end-users">For end users</h3>
+<ul>
+<li><strong>Install appropriate GPU driver:</strong> Ensure GPU driver supports CUDA Driver API version ≥ application&rsquo;s runtime requirement.</li>
+<li><strong>Toolkit installation optional at runtime:</strong> Most applications do not require full toolkit (no need for <code>nvcc</code>). Only <code>libcudart</code> and GPU driver are necessary.</li>
+<li><strong>Check compatibility:</strong> Run <code>nvidia-smi</code> to verify GPU driver version and supported CUDA Driver API version.</li>
+</ul>
+<h3 id="for-pytorch-users">For PyTorch users</h3>
+<ul>
+<li><strong>Build-time toolkit version (<code>torch.version.cuda</code>):</strong> The CUDA Toolkit version PyTorch was compiled against (linked at build time). Does not need to match system toolkit.</li>
+<li><strong>Runtime driver version:</strong> System GPU driver must support CUDA Driver API ≥ PyTorch&rsquo;s toolkit version.</li>
+<li><strong>Example:</strong>
+<ul>
+<li>PyTorch built with CUDA Toolkit <code>12.1</code>: System GPU driver must support CUDA Driver API ≥ <code>12.1</code>.</li>
+<li>System GPU driver supports CUDA Driver API <code>12.4</code>: Can run PyTorch built with CUDA Toolkit <code>12.1</code>, <code>12.2</code>, <code>12.3</code>, or <code>12.4</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong> TensorFlow follows the same compatibility model. Check release notes for build toolkit version.</p>
+<h3 id="for-dockercontainer-users">For Docker/container users</h3>
+<ul>
+<li><strong>Runtime-only images (<code>-runtime</code>):</strong> Include <code>libcudart</code> and libraries. Suitable for running pre-compiled CUDA applications. Do not include <code>nvcc</code>.</li>
+<li><strong>Development images (<code>-devel</code>):</strong> Include full CUDA Toolkit (<code>nvcc</code>, headers, libraries). Required for compiling CUDA code.</li>
+<li><strong>NVIDIA Container Toolkit:</strong> Ensures container has access to host GPU and GPU driver. GPU driver version on host determines maximum CUDA Driver API version available to container.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>CUDA&rsquo;s architecture is a layered system with distinct components serving different roles at build-time and execution-time. Rigorous understanding requires:</p>
+<ol>
+<li>
+<p><strong>Disambiguation:</strong> &ldquo;CUDA&rdquo; refers to architecture, ISA, language, toolkit, or runtime. &ldquo;Driver&rdquo; refers to <sup>OS</sup>kernel-space driver (<code>nvidia.ko</code>) or user-space Driver API library (<code>libcuda.so</code>). &ldquo;Kernel&rdquo; refers to operating system kernel (<sup>OS</sup>kernel) or GPU function (<sup>CUDA</sup>kernel).</p>
+</li>
+<li>
+<p><strong>Layering:</strong> <code>libcudart</code> (frontend, Runtime API, application-facing) calls <code>libcuda</code> (backend, Driver API, system-facing), which calls <sup>OS</sup>kernel driver (<code>nvidia.ko</code>), which manages GPU hardware.</p>
+</li>
+<li>
+<p><strong>Versioning:</strong> Driver API version must be ≥ Runtime API version. GPU must have SASS for its compute capability OR binary must include PTX that driver can JIT-compile.</p>
+</li>
+<li>
+<p><strong>Build vs. execution:</strong> Toolkit (including <code>nvcc</code>) required at build-time. Execution requires only <code>libcudart</code> (bundled or linked) and system GPU driver.</p>
+</li>
+</ol>
+<p>Version mismatches produce specific failure modes: insufficient driver errors, missing <sup>CUDA</sup>kernel images, or unsupported API calls. This systematic understanding clarifies why <code>nvidia-smi</code>, <code>nvcc --version</code>, and <code>torch.version.cuda</code> report different numbers, what each number signifies, and how to diagnose version incompatibilities.</p>
+]]></content:encoded></item><item><title>Distribution anti-patterns</title><link>https://jamesakl.com/posts/distribution-antipatterns/</link><pubDate>Sat, 27 Sep 2025 00:00:00 +0000</pubDate><author>James Akl</author><guid>https://jamesakl.com/posts/distribution-antipatterns/</guid><description>Two common distribution problems emerge in robotics systems: distributing computation and distributing communication.
+ROS 2 (robotics middleware built on DDS for message passing and more) is purpose-built for the communication problem — coordinating messages between robots, drivers, and software components across network boundaries. It is sometimes applied to the computation problem — parallelizing work inside a single system or process.
+In prototyping, this approach can accelerate development. In more mature deployments, however, it can produce architectures where too many processing steps exist as separate nodes.</description><content:encoded><![CDATA[<p>Two common distribution problems emerge in robotics systems: distributing <strong>computation</strong> and distributing <strong>communication</strong>.</p>
+<p>ROS 2 <span style="color: darkgray">(robotics middleware built on DDS for message passing and more)</span> is purpose-built for the communication problem — coordinating messages between robots, drivers, and software components across network boundaries. It is sometimes applied to the computation problem — parallelizing work inside a single system or process.</p>
+<p>In prototyping, this approach can accelerate development. In more mature deployments, however, it can produce architectures where too many processing steps exist as separate nodes. This introduces serialization, network overhead, duplicated runtimes, and additional process management, where lighter concurrency primitives would suffice.</p>
+<p>The core observation: <strong>the system&rsquo;s communication topology and the computation graph do not need to be identical.</strong> They can often be designed independently, reducing coupling to points where cross-process or cross-machine communication is genuinely required.</p>
+<h2 id="the-two-problems">The two problems</h2>
+<p>Understanding this anti-pattern requires distinguishing between two distinct distribution challenges:</p>
+<p><strong>Distributed communication.</strong> Moving messages between processes, machines, or robots. ROS topics, services, and actions are designed for this; alternatives include ZeroMQ, RabbitMQ, Redis pub/sub, Kafka, or direct DDS for high-throughput or non-robotics applications.</p>
+<p><strong>Distributed computation.</strong> Splitting work across cores, devices, or machines. This is handled by threading, multiprocessing, native accelerators (GPU, TPU, …), or distributed frameworks (Ray, Dask, Celery, …).</p>
+<p>Note that “distributed” is usually reserved for work spread across multiple machines, while threads and processes on a single machine are described as parallelism or concurrency; here we discuss them together because the engineering trade-offs often overlap.</p>
+<p>Most systems involve both: communication delivers results across boundaries, while computation accelerates processing within those boundaries. The issues can arise when tools designed for one problem are applied to the other.</p>
+<h2 id="when-ros-becomes-the-default">When ROS becomes the default</h2>
+<p>Faced with a parallel processing task, it is possible to implement each stage as a ROS node with appropriate communication primitives between them:</p>
+<pre tabindex="0"><code>/sensor_input → /preprocess → /algorithm → /post_process → /output
+</code></pre><p>Costs of this pattern include:</p>
+<ul>
+<li>Serialization/deserialization and usually copies at each hop</li>
+<li>Adaptation overhead and glue code for message types</li>
+<li>Latency even for local operations (IPC ≠ direct call)</li>
+<li>Duplicated memory/runtime across multiple processes, even when threads could suffice</li>
+<li>Complexity in debugging and lifecycle management</li>
+</ul>
+<p>This illustrates using inter-system communication tools for intra-system computation. ROS 2 mitigations (composable nodes and intra-process transport) reduce per-hop overhead if nodes are colocated and the ROS execution model is followed, but this also admits the consideration of whether the processing work should be done via ROS.</p>
+<h2 id="computation-tools">Computation tools</h2>
+<p>Given this distinction, different tools address different aspects of the computation problem. Each offers specific trade-offs in concurrency, isolation, and performance:</p>
+<h3 id="asyncio--cooperative-io">AsyncIO — cooperative I/O</h3>
+<p>Useful for network or file I/O and coordinating multiple streams when callbacks are cooperative. Low scheduler overhead and avoids IPC when used within a single process. Less suitable for CPU-bound Python computation.</p>
+<h3 id="threading--blocking-io-and-native-libraries">Threading — blocking I/O and native libraries</h3>
+<p>Threads enable shared memory access while handling blocking I/O or delegating to native libraries that release the Python GIL. Practical for I/O-heavy tasks and interfacing with C/C++ extensions.</p>
+<h3 id="multiprocessing--parallelism-and-isolation">Multiprocessing — parallelism and isolation</h3>
+<p>Provides true parallelism for CPU-bound Python code. Offers process-level fault isolation and independent memory spaces.</p>
+<h3 id="gpu-acceleration--high-throughput-local-compute-backend">GPU acceleration — high-throughput, local compute backend</h3>
+<p>GPUs accelerate dense, data-parallel kernels such as matrix operations, convolutions, and large point-cloud filters. Practical considerations:</p>
+<ul>
+<li><strong>Batching and kernel aggregation:</strong> Minimize tiny host↔device transfers or kernel launches by combining operations or batching inputs.</li>
+<li><strong>CUDA streams:</strong> Overlap computation and data transfer to improve device utilization. Input for batch <em>n+1</em> can transfer while batch <em>n</em> executes.</li>
+<li><strong>Multi-GPU scaling:</strong> When a single GPU is insufficient, workloads can be partitioned across multiple GPUs (<em>e.g.</em>, <code>DistributedDataParallel</code> in <code>torch</code>), or across nodes using distributed frameworks like Ray.</li>
+<li><strong>Shared memory / zero-copy:</strong> Large intermediate results exchanged with CPU processes or other GPUs benefit from shared memory (<code>multiprocessing.shared_memory</code>, CUDA pinned memory, or zero-copy DDS) to avoid repeated serialization.</li>
+<li>The broader CUDA ecosystem also includes Unified Memory for simplifying host/device transfers, and NCCL for efficient multi-GPU communication.</li>
+</ul>
+<p>Illustrative pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">infer</span>(batch, device<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cuda&#34;</span>):
+    x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(batch, device<span style="color:#f92672">=</span>device, copy<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+    <span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+        y <span style="color:#f92672">=</span> model(x)
+    <span style="color:#66d9ef">return</span> y<span style="color:#f92672">.</span>cpu()<span style="color:#f92672">.</span>numpy()
+</code></pre></div><p>Core points:</p>
+<ul>
+<li>Host↔device transfer latency and (de)serialization can dominate unless batching and stream concurrency are used.</li>
+<li>Multi-GPU or distributed workloads require careful synchronization and memory management.</li>
+<li>GPU computation often integrates with ROS or other frameworks at defined boundaries; maintaining computation in-process with clear interfaces simplifies coordination.</li>
+</ul>
+<h3 id="ray--dask--cluster-scale-computation">Ray / Dask — cluster-scale computation</h3>
+<p>Used for multi-node scaling, distributed scheduling, and resilient execution. Appropriate when workloads exceed a single machine or require advanced scheduling/fault tolerance.</p>
+<h3 id="ros--system-integration-and-cross-language-wiring">ROS — system integration and cross-language wiring</h3>
+<p>ROS is most appropriate for hardware abstraction, driver stacks, multi-robot coordination, and interoperable message formats. Internal computation stages benefit from other concurrency primitives unless process isolation or robotics-specific tools are required.</p>
+<h2 id="selection-criteria">Selection criteria</h2>
+<p>These tools address different computational contexts:</p>
+<ul>
+<li><strong>ROS:</strong> integration surfaces, drivers, cross-process messaging</li>
+<li><strong>AsyncIO:</strong> I/O-heavy pipelines inside a process</li>
+<li><strong>Threading:</strong> blocking I/O or native libraries that release the GIL</li>
+<li><strong>Multiprocessing:</strong> CPU-bound Python, isolation, multi-core scaling</li>
+<li><strong>GPU:</strong> dense kernels, batched inference, heavy ops (minimize host↔device transfers)</li>
+<li><strong>Ray/Dask:</strong> cluster-scale computation and scheduling</li>
+</ul>
+<p>The performance characteristics of each approach help guide selection:</p>
+<h3 id="performance-trade-offs">Performance trade-offs</h3>
+<ul>
+<li><strong>In-process calls:</strong> microseconds → sub-milliseconds (depends on function)</li>
+<li><strong>Local serialized IPC (ROS/DDS):</strong> sub-millisecond → multiple milliseconds per hop; depends on QoS, message size, and transport.</li>
+<li><strong>Host↔device transfers:</strong> typically tens to hundreds of microseconds per transfer on PCIe; can be higher on lower-end buses. Batching can amortize cost.</li>
+<li><strong>Memory:</strong> multiple processes duplicate runtime and loaded libraries; single process with threads/multiprocessing or ROS composition can save tens–hundreds of megabytes per service</li>
+</ul>
+<p>Actual numbers depend heavily on DDS vendor, QoS settings, transport (shared memory vs UDP), message size, and hardware. These ranges should be read as indicative, not guarantees.</p>
+<p>Numbers are illustrative and vary by hardware and workload — profile for particular stacks.</p>
+<h2 id="practical-patterns">Practical patterns</h2>
+<p>These performance characteristics and tool capabilities suggest particular implementation patterns:</p>
+<h3 id="communication-outside-computation-inside">Communication outside, computation inside</h3>
+<p>Subsystems define communication boundaries; internal computation can use the most appropriate primitive.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProcessingSystem</span>:
+    <span style="color:#66d9ef">def</span> __init__(self):
+        self<span style="color:#f92672">.</span>compute_core <span style="color:#f92672">=</span> ComputeCore()  <span style="color:#75715e"># threads/processes/GPU</span>
+        self<span style="color:#f92672">.</span>ros_interface <span style="color:#f92672">=</span> ROSInterface()  <span style="color:#75715e"># marshal/unmarshal</span>
+
+    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self):
+        <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> asyncio<span style="color:#f92672">.</span>TaskGroup() <span style="color:#66d9ef">as</span> tg:
+            tg<span style="color:#f92672">.</span>create_task(self<span style="color:#f92672">.</span>compute_core<span style="color:#f92672">.</span>process())
+            tg<span style="color:#f92672">.</span>create_task(self<span style="color:#f92672">.</span>ros_interface<span style="color:#f92672">.</span>publish())
+</code></pre></div><h3 id="communication-nodes--architectural-boundaries">Communication nodes = architectural boundaries</h3>
+<p>Grouping by responsibility rather than pipeline stages:</p>
+<pre tabindex="0"><code>/sensors     # drivers and raw aggregation
+/processing  # heavy compute and inference
+/planning    # decision-making
+/control     # actuator commands and low-latency loops
+</code></pre><p>Map internal concurrency to the problem inside each node:</p>
+<ul>
+<li>sensors: async streams / threads</li>
+<li>processing: GPU + batching or multiprocessing</li>
+<li>planning: single-process optimization (or Ray if distributed across machines)</li>
+<li>control: low-latency threads or a dedicated real-time process</li>
+</ul>
+<p>This approach scales from single machines to larger deployments. For multi-machine or multi-robot systems, container orchestration becomes relevant at the system level.</p>
+<h3 id="orchestration-boundaries">Orchestration boundaries</h3>
+<p>Docker and Kubernetes manage containerized nodes, scheduling workloads across machines and enabling scaling or fault tolerance. These tools excel at system-level deployment concerns: distributing <code>/sensors</code>, <code>/processing</code>, <code>/planning</code>, and <code>/control</code> nodes across a fleet of robots or a compute cluster.</p>
+<p>It’s worth noting that heavy orchestrators like Kubernetes are mostly used in cloud robotics or enterprise backends; embedded and real-time robots often can’t run them at all.</p>
+<p>The anti-pattern emerges when orchestration tools are applied to fine-grained computation tasks that belong within a single process. Containerizing every step of a processing pipeline (where direct function calls or threads would suffice) introduces unnecessary serialization, network latency, and operational complexity.</p>
+<p>The boundary principle applies here: use orchestration at system boundaries to manage node lifecycles and resource allocation, while internal computation leverages threads, async, multiprocessing, or GPU parallelism within those boundaries.</p>
+<h3 id="context-matters">Context matters</h3>
+<p>Different deployment contexts favor different strategies:</p>
+<ul>
+<li><strong>Edge devices</strong> <span style="color: darkgray">(limited resources)</span> — Keep process counts low; ROS overhead is significant on embedded boards.</li>
+<li><strong>Development environments</strong> <span style="color: darkgray">(rapid iteration)</span> — More nodes may help with debugging and modularity; process isolation eases restarts.</li>
+<li><strong>Mature deployments</strong> <span style="color: darkgray">(production systems)</span> — Optimize for reliability, performance, and efficiency; consolidating over-distributed graphs.</li>
+<li><strong>Real-time systems</strong> <span style="color: darkgray">(deterministic timing)</span> — Favor direct calls and lightweight threading; avoiding (local) network hops in control loops.</li>
+</ul>
+<p>Note that sometimes the overhead of separate processes is intentional: isolating a flaky perception stack or ML model in its own process can prevent crashes from propagating to critical planners or controllers.
+Furthermore, ROS 2 executors are not hard real-time safe; deterministic control loops are usually isolated in dedicated RT threads or processes outside the ROS executor.</p>
+<h2 id="integration-considerations">Integration considerations</h2>
+<p>When mixing communication and computation approaches, several implementation details become important:</p>
+<ul>
+<li><strong>ROS2 intra-process / composition:</strong> reduces serialization overhead but ties execution to ROS executors and lifecycle; most effective when nodes are colocated in a single process. Note that ROS 2 intra-process transport does not always achieve true zero-copy; behavior depends on message mutability and middleware support.</li>
+<li><strong>rclpy and the GIL:</strong> <code>MultiThreadedExecutor</code> allows concurrent callbacks, but only one Python thread executes at a time; CPU-bound work is typically offloaded to processes, native extensions, or GPU kernels. These limitations are specific to rclpy; C++ nodes avoid the GIL but still face the same broader architectural trade-offs between threads, processes, and IPC.</li>
+<li><strong>Mixing models (asyncio ↔ threads ↔ processes ↔ ROS):</strong> feasible but increases complexity; boundaries benefit from explicit documentation.</li>
+<li><strong>ROS in a background thread with asyncio:</strong> <code>rclpy.spin</code> can run in a thread with callbacks forwarded to the asyncio loop via <code>asyncio.run_coroutine_threadsafe</code>.</li>
+<li><strong>Blocking calls in asyncio:</strong> handled by wrapping calls with <code>await loop.run_in_executor(None, blocking_ros_call, args)</code> to maintain responsiveness.</li>
+<li><strong>MultiThreadedExecutor:</strong> prevents long-running callbacks from stalling others.</li>
+<li><strong>Bulk data transfer:</strong> shared memory or zero-copy DDS reduces overhead for large images, point clouds, or tensors.</li>
+<li><strong>ROS at system boundaries:</strong> keeps core compute ROS-agnostic, isolating framework dependencies at the edges.</li>
+</ul>
+<h2 id="migration-considerations">Migration considerations</h2>
+<p>When refactoring existing distributed systems, the objective is to reduce unnecessary communication overhead while preserving system boundaries that serve architectural purposes:</p>
+<ul>
+<li>Profile latency, copies, memory per process, and host↔device traffic</li>
+<li>Identify high-state nodes and consider merging nodes sharing large mutable state or frequent large payloads</li>
+<li>Preserve external APIs (topics/services) where clients rely on them</li>
+<li>Verify timing-sensitive control loops after consolidation</li>
+<li>Consider composition/intra-process transport or a single process with clear concurrency primitives and documented boundaries</li>
+</ul>
+<p>The overarching goal: use communication at boundaries and select computation primitives appropriate to in-process workloads.</p>
+]]></content:encoded></item><item><title>Research progress</title><link>https://jamesakl.com/posts/research-progress/</link><pubDate>Sat, 07 Jun 2025 00:00:00 +0000</pubDate><author>James Akl</author><guid>https://jamesakl.com/posts/research-progress/</guid><description>Often, when researchers disagree about what topics or approaches to prioritize, they are also disagreeing on what kinds of progress are more important. This stems from implicit preferences in research goals and aesthetics. One researcher might dismiss a theoretical model as impractical, while another sees a prototype as ephemeral.
+These tensions reflect deeper contrasts in how progress is interpreted and pursued. ‘Progress’ can&amp;rsquo;t be decomposed cleanly, but it can still be probed through contrastive axes.</description><content:encoded><![CDATA[<p>Often, when researchers disagree about what topics or approaches to prioritize, they are also disagreeing on what <em>kinds of progress</em> are more important. This stems from implicit preferences in research goals and aesthetics. One researcher might dismiss a theoretical model as impractical, while another sees a prototype as ephemeral.</p>
+<p>These tensions reflect deeper contrasts in how progress is interpreted and pursued. ‘Progress’ can&rsquo;t be decomposed cleanly, but it can still be probed through contrastive axes.</p>
+<h2 id="contrasts-of-purpose-and-scope">Contrasts of purpose and scope</h2>
+<p>These consider questions like: <em>What kind of progress is being aimed at, and on what timescale? What is the intended breadth and function?</em></p>
+<ul>
+<li><strong>Instrumental vs. Terminal:</strong> Treat the work as a ‘ride to the next stop’ <span style="color:darkgray;">(<em>e.g.</em>, LLM-as-tool)</span> or as a ‘vehicle toward the ultimate’ <span style="color:darkgray;">(<em>e.g.</em>, LLM-as-pathway to AGI)</span>?</li>
+<li><strong>Immediate vs. Speculative:</strong> Does it address near-term needs <span style="color:darkgray;">(<em>e.g.</em>, pandemic response tools)</span> or invest in distant possibilities <span style="color:darkgray;">(<em>e.g.</em>, artificial consciousness or fusion energy)</span>?</li>
+<li><strong>Exploratory vs. Exploitative:</strong> Does it venture into new paradigms <span style="color:darkgray;">(<em>e.g.</em>, analog neural computing, non-symbolic reasoning)</span> or refine the dominant one <span style="color:darkgray;">(<em>e.g.</em>, transformer variants and scaling curves)</span>?</li>
+<li><strong>Demonstrative vs. Infrastructural:</strong> Is it meant to show what&rsquo;s possible <span style="color:darkgray;">(<em>e.g.</em>, AlphaFold proof-of-concept)</span> or to lay stable ground others can build upon <span style="color:darkgray;">(<em>e.g.</em>, PyTorch, COCO dataset)</span>?</li>
+<li><strong>Problem-solving vs. Synthesizing:</strong> Does it address targeted technical challenges <span style="color:darkgray;">(<em>e.g.</em>, graph isomorphism algorithms)</span> or unify diverse ideas into overarching theories <span style="color:darkgray;">(<em>e.g.</em>, unified scaling laws or integrated cognitive architectures)</span>?</li>
+<li><strong>Incremental vs. Foundational:</strong> Does the work improve details within a paradigm <span style="color:darkgray;">(<em>e.g.</em>, refining activation functions, training tricks)</span>, or does it reshape the field <span style="color:darkgray;">(<em>e.g.</em>, making backpropagation viable, parallelizing attention)</span>?</li>
+<li><strong>Generalist vs. Specialist:</strong> Does it aim to span domains <span style="color:darkgray;">(<em>e.g.</em>, general-purpose models like GPT-4 or CLIP)</span> or achieve peak performance in a narrow domain <span style="color:darkgray;">(<em>e.g.</em>, AlphaZero for Go, or Stockfish for chess)</span>?</li>
+<li><strong>Humanist vs. Machine-oriented:</strong> Is the goal to augment human reasoning <span style="color:darkgray;">(<em>e.g.</em>, computer algebra systems, interactive theorem provers)</span>, or to automate cognition autonomously <span style="color:darkgray;">(<em>e.g.</em>, autoformalization of proofs, or autonomous research agents)</span>?</li>
+</ul>
+<h2 id="contrasts-of-epistemic-orientation">Contrasts of epistemic orientation</h2>
+<p>These consider questions like: <em>How is knowledge generated, and what kind of evidence is considered valid? What is the work trying to <em>know</em> or <em>demonstrate</em>, and how does it relate to truth or utility?</em></p>
+<ul>
+<li><strong>Empirical vs. Theoretical:</strong> Is knowledge advanced through observed behavior <span style="color:darkgray;">(<em>e.g.</em>, emergent scaling trends in LLMs)</span> or from formal reasoning <span style="color:darkgray;">(<em>e.g.</em>, computational complexity classes, information-theoretic bounds)</span>?</li>
+<li><strong>Heuristic vs. Formal:</strong> Does it rely on practical intuition <span style="color:darkgray;">(<em>e.g.</em>, designing deep architectures by intuition and trial)</span> or on strict formalism <span style="color:darkgray;">(<em>e.g.</em>, algebraic topology in data analysis)</span>?</li>
+<li><strong>Descriptive vs. Axiomatic:</strong> Does it model what is observed <span style="color:darkgray;">(<em>e.g.</em>, descriptive linguistics or behavioral economics)</span> or deduce consequences from assumptions <span style="color:darkgray;">(<em>e.g.</em>, formal semantics, first-principles physics)</span>?</li>
+<li><strong>Results vs. Mechanism:</strong> Does success depend on performance <span style="color:darkgray;">(<em>e.g.</em>, beating benchmarks with black-box models)</span> or on explanation <span style="color:darkgray;">(<em>e.g.</em>, understanding internal representations or algorithmic convergence)</span>?</li>
+<li><strong>Technological vs. Scientific:</strong> Is the goal to build powerful artifacts <span style="color:darkgray;">(<em>e.g.</em>, large-scale language models, quantum processors)</span>, or to uncover explanatory principles <span style="color:darkgray;">(<em>e.g.</em>, theories of language acquisition, quantum decoherence models)</span>?</li>
+<li><strong>Model power vs. Model fit:</strong> Do we value models for capability and coverage <span style="color:darkgray;">(<em>e.g.</em>, overparameterized LLMs)</span> or for tight, interpretable alignment with reality <span style="color:darkgray;">(<em>e.g.</em>, classical mechanics)</span>?</li>
+<li><strong>Permissive vs. Rigorous:</strong> Does it allow for looser inference or anecdotal insight <span style="color:darkgray;">(<em>e.g.</em>, case studies, ethnography)</span> or demand strict reproducibility and control <span style="color:darkgray;">(<em>e.g.</em>, pre-registered experiments, mechanistic modeling)</span>?</li>
+<li><strong>Abductive vs. Statistical:</strong> Does it infer plausible causes from limited data <span style="color:darkgray;">(<em>e.g.</em>, historical linguistics, astrobiology)</span>, or validate conclusions via statistical rigor <span style="color:darkgray;">(<em>e.g.</em>, randomized control trials or large-scale behavioral studies)</span>?</li>
+<li><strong>Agnostic vs. Committed:</strong> Is the aim to remain neutral and exploratory <span style="color:darkgray;">(<em>e.g.</em>, anomaly detection or open-world hypothesis mining)</span>, or to decisively test a claim <span style="color:darkgray;">(<em>e.g.</em>, falsifying a neuroscience model or evaluating a drug mechanism)</span>?</li>
+</ul>
+<h2 id="closing-thoughts">Closing thoughts</h2>
+<p>These axes are contrived and may stem from misperceptions of how progress in discovery or innovation is achieved.
+It&rsquo;s unclear whether some styles are more promising than others.
+History may favor pluralism since ‘what helps’ is difficult to anticipate.
+In effect, foundational discoveries have emerged from speculative or loosely-grounded work, and infrastructural tools can drive theoretical advances.</p>
+<p>When researchers disagree, it&rsquo;s not limited to facts, but also ‘styles of inquiry’, favored risks, and what counts as a contribution.
+Intellectual humility and mediation are thus critical.
+Style is also personal: prolonged mismatch between individual preference and project demands can lead to dissatisfaction—even when the work is “important.”
+Some like loose wide-open problems and others prefer tightly-framed, rigorous domains.</p>
+<p>It&rsquo;s important that we try to support ‘diverse epistemic personalities’ and to resist dogmatism.
+A healthy ecosystem protects the space for diversification and disagreement until clarity emerges.</p>
+]]></content:encoded></item><item><title>Premature intervention</title><link>https://jamesakl.com/posts/premature-intervention/</link><pubDate>Sun, 01 Jun 2025 00:00:00 +0000</pubDate><author>James Akl</author><guid>https://jamesakl.com/posts/premature-intervention/</guid><description>In systems and software, premature intervention can be harmful. The term “premature optimization” represents a broader concern than is often understood. Usually, this involves making critical changes or wasting efforts before system parameters are understood (requirements, constraints, trade-offs, …) thereby adding complexity and reducing adaptability.
+Instances of premature intervention include: (but are not limited to)
+Premature abstraction (≈ introducing abstractions before behavior stabilizes, obscuring intent and increasing indirection) Premature modularization (≈ imposing module boundaries before cohesion and coupling are evident, which can restrict flexibility) Premature implementation (≈ committing to code before key programming decisions are settled, resulting in rework) Premature architecting (≈ applying patterns or frameworks before goals and constraints are clear, adding rigidity) Premature scaling (≈ designing for performance, scale, or concurrency beyond foreseeable need, wasting effort) Premature optimization (≈ optimizing code without profiling or identifying bottlenecks, which can reduce clarity) Premature generalization (≈ engineering for speculative use cases that are imagined without basis, increasing complexity without payoff) Premature tooling (≈ building automation or infrastructure before workflows stabilize, risking misalignment) Intervention is good and timely when grounded by strong reasons.</description><content:encoded><![CDATA[<p>In systems and software, premature intervention can be harmful.
+The term <a href="https://en.wikipedia.org/wiki/Program_optimization#When_to_optimize"><strong>“premature optimization”</strong></a> represents a broader concern than is often understood.
+Usually, this involves making critical changes or wasting efforts before system parameters are understood <span style="color: darkgray">(requirements, constraints, trade-offs, …)</span> thereby adding complexity and reducing adaptability.</p>
+<p>Instances of premature intervention include: <span style="color: darkgray">(but are not limited to)</span></p>
+<ul>
+<li><strong>Premature abstraction</strong> <span style="color: darkgray">(≈ introducing abstractions before behavior stabilizes, obscuring intent and increasing indirection)</span></li>
+<li><strong>Premature modularization</strong> <span style="color: darkgray">(≈ imposing module boundaries before cohesion and coupling are evident, which can restrict flexibility)</span></li>
+<li><strong>Premature implementation</strong> <span style="color: darkgray">(≈ committing to code before key programming decisions are settled, resulting in rework)</span></li>
+<li><strong>Premature architecting</strong> <span style="color: darkgray">(≈ applying patterns or frameworks before goals and constraints are clear, adding rigidity)</span></li>
+<li><strong>Premature scaling</strong> <span style="color: darkgray">(≈ designing for performance, scale, or concurrency beyond foreseeable need, wasting effort)</span></li>
+<li><strong>Premature optimization</strong> <span style="color: darkgray">(≈ optimizing code without profiling or identifying bottlenecks, which can reduce clarity)</span></li>
+<li><strong>Premature generalization</strong> <span style="color: darkgray">(≈ engineering for speculative use cases that are imagined without basis, increasing complexity without payoff)</span></li>
+<li><strong>Premature tooling</strong> <span style="color: darkgray">(≈ building automation or infrastructure before workflows stabilize, risking misalignment)</span></li>
+</ul>
+<p>Intervention is good and timely when grounded by strong reasons.</p>
+<h2 id="related-ideas">Related ideas</h2>
+<p>Variants of this idea have echoed across disciplines.
+<a href="https://en.wikipedia.org/wiki/Iatrogenesis">Iatrogenesis</a> in medicine and <a href="https://fs.blog/iatrogenics/">iatrogenics</a> more broadly <span style="color: darkgray">(≈ interventions intended to help may cause harm when applied without understanding or necessity)</span>.
+In software, <a href="https://martinfowler.com/bliki/Yagni.html">YAGNI</a> <span style="color: darkgray">(≈ avoid speculative generalization)</span>, the <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix philosophy</a> <span style="color: darkgray">(≈ simplicity and doing one thing well)</span>, and <a href="https://www.jwz.org/doc/worse-is-better.html">‘worse is better’</a> <span style="color: darkgray">(≈ prefer minimalism and iteration over preemptive completeness)</span>.</p>
+<p>Still, no heuristic applies universally, and sometimes a best guess suffices.</p>
+]]></content:encoded></item></channel></rss>
